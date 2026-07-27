@@ -17,7 +17,7 @@ export const SITE = {
 		"Soft Clipper is a Windows desktop app that finds the best moments in a long video and cuts ready-to-post vertical clips for TikTok, Reels and Shorts — with AI captions and automatic 9:16 reframing. One-time payment, no subscription.",
 	// The legal entity behind the product — Stripe, Meta ads and Google all look
 	// for a real, consistent business identity across the site.
-	company: "Soft Tech Solution Ltd",
+	company: "Atlantic Ltd Store Limited",
 	companyCountry: "United Kingdom",
 	email: "info@aisofttechsolution.com",
 	// WhatsApp is the fastest channel for most buyers, so it sits on every page.
