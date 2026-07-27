@@ -1,0 +1,66 @@
+---
+import Page from "../../layouts/Page.astro";
+import { breadcrumbSchema } from "../../lib/schema";
+import { SITE } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Help", href: "/help/" },
+];
+
+const articles = [
+	{ href: "/help/install/", title: "Install Soft Clipper", text: "Download, run the installer, get past the Windows publisher warning, and complete first-run setup." },
+	{ href: "/help/activate-licence/", title: "Activate or move your licence", text: "Enter your key, what activation sends, and how to release a licence when you change computer." },
+	{ href: "/help/troubleshooting/", title: "Troubleshooting", text: "Downloads that fail, missing captions, slow renders, blank clips and AI errors — with the actual causes." },
+	{ href: "/faq/", title: "FAQ", text: "Pricing, licensing, requirements, privacy and what the app deliberately does not do." },
+];
+---
+
+<Page
+	title="Help centre"
+	heading="Help"
+	description={`Guides for installing ${SITE.name}, activating your licence, and fixing the problems people actually hit.`}
+	intro="Short guides, written for the situations support email gets. If yours is not here, ask and it will be."
+	eyebrow="Support"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	cta={false}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-2">
+				{
+					articles.map((a) => (
+						<a class="card" href={a.href}>
+							<h2>{a.title}</h2>
+							<p>{a.text}</p>
+							<span class="more">Open →</span>
+						</a>
+					))
+				}
+			</div>
+
+			<div class="card contact mt-lg">
+				<h2>Still stuck?</h2>
+				<p>
+					Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> from the address you bought
+					with. Include what you did, what happened, and the exact error text if there was
+					one — it usually saves a round trip.
+				</p>
+			</div>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.12rem;
+		margin-bottom: 8px;
+	}
+	.contact {
+		background: var(--panel-strong);
+	}
+</style>

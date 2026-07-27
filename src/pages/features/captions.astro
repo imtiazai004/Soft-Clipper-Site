@@ -1,0 +1,95 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Features", href: "/features/" },
+	{ label: "Captions", href: "/features/captions/" },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "Are the captions burned in or a separate file?",
+		a: "Burned in — rendered into the pixels of the exported video. Platforms strip or ignore uploaded subtitle files often enough that the safe answer for short-form is to make them part of the picture.",
+	},
+	{
+		q: "Where do the caption words come from?",
+		a: "From the same timestamped transcript used to find the moments. If the source video already has captions they are reused, so no extra transcription time is spent.",
+	},
+	{
+		q: "Can I change how they look?",
+		a: "Yes — font size, colour, outline, position and highlight style. Set it on one clip, then apply the same style to every clip in the batch in one action.",
+	},
+	{
+		q: "Do captions work in languages other than English?",
+		a: "Yes. Detection and transcription follow the language spoken in the video, including Urdu and Hindi. Fonts for non-Latin scripts must be present on your PC for those characters to render.",
+	},
+	{
+		q: "Can I fix a word the transcription got wrong?",
+		a: "Yes. Caption text is editable before rendering, which matters for names, brands and technical terms that no model gets right every time.",
+	},
+];
+---
+
+<Page
+	title="Automatic burned-in captions"
+	heading="Captions that survive the upload"
+	description="Word-timed captions generated from your video's transcript, styled for short-form and burned into the exported clip so no platform can strip them."
+	intro="Most short-form video is watched on mute. A clip without captions is a clip most people scroll past, whatever is in it."
+	eyebrow="Feature"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card">
+					<div class="ico">⏱️</div>
+					<h3>Timed to the words</h3>
+					<p>
+						Captions follow the transcript's own timings, so lines change when the speaker
+						changes them — not on a fixed timer that drifts out of sync by the end.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">🎨</div>
+					<h3>Styled once, applied to all</h3>
+					<p>
+						Choose size, colour, outline and position on one clip, then push that style
+						across the whole batch. Ten clips from one recording look like a set.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">✏️</div>
+					<h3>Editable before export</h3>
+					<p>
+						Names and jargon are where transcription slips. Fix the text in the editor
+						before rendering rather than discovering it after upload.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">📱</div>
+					<h3>Placed for the safe area</h3>
+					<p>
+						Positioned to stay clear of the interface each platform draws over the bottom
+						of a vertical video, so nothing important sits under a username.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

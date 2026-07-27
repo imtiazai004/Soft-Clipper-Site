@@ -1,0 +1,114 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Features", href: "/features/" },
+	{ label: "AI moment detection", href: "/features/ai-moment-detection/" },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "How does Soft Clipper decide what is a good clip?",
+		a: "It works from a timestamped transcript rather than from the video pixels. The AI looks for a hook in the first seconds, a complete thought that does not need the surrounding hour to make sense, and a clean place to end — then returns the start and end times with a short reason.",
+	},
+	{
+		q: "Which AI model does it use?",
+		a: "Google Gemini, using your own API key. Gemini's free tier covers ordinary use; heavier use is billed by Google directly, never by us.",
+	},
+	{
+		q: "Can I tell it what to look for?",
+		a: "Yes. Prompt search takes a plain-English request — “the part about pricing objections”, “every time she tells a story” — and returns the matching timestamps instead of a generic best-of list.",
+	},
+	{
+		q: "What about videos with almost no talking?",
+		a: "There is a visual analysis mode that sends a low-resolution copy of the video to the model so it can watch the footage instead of reading words. It is slower, and it is meant for cooking, travel, gameplay and similar material.",
+	},
+	{
+		q: "Does my whole video get uploaded somewhere?",
+		a: "No. For a video with captions, only text is sent. When there are no captions, compressed audio is sent for transcription. Visual analysis is the one case where video is uploaded, and it is a low-resolution copy, only when you choose that mode.",
+	},
+];
+---
+
+<Page
+	title="AI moment detection for long videos"
+	heading="It reads the whole video so you do not have to"
+	description="Soft Clipper reads a timestamped transcript of your long video and proposes clips with start and end times, a hook, and a reason — plus plain-English search for the part you want."
+	intro="Scrubbing a two-hour recording for the six good minutes is the part that kills the habit. Soft Clipper reads the transcript end to end and comes back with a shortlist."
+	eyebrow="Feature"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-3">
+				<div class="card">
+					<div class="ico">📝</div>
+					<h3>Transcript first</h3>
+					<p>
+						Existing captions are used when the source has them — that takes seconds. When
+						there are none, the audio is transcribed with timestamps so every proposed clip
+						maps to a real position in the video.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">🎯</div>
+					<h3>Clips, not chapters</h3>
+					<p>
+						A chapter tool splits a video into sections. This looks for something else: a
+						segment that opens strongly, stands on its own, and stops before it drags.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">🗣️</div>
+					<h3>Ask for what you want</h3>
+					<p>
+						Type a request in plain English and get timestamps back. Useful when you know
+						the moment exists and cannot remember where it was.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>What a proposed clip contains</h2>
+				<p class="lead">Every suggestion arrives as something you can judge in a second, not a mystery timestamp.</p>
+			</div>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr><th>Field</th><th>Why it is there</th></tr>
+					</thead>
+					<tbody>
+						<tr><td><strong>Start and end</strong></td><td>Trimmed to a sentence boundary so clips do not open mid-word.</td></tr>
+						<tr><td><strong>Title</strong></td><td>A working name you can turn into the caption or the on-screen headline.</td></tr>
+						<tr><td><strong>Reason</strong></td><td>One line on why this moment was picked, so you can disagree quickly.</td></tr>
+						<tr><td><strong>Transcript excerpt</strong></td><td>The actual words, so you can check the clip without playing it.</td></tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="mt-lg muted">
+				You are never locked into the suggestion — every clip's in and out points can be nudged
+				by hand before rendering, and the preview updates as you move them.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

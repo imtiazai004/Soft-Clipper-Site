@@ -1,0 +1,77 @@
+---
+import Page from "../layouts/Page.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Contact", href: "/contact/" },
+];
+
+const reasons = [
+	{ title: "Before you buy", text: "Ask whether it will handle your material. Tell us the source — podcast, webinar, screen recording — and we will tell you straight if it is a bad fit." },
+	{ title: "Licence problems", text: "Lost key, new computer, a machine you no longer have access to. Email from the address you paid with and it is a two-minute fix." },
+	{ title: "Refunds", text: "Within 14 days, no reason needed. One email is enough." },
+	{ title: "Bugs", text: "Include the exact error text, what you were doing, and the source video's format if it is relevant." },
+	{ title: "Teams and invoices", text: "More than five licences, or you need a proper invoice for accounting. Say so and we will sort it in one payment." },
+];
+---
+
+<Page
+	title="Contact"
+	heading="Talk to us"
+	description={`Contact ${SITE.company} about ${SITE.name} — pre-sales questions, licence problems, refunds and bug reports.`}
+	intro="One email address, answered by the people who wrote the software."
+	eyebrow="Contact"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<div class="card email-card">
+				<span class="eyebrow">Email</span>
+				<p class="address"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+				<p class="muted small">
+					Replies usually within one working day. For licence and refund requests, write from
+					the address you purchased with so we can find the order.
+				</p>
+			</div>
+
+			<h2 class="mt-lg">What to include</h2>
+			<div class="grid grid-2 mt-lg">
+				{
+					reasons.map((r) => (
+						<div class="card">
+							<h3>{r.title}</h3>
+							<p>{r.text}</p>
+						</div>
+					))
+				}
+			</div>
+
+			<p class="mt-lg muted small">
+				{SITE.company}, registered in the {SITE.companyCountry}. Postal address available on
+				request and on your invoice.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.email-card {
+		background: var(--panel-strong);
+	}
+	.address {
+		font-size: 1.35rem;
+		font-weight: 700;
+		margin-block: 6px 10px;
+	}
+	h2 {
+		font-size: 1.3rem;
+	}
+</style>

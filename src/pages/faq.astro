@@ -1,0 +1,161 @@
+---
+import Page from "../layouts/Page.astro";
+import Faq from "../components/Faq.astro";
+import { PRICE, PRODUCT, SITE } from "../consts";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "FAQ", href: "/faq/" },
+];
+
+// Grouped for readers; flattened for the FAQPage schema so answer engines see
+// every question on the page, not just the first group.
+const groups: { title: string; items: FaqItem[] }[] = [
+	{
+		title: "The product",
+		items: [
+			{
+				q: "What is Soft Clipper?",
+				a: `Soft Clipper is a Windows desktop app that turns a long video into short vertical clips for TikTok, Instagram Reels and YouTube Shorts. It finds the moments worth posting, reframes them to 9:16 with the speaker kept in shot, and burns in captions.`,
+			},
+			{
+				q: "How is it different from a cloud clip tool?",
+				a: "It runs on your computer instead of a server. That means no monthly fee, no minute quota, no watermark, and your video file never gets uploaded — but it also means it needs a Windows PC and your own AI key.",
+			},
+			{
+				q: "What video sources can I use?",
+				a: "A file from your disk, or a link that the app can fetch. Podcast recordings, webinars, streams, interviews and screen recordings all work. Use only material you own or have the right to edit.",
+			},
+			{
+				q: "How long can the source video be?",
+				a: "There is no hard limit. Longer videos take longer to transcribe and render; a two-hour recording is routine.",
+			},
+		],
+	},
+	{
+		title: "Buying and licensing",
+		items: [
+			{
+				q: "How much does it cost?",
+				a: `${PRICE.display}, once. There is no subscription, no credit pack and no per-export fee.`,
+			},
+			{
+				q: "What does one licence cover?",
+				a: PRODUCT.licence + ". To move to a new computer, release the licence in the app and activate it on the new machine.",
+			},
+			{
+				q: "Can I get a refund?",
+				a: "Yes — 14 days, no questions asked. Email us from the address you purchased with.",
+			},
+			{
+				q: "Do I get free updates?",
+				a: "Updates to the version you bought are free. A future major version would be an upgrade price rather than a new full purchase.",
+			},
+			{
+				q: "Is there a free version?",
+				a: "No. Instead of a limited free tier there is a full refund window, which we think is the more honest version of the same offer.",
+			},
+		],
+	},
+	{
+		title: "Requirements and platforms",
+		items: [
+			{
+				q: "Does it work on Mac?",
+				a: "No. Soft Clipper is Windows-only today. There is no macOS build and no timeline we are willing to promise.",
+			},
+			{
+				q: "Is there a mobile app?",
+				a: "No. Video rendering on a phone is not practical for this kind of work, so there is no Android or iOS version.",
+			},
+			{
+				q: "Is there a browser version?",
+				a: `A hosted version is ${PRODUCT.webStatus}. It will be sold separately; the desktop licence does not include it.`,
+			},
+			{
+				q: "Do I need a powerful PC?",
+				a: `${PRODUCT.requirements}. Rendering uses the processor, so a faster CPU means faster exports, but no dedicated graphics card is needed.`,
+			},
+		],
+	},
+	{
+		title: "AI, privacy and data",
+		items: [
+			{
+				q: "Why do I need my own Gemini API key?",
+				a: "Because that is what keeps the price a one-off. AI analysis costs money per video; rather than build that into a subscription, you use your own key and Google's free tier, and pay them directly if you ever exceed it.",
+			},
+			{
+				q: "Is my video uploaded anywhere?",
+				a: "Not the video file. When a source already has captions, only text is used. When it does not, compressed audio is sent for transcription. Visual analysis — the one mode that sends video — uploads a low-resolution copy and only when you choose it.",
+			},
+			{
+				q: "Do you see my videos or my clips?",
+				a: "No. Everything is processed on your machine or sent directly from your machine to Google with your own key. We have no server in that path.",
+			},
+			{
+				q: "What data does the licence check send?",
+				a: "A licence key and an anonymous hardware fingerprint — a hash, not your files, your name or your video. It is what stops one licence being shared across a hundred computers.",
+			},
+		],
+	},
+	{
+		title: "Using it",
+		items: [
+			{
+				q: "How many clips does one video produce?",
+				a: "Usually between five and fifteen for an hour of conversation, depending on how much of it stands alone. You choose which ones to render.",
+			},
+			{
+				q: "Can I edit a clip before exporting?",
+				a: "Yes. Trim the in and out points, move the crop, edit caption text and styling, add text overlays and stickers, and apply look effects — per clip or across the batch.",
+			},
+			{
+				q: "What format are the exports?",
+				a: "MP4, vertical 9:16, up to 1080p — the format TikTok, Reels and Shorts all accept without re-encoding surprises.",
+			},
+			{
+				q: "Can it post the clips for me?",
+				a: "No. It writes files to a folder; posting stays with you.",
+			},
+		],
+	},
+];
+
+const all = groups.flatMap((g) => g.items);
+---
+
+<Page
+	title="Frequently asked questions"
+	description={`Answers about ${SITE.name}: pricing, licensing, system requirements, privacy, AI keys and what the app can and cannot do.`}
+	intro="Everything people ask before buying, answered plainly — including the parts where the answer is no."
+	eyebrow="FAQ"
+	crumbs={crumbs}
+	schema={[faqSchema(all), breadcrumbSchema(crumbs)]}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow stack-groups">
+			{groups.map((g) => <Faq items={g.items} heading={g.title} />)}
+		</div>
+	</section>
+
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<p class="muted">
+				Still stuck? <a href="/contact/">Send us the question</a> — the answer usually ends up
+				on this page.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.stack-groups > :global(.faq-block) + :global(.faq-block) {
+		margin-top: 44px;
+	}
+</style>

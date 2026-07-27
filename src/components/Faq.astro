@@ -1,0 +1,34 @@
+---
+import type { FaqItem } from "../lib/schema";
+
+interface Props {
+	items: FaqItem[];
+	heading?: string;
+	/** The visible heading level, so a FAQ inside a page does not fight the H1. */
+	level?: "h2" | "h3";
+}
+
+const { items, heading = "Frequently asked questions", level = "h2" } = Astro.props;
+const Heading = level;
+---
+
+<div class="faq-block">
+	{heading && <Heading>{heading}</Heading>}
+	<div class="faq">
+		{
+			items.map((item, i) => (
+				<details open={i === 0}>
+					<summary>{item.q}</summary>
+					<div set:html={item.a} />
+				</details>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.faq-block > :global(h2),
+	.faq-block > :global(h3) {
+		margin-bottom: 20px;
+	}
+</style>

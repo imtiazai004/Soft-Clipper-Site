@@ -1,0 +1,437 @@
+---
+import Base from "../layouts/Base.astro";
+import Faq from "../components/Faq.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE, PRICE, PRODUCT } from "../consts";
+import { faqSchema, softwareSchema, howToSchema, type FaqItem } from "../lib/schema";
+
+const faqs: FaqItem[] = [
+	{
+		q: "What does Soft Clipper actually do?",
+		a: "Soft Clipper takes one long video — a podcast, interview, webinar or stream — and returns short vertical clips that are ready to post on TikTok, Instagram Reels and YouTube Shorts. It picks the moments, cuts them, reframes them to 9:16 so the speaker stays centred, and burns in captions.",
+	},
+	{
+		q: "Is Soft Clipper a subscription?",
+		a: `No. Soft Clipper is a one-time purchase of ${PRICE.display}. There is no monthly fee, no credit system and no per-minute charge. You buy the licence once and keep using the version you own.`,
+	},
+	{
+		q: "Does it run on Mac or on a phone?",
+		a: `Not yet. Soft Clipper is a Windows desktop app and needs ${PRODUCT.platform}. There is no Mac build and no mobile app — rendering video on a phone is not practical. A browser version is ${PRODUCT.webStatus}.`,
+	},
+	{
+		q: "How many clips can I make?",
+		a: "As many as you like. The app runs on your own computer, so there are no render credits, no export limits and no watermark. The only limit is how fast your PC encodes video.",
+	},
+	{
+		q: "Do I need an internet connection?",
+		a: "Only for two things: activating your licence the first time, and letting the AI read your video to find the good moments. The cutting, reframing, captioning and exporting all happen locally on your machine.",
+	},
+	{
+		q: "Do I need my own AI key?",
+		a: "Yes — Soft Clipper uses Google Gemini for moment detection and transcription, and you paste your own free Gemini API key into Settings once. That is why there are no ongoing fees from us: you are never paying us for AI usage on top of the licence.",
+	},
+];
+
+const steps = [
+	{
+		name: "Load a video",
+		text: "Paste a link or drop in a file. Soft Clipper pulls the audio and builds a timestamped transcript.",
+	},
+	{
+		name: "Let the AI find the moments",
+		text: "It reads the transcript for hooks, punchlines, strong claims and story beats, and proposes clips with a start and end time.",
+	},
+	{
+		name: "Export vertical clips",
+		text: "Each clip is reframed to 9:16 with the speaker kept in frame, captions are burned in, and the files are written to your disk.",
+	},
+];
+
+const schema = [
+	softwareSchema(),
+	faqSchema(faqs),
+	howToSchema({
+		name: "How to turn a long video into vertical clips",
+		description:
+			"Three steps to cut a long video into ready-to-post TikTok, Reels and Shorts clips with Soft Clipper.",
+		totalTime: "PT10M",
+		steps,
+	}),
+];
+---
+
+<Base title={SITE.name} description={SITE.description} schema={schema}>
+	<section class="hero">
+		<div class="wrap center">
+			<span class="pill accent">One-time {PRICE.display} · no subscription</span>
+			<h1 class="gradient-text">Turn long videos into viral vertical clips</h1>
+			<p class="lead">
+				Soft Clipper is a Windows app that reads your long video, finds the moments worth
+				posting, and cuts them into 9:16 clips with captions — in the time it takes to make
+				coffee.
+			</p>
+			<div class="btn-row center-row">
+				<a class="btn btn-primary" href="/pricing/">Get Soft Clipper — {PRICE.display}</a>
+				<a class="btn btn-ghost" href="/features/">See how it works</a>
+			</div>
+			<p class="small muted">{PRODUCT.platform} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
+		</div>
+
+		<div class="wrap shot-wrap">
+			<div class="shot" role="img" aria-label="A 16:9 source video being reframed into a 9:16 clip with captions">
+				<div class="pane source">
+					<span class="tag">Long video · 16:9</span>
+					<div class="frame">
+						<div class="crop"></div>
+					</div>
+					<div class="timeline">
+						<span style="left:14%;width:16%"></span>
+						<span class="hot" style="left:38%;width:13%"></span>
+						<span style="left:60%;width:20%"></span>
+					</div>
+				</div>
+				<div class="arrow" aria-hidden="true">
+					<svg viewBox="0 0 40 24" width="40" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M2 12h32"></path>
+						<path d="M27 5l7 7-7 7"></path>
+					</svg>
+					<span class="mono">reframe</span>
+				</div>
+				<div class="pane out">
+					<span class="tag cyan">Clip · 9:16</span>
+					<div class="phone">
+						<div class="head"></div>
+						<div class="cap"></div>
+						<div class="cap short"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">The problem</span>
+				<h2>Editing a two-hour recording into clips takes a full day</h2>
+				<p class="lead">
+					Scrubbing for the good bits, re-cropping every shot so a face is not cut in half,
+					typing captions, exporting one file at a time. Most people give up after a few
+					weeks, and the back catalogue never gets posted.
+				</p>
+			</div>
+
+			<div class="grid grid-3">
+				<div class="card">
+					<div class="ico">🔎</div>
+					<h3>Finding moments is the slow part</h3>
+					<p>
+						Soft Clipper reads a timestamped transcript and proposes clips with reasons, so
+						you are choosing between suggestions instead of scrubbing a timeline.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">🎯</div>
+					<h3>Cropping to 9:16 breaks shots</h3>
+					<p>
+						A centre crop cuts people out of frame. Soft Clipper tracks the speaker and
+						moves the crop with them, and switches when the scene changes.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico">💬</div>
+					<h3>Captions are non-negotiable</h3>
+					<p>
+						Most short-form is watched on mute. Captions are generated from the transcript,
+						styled once, and burned into every clip in the batch.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">How it works</span>
+				<h2>Three steps, start to finish</h2>
+			</div>
+			<ol class="steps">
+				{
+					steps.map((s) => (
+						<li>
+							<h3>{s.name}</h3>
+							<p>{s.text}</p>
+						</li>
+					))
+				}
+			</ol>
+			<p class="mt-lg">
+				<a href="/help/install/">Read the full install and first-run guide →</a>
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Features</span>
+				<h2>What you get</h2>
+			</div>
+			<div class="grid grid-2">
+				<a class="card" href="/features/ai-moment-detection/">
+					<div class="ico">🧠</div>
+					<h3>AI moment detection</h3>
+					<p>
+						Finds hooks, punchlines and complete thoughts — and can search your video for a
+						topic in plain English, like “the part about pricing”.
+					</p>
+					<span class="more">Learn more →</span>
+				</a>
+				<a class="card" href="/features/auto-reframe/">
+					<div class="ico">🎬</div>
+					<h3>Smart 9:16 reframing</h3>
+					<p>
+						Face-tracking crop that follows the speaker, plus fit-and-blur, split-screen and
+						centre modes when you want them.
+					</p>
+					<span class="more">Learn more →</span>
+				</a>
+				<a class="card" href="/features/captions/">
+					<div class="ico">💬</div>
+					<h3>Burned-in captions</h3>
+					<p>
+						Word-timed captions in styles that suit short-form, burned into the video so
+						they survive every upload.
+					</p>
+					<span class="more">Learn more →</span>
+				</a>
+				<a class="card" href="/features/highlight-reel/">
+					<div class="ico">✨</div>
+					<h3>Highlight reels & teasers</h3>
+					<p>
+						Stitch the best moments from a long recording into a single trailer, ready for
+						a feed post or a channel intro.
+					</p>
+					<span class="more">Learn more →</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Who it is for</span>
+				<h2>Built for people with a back catalogue</h2>
+			</div>
+			<div class="grid grid-4">
+				<a class="card" href="/use-cases/podcasters/"><h3>Podcasters</h3><p>Every episode is 20 clips waiting to be cut.</p></a>
+				<a class="card" href="/use-cases/youtubers/"><h3>YouTubers</h3><p>Feed Shorts without filming anything new.</p></a>
+				<a class="card" href="/use-cases/coaches/"><h3>Coaches & creators</h3><p>Turn webinars and lives into daily posts.</p></a>
+				<a class="card" href="/use-cases/agencies/"><h3>Agencies</h3><p>One licence per editor, no per-seat billing.</p></a>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Why one-time</span>
+				<h2>{PRICE.display} once, instead of {`$${PRICE.competitorMonthly}`} every month</h2>
+				<p class="lead">
+					Cloud clip tools charge monthly and meter how many minutes you may upload. Soft
+					Clipper runs on your machine, so the only running cost is your own electricity.
+				</p>
+			</div>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Soft Clipper</th>
+							<th>Typical cloud clip tool</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>Cost</strong></td>
+							<td class="yes">{PRICE.display} once</td>
+							<td>${PRICE.competitorMonthly}/month, forever</td>
+						</tr>
+						<tr>
+							<td><strong>Upload limits</strong></td>
+							<td class="yes">None — runs locally</td>
+							<td>Monthly minute quota</td>
+						</tr>
+						<tr>
+							<td><strong>Your video leaves your PC</strong></td>
+							<td class="yes">Only the audio, for transcription</td>
+							<td>Whole file uploaded to their servers</td>
+						</tr>
+						<tr>
+							<td><strong>Watermark on free tier</strong></td>
+							<td class="yes">No free tier, no watermark</td>
+							<td>Usually yes</td>
+						</tr>
+						<tr>
+							<td><strong>Works offline</strong></td>
+							<td class="yes">Cutting and export, yes</td>
+							<td class="no">No</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="mt-lg">
+				<a href="/compare/one-time-vs-subscription/">See the full cost comparison over two years →</a>
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+			<p class="mt-lg"><a href="/faq/">All questions →</a></p>
+		</div>
+	</section>
+
+	<div class="wrap">
+		<CtaBand />
+	</div>
+</Base>
+
+<style>
+	.hero {
+		padding-top: clamp(40px, 7vw, 76px);
+		padding-bottom: 24px;
+	}
+	.hero h1 {
+		margin-block: 18px 20px;
+	}
+	.center-row {
+		justify-content: center;
+		margin-block: 30px 16px;
+	}
+
+	.shot-wrap {
+		margin-top: clamp(36px, 6vw, 60px);
+	}
+	.shot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(16px, 4vw, 48px);
+		flex-wrap: wrap;
+		padding: clamp(24px, 5vw, 48px);
+		border: 1px solid var(--border);
+		border-radius: 24px;
+		background:
+			radial-gradient(500px 300px at 30% 0%, rgba(139, 92, 246, 0.14), transparent 70%),
+			radial-gradient(500px 300px at 80% 20%, rgba(34, 211, 238, 0.1), transparent 70%),
+			var(--bg-soft);
+	}
+
+	.pane {
+		display: grid;
+		gap: 12px;
+	}
+	.tag {
+		font-family: var(--mono);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--dim);
+	}
+	.tag.cyan {
+		color: var(--cyan);
+	}
+
+	.frame {
+		position: relative;
+		width: min(340px, 70vw);
+		aspect-ratio: 16 / 9;
+		border-radius: 14px;
+		border: 1px solid rgba(139, 92, 246, 0.3);
+		background: linear-gradient(150deg, #101024, #0a0a16);
+	}
+	.crop {
+		position: absolute;
+		inset: 6% 38% 6% 34%;
+		border: 2px dashed var(--cyan);
+		border-radius: 8px;
+		background: rgba(34, 211, 238, 0.07);
+	}
+
+	.timeline {
+		position: relative;
+		height: 20px;
+		border-radius: 6px;
+		border: 1px solid var(--border);
+		background: rgba(255, 255, 255, 0.02);
+	}
+	.timeline span {
+		position: absolute;
+		top: 5px;
+		height: 8px;
+		border-radius: 3px;
+		background: rgba(139, 92, 246, 0.3);
+	}
+	.timeline .hot {
+		background: var(--grad);
+		box-shadow: 0 0 16px rgba(34, 211, 238, 0.45);
+	}
+
+	.arrow {
+		display: grid;
+		justify-items: center;
+		gap: 6px;
+		color: var(--violet);
+	}
+	.arrow span {
+		font-size: 0.66rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.phone {
+		position: relative;
+		width: min(170px, 40vw);
+		aspect-ratio: 9 / 16;
+		border-radius: 20px;
+		border: 2px solid rgba(34, 211, 238, 0.55);
+		background: linear-gradient(160deg, #101024, #0a0a16);
+		box-shadow: 0 12px 40px rgba(34, 211, 238, 0.15);
+		display: grid;
+		align-content: center;
+		justify-items: center;
+		gap: 10px;
+		padding: 18px;
+	}
+	.head {
+		width: 62px;
+		height: 62px;
+		border-radius: 50%;
+		background: radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.9), rgba(99, 102, 241, 0.25));
+		margin-bottom: 26px;
+	}
+	.cap {
+		width: 82%;
+		height: 13px;
+		border-radius: 4px;
+		background: var(--cyan);
+		opacity: 0.85;
+	}
+	.cap.short {
+		width: 55%;
+		height: 9px;
+		background: var(--violet);
+		opacity: 0.55;
+	}
+
+	@media (max-width: 640px) {
+		.arrow {
+			transform: rotate(90deg);
+		}
+	}
+</style>

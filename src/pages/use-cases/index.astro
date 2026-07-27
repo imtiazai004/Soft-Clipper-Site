@@ -1,0 +1,46 @@
+---
+import Page from "../../layouts/Page.astro";
+import { USE_CASES } from "../../data/use-cases";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Use cases", href: "/use-cases/" },
+];
+---
+
+<Page
+	title="Use cases"
+	heading="Who Soft Clipper is for"
+	description="How podcasters, YouTubers, coaches and agencies use Soft Clipper to turn long recordings into vertical clips for TikTok, Reels and Shorts."
+	intro="The tool is the same for everyone. What changes is the source material — and which of its problems matter most."
+	eyebrow="Use cases"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-2">
+				{
+					USE_CASES.map((u) => (
+						<a class="card" href={`/use-cases/${u.slug}/`}>
+							<h2>{u.label}</h2>
+							<p>{u.answer}</p>
+							<span class="more">Read more →</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.15rem;
+		margin-bottom: 8px;
+	}
+</style>

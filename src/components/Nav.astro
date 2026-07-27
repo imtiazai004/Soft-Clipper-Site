@@ -1,0 +1,158 @@
+---
+import { NAV, SITE } from "../consts";
+
+const { pathname } = Astro.url;
+// A link is "current" when the page sits under it, so /features/captions/ still
+// highlights Features. Screen readers get aria-current, not just a colour.
+const isActive = (href: string) => pathname === href || pathname.startsWith(href);
+---
+
+<header>
+	<a class="skip" href="#main">Skip to content</a>
+	<div class="wrap bar">
+		<a class="brand" href="/">
+			<span class="mark" aria-hidden="true">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="3" y="4" width="11" height="16" rx="2"></rect>
+					<path d="M17 8v8"></path>
+					<path d="M21 6v12"></path>
+				</svg>
+			</span>
+			<span class="name">{SITE.name}</span>
+		</a>
+
+		<nav aria-label="Main">
+			<ul>
+				{
+					NAV.map((item) => (
+						<li>
+							<a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<a class="btn btn-primary buy" href="/pricing/">Get Soft Clipper</a>
+	</div>
+</header>
+
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: rgba(7, 7, 15, 0.82);
+		backdrop-filter: blur(14px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.skip {
+		position: absolute;
+		left: -9999px;
+		top: 8px;
+		background: var(--bg-soft);
+		border: 1px solid var(--border-strong);
+		padding: 8px 14px;
+		border-radius: 8px;
+	}
+	.skip:focus {
+		left: 16px;
+		z-index: 60;
+	}
+
+	.bar {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		height: 68px;
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		color: var(--text);
+		text-decoration: none;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		flex: none;
+	}
+	.mark {
+		width: 34px;
+		height: 34px;
+		border-radius: 10px;
+		background: var(--grad);
+		color: #fff;
+		display: grid;
+		place-items: center;
+		box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
+	}
+
+	nav {
+		margin-left: auto;
+	}
+	nav ul {
+		display: flex;
+		gap: 4px;
+		list-style: none;
+	}
+	nav a {
+		display: block;
+		padding: 8px 12px;
+		border-radius: 9px;
+		color: var(--muted);
+		text-decoration: none;
+		font-size: 0.94rem;
+		font-weight: 550;
+		transition: color 0.15s ease, background 0.15s ease;
+	}
+	nav a:hover {
+		color: var(--text);
+		background: var(--panel);
+	}
+	nav a[aria-current="page"] {
+		color: var(--text);
+		background: var(--panel-strong);
+	}
+
+	.buy {
+		padding: 10px 18px;
+		font-size: 0.92rem;
+		flex: none;
+	}
+
+	/* Below 980px the links wrap into a scrollable strip under the bar rather
+	   than hiding behind a hamburger — one less thing to get wrong, and crawlers
+	   see the same links either way. */
+	@media (max-width: 980px) {
+		.bar {
+			height: auto;
+			flex-wrap: wrap;
+			padding-block: 12px;
+			gap: 12px;
+		}
+		nav {
+			order: 3;
+			width: 100%;
+			margin-left: 0;
+			overflow-x: auto;
+			scrollbar-width: none;
+		}
+		nav::-webkit-scrollbar {
+			display: none;
+		}
+		nav ul {
+			gap: 2px;
+		}
+		nav a {
+			white-space: nowrap;
+			padding-inline: 10px;
+		}
+		.buy {
+			margin-left: auto;
+		}
+	}
+</style>

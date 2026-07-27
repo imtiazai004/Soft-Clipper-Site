@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from "astro:content";
+import Page from "../../layouts/Page.astro";
+import { articleSchema, breadcrumbSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog", ({ data }) => !data.draft);
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const path = `/blog/${post.id}/`;
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Blog", href: "/blog/" },
+	{ label: post.data.title, href: path },
+];
+
+const fmt = (d: Date) =>
+	d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<Page
+	title={post.data.title}
+	description={post.data.description}
+	crumbs={crumbs}
+	narrow
+	schema={[
+		articleSchema({
+			title: post.data.title,
+			description: post.data.description,
+			path,
+			published: post.data.published.toISOString(),
+			updated: post.data.updated?.toISOString(),
+		}),
+		breadcrumbSchema(crumbs),
+	]}
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<p class="small muted meta">
+				Published <time datetime={post.data.published.toISOString()}>{fmt(post.data.published)}</time>
+				{post.data.updated && <> · updated {fmt(post.data.updated)}</>}
+			</p>
+			<article class="prose">
+				<Content />
+			</article>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 0;
+	}
+	.meta {
+		margin-bottom: 28px;
+	}
+	.prose :global(table) {
+		min-width: 0;
+	}
+</style>

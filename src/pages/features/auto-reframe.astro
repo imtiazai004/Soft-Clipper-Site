@@ -1,0 +1,130 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Features", href: "/features/" },
+	{ label: "Auto-reframe to 9:16", href: "/features/auto-reframe/" },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "What is auto-reframing?",
+		a: "Auto-reframing converts a landscape 16:9 video into a vertical 9:16 one by choosing which part of each frame to keep. Instead of a fixed centre crop, Soft Clipper tracks the person speaking and moves the crop so they stay in shot.",
+	},
+	{
+		q: "Does it work when two people are on screen?",
+		a: "Yes, in two ways. Smart mode follows whoever the scene is built around and switches when the shot changes. Split mode stacks two speakers — one above the other — which is the format most interview clips use.",
+	},
+	{
+		q: "What if the video is a screen recording with no face?",
+		a: "Use fit-and-blur: the original frame is scaled to fit the width, and the space above and below is filled with a blurred copy of the video. Nothing gets cropped away, which matters for slides and demos.",
+	},
+	{
+		q: "Can I move the crop myself?",
+		a: "Yes. Every clip has a manual frame editor where you drag the crop box where you want it, and the preview shows exactly what the export will look like.",
+	},
+];
+
+const modes = [
+	{
+		name: "Smart",
+		best: "Talking heads, interviews, podcasts with camera cuts",
+		how: "Detects faces frame by frame, decides who the shot belongs to, and moves the crop smoothly toward them. Re-evaluates when the scene changes so a cut to the second camera does not leave you filming an empty chair.",
+	},
+	{
+		name: "Fit + blur",
+		best: "Screen shares, slides, gameplay, anything where cropping loses information",
+		how: "Keeps the entire original frame, scaled to the width of the vertical canvas, and fills the top and bottom with a blurred, darkened copy of the same footage.",
+	},
+	{
+		name: "Split",
+		best: "Two-person conversations",
+		how: "Puts one speaker in the top half and the other in the bottom half, each cropped to their own face — the layout that reads best when a clip is watched at arm's length.",
+	},
+	{
+		name: "Centre",
+		best: "Footage already shot for vertical, or when you want no surprises",
+		how: "A fixed centre crop with no tracking. Predictable, and the fastest to render.",
+	},
+];
+---
+
+<Page
+	title="Auto-reframe to 9:16 with speaker tracking"
+	heading="Reframing that follows the person talking"
+	description="Turn 16:9 footage into vertical 9:16 clips without cutting people out of frame. Smart face-tracking crop, fit-and-blur, split-screen and centre modes."
+	intro="A centre crop is the reason most auto-generated clips look wrong: heads leave the frame the moment someone moves. Soft Clipper tracks the speaker and moves the crop with them."
+	eyebrow="Feature"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<h2>Four framing modes</h2>
+			<p class="lead">Pick per clip, or set one for the whole batch.</p>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr>
+							<th>Mode</th>
+							<th>Best for</th>
+							<th>What it does</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							modes.map((m) => (
+								<tr>
+									<td><strong>{m.name}</strong></td>
+									<td>{m.best}</td>
+									<td>{m.how}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>How the tracking works</h2>
+			</div>
+			<ol class="steps">
+				<li>
+					<h3>Sample the footage</h3>
+					<p>The clip is scanned for faces at intervals rather than every single frame, which is what keeps rendering fast on an ordinary laptop.</p>
+				</li>
+				<li>
+					<h3>Decide who the shot is about</h3>
+					<p>When several faces appear, the largest, most central and most consistently present one wins — usually the person the camera was set up for.</p>
+				</li>
+				<li>
+					<h3>Move the crop smoothly</h3>
+					<p>The crop drifts toward the subject instead of snapping, so the result looks like a camera operator rather than a jitter.</p>
+				</li>
+				<li>
+					<h3>Reset on scene changes</h3>
+					<p>When the frame changes enough to count as a cut, tracking starts again — so a switch to the second camera is followed immediately.</p>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

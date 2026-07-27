@@ -1,0 +1,64 @@
+---
+import Page from "../../layouts/Page.astro";
+import { breadcrumbSchema } from "../../lib/schema";
+import { PRICE } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+];
+
+const pages = [
+	{
+		href: "/compare/opus-clip-alternative/",
+		title: "Soft Clipper vs Opus Clip",
+		text: "The best-known cloud clip tool, priced monthly with an upload quota. Here is where each one wins, honestly.",
+	},
+	{
+		href: "/compare/klap-alternative/",
+		title: "Soft Clipper vs Klap",
+		text: "Klap's reframing is its selling point. This compares it with local face-tracking, and the trade-offs of each.",
+	},
+	{
+		href: "/compare/one-time-vs-subscription/",
+		title: "One-time licence vs subscription",
+		text: `What ${PRICE.display} once versus $${PRICE.competitorMonthly} a month actually costs over two years, and when a subscription is genuinely the better buy.`,
+	},
+];
+---
+
+<Page
+	title="Compare Soft Clipper with the alternatives"
+	heading="How Soft Clipper compares"
+	description="Honest comparisons between Soft Clipper and cloud clip tools like Opus Clip and Klap — pricing, limits, privacy and where each one is the better choice."
+	intro="Every comparison here says plainly where the other tool wins. A page that claims to beat everything at everything is not worth reading."
+	eyebrow="Compare"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-3">
+				{
+					pages.map((p) => (
+						<a class="card" href={p.href}>
+							<h2>{p.title}</h2>
+							<p>{p.text}</p>
+							<span class="more">Read the comparison →</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.1rem;
+		margin-bottom: 8px;
+	}
+</style>

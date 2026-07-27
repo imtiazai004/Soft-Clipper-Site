@@ -1,0 +1,107 @@
+---
+// DRAFT — matches how the licence actually works, but needs a legal review and
+// the real company number/address before launch.
+import Page from "../../layouts/Page.astro";
+import { SITE, PRICE, PRODUCT } from "../../consts";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Terms", href: "/legal/terms/" },
+];
+const UPDATED = "26 July 2026";
+---
+
+<Page
+	title="Terms of sale and licence"
+	heading="Terms"
+	description={`The licence terms for ${SITE.name}: what you may do with the software, what one licence covers, and the limits of our liability.`}
+	intro={`Last updated ${UPDATED}. These terms apply when you buy or use ${SITE.name}.`}
+	eyebrow="Legal"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow prose">
+			<h2>1. The licence</h2>
+			<p>
+				Buying {SITE.name} grants you a perpetual, non-exclusive, non-transferable licence to
+				use the software on one computer. {PRODUCT.licence}. You may move the licence between
+				computers by releasing it from the old one first.
+			</p>
+
+			<h2>2. What you may not do</h2>
+			<ul>
+				<li>Share, resell, rent or publish the installer or your licence key.</li>
+				<li>Run one licence on more than one computer at a time.</li>
+				<li>Reverse engineer, decompile or modify the software, except where law permits it regardless of contract.</li>
+				<li>Circumvent or tamper with licence activation.</li>
+			</ul>
+			<p>A licence found in use on multiple machines may be suspended without refund.</p>
+
+			<h2>3. Your content and your responsibility</h2>
+			<p>
+				You are responsible for having the right to process any video you put through the
+				software. {SITE.name} is a tool for repurposing material you own or are authorised to
+				edit. It is not a means of copying other people's work, and using it that way breaches
+				these terms as well as the rights of whoever owns the material.
+			</p>
+
+			<h2>4. Third-party services</h2>
+			<p>
+				AI features require your own Google Gemini API key and are subject to Google's terms
+				and pricing. We are not responsible for their availability, their output, or charges
+				you incur with them. If a third-party platform changes in a way that breaks a feature,
+				we will fix it where we reasonably can, but we cannot guarantee any external service
+				will continue to work.
+			</p>
+
+			<h2>5. Price and payment</h2>
+			<p>
+				The price is {PRICE.display} ({PRICE.currency}), charged once, processed by Stripe.
+				Applicable taxes are added at checkout where required.
+			</p>
+
+			<h2>6. Refunds</h2>
+			<p>
+				Fourteen days from purchase, no reason required — see the
+				<a href="/legal/refund/">refund policy</a>. Refunded licences are deactivated.
+			</p>
+
+			<h2>7. Updates</h2>
+			<p>
+				Updates to the version you purchased are included. A future major version may be
+				offered as a paid upgrade; the version you bought continues to work regardless.
+			</p>
+
+			<h2>8. Warranty and liability</h2>
+			<p>
+				The software is provided as it is. We do not warrant that it will be uninterrupted or
+				error-free, or that AI output will be accurate or suitable for any particular purpose —
+				always review clips before publishing them. To the extent permitted by law, our total
+				liability is limited to the amount you paid. Nothing here limits liability for death,
+				personal injury or fraud, and nothing affects your statutory rights as a consumer.
+			</p>
+
+			<h2>9. Governing law</h2>
+			<p>
+				These terms are governed by the laws of England and Wales, and the courts of England
+				and Wales have exclusive jurisdiction.
+			</p>
+
+			<h2>10. Contact</h2>
+			<p>
+				{SITE.company}, {SITE.companyCountry} —
+				<a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

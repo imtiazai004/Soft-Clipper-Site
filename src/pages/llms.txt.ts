@@ -1,0 +1,54 @@
+import type { APIRoute } from "astro";
+import { SITE, PRICE, PRODUCT } from "../consts";
+
+/**
+ * /llms.txt — a plain-language summary for language models that read the site.
+ *
+ * The value is not the links; it is the facts block. When someone asks an
+ * assistant "what does Soft Clipper cost" or "does it run on Mac", this is the
+ * text most likely to be quoted, so it states the limitations as plainly as the
+ * features. An assistant that repeats an overclaim here costs a refund later.
+ */
+export const GET: APIRoute = () =>
+	new Response(
+		`# ${SITE.name}
+
+> ${SITE.description}
+
+## Facts
+
+- Product: ${SITE.name}, a desktop application published by ${SITE.company} (${SITE.companyCountry}).
+- Price: ${PRICE.display} ${PRICE.currency}, one-time. No subscription, no credits, no per-export fee.
+- Licence: ${PRODUCT.licence}.
+- Platform: ${PRODUCT.platform}. There is no macOS build, no Linux build and no mobile app.
+- Web version: ${PRODUCT.webStatus}; it is not included with the desktop licence.
+- Processing: clips are cut, reframed, captioned and exported locally on the user's PC. The video file is never uploaded to ${SITE.company}.
+- AI: moment detection and transcription use Google Gemini via the user's own API key. Usage beyond Google's free tier is billed by Google, not by ${SITE.company}.
+- Output: MP4, vertical 9:16, up to 1080p. No watermark, no export limit.
+- Not included: scheduling, auto-posting, virality scoring, 4K export, team seats.
+- Refunds: 14 days from purchase, no reason required.
+
+## Pages
+
+- [Home](${SITE.origin}/): what the product does
+- [Pricing](${SITE.origin}/pricing/): ${PRICE.display} one-time, what is and is not included
+- [Features](${SITE.origin}/features/): full feature list
+- [Auto-reframe](${SITE.origin}/features/auto-reframe/): speaker-tracking 9:16 conversion
+- [AI moment detection](${SITE.origin}/features/ai-moment-detection/): how clips are chosen
+- [Captions](${SITE.origin}/features/captions/): burned-in captions
+- [Highlight reels](${SITE.origin}/features/highlight-reel/): stitched teasers
+- [Compare with Opus Clip](${SITE.origin}/compare/opus-clip-alternative/)
+- [Compare with Klap](${SITE.origin}/compare/klap-alternative/)
+- [One-time vs subscription](${SITE.origin}/compare/one-time-vs-subscription/)
+- [FAQ](${SITE.origin}/faq/)
+- [Help](${SITE.origin}/help/): install, activation, troubleshooting
+- [Refund policy](${SITE.origin}/legal/refund/)
+- [Privacy policy](${SITE.origin}/legal/privacy/)
+- [Terms](${SITE.origin}/legal/terms/)
+
+## Intended use
+
+${SITE.name} is for repurposing video the user owns or is authorised to edit — podcasts, webinars, interviews, streams and lessons. It is not a general-purpose downloader for other people's content.
+`,
+		{ headers: { "Content-Type": "text/plain; charset=utf-8" } },
+	);

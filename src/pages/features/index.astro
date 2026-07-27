@@ -1,0 +1,100 @@
+---
+import Page from "../../layouts/Page.astro";
+import { softwareSchema, breadcrumbSchema } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Features", href: "/features/" },
+];
+
+const features = [
+	{
+		href: "/features/ai-moment-detection/",
+		icon: "🧠",
+		title: "AI moment detection",
+		text: "Reads a timestamped transcript of your video and proposes clips with a start, an end and a reason. Search the video in plain English for the part you actually want.",
+	},
+	{
+		href: "/features/auto-reframe/",
+		icon: "🎬",
+		title: "Smart 9:16 reframing",
+		text: "Face-tracking crop that follows the speaker and re-picks the subject when the scene cuts. Fit-and-blur, split-screen and centre modes when a fixed frame suits better.",
+	},
+	{
+		href: "/features/captions/",
+		icon: "💬",
+		title: "Burned-in captions",
+		text: "Word-timed captions generated from the transcript, styled for short-form and rendered into the video so no platform can strip them.",
+	},
+	{
+		href: "/features/highlight-reel/",
+		icon: "✨",
+		title: "Highlight reels & teasers",
+		text: "Stitch several strong moments into one trailer with clean joins — a channel intro or a feed post built from a recording you already have.",
+	},
+];
+
+const extras = [
+	{ title: "Batch styling", text: "Set the caption style, look and layout once and apply it to every clip in the set, then re-render them together." },
+	{ title: "Manual control", text: "Nudge the in and out points, move the crop by hand, add text overlays and stickers, and drag them where you want." },
+	{ title: "Look effects", text: "Mirror, exposure and colour adjustments, film looks and speed changes — applied per clip or across the batch." },
+	{ title: "Prompt search", text: "Ask for “the part where he talks about pricing” and get the timestamps back, instead of scrubbing for it." },
+	{ title: "Visual analysis", text: "For videos with little speech, the AI can watch the footage instead of reading the transcript." },
+	{ title: "Live preview", text: "The preview shows the real result — the same crop, captions and effects the export will have." },
+];
+---
+
+<Page
+	title="Features"
+	heading="Everything Soft Clipper does"
+	description="AI moment detection, speaker-tracking 9:16 reframing, burned-in captions, highlight reels, batch styling and manual editing — all running locally on your Windows PC."
+	intro="Soft Clipper is built around one loop: find the moments worth posting, frame them for a vertical feed, make them readable on mute, and export the whole batch at once."
+	eyebrow="Features"
+	crumbs={crumbs}
+	schema={[softwareSchema(), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-2">
+				{
+					features.map((f) => (
+						<a class="card" href={f.href}>
+							<div class="ico">{f.icon}</div>
+							<h2>{f.title}</h2>
+							<p>{f.text}</p>
+							<span class="more">Learn more →</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>And the parts you only notice when they are missing</h2>
+			</div>
+			<div class="grid grid-3">
+				{
+					extras.map((e) => (
+						<div class="card">
+							<h3>{e.title}</h3>
+							<p>{e.text}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.15rem;
+		margin-bottom: 8px;
+	}
+</style>

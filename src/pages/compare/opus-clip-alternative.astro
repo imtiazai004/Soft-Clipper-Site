@@ -1,0 +1,140 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import { PRICE, PRODUCT } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+	{ label: "Opus Clip alternative", href: "/compare/opus-clip-alternative/" },
+];
+
+// Competitor pricing changes. Keep this date accurate — a comparison page with
+// stale numbers loses trust faster than one that admits when it was written.
+const CHECKED = "July 2026";
+
+const faqs: FaqItem[] = [
+	{
+		q: "Is Soft Clipper a good Opus Clip alternative?",
+		a: `It is if the monthly fee and the upload quota are what bother you. Soft Clipper is a one-time ${PRICE.display} Windows app with no minute limits, because clips are rendered on your own PC. It is not the right choice if you need a browser tool, a Mac, scheduling or auto-posting.`,
+	},
+	{
+		q: "What does Opus Clip cost?",
+		a: `As of ${CHECKED}, Opus Clip has a free tier with watermarked exports and 60 minutes a month, a Starter plan around $15/month for 150 minutes at 720p, and a Pro plan around $29/month for 300 minutes at 1080p. One credit is one minute of source video, and unused credits expire.`,
+	},
+	{
+		q: "Does Soft Clipper have a virality score?",
+		a: "No, and that is deliberate. A 0-100 score implies a precision no model has. Soft Clipper gives a plain reason for each suggested clip instead, which is the part of a score that was ever useful.",
+	},
+	{
+		q: "Can Soft Clipper post to TikTok for me?",
+		a: "No. It writes finished MP4 files to a folder and you upload them yourself. If scheduling and auto-posting are central to your workflow, Opus Clip does that and Soft Clipper does not.",
+	},
+	{
+		q: "Which one is better for a two-hour podcast?",
+		a: `Soft Clipper, on cost. A weekly two-hour episode is roughly 480 minutes of source a month, which is above Opus Clip's Pro allowance of 300 — so it means the next tier up, every month. Soft Clipper's limit is your PC's encoding speed, not a quota.`,
+	},
+];
+
+const rows = [
+	{ f: "Price", a: `${PRICE.display} once`, b: "Free (watermarked), ~$15/mo, ~$29/mo" },
+	{ f: "Minutes you may process", a: "Unlimited — local rendering", b: "60 / 150 / 300 minutes per month by tier" },
+	{ f: "Unused allowance", a: "Not applicable", b: "Credits expire" },
+	{ f: "Watermark", a: "Never", b: "On the free tier" },
+	{ f: "Where video is processed", a: "Your PC", b: "Their servers" },
+	{ f: "Runs on", a: PRODUCT.platform, b: "Any browser, any OS" },
+	{ f: "Works offline", a: "Cutting and export, yes", b: "No" },
+	{ f: "Auto-post & scheduling", a: "No", b: "Yes" },
+	{ f: "Virality score", a: "No — reasons instead", b: "Yes" },
+	{ f: "Team seats", a: "One licence per PC", b: "Team plans available" },
+	{ f: "Ongoing AI cost", a: "Your own Gemini key (free tier covers normal use)", b: "Included in the subscription" },
+];
+---
+
+<Page
+	title="Soft Clipper vs Opus Clip"
+	heading="Soft Clipper as an Opus Clip alternative"
+	description={`An honest comparison of Soft Clipper and Opus Clip: ${PRICE.display} one-time local software versus a monthly cloud subscription with an upload quota. Pricing checked ${CHECKED}.`}
+	intro="Both take a long video and give you short vertical clips. The difference is where the work happens — and that one decision drives the price, the limits and the privacy story."
+	eyebrow="Comparison"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">
+				<strong>Short answer:</strong> choose Soft Clipper if you are on Windows, publish a
+				lot, and would rather pay {PRICE.display} once than a monthly fee with a minute quota.
+				Choose Opus Clip if you need it in a browser, work on a Mac, or want it to schedule
+				and post the clips for you.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<h2>Side by side</h2>
+			<p class="lead">Opus Clip figures checked {CHECKED} — verify on their site before deciding.</p>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr><th>&nbsp;</th><th>Soft Clipper</th><th>Opus Clip</th></tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((r) => (
+								<tr>
+									<td><strong>{r.f}</strong></td>
+									<td>{r.a}</td>
+									<td>{r.b}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card">
+					<h2>Where Opus Clip is the better tool</h2>
+					<ul class="checks">
+						<li><strong>You are not on Windows.</strong> It runs in a browser; Soft Clipper does not exist for macOS.</li>
+						<li><strong>You want posting handled.</strong> Scheduling and auto-posting are built in.</li>
+						<li><strong>Your PC is slow.</strong> Cloud rendering does not care what laptop you own.</li>
+						<li><strong>You publish rarely.</strong> Under an hour of source a month, the free tier may be all you need.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h2>Where Soft Clipper is the better tool</h2>
+					<ul class="checks">
+						<li><strong>You publish a lot.</strong> No minute quota and no expiring credits.</li>
+						<li><strong>You dislike rent.</strong> {PRICE.display} once, and the app keeps working.</li>
+						<li><strong>Your footage is sensitive.</strong> Client interviews and unreleased material never leave your machine.</li>
+						<li><strong>Your internet is unreliable.</strong> Uploading two hours of 4K over a weak link is its own problem.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.2rem;
+		margin-bottom: 14px;
+	}
+</style>

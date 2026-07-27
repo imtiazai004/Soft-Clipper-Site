@@ -1,0 +1,101 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import { PRICE, PRODUCT } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+	{ label: "Klap alternative", href: "/compare/klap-alternative/" },
+];
+
+const CHECKED = "July 2026";
+
+const faqs: FaqItem[] = [
+	{
+		q: "Is Soft Clipper a good Klap alternative?",
+		a: `Yes if you are on Windows and want to stop paying monthly. Klap is a cloud tool priced per month with a cap on how many videos you may upload; Soft Clipper is a ${PRICE.display} one-time Windows app with no cap. Klap remains the better answer if you need a browser, a Mac, or 4K exports.`,
+	},
+	{
+		q: "What does Klap cost?",
+		a: `As of ${CHECKED}, Klap's entry plan is around $29/month for roughly 10 videos of up to 45 minutes and 100 clips in HD, with a Pro plan around $79/month for around 30 videos of up to 2 hours and 4K output. Annual billing lowers the monthly figure.`,
+	},
+	{
+		q: "How does the reframing compare?",
+		a: "Both track the speaker rather than centre-cropping. Klap's runs on their servers and is the feature they lead with. Soft Clipper's runs locally on your CPU, follows the speaker, resets on scene changes, and can be corrected by hand per clip — which cloud tools rarely let you do.",
+	},
+	{
+		q: "Does Soft Clipper export 4K vertical?",
+		a: "It exports up to 1080p vertical, which is what TikTok, Reels and Shorts serve. If a 4K master matters to you, Klap's Pro tier offers it and Soft Clipper does not.",
+	},
+];
+
+const rows = [
+	{ f: "Price", a: `${PRICE.display} once`, b: "~$29/mo entry, ~$79/mo Pro" },
+	{ f: "Videos per month", a: "Unlimited", b: "Around 10 (entry) / 30 (Pro)" },
+	{ f: "Max source length", a: "No fixed limit", b: "45 min entry, 2 h Pro" },
+	{ f: "Export resolution", a: "Up to 1080p vertical", b: "HD entry, 4K on Pro" },
+	{ f: "Reframing", a: "Local face tracking, correctable by hand", b: "Cloud reframing, their headline feature" },
+	{ f: "Runs on", a: PRODUCT.platform, b: "Any browser" },
+	{ f: "Video leaves your machine", a: "Audio only, for transcription", b: "Full upload" },
+	{ f: "Free trial", a: "No — 14-day refund instead", b: "One free video" },
+];
+---
+
+<Page
+	title="Soft Clipper vs Klap"
+	heading="Soft Clipper as a Klap alternative"
+	description={`Compare Soft Clipper and Klap: a ${PRICE.display} one-time Windows app with unlimited local rendering versus a monthly cloud plan capped by video count. Pricing checked ${CHECKED}.`}
+	intro="Klap built its name on reframing quality. This page compares that with local speaker tracking — and is straight about the two places Klap still wins."
+	eyebrow="Comparison"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">
+				<strong>Short answer:</strong> Soft Clipper if you are on Windows, publish more than a
+				handful of videos a month, and want to own the tool outright. Klap if you need a
+				browser tool, work on a Mac, or want 4K masters.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<h2>Side by side</h2>
+			<p class="lead">Klap figures checked {CHECKED} — plans change, so confirm on their site.</p>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr><th>&nbsp;</th><th>Soft Clipper</th><th>Klap</th></tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((r) => (
+								<tr>
+									<td><strong>{r.f}</strong></td>
+									<td>{r.a}</td>
+									<td>{r.b}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

@@ -1,0 +1,105 @@
+---
+// DRAFT — written to match how the software actually behaves, but it has not
+// been reviewed by a solicitor. Before launch: confirm the company number and
+// registered address, name the data processors you really use (Stripe, Google,
+// your email provider, your host), and have someone qualified read it.
+import Page from "../../layouts/Page.astro";
+import { SITE } from "../../consts";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Privacy policy", href: "/legal/privacy/" },
+];
+const UPDATED = "26 July 2026";
+---
+
+<Page
+	title="Privacy policy"
+	description={`How ${SITE.company} handles personal data for ${SITE.name} — what the app sends, what the website collects, and who processes payments.`}
+	intro={`Last updated ${UPDATED}. The short version: the app processes your video on your own computer, and we do not receive it.`}
+	eyebrow="Legal"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow prose">
+			<h2>Who we are</h2>
+			<p>
+				{SITE.name} is published by {SITE.company}, registered in the {SITE.companyCountry}. For
+				any privacy question, write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+			</p>
+
+			<h2>What the desktop app sends</h2>
+			<ul>
+				<li>
+					<strong>Licence activation.</strong> Your licence key and an anonymous hardware
+					fingerprint — a one-way hash of machine identifiers. It cannot be reversed into your
+					name, your files or your hardware serial numbers, and its only purpose is enforcing
+					one licence per computer.
+				</li>
+				<li>
+					<strong>Periodic licence checks.</strong> The same two values, occasionally, to
+					confirm the licence is still valid.
+				</li>
+				<li>
+					<strong>Nothing else.</strong> No telemetry, no usage analytics, no crash uploads,
+					no list of the videos you process.
+				</li>
+			</ul>
+
+			<h2>What the app sends to Google, on your behalf</h2>
+			<p>
+				AI features use <strong>your own</strong> Google Gemini API key, entered by you in
+				Settings. Requests go directly from your computer to Google under your key, and are
+				covered by your agreement with Google, not by us. Depending on the source video this
+				can include the video's caption text, compressed audio for transcription, or — only in
+				visual analysis mode, which you choose deliberately — a low-resolution copy of the
+				video. We never see any of it.
+			</p>
+			<p>Your video file itself is never uploaded to us under any circumstances.</p>
+
+			<h2>What the website collects</h2>
+			<ul>
+				<li><strong>Purchases.</strong> Payments are handled by Stripe. We receive your email address, order details and country for tax purposes. We never see or store your card number.</li>
+				<li><strong>Email you send us.</strong> Kept as long as needed to support you, then deleted.</li>
+				<li><strong>Advertising measurement.</strong> If advertising pixels are running, they may record that a visit or a purchase happened. This is disclosed in the cookie notice at the point it applies.</li>
+			</ul>
+
+			<h2>Legal basis and retention</h2>
+			<p>
+				We process purchase data to perform the contract with you, and keep transaction records
+				for as long as UK tax law requires. Licence records are kept for the life of the
+				licence so it can be moved between machines and reissued if lost.
+			</p>
+
+			<h2>Your rights</h2>
+			<p>
+				Under UK GDPR you may request a copy of your data, ask for corrections, ask for
+				deletion, or object to processing. Email us and we will respond within one month.
+				Deleting your licence record ends your ability to reactivate or transfer the licence,
+				so we will confirm before doing it.
+			</p>
+
+			<h2>Sharing</h2>
+			<p>
+				We do not sell personal data. It is shared only with the processors needed to run the
+				business — payment, email and hosting providers — and only to the extent each needs.
+			</p>
+
+			<h2>Changes</h2>
+			<p>
+				If this policy changes materially, the date at the top changes and the previous version
+				is available on request.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

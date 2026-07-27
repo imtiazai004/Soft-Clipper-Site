@@ -1,0 +1,67 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Features", href: "/features/" },
+	{ label: "Highlight reels", href: "/features/highlight-reel/" },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "What is a highlight reel in Soft Clipper?",
+		a: "It is a single video stitched from several strong moments in one recording — a trailer for the full thing. You pick the moments (or accept the ones the AI proposed), set an order, and Soft Clipper renders them as one clip with consistent framing and captions.",
+	},
+	{
+		q: "How long should a highlight reel be?",
+		a: "For a feed post, 30 to 60 seconds. For a channel or podcast trailer, 60 to 90. Past that, watch-through drops sharply and the reel stops doing the job of sending people to the full video.",
+	},
+	{
+		q: "Can I reorder the moments?",
+		a: "Yes. The strongest line rarely comes first in the recording, and it almost always has to come first in the reel.",
+	},
+];
+---
+
+<Page
+	title="Highlight reels and teasers"
+	heading="One recording, one trailer"
+	description="Stitch the best moments of a long video into a single vertical highlight reel or teaser, with consistent framing and captions across every segment."
+	intro="Individual clips feed the daily posting habit. A highlight reel does a different job: it convinces someone the full recording is worth an hour."
+	eyebrow="Feature"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<ol class="steps">
+				<li>
+					<h3>Choose the moments</h3>
+					<p>Start from the AI's shortlist or mark your own, then keep the three or four that would still land with no context.</p>
+				</li>
+				<li>
+					<h3>Put the best one first</h3>
+					<p>The opening seconds decide whether the rest is watched at all, so the order in the reel is rarely the order in the recording.</p>
+				</li>
+				<li>
+					<h3>Render as one clip</h3>
+					<p>Segments are joined and exported together, with the same reframing and caption style throughout so it reads as one piece rather than a compilation.</p>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

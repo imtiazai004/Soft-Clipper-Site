@@ -1,0 +1,66 @@
+---
+import Base from "./Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CtaBand from "../components/CtaBand.astro";
+import type { Crumb } from "../lib/schema";
+
+interface Props {
+	title: string;
+	/** The visible H1, when it should read differently from the SEO title. */
+	heading?: string;
+	description: string;
+	/** One or two sentences under the H1 — also the paragraph answer engines quote. */
+	intro?: string;
+	crumbs: Crumb[];
+	schema?: Record<string, unknown>[];
+	eyebrow?: string;
+	/** Legal and help pages do not need a sales band at the bottom. */
+	cta?: boolean;
+	narrow?: boolean;
+}
+
+const {
+	title,
+	heading,
+	description,
+	intro,
+	crumbs,
+	schema = [],
+	eyebrow,
+	cta = true,
+	narrow = false,
+} = Astro.props;
+---
+
+<Base title={title} description={description} schema={schema}>
+	<div class={narrow ? "wrap wrap-narrow" : "wrap"}>
+		<Breadcrumbs crumbs={crumbs} />
+	</div>
+
+	<section class="head">
+		<div class={narrow ? "wrap wrap-narrow" : "wrap"}>
+			{eyebrow && <span class="eyebrow">{eyebrow}</span>}
+			<h1>{heading ?? title}</h1>
+			{intro && <p class="lead">{intro}</p>}
+		</div>
+	</section>
+
+	<slot />
+
+	{
+		cta && (
+			<div class="wrap">
+				<CtaBand />
+			</div>
+		)
+	}
+</Base>
+
+<style>
+	.head {
+		padding-block: 24px 8px;
+	}
+	.head h1 {
+		margin-bottom: 16px;
+	}
+</style>

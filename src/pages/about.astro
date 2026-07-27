@@ -1,0 +1,72 @@
+---
+import Page from "../layouts/Page.astro";
+import { SITE, PRICE } from "../consts";
+import { breadcrumbSchema } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "About", href: "/about/" },
+];
+---
+
+<Page
+	title="About"
+	heading="Why this exists"
+	description={`${SITE.name} is made by ${SITE.company}, a small software company in the ${SITE.companyCountry}. One-time pricing, local processing, no data collection.`}
+	intro="Soft Clipper started as a tool for one person with a backlog of long recordings and no time to cut them. It got sold because everyone who saw it asked for a copy."
+	eyebrow="About"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow prose">
+			<h2>What we decided early</h2>
+			<p>
+				Three decisions shaped the product, and all three cost us money on paper.
+			</p>
+			<p>
+				<strong>It runs on your computer.</strong> Uploading a two-hour recording to a server
+				and waiting is slower than encoding it locally, and it means someone else holds your
+				footage. Local processing also removes the reason to meter you by the minute.
+			</p>
+			<p>
+				<strong>You pay once.</strong> Recurring revenue is better for us and worse for you on
+				a tool you might use twice a month. {PRICE.display} once, and the app keeps working
+				whether or not we ever hear from you again.
+			</p>
+			<p>
+				<strong>You bring your own AI key.</strong> AI analysis has a real per-video cost. We
+				could bury it in a subscription; instead the app uses your own Google Gemini key, which
+				is free for ordinary use. It means one extra setup step and no ongoing bill.
+			</p>
+
+			<h2>What we are not</h2>
+			<p>
+				Not a cloud platform, not a scheduler, not a social media manager and not a video
+				editor. Soft Clipper does one job: long video in, postable vertical clips out. Anything
+				it does not do is listed openly on the <a href="/pricing/">pricing page</a> rather than
+				discovered after purchase.
+			</p>
+
+			<h2>The company</h2>
+			<p>
+				{SITE.name} is published by {SITE.company}, registered in the {SITE.companyCountry}.
+				Support goes to a person, not a ticket queue:
+				<a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+			</p>
+
+			<h2>Where it is going</h2>
+			<p>
+				A browser version is in development for people who are not on Windows. It will be sold
+				separately and will not change anything about the desktop licence you own.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../consts";
+---
+
+<Base title="Page not found" description="That page does not exist." noindex>
+	<section class="wrap center pad">
+		<span class="eyebrow">404</span>
+		<h1>That page does not exist</h1>
+		<p class="lead">
+			It may have moved, or the link may be wrong. The pages people usually want are below.
+		</p>
+		<div class="btn-row center-row">
+			<a class="btn btn-primary" href="/pricing/">Pricing</a>
+			<a class="btn btn-ghost" href="/features/">Features</a>
+			<a class="btn btn-ghost" href="/help/">Help</a>
+		</div>
+		<p class="small muted">
+			Still lost? <a href={`mailto:${SITE.email}`}>Email us</a> and we will point you at it.
+		</p>
+	</section>
+</Base>
+
+<style>
+	.pad {
+		padding-block: clamp(60px, 12vw, 130px);
+	}
+	h1 {
+		margin-block: 12px 16px;
+	}
+	.center-row {
+		justify-content: center;
+		margin-block: 28px 18px;
+	}
+</style>

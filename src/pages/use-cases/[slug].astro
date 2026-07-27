@@ -1,0 +1,85 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { USE_CASES } from "../../data/use-cases";
+import { faqSchema, breadcrumbSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+	return USE_CASES.map((useCase) => ({
+		params: { slug: useCase.slug },
+		props: { useCase },
+	}));
+}
+
+const { useCase } = Astro.props;
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Use cases", href: "/use-cases/" },
+	{ label: useCase.label, href: `/use-cases/${useCase.slug}/` },
+];
+---
+
+<Page
+	title={useCase.title}
+	heading={useCase.heading}
+	description={useCase.description}
+	intro={useCase.intro}
+	eyebrow={useCase.label}
+	crumbs={crumbs}
+	schema={[faqSchema(useCase.faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">{useCase.answer}</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>What actually gets in the way</h2>
+			</div>
+			<div class="grid grid-3">
+				{
+					useCase.pains.map((p) => (
+						<div class="card">
+							<h3>{p.title}</h3>
+							<p>{p.text}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>How the work goes</h2>
+			</div>
+			<ol class="steps">
+				{
+					useCase.workflow.map((w) => (
+						<li>
+							<h3>{w.name}</h3>
+							<p>{w.text}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={useCase.faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

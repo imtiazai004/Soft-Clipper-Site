@@ -1,0 +1,132 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import { PRICE } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+	{ label: "One-time vs subscription", href: "/compare/one-time-vs-subscription/" },
+];
+
+const months = [1, 3, 6, 12, 24, 36];
+const sub = (m: number) => PRICE.competitorMonthly * m;
+const breakEven = Math.ceil(PRICE.amount / PRICE.competitorMonthly);
+
+const faqs: FaqItem[] = [
+	{
+		q: "When does a one-time licence become cheaper than a subscription?",
+		a: `After ${breakEven} months. At $${PRICE.competitorMonthly} a month, a subscription passes ${PRICE.display} in month ${breakEven}, and everything after that is money a one-time licence does not ask for.`,
+	},
+	{
+		q: "Is a subscription ever the better deal?",
+		a: "Yes, in three cases: you need it for a single project and then never again; you need features only a cloud service can offer, like scheduling or team review; or you are not on Windows, in which case local software is not an option at all.",
+	},
+	{
+		q: "What happens to my clips if I stop paying a subscription?",
+		a: "Clips you already downloaded are yours. Anything still sitting in the service's library usually goes away, and free tiers commonly delete files after a few days. With local software the files were never anywhere else to begin with.",
+	},
+	{
+		q: "Do I get updates with a one-time licence?",
+		a: "You get updates to the version you bought. If a major new version ships later it is an upgrade price, not full price — and the version you own keeps working either way.",
+	},
+];
+---
+
+<Page
+	title="One-time licence vs subscription clip tools"
+	heading={`${PRICE.display} once vs $${PRICE.competitorMonthly} a month`}
+	description={`What a one-time video clip licence really costs against a monthly subscription over one, two and three years — with the break-even month and the cases where a subscription still wins.`}
+	intro="Subscriptions are not a scam; they are a trade. You rent capacity you do not have to own. The question is only whether you will still be posting in six months — because that is where the maths turns."
+	eyebrow="Comparison"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">
+				<strong>Break-even is month {breakEven}.</strong> A ${PRICE.competitorMonthly}/month
+				plan costs more than a {PRICE.display} one-time licence from month {breakEven} onward,
+				and the gap keeps widening — about ${sub(24) - PRICE.amount} over two years.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<h2>The cost over time</h2>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr>
+							<th>After</th>
+							<th>Soft Clipper ({PRICE.display} once)</th>
+							<th>Subscription (${PRICE.competitorMonthly}/mo)</th>
+							<th>Difference</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							months.map((m) => (
+								<tr>
+									<td><strong>{m} {m === 1 ? "month" : "months"}</strong></td>
+									<td>${PRICE.amount}</td>
+									<td>${sub(m)}</td>
+									<td class={sub(m) > PRICE.amount ? "yes" : "no"}>
+										{sub(m) > PRICE.amount ? `You save $${sub(m) - PRICE.amount}` : `Subscription cheaper by $${PRICE.amount - sub(m)}`}
+									</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+			<p class="mt-lg muted small">
+				Figures assume a $${PRICE.competitorMonthly} monthly tier and ignore annual discounts,
+				which typically cut 15-25% off the monthly rate but require paying a year up front.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card">
+					<h2>Buy once when…</h2>
+					<ul class="checks">
+						<li>You publish every week and expect to keep going</li>
+						<li>You would rather not think about another monthly charge</li>
+						<li>Your material is confidential and should stay on your disk</li>
+						<li>You already own a PC that can encode video</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h2>Subscribe when…</h2>
+					<ul class="checks">
+						<li>It is for one launch, one course, one campaign</li>
+						<li>You need scheduling, approvals or shared team libraries</li>
+						<li>You are on a Mac, a Chromebook or a phone</li>
+						<li>Your laptop cannot render video without taking an hour</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.2rem;
+		margin-bottom: 14px;
+	}
+</style>

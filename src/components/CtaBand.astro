@@ -1,0 +1,53 @@
+---
+import { PRICE, PRODUCT } from "../consts";
+
+interface Props {
+	title?: string;
+	text?: string;
+}
+
+const {
+	title = "Stop hand-cutting clips",
+	text = "Load a video, get back a set of vertical clips with captions. One payment, yours forever.",
+} = Astro.props;
+---
+
+<section class="band">
+	<div class="wrap inner">
+		<div>
+			<h2>{title}</h2>
+			<p class="lead">{text}</p>
+		</div>
+		<div class="actions">
+			<a class="btn btn-primary" href="/pricing/">Buy for {PRICE.display} — one time</a>
+			<span class="small muted">{PRODUCT.platform} · 14-day refund</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.band {
+		margin-top: 24px;
+	}
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 28px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 40px;
+		border: 1px solid var(--border-strong);
+		border-radius: 22px;
+		background:
+			radial-gradient(600px 200px at 15% 0%, rgba(139, 92, 246, 0.16), transparent 70%),
+			var(--panel);
+	}
+	.actions {
+		display: grid;
+		gap: 10px;
+		justify-items: start;
+	}
+	h2 {
+		margin-bottom: 8px;
+	}
+</style>

@@ -1,0 +1,158 @@
+---
+import { SITE, PRICE } from "../consts";
+
+// The footer is also the site's internal-linking backbone: every important page
+// is reachable from every page, which is how crawlers find the deeper ones.
+const columns = [
+	{
+		title: "Product",
+		links: [
+			{ href: "/features/", label: "Features" },
+			{ href: "/features/auto-reframe/", label: "Auto-reframe to 9:16" },
+			{ href: "/features/ai-moment-detection/", label: "AI moment detection" },
+			{ href: "/features/captions/", label: "Auto captions" },
+			{ href: "/features/highlight-reel/", label: "Highlight reels" },
+			{ href: "/pricing/", label: `Pricing — ${PRICE.display} once` },
+			{ href: "/download/", label: "Download" },
+		],
+	},
+	{
+		title: "Use cases",
+		links: [
+			{ href: "/use-cases/podcasters/", label: "Podcasters" },
+			{ href: "/use-cases/youtubers/", label: "YouTubers" },
+			{ href: "/use-cases/coaches/", label: "Coaches & creators" },
+			{ href: "/use-cases/agencies/", label: "Agencies" },
+		],
+	},
+	{
+		title: "Compare",
+		links: [
+			{ href: "/compare/opus-clip-alternative/", label: "Opus Clip alternative" },
+			{ href: "/compare/klap-alternative/", label: "Klap alternative" },
+			{ href: "/compare/one-time-vs-subscription/", label: "One-time vs subscription" },
+		],
+	},
+	{
+		title: "Support",
+		links: [
+			{ href: "/help/", label: "Help centre" },
+			{ href: "/help/install/", label: "Install guide" },
+			{ href: "/help/activate-licence/", label: "Activate your licence" },
+			{ href: "/help/troubleshooting/", label: "Troubleshooting" },
+			{ href: "/faq/", label: "FAQ" },
+			{ href: "/contact/", label: "Contact" },
+		],
+	},
+	{
+		title: "Company",
+		links: [
+			{ href: "/about/", label: "About" },
+			{ href: "/blog/", label: "Blog" },
+			{ href: "/legal/privacy/", label: "Privacy policy" },
+			{ href: "/legal/terms/", label: "Terms" },
+			{ href: "/legal/refund/", label: "Refund policy" },
+		],
+	},
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="wrap">
+		<div class="cols">
+			<div class="about">
+				<span class="brand">{SITE.name}</span>
+				<p class="small muted">
+					A Windows desktop app that turns long videos into ready-to-post vertical clips.
+					Pay once, use forever.
+				</p>
+				<p class="small muted">
+					<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+				</p>
+			</div>
+
+			{
+				columns.map((col) => (
+					<nav aria-label={col.title}>
+						<h2>{col.title}</h2>
+						<ul>
+							{col.links.map((l) => (
+								<li>
+									<a href={l.href}>{l.label}</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				))
+			}
+		</div>
+
+		<div class="base small muted">
+			<p>&copy; {year} {SITE.company}. Registered in the {SITE.companyCountry}.</p>
+			<p>
+				Soft Clipper is not affiliated with TikTok, YouTube, Instagram, Opus Clip or Klap.
+				Process only video you own or have the right to use.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer {
+		border-top: 1px solid var(--border);
+		margin-top: 40px;
+		padding-block: 56px 32px;
+		background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.04));
+	}
+
+	.cols {
+		display: grid;
+		grid-template-columns: 1.4fr repeat(auto-fit, minmax(150px, 1fr));
+		gap: 32px 24px;
+	}
+
+	.about {
+		max-width: 34ch;
+		display: grid;
+		gap: 10px;
+		align-content: start;
+	}
+	.brand {
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		font-size: 1.05rem;
+	}
+
+	h2 {
+		font-size: 0.76rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--dim);
+		font-weight: 700;
+		margin-bottom: 12px;
+	}
+
+	ul {
+		list-style: none;
+		display: grid;
+		gap: 9px;
+	}
+	ul a {
+		color: var(--muted);
+		text-decoration: none;
+		font-size: 0.9rem;
+	}
+	ul a:hover {
+		color: var(--text);
+	}
+
+	.base {
+		margin-top: 40px;
+		padding-top: 22px;
+		border-top: 1px solid var(--border);
+		display: grid;
+		gap: 6px;
+	}
+</style>

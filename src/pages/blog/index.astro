@@ -1,0 +1,56 @@
+---
+import Page from "../../layouts/Page.astro";
+import { getCollection } from "astro:content";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Blog", href: "/blog/" },
+];
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+);
+
+const fmt = (d: Date) =>
+	d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<Page
+	title="Blog"
+	heading="Notes on short-form video"
+	description="Practical guides on cutting long videos into short vertical clips: choosing moments, clip length, reframing, captions and posting."
+	intro="How-to writing about the craft, not announcements. If a post does not tell you how to do something, it should not be here."
+	eyebrow="Blog"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="grid grid-2">
+				{
+					posts.map((post) => (
+						<a class="card" href={`/blog/${post.id}/`}>
+							<time datetime={post.data.published.toISOString()} class="small muted">
+								{fmt(post.data.published)}
+							</time>
+							<h2>{post.data.title}</h2>
+							<p>{post.data.description}</p>
+							<span class="more">Read →</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.2rem;
+		margin-block: 8px;
+	}
+</style>

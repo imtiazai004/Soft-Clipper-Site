@@ -1,0 +1,75 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { SITE } from "../../consts";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Help", href: "/help/" },
+	{ label: "Troubleshooting", href: "/help/troubleshooting/" },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "“Couldn't reach the video” when pasting a link",
+		a: "Your internet connection is being blocked from the source, usually by an ISP or a network filter rather than by the app. A VPN normally fixes it. Settings also has a proxy field if you use one. If neither is an option, download the file yourself and load it from disk — that path always works.",
+	},
+	{
+		q: "The AI step fails or returns nothing",
+		a: "Almost always the Gemini API key. Check it is pasted correctly in Settings with no trailing space, that the key is still active in Google AI Studio, and that you have not exceeded the free tier's rate limit — the fix for that is simply to wait a minute and retry.",
+	},
+	{
+		q: "Captions are missing or wrong",
+		a: "If the source video has no captions of its own, the audio has to be transcribed, which takes longer and is less accurate on noisy recordings. Caption text is editable before rendering, so names and jargon can be corrected there.",
+	},
+	{
+		q: "Rendering is very slow",
+		a: "Encoding uses your processor, so the CPU decides the speed. A 30-second 1080p clip is typically well under a minute on a modern machine. Closing other heavy applications helps; rendering several clips at once does not, since they compete for the same cores.",
+	},
+	{
+		q: "The exported clip is blank or black",
+		a: "Usually a source file the decoder cannot read properly — variable frame rate screen recordings are the common culprit. Re-encoding the source to a standard MP4 first fixes it. If it happens with an ordinary MP4, send us the file details.",
+	},
+	{
+		q: "The speaker drifts out of frame",
+		a: "Smart tracking follows the largest, most consistent face. Crowded or wide shots confuse that. Switch the clip to fit-and-blur so nothing is cropped, or open the frame editor and place the crop by hand.",
+	},
+	{
+		q: "Disk filled up",
+		a: "Source downloads and rendered clips are both large, and a two-hour source can be several gigabytes. The app cleans up old downloads and clips automatically after a set number of hours; check the folder you pointed it at if space is still disappearing.",
+	},
+	{
+		q: "The app will not start after an update",
+		a: "Reinstall over the top with the latest download link from your purchase email. Your licence stays activated and your settings are kept.",
+	},
+];
+---
+
+<Page
+	title="Troubleshooting"
+	heading="When something goes wrong"
+	description={`Fixes for the problems ${SITE.name} users actually hit: blocked downloads, AI key errors, missing captions, slow renders and blank exports.`}
+	intro="Each of these is a real cause with a real fix, not a list of things to try at random."
+	eyebrow="Help"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} heading="" />
+			<p class="mt-lg muted">
+				Not listed? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with the exact
+				error text and what you were doing. Screenshots help more than descriptions.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

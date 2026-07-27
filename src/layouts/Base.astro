@@ -1,0 +1,100 @@
+---
+import { SITE } from "../consts";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+	/** Page title without the brand suffix. Keep under ~55 characters. */
+	title: string;
+	/** Meta description. 140-160 characters is the sweet spot. */
+	description: string;
+	/** Extra JSON-LD blocks for this page (FAQPage, HowTo, Article, Product...). */
+	schema?: Record<string, unknown>[];
+	/** Set on pages that must never rank — thank-you pages, for instance. */
+	noindex?: boolean;
+	/** Overrides the social share image. */
+	image?: string;
+}
+
+const { title, description, schema = [], noindex = false, image = "/og.png" } = Astro.props;
+
+// Canonical is built from the configured site origin, never from the request —
+// otherwise a page served over a preview URL would canonicalise to that URL.
+const canonical = new URL(Astro.url.pathname, SITE.origin).href;
+const ogImage = new URL(image, SITE.origin).href;
+const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+
+/**
+ * These two blocks go on every page and describe the same entity every time.
+ * Consistent, repeated entity data is what lets search and answer engines treat
+ * the site as one identifiable thing rather than a pile of unrelated pages.
+ */
+const baseSchema = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"@id": `${SITE.origin}/#organization`,
+		name: SITE.name,
+		legalName: SITE.company,
+		url: SITE.origin,
+		logo: `${SITE.origin}/soft-clipper-logo.svg`,
+		email: SITE.email,
+		address: { "@type": "PostalAddress", addressCountry: "GB" },
+		sameAs: [] as string[],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"@id": `${SITE.origin}/#website`,
+		name: SITE.name,
+		url: SITE.origin,
+		publisher: { "@id": `${SITE.origin}/#organization` },
+		inLanguage: "en",
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+		{!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
+
+		<meta name="theme-color" content="#07070f" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={SITE.name} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content={SITE.locale} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		{
+			[...baseSchema, ...schema].map((block) => (
+				<script type="application/ld+json" set:html={JSON.stringify(block)} />
+			))
+		}
+	</head>
+
+	<body>
+		<Nav />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

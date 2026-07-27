@@ -1,0 +1,97 @@
+---
+// DRAFT — the 14-day promise is a business decision, not a legal minimum. UK
+// consumer law lets a customer waive the cancellation right for immediately
+// supplied digital content; this policy deliberately gives more than the
+// minimum. Have it reviewed alongside the terms.
+import Page from "../../layouts/Page.astro";
+import { SITE } from "../../consts";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import Faq from "../../components/Faq.astro";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Refund policy", href: "/legal/refund/" },
+];
+const UPDATED = "26 July 2026";
+
+const faqs: FaqItem[] = [
+	{
+		q: "How long do I have to ask for a refund?",
+		a: "Fourteen days from the date of purchase, for any reason or none.",
+	},
+	{
+		q: "How do I request one?",
+		a: `Email ${SITE.email} from the address you bought with. You do not have to explain yourself, though we are always glad to hear what went wrong.`,
+	},
+	{
+		q: "How long does the money take to arrive?",
+		a: "We process it within one working day. Your bank then takes its own time — usually three to ten days depending on the card.",
+	},
+	{
+		q: "What happens to my licence?",
+		a: "It is deactivated when the refund is issued, and the software stops working on the machine it was activated on.",
+	},
+	{
+		q: "Can I buy again later?",
+		a: "Yes. Repeated buy-and-refund cycles on the same account are the one thing we will decline.",
+	},
+];
+---
+
+<Page
+	title="Refund policy"
+	heading="14-day refunds"
+	description={`${SITE.name}'s refund policy: 14 days from purchase, no reason required, licence deactivated on refund.`}
+	intro={`Last updated ${UPDATED}. Fourteen days, no questions, no forms.`}
+	eyebrow="Legal"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow prose">
+			<p class="answer">
+				If {SITE.name} is not what you expected, email us within 14 days of buying and we
+				refund the full amount. No reason required.
+			</p>
+
+			<h2>Why the policy is this simple</h2>
+			<p>
+				There is no free trial, because a crippled build tells you nothing about whether the
+				tool fits your material. The refund window is the trial: buy it, run your own real
+				video through it, and decide with actual evidence.
+			</p>
+
+			<h2>What we ask</h2>
+			<p>
+				Only that you email from the address you purchased with, so we can find the order. If
+				something specific broke, telling us takes a minute and often fixes the problem for the
+				next person.
+			</p>
+
+			<h2>After the 14 days</h2>
+			<p>
+				We will still look at genuine problems — a bug that stops the software working is our
+				responsibility whenever it surfaces. What the window covers is changing your mind.
+			</p>
+
+			<h2>Your statutory rights</h2>
+			<p>
+				This policy sits on top of your rights under UK consumer law and does not replace them.
+			</p>
+		</div>
+	</section>
+
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} heading="Refund questions" />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>

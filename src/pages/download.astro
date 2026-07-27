@@ -1,0 +1,169 @@
+---
+import Page from "../layouts/Page.astro";
+import Faq from "../components/Faq.astro";
+import { PRICE, PRODUCT, SITE } from "../consts";
+import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Download", href: "/download/" },
+];
+
+const steps = [
+	{ name: "Buy a licence", text: `Pay ${PRICE.display} once. Your licence key arrives by email within a minute, along with a download link.` },
+	{ name: "Run the installer", text: `Open the downloaded file and follow the prompts. Windows may warn about an unrecognised publisher on new releases — choose More info, then Run anyway.` },
+	{ name: "Paste your key", text: "On first launch Soft Clipper asks for the licence key from your email. It activates online once and then works without a connection." },
+	{ name: "Add your Gemini key", text: "In Settings, paste a Google Gemini API key. It is free to create, and it is what powers moment detection and transcription." },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "Is there a free trial?",
+		a: "No trial build, but there is a 14-day refund. Buy it, use it properly on a real video, and if it does not fit, email us for a full refund.",
+	},
+	{
+		q: "Windows says the publisher is unrecognised. Is that normal?",
+		a: "Yes, on new releases. Code-signing reputation builds over time, and a fresh release starts without it. Choose More info and then Run anyway, or check the file on VirusTotal first if you would rather be sure.",
+	},
+	{
+		q: "Where can I find my licence key again?",
+		a: "In the purchase email. If it is gone, email support from the address you paid with and we will resend it.",
+	},
+	{
+		q: "Can I install it on a second computer?",
+		a: `Not on the same licence — ${PRODUCT.licence}. You can release the licence from one machine and activate it on another, which is the supported way to move to a new PC.`,
+	},
+	{
+		q: "What are the system requirements?",
+		a: `${PRODUCT.platform}, ${PRODUCT.requirements}. Rendering uses your processor, so a faster CPU means faster exports, but no graphics card is required.`,
+	},
+];
+---
+
+<Page
+	title="Download Soft Clipper"
+	heading="Download and install"
+	description={`Download Soft Clipper for ${PRODUCT.platform}. Buy once for ${PRICE.display}, activate with your licence key, and start cutting vertical clips.`}
+	intro={`Soft Clipper is a ${PRODUCT.fileSize} desktop app for ${PRODUCT.platform}. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
+	eyebrow="Download"
+	crumbs={crumbs}
+	schema={[
+		faqSchema(faqs),
+		breadcrumbSchema(crumbs),
+		howToSchema({
+			name: "How to install and activate Soft Clipper",
+			description: "Buy a licence, install the app on Windows, activate it with your key and add a Gemini API key.",
+			totalTime: "PT5M",
+			steps,
+		}),
+	]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<div class="buy-box">
+				<div>
+					<h2>You need a licence first</h2>
+					<p class="muted">
+						The download link is sent with your key when you buy. That is the only place it
+						comes from — there is no public installer to pass around.
+					</p>
+				</div>
+				<div class="btn-row">
+					<a class="btn btn-primary" href="/pricing/">Buy for {PRICE.display}</a>
+					<a class="btn btn-ghost" href={`mailto:${SITE.email}`}>Lost your link?</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head"><h2>Setting it up</h2></div>
+			<ol class="steps">
+				{
+					steps.map((s) => (
+						<li>
+							<h3>{s.name}</h3>
+							<p>{s.text}</p>
+						</li>
+					))
+				}
+			</ol>
+			<p class="mt-lg">
+				<a href="/help/install/">Detailed install guide</a> ·
+				<a href="/help/activate-licence/">Licence activation help</a> ·
+				<a href="/help/troubleshooting/">Troubleshooting</a>
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="card req">
+				<h2>Requirements</h2>
+				<dl>
+					<dt>Operating system</dt><dd>{PRODUCT.platform}</dd>
+					<dt>Memory</dt><dd>{PRODUCT.requirements}</dd>
+					<dt>Disk</dt><dd>A few GB free — source videos and rendered clips are large</dd>
+					<dt>Internet</dt><dd>For activation and AI analysis only; rendering is offline</dd>
+					<dt>Licence</dt><dd>{PRODUCT.licence}</dd>
+				</dl>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.buy-box {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 32px;
+		border: 1px solid var(--border-strong);
+		border-radius: 20px;
+		background: var(--panel);
+	}
+	.buy-box h2 {
+		font-size: 1.3rem;
+		margin-bottom: 8px;
+	}
+	.buy-box p {
+		max-width: 46ch;
+	}
+	.req h2 {
+		font-size: 1.2rem;
+		margin-bottom: 16px;
+	}
+	dl {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 10px 20px;
+		font-size: 0.95rem;
+	}
+	dt {
+		color: var(--dim);
+	}
+	dd {
+		color: var(--muted);
+	}
+	@media (max-width: 560px) {
+		dl {
+			grid-template-columns: 1fr;
+			gap: 2px;
+		}
+		dt {
+			margin-top: 10px;
+		}
+	}
+</style>

@@ -1,0 +1,99 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { PRODUCT, SITE } from "../../consts";
+import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Help", href: "/help/" },
+	{ label: "Install", href: "/help/install/" },
+];
+
+const steps = [
+	{ name: "Open the download link", text: "It is in your purchase email, next to your licence key. The file is around 180 MB." },
+	{ name: "Run the installer", text: "Double-click the downloaded file. If Windows shows a blue SmartScreen panel, choose More info and then Run anyway — new releases have not built signing reputation yet." },
+	{ name: "Launch Soft Clipper", text: "It opens in a window of its own. The first launch takes a few seconds longer while it unpacks." },
+	{ name: "Enter your licence key", text: "Paste the key from your email. Activation needs an internet connection once; after that the app runs offline." },
+	{ name: "Add a Gemini API key", text: "Open Settings and paste a Google Gemini API key. Creating one is free at Google AI Studio and takes about a minute." },
+	{ name: "Run a short video first", text: "Try a five-minute clip before a two-hour recording. It confirms the whole chain works in a minute rather than an hour." },
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: "Windows blocked the installer. What now?",
+		a: "That is SmartScreen, not an antivirus detection. Click More info on the panel, then Run anyway. It appears on any installer without established signing reputation, and goes away as a release gets downloaded more.",
+	},
+	{
+		q: "Where does it install and where do clips go?",
+		a: "The app installs per user, and rendered clips are written to a folder you choose in Settings. Source downloads and finished clips are both large, so pick a drive with a few gigabytes free.",
+	},
+	{
+		q: "Do I need ffmpeg or Python installed?",
+		a: "No. Everything the app needs is inside the installer — that is why it is not a small download.",
+	},
+	{
+		q: "Can I install it without admin rights?",
+		a: "Yes. It installs for the current user and does not require an administrator account.",
+	},
+	{
+		q: "How do I get a Gemini API key?",
+		a: "Sign in at Google AI Studio with a Google account and create an API key. The free tier is enough for ordinary use; any usage beyond it is billed by Google, never by us.",
+	},
+];
+---
+
+<Page
+	title="Install Soft Clipper on Windows"
+	heading="Installing Soft Clipper"
+	description={`Step-by-step install guide for ${SITE.name} on ${PRODUCT.platform}, including the Windows SmartScreen warning and first-run setup.`}
+	intro="From purchase email to first clip is about five minutes, and four of them are the download."
+	eyebrow="Help"
+	crumbs={crumbs}
+	schema={[
+		faqSchema(faqs),
+		breadcrumbSchema(crumbs),
+		howToSchema({
+			name: "Install Soft Clipper on Windows",
+			description: "Download, install, activate and configure Soft Clipper.",
+			totalTime: "PT5M",
+			steps,
+		}),
+	]}
+	cta={false}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<ol class="steps">
+				{
+					steps.map((s) => (
+						<li>
+							<h2>{s.name}</h2>
+							<p>{s.text}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+			<p class="mt-lg muted">
+				Something else broken? <a href="/help/troubleshooting/">Troubleshooting</a> covers the
+				common failures, and <a href="/contact/">support</a> covers the rest.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	ol.steps h2 {
+		font-size: 1.05rem;
+		margin-bottom: 4px;
+	}
+</style>
