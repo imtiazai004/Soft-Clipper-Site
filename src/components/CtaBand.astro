@@ -38,9 +38,16 @@ const {
 		padding: 40px;
 		border: 1px solid var(--border-strong);
 		border-radius: 22px;
+		/* The closing ask is a stage too: dark, so it stops the scroll. */
 		background:
-			radial-gradient(600px 200px at 15% 0%, rgba(139, 92, 246, 0.16), transparent 70%),
-			var(--panel);
+			radial-gradient(680px 260px at 12% 0%, rgba(124, 58, 237, 0.35), transparent 70%),
+			var(--stage);
+		color: var(--stage-text);
+		border-color: var(--stage-border);
+	}
+	.inner :global(.lead),
+	.inner :global(.muted) {
+		color: var(--stage-muted);
 	}
 	.actions {
 		display: grid;

@@ -80,7 +80,7 @@ const schema = [
 
 		<div class="wrap shot-wrap">
 			<HeroVideo caption="One long video on the left, the clip Soft Clipper made from it on the right">
-			<div class="shot" role="img" aria-label="A 16:9 source video being reframed into a 9:16 clip with captions">
+			<div class="shot stage" role="img" aria-label="A 16:9 source video being reframed into a 9:16 clip with captions">
 				<div class="pane source">
 					<span class="tag">Long video · 16:9</span>
 					<div class="frame">
@@ -340,9 +340,9 @@ const schema = [
 		border: 1px solid var(--border);
 		border-radius: 24px;
 		background:
-			radial-gradient(500px 300px at 30% 0%, rgba(139, 92, 246, 0.14), transparent 70%),
-			radial-gradient(500px 300px at 80% 20%, rgba(34, 211, 238, 0.1), transparent 70%),
-			var(--bg-soft);
+			radial-gradient(520px 320px at 28% 0%, rgba(139, 92, 246, 0.22), transparent 70%),
+			radial-gradient(520px 320px at 82% 18%, rgba(34, 211, 238, 0.16), transparent 70%),
+			var(--stage);
 	}
 
 	.pane {
@@ -366,8 +366,9 @@ const schema = [
 		width: min(340px, 70vw);
 		aspect-ratio: 16 / 9;
 		border-radius: 14px;
-		border: 1px solid rgba(139, 92, 246, 0.3);
-		background: linear-gradient(150deg, #101024, #0a0a16);
+		border: 1px solid rgba(139, 92, 246, 0.35);
+		background: linear-gradient(150deg, #16143a, #0a0a16);
+		overflow: hidden;
 	}
 	/* ── the animation ───────────────────────────────────────────────────────
 	   This is the product's whole idea in six seconds: a speaker moves across a
@@ -511,8 +512,8 @@ const schema = [
 		position: relative;
 		height: 20px;
 		border-radius: 6px;
-		border: 1px solid var(--border);
-		background: rgba(255, 255, 255, 0.02);
+		border: 1px solid var(--stage-border);
+		background: rgba(255, 255, 255, 0.03);
 	}
 	.timeline span {
 		position: absolute;
