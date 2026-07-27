@@ -1,0 +1,335 @@
+---
+/**
+ * The six caption styles, switchable, with the preview actually changing.
+ *
+ * Competitors show a row of style names next to a screenshot. This renders the
+ * real thing: every colour below is the value core/captions.py writes into the
+ * ASS file, converted from its &HBBGGRR notation. So what someone clicks here
+ * is what the app burns into their clip — not an artist's impression of it.
+ *
+ * No JavaScript. Hidden radios hold the selection and :has() styles the
+ * preview from it, which means it works before any script would have loaded
+ * and keeps the site at zero JS.
+ */
+const styles = [
+	{
+		id: "tiktok",
+		label: "TikTok Bold",
+		note: "The default. White, heavy outline, reads on anything.",
+		colour: "#ffffff",
+		outline: "#000000",
+		highlight: "#ffff00",
+		size: "1.5rem",
+	},
+	{
+		id: "clean",
+		label: "Clean White",
+		note: "Smaller and calmer, for talking-head footage.",
+		colour: "#ffffff",
+		outline: "#000000",
+		highlight: "#00ff00",
+		size: "1.2rem",
+	},
+	{
+		id: "yellow",
+		label: "Yellow Pop",
+		note: "The short-form standard — yellow survives any background.",
+		colour: "#ffff00",
+		outline: "#000000",
+		highlight: "#ffffff",
+		size: "1.5rem",
+	},
+	{
+		id: "neon",
+		label: "Neon",
+		note: "Cyan on purple. Loud, and it suits gaming and music.",
+		colour: "#00ffff",
+		outline: "#800080",
+		highlight: "#ff00ff",
+		size: "1.4rem",
+	},
+	{
+		id: "bounce",
+		label: "Bounce",
+		note: "The spoken word scales up as it is said.",
+		colour: "#ffffff",
+		outline: "#000000",
+		highlight: "#ffd700",
+		size: "1.55rem",
+		pop: true,
+	},
+	{
+		id: "boxed",
+		label: "Boxed",
+		note: "A solid box behind the words — for bright, busy frames.",
+		colour: "#ffffff",
+		outline: "#000000",
+		highlight: "#ffff00",
+		size: "1.35rem",
+		box: true,
+	},
+];
+
+const words = ["THIS", "IS", "THE", "HOOK"];
+---
+
+<div class="caption-demo stage">
+	{
+		styles.map((s, i) => (
+			<input
+				type="radio"
+				name="caption-style"
+				id={`cap-${s.id}`}
+				checked={i === 0}
+				hidden
+			/>
+		))
+	}
+
+	<div class="tabs" role="tablist" aria-label="Caption styles">
+		{
+			styles.map((s) => (
+				<label class={`tab tab-${s.id}`} for={`cap-${s.id}`} tabindex="0">
+					{s.label}
+				</label>
+			))
+		}
+	</div>
+
+	<div class="stagebox">
+		<div class="phone">
+			<div class="face" aria-hidden="true"></div>
+			<p class="caption">
+				{words.map((w) => <span>{w}</span>)}
+			</p>
+		</div>
+
+		<div class="notes">
+			{styles.map((s) => <p class={`note note-${s.id}`}>{s.note}</p>)}
+			<p class="small muted foot">
+				Every style burns into the video itself, so no platform can strip it.
+				Word-by-word highlighting is a switch, and works with all six.
+			</p>
+		</div>
+	</div>
+</div>
+
+<style define:vars={{}}>
+	.caption-demo {
+		padding: clamp(20px, 3vw, 30px);
+	}
+
+	.tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: 22px;
+	}
+
+	.tab {
+		padding: 8px 15px;
+		border-radius: 999px;
+		border: 1px solid var(--stage-border);
+		color: var(--stage-muted);
+		font-size: 0.88rem;
+		font-weight: 600;
+		cursor: pointer;
+		user-select: none;
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease,
+			background 0.15s ease;
+	}
+	.tab:hover {
+		color: var(--stage-text);
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+	.tab:focus-visible {
+		outline: 2px solid var(--cyan-bright);
+		outline-offset: 2px;
+	}
+
+	.stagebox {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: clamp(20px, 4vw, 40px);
+		align-items: center;
+	}
+	@media (max-width: 620px) {
+		.stagebox {
+			grid-template-columns: 1fr;
+			justify-items: center;
+			text-align: center;
+		}
+	}
+
+	.phone {
+		width: min(230px, 62vw);
+		aspect-ratio: 9 / 16;
+		border-radius: 22px;
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		background: linear-gradient(165deg, #241d4d 0%, #0e0c22 60%);
+		display: grid;
+		align-content: end;
+		justify-items: center;
+		padding: 0 14px 32px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Something for the captions to sit over, so contrast is being judged
+	   against a picture rather than against flat black. */
+	.face {
+		position: absolute;
+		top: 22%;
+		width: 46%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: radial-gradient(circle at 50% 35%, rgba(167, 139, 250, 0.9), rgba(79, 70, 229, 0.15));
+	}
+
+	.caption {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.3em;
+		font-weight: 800;
+		line-height: 1.25;
+		letter-spacing: 0.01em;
+		text-align: center;
+		position: relative;
+	}
+
+	.caption span {
+		transition:
+			color 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	/* The word that is "being spoken" — the same one-at-a-time highlight the
+	   app renders, so the tab switch shows the real difference between styles. */
+	.caption span:nth-child(2) {
+		animation: lit 2.4s steps(1, end) infinite;
+	}
+
+	.notes {
+		display: grid;
+		gap: 10px;
+	}
+	.note {
+		display: none;
+		color: var(--stage-text);
+		font-size: 1.02rem;
+		max-width: 42ch;
+	}
+	.foot {
+		max-width: 46ch;
+	}
+
+	/* ── the switching itself ────────────────────────────────────────────────
+	   One block per style. `:has()` reads which radio is checked and styles the
+	   preview from it — the whole interaction, with no script. */
+
+	.caption-demo:has(#cap-tiktok:checked) .tab-tiktok,
+	.caption-demo:has(#cap-clean:checked) .tab-clean,
+	.caption-demo:has(#cap-yellow:checked) .tab-yellow,
+	.caption-demo:has(#cap-neon:checked) .tab-neon,
+	.caption-demo:has(#cap-bounce:checked) .tab-bounce,
+	.caption-demo:has(#cap-boxed:checked) .tab-boxed {
+		color: #0b0a18;
+		background: var(--cyan-bright);
+		border-color: var(--cyan-bright);
+	}
+
+	.caption-demo:has(#cap-tiktok:checked) .note-tiktok,
+	.caption-demo:has(#cap-clean:checked) .note-clean,
+	.caption-demo:has(#cap-yellow:checked) .note-yellow,
+	.caption-demo:has(#cap-neon:checked) .note-neon,
+	.caption-demo:has(#cap-bounce:checked) .note-bounce,
+	.caption-demo:has(#cap-boxed:checked) .note-boxed {
+		display: block;
+	}
+
+	.caption-demo:has(#cap-tiktok:checked) .caption {
+		font-size: 1.5rem;
+		color: #fff;
+		-webkit-text-stroke: 3px #000;
+		paint-order: stroke fill;
+	}
+	.caption-demo:has(#cap-tiktok:checked) .caption span:nth-child(2) {
+		--lit: #ffff00;
+	}
+
+	.caption-demo:has(#cap-clean:checked) .caption {
+		font-size: 1.2rem;
+		color: #fff;
+		-webkit-text-stroke: 2px #000;
+		paint-order: stroke fill;
+	}
+	.caption-demo:has(#cap-clean:checked) .caption span:nth-child(2) {
+		--lit: #00ff00;
+	}
+
+	.caption-demo:has(#cap-yellow:checked) .caption {
+		font-size: 1.5rem;
+		color: #ffff00;
+		-webkit-text-stroke: 3px #000;
+		paint-order: stroke fill;
+	}
+	.caption-demo:has(#cap-yellow:checked) .caption span:nth-child(2) {
+		--lit: #ffffff;
+	}
+
+	.caption-demo:has(#cap-neon:checked) .caption {
+		font-size: 1.4rem;
+		color: #00ffff;
+		-webkit-text-stroke: 3px #800080;
+		paint-order: stroke fill;
+	}
+	.caption-demo:has(#cap-neon:checked) .caption span:nth-child(2) {
+		--lit: #ff00ff;
+	}
+
+	.caption-demo:has(#cap-bounce:checked) .caption {
+		font-size: 1.55rem;
+		color: #fff;
+		-webkit-text-stroke: 3px #000;
+		paint-order: stroke fill;
+	}
+	.caption-demo:has(#cap-bounce:checked) .caption span:nth-child(2) {
+		--lit: #ffd700;
+		--scale: 1.14;
+	}
+
+	.caption-demo:has(#cap-boxed:checked) .caption {
+		font-size: 1.35rem;
+		color: #fff;
+		-webkit-text-stroke: 0;
+		background: rgba(0, 0, 0, 0.82);
+		padding: 6px 10px;
+		border-radius: 6px;
+	}
+	.caption-demo:has(#cap-boxed:checked) .caption span:nth-child(2) {
+		--lit: #ffff00;
+	}
+
+	@keyframes lit {
+		0%,
+		40% {
+			color: var(--lit, #ffff00);
+			transform: scale(var(--scale, 1));
+		}
+		41%,
+		100% {
+			color: inherit;
+			transform: scale(1);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.caption span:nth-child(2) {
+			animation: none;
+			color: var(--lit, #ffff00);
+		}
+	}
+</style>

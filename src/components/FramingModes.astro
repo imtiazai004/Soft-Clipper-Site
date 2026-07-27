@@ -1,0 +1,317 @@
+---
+/**
+ * The five framing modes, switchable, with the frame actually rearranging.
+ *
+ * Same idea as the caption switcher and the same reasoning: a list of mode
+ * names beside a screenshot tells you nothing, because the whole question a
+ * buyer has is "what does it do to my shot". Clicking a mode here rearranges
+ * the frame the way core/video.py rearranges it — the tracking crop drifts,
+ * fit-and-blur keeps the whole picture, split stacks two panels, gameplay puts
+ * the camera on top.
+ *
+ * Hidden radios and :has(). No JavaScript.
+ */
+const modes = [
+	{
+		id: "smart",
+		label: "Smart",
+		note: "Tracks the speaker and drifts the crop with them, then re-picks the subject when the scene cuts. The default, and right for most talking footage.",
+	},
+	{
+		id: "fit",
+		label: "Fit + blur",
+		note: "Keeps the entire frame and fills the space above and below with a blurred copy. The only honest answer for screen shares and slides, where cropping deletes the content.",
+	},
+	{
+		id: "split",
+		label: "Split",
+		note: "Two speakers stacked, each cropped to their own face. What most interview clips use, and for good reason — a centre crop of a two-shot gives you the gap between them.",
+	},
+	{
+		id: "centre",
+		label: "Centre",
+		note: "A fixed centre crop with no tracking. Predictable, fastest to render, and fine for footage already shot for vertical.",
+	},
+	{
+		id: "game",
+		label: "Game + cam",
+		note: "Your camera on top, gameplay below — fitted, never cropped, because a game cut to 9:16 loses the half of the screen where things happen.",
+	},
+];
+---
+
+<div class="framing-demo stage">
+	{modes.map((m, i) => <input type="radio" name="framing" id={`fr-${m.id}`} checked={i === 0} hidden />)}
+
+	<div class="tabs" role="tablist" aria-label="Framing modes">
+		{modes.map((m) => <label class={`tab tab-${m.id}`} for={`fr-${m.id}`} tabindex="0">{m.label}</label>)}
+	</div>
+
+	<div class="stagebox">
+		<div class="canvas" aria-hidden="true">
+			<div class="scene">
+				<div class="speaker a"></div>
+				<div class="speaker b"></div>
+				<div class="blurbars"></div>
+				<div class="crop"></div>
+				<div class="divider"></div>
+				<div class="cambox"></div>
+			</div>
+			<span class="ratio mono">9:16</span>
+		</div>
+
+		<div class="notes">
+			{modes.map((m) => <p class={`note note-${m.id}`}>{m.note}</p>)}
+			<p class="small muted foot">
+				Any mode can be overridden per clip in the frame editor — drag the crop
+				where you want it and the preview shows the real result.
+			</p>
+		</div>
+	</div>
+</div>
+
+<style>
+	.framing-demo {
+		padding: clamp(20px, 3vw, 30px);
+	}
+
+	.tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: 22px;
+	}
+	.tab {
+		padding: 8px 15px;
+		border-radius: 999px;
+		border: 1px solid var(--stage-border);
+		color: var(--stage-muted);
+		font-size: 0.88rem;
+		font-weight: 600;
+		cursor: pointer;
+		user-select: none;
+		transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+	}
+	.tab:hover {
+		color: var(--stage-text);
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+	.tab:focus-visible {
+		outline: 2px solid var(--cyan-bright);
+		outline-offset: 2px;
+	}
+
+	.stagebox {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: clamp(20px, 4vw, 40px);
+		align-items: center;
+	}
+	@media (max-width: 620px) {
+		.stagebox {
+			grid-template-columns: 1fr;
+			justify-items: center;
+			text-align: center;
+		}
+	}
+
+	.canvas {
+		position: relative;
+		width: min(300px, 72vw);
+	}
+
+	/* The source frame. Everything below rearranges what sits on top of it. */
+	.scene {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		border-radius: 12px;
+		overflow: hidden;
+		background:
+			radial-gradient(60% 90% at 25% 60%, rgba(99, 102, 241, 0.35), transparent 70%),
+			radial-gradient(60% 90% at 75% 60%, rgba(14, 165, 196, 0.3), transparent 70%),
+			linear-gradient(160deg, #1d1846, #0a0a18);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+	}
+
+	.speaker {
+		position: absolute;
+		top: 30%;
+		width: 17%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: radial-gradient(circle at 50% 35%, rgba(196, 181, 253, 0.95), rgba(99, 102, 241, 0.25));
+		transition: opacity 0.25s ease;
+	}
+	.speaker.a {
+		left: 20%;
+	}
+	.speaker.b {
+		right: 20%;
+		opacity: 0;
+	}
+
+	.crop,
+	.blurbars,
+	.divider,
+	.cambox {
+		position: absolute;
+		transition:
+			inset 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.25s ease;
+	}
+
+	.crop {
+		inset: 4% 36% 4% 36%;
+		border: 2px solid var(--cyan-bright);
+		border-radius: 6px;
+		box-shadow: 0 0 0 100vmax rgba(6, 5, 16, 0.62);
+	}
+
+	/* Fit + blur: bars instead of a crop, so nothing is thrown away. */
+	.blurbars {
+		inset: 0;
+		opacity: 0;
+		background:
+			linear-gradient(rgba(6, 5, 16, 0.72), rgba(6, 5, 16, 0.72)) top / 100% 26% no-repeat,
+			linear-gradient(rgba(6, 5, 16, 0.72), rgba(6, 5, 16, 0.72)) bottom / 100% 26% no-repeat;
+	}
+
+	.divider {
+		left: 36%;
+		right: 36%;
+		top: 50%;
+		height: 2px;
+		background: var(--cyan-bright);
+		opacity: 0;
+	}
+
+	.cambox {
+		left: 36%;
+		right: 36%;
+		top: 4%;
+		height: 26%;
+		border: 2px solid var(--violet);
+		border-radius: 5px;
+		background: rgba(124, 58, 237, 0.22);
+		opacity: 0;
+	}
+
+	.ratio {
+		position: absolute;
+		right: 8px;
+		bottom: 8px;
+		font-size: 0.62rem;
+		letter-spacing: 0.14em;
+		color: var(--cyan-bright);
+		background: rgba(6, 5, 16, 0.7);
+		padding: 2px 6px;
+		border-radius: 4px;
+	}
+
+	.notes {
+		display: grid;
+		gap: 10px;
+	}
+	.note {
+		display: none;
+		color: var(--stage-text);
+		font-size: 1.02rem;
+		max-width: 44ch;
+	}
+	.foot {
+		max-width: 46ch;
+	}
+
+	/* ── switching ───────────────────────────────────────────────────────── */
+
+	.framing-demo:has(#fr-smart:checked) .tab-smart,
+	.framing-demo:has(#fr-fit:checked) .tab-fit,
+	.framing-demo:has(#fr-split:checked) .tab-split,
+	.framing-demo:has(#fr-centre:checked) .tab-centre,
+	.framing-demo:has(#fr-game:checked) .tab-game {
+		color: #0b0a18;
+		background: var(--cyan-bright);
+		border-color: var(--cyan-bright);
+	}
+
+	.framing-demo:has(#fr-smart:checked) .note-smart,
+	.framing-demo:has(#fr-fit:checked) .note-fit,
+	.framing-demo:has(#fr-split:checked) .note-split,
+	.framing-demo:has(#fr-centre:checked) .note-centre,
+	.framing-demo:has(#fr-game:checked) .note-game {
+		display: block;
+	}
+
+	/* Smart: the crop follows the speaker, so it sits over them and drifts. */
+	.framing-demo:has(#fr-smart:checked) .crop {
+		inset: 4% 52% 4% 20%;
+		animation: drift 6s ease-in-out infinite;
+	}
+	.framing-demo:has(#fr-smart:checked) .speaker.a {
+		animation: driftSpeaker 6s ease-in-out infinite;
+	}
+
+	/* Fit + blur: no crop at all, bars top and bottom. */
+	.framing-demo:has(#fr-fit:checked) .crop {
+		opacity: 0;
+	}
+	.framing-demo:has(#fr-fit:checked) .blurbars {
+		opacity: 1;
+	}
+
+	/* Split: two people, one frame divided. */
+	.framing-demo:has(#fr-split:checked) .speaker.b {
+		opacity: 1;
+	}
+	.framing-demo:has(#fr-split:checked) .divider {
+		opacity: 1;
+	}
+	.framing-demo:has(#fr-split:checked) .crop {
+		inset: 4% 36% 4% 36%;
+	}
+
+	/* Centre: fixed, no movement — that is the whole point of it. */
+	.framing-demo:has(#fr-centre:checked) .crop {
+		inset: 4% 36% 4% 36%;
+		animation: none;
+	}
+
+	/* Game + cam: camera box on top, the gameplay below it untouched. */
+	.framing-demo:has(#fr-game:checked) .cambox {
+		opacity: 1;
+	}
+	.framing-demo:has(#fr-game:checked) .crop {
+		inset: 32% 36% 4% 36%;
+	}
+	.framing-demo:has(#fr-game:checked) .speaker.a {
+		top: 8%;
+		left: 44%;
+		width: 12%;
+	}
+
+	@keyframes drift {
+		0%,
+		100% {
+			inset: 4% 52% 4% 20%;
+		}
+		50% {
+			inset: 4% 20% 4% 52%;
+		}
+	}
+	@keyframes driftSpeaker {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(190%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.crop,
+		.speaker {
+			animation: none !important;
+		}
+	}
+</style>

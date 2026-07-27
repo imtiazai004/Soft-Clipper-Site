@@ -3,6 +3,8 @@ import Base from "../layouts/Base.astro";
 import Faq from "../components/Faq.astro";
 import CtaBand from "../components/CtaBand.astro";
 import HeroVideo from "../components/HeroVideo.astro";
+import CaptionStyles from "../components/CaptionStyles.astro";
+import FramingModes from "../components/FramingModes.astro";
 import { SITE, PRICE, PRODUCT } from "../consts";
 import { faqSchema, softwareSchema, howToSchema, type FaqItem } from "../lib/schema";
 
@@ -182,6 +184,34 @@ const schema = [
 			<p class="mt-lg">
 				<a href="/help/install/">Read the full install and first-run guide →</a>
 			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Framing</span>
+				<h2>Pick a mode. Watch what it does to the shot.</h2>
+				<p class="lead">
+					Five ways to get a wide frame into a vertical one. This is the real behaviour,
+					not a list of names — click through and see which one suits your footage.
+				</p>
+			</div>
+			<FramingModes />
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Captions</span>
+				<h2>Six caption styles, and the words light up as they are said</h2>
+				<p class="lead">
+					Every colour here is the one the app burns into your clip. Try them against a
+					real frame rather than guessing from a swatch.
+				</p>
+			</div>
+			<CaptionStyles />
 		</div>
 	</section>
 
