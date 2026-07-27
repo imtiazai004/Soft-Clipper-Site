@@ -22,7 +22,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Are there ongoing costs I should know about?",
-		a: "One, and it is not ours: the AI features use your own Google Gemini API key. Gemini has a free tier that covers ordinary use, and if you exceed it you pay Google directly. We never charge for AI usage.",
+		a: "Only if you want them. By default the AI features use your own Google Gemini API key, which has a free tier that covers ordinary use — anything beyond it you pay Google directly, never us. Or switch transcription and analysis to run on your own PC and there is no account and no bill at all, just a slower first run.",
 	},
 	{
 		q: "What is the refund policy?",
@@ -49,10 +49,12 @@ const schema = [
 
 const included = [
 	"AI moment detection across the whole video",
+	"Local transcription and local AI — usable with no API key at all",
+	"Fixed-length splitting that needs no AI",
 	"A virality score, hook title, caption and hashtags per clip",
-	"Smart 9:16 reframing that tracks the speaker",
+	"Smart 9:16 reframing that tracks the speaker, plus a gameplay + facecam layout",
 	"Export in 9:16, 1:1 or 16:9",
-	"Burned-in captions with styling presets",
+	"Burned-in captions in six styles, with optional word-by-word highlighting",
 	"On-screen headlines, text overlays and stickers",
 	"Highlight reels and teaser stitching",
 	"Batch styling and re-render across every clip",
@@ -66,7 +68,7 @@ const notIncluded = [
 	"macOS or Linux builds — Windows only for now",
 	"A mobile app — phones cannot render this reliably",
 	"The browser version, which is still in development",
-	"A Gemini API key — you bring your own free one",
+	"A Gemini API key — bring your own free one, or run the AI locally instead",
 ];
 ---
 
