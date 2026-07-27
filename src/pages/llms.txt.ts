@@ -27,6 +27,7 @@ export const GET: APIRoute = () =>
 - Output: MP4, vertical 9:16, up to 1080p. No watermark, no export limit.
 - Not included: scheduling, auto-posting, virality scoring, 4K export, team seats.
 - Refunds: 14 days from purchase, no reason required.
+- Contact: ${SITE.email}, or WhatsApp ${SITE.phone}.
 
 ## Pages
 

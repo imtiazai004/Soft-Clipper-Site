@@ -30,13 +30,24 @@ const reasons = [
 >
 	<section class="pt-0">
 		<div class="wrap wrap-narrow">
-			<div class="card email-card">
-				<span class="eyebrow">Email</span>
-				<p class="address"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
-				<p class="muted small">
-					Replies usually within one working day. For licence and refund requests, write from
-					the address you purchased with so we can find the order.
-				</p>
+			<div class="channels">
+				<div class="card email-card">
+					<span class="eyebrow">WhatsApp — fastest</span>
+					<p class="address"><a href={SITE.waLink} target="_blank" rel="noopener">{SITE.phone}</a></p>
+					<p class="muted small">
+						Quickest for pre-sales questions and anything you can show in a screenshot.
+						English or Urdu.
+					</p>
+				</div>
+
+				<div class="card email-card">
+					<span class="eyebrow">Email</span>
+					<p class="address"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+					<p class="muted small">
+						Replies usually within one working day. For licence and refund requests, write
+						from the address you purchased with so we can find the order.
+					</p>
+				</div>
 			</div>
 
 			<h2 class="mt-lg">What to include</h2>
@@ -63,13 +74,19 @@ const reasons = [
 	.pt-0 {
 		padding-top: 8px;
 	}
+	.channels {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+	}
 	.email-card {
 		background: var(--panel-strong);
 	}
 	.address {
-		font-size: 1.35rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		margin-block: 6px 10px;
+		overflow-wrap: anywhere;
 	}
 	h2 {
 		font-size: 1.3rem;

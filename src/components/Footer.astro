@@ -68,8 +68,9 @@ const year = new Date().getFullYear();
 					A Windows desktop app that turns long videos into ready-to-post vertical clips.
 					Pay once, use forever.
 				</p>
-				<p class="small muted">
+				<p class="small muted contact-lines">
 					<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+					<a href={SITE.waLink} target="_blank" rel="noopener">WhatsApp {SITE.phone}</a>
 				</p>
 			</div>
 
@@ -123,6 +124,11 @@ const year = new Date().getFullYear();
 		font-weight: 800;
 		letter-spacing: -0.02em;
 		font-size: 1.05rem;
+	}
+	.contact-lines {
+		display: grid;
+		gap: 4px;
+		justify-items: start;
 	}
 
 	h2 {

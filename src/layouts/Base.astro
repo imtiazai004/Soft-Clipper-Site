@@ -2,6 +2,7 @@
 import { SITE } from "../consts";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -40,7 +41,17 @@ const baseSchema = [
 		url: SITE.origin,
 		logo: `${SITE.origin}/soft-clipper-logo.svg`,
 		email: SITE.email,
+		telephone: SITE.phoneE164,
 		address: { "@type": "PostalAddress", addressCountry: "GB" },
+		contactPoint: [
+			{
+				"@type": "ContactPoint",
+				contactType: "customer support",
+				email: SITE.email,
+				telephone: SITE.phoneE164,
+				availableLanguage: ["English", "Urdu"],
+			},
+		],
 		sameAs: [] as string[],
 	},
 	{
@@ -96,5 +107,6 @@ const baseSchema = [
 			<slot />
 		</main>
 		<Footer />
+		<WhatsAppButton />
 	</body>
 </html>

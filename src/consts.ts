@@ -19,7 +19,12 @@ export const SITE = {
 	// for a real, consistent business identity across the site.
 	company: "Soft Tech Solution Ltd",
 	companyCountry: "United Kingdom",
-	email: "support@softclipper.com",
+	email: "info@aisofttechsolution.com",
+	// WhatsApp is the fastest channel for most buyers, so it sits on every page.
+	// `phoneE164` is the dialable form; `waLink` is what wa.me expects (digits only).
+	phone: "+44 7462 086661",
+	phoneE164: "+447462086661",
+	waLink: "https://wa.me/447462086661",
 	locale: "en_GB",
 	twitter: "@softclipper",
 } as const;
