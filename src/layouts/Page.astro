@@ -17,6 +17,9 @@ interface Props {
 	/** Legal and help pages do not need a sales band at the bottom. */
 	cta?: boolean;
 	narrow?: boolean;
+	/** Keep the page out of search results — and out of the sitemap, which is
+	 *  handled by the matching entry in astro.config.mjs. */
+	noindex?: boolean;
 }
 
 const {
@@ -29,10 +32,11 @@ const {
 	eyebrow,
 	cta = true,
 	narrow = false,
+	noindex = false,
 } = Astro.props;
 ---
 
-<Base title={title} description={description} schema={schema}>
+<Base title={title} description={description} schema={schema} noindex={noindex}>
 	<div class={narrow ? "wrap wrap-narrow" : "wrap"}>
 		<Breadcrumbs crumbs={crumbs} />
 	</div>

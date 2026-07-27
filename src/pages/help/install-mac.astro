@@ -1,0 +1,139 @@
+---
+// NOT LINKED AND NOT INDEXED YET, on purpose.
+//
+// The macOS build exists and the pipeline produces it, but nobody has yet sat
+// at a Mac and confirmed a clip actually renders. Until that happens this page
+// is for the handful of testers who get a direct link — advertising Mac
+// support we have not verified is how you earn refunds.
+//
+// When the build is verified: drop `noindex`, link it from /help/ and
+// /download/, and update the Windows-only wording on pricing and the FAQ.
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { SITE } from "../../consts";
+import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Help", href: "/help/" },
+	{ label: "Install on Mac", href: "/help/install-mac/" },
+];
+
+const steps = [
+	{
+		name: "Unzip and move it to Applications",
+		text: "Double-click the downloaded zip, then drag Soft Clipper into your Applications folder. Running it from Downloads works but you will lose track of it.",
+	},
+	{
+		name: "Open it — and expect a warning the first time",
+		text: 'macOS will say it "cannot verify" the app. That is normal for software not distributed through the App Store; it is not a virus warning, and it appears once.',
+	},
+	{
+		name: "Allow it in System Settings",
+		text: "Open System Settings → Privacy & Security, scroll to the Security section, and next to the message about Soft Clipper click Open Anyway. Confirm with your password or Touch ID.",
+	},
+	{
+		name: "Open it again",
+		text: "This time it starts. macOS remembers the decision, so you will never see the warning again on this Mac.",
+	},
+	{
+		name: "Paste your licence key",
+		text: "The key from your purchase email. One licence covers one computer, and activation needs an internet connection once.",
+	},
+];
+
+const faqs: FaqItem[] = [
+	{
+		q: 'Why does macOS say it "cannot verify" Soft Clipper?',
+		a: "Because the app is not yet signed with an Apple Developer certificate. macOS shows that message for any app downloaded outside the App Store without one. It is a statement about paperwork, not about the file — the app is the same one built from our public repository.",
+	},
+	{
+		q: "Is that safe?",
+		a: "The warning means macOS has not been told who published the app, not that it found anything wrong. If you would rather check, the build is produced in public by GitHub Actions and you can see exactly what went into it.",
+	},
+	{
+		q: "Will this warning always be there?",
+		a: "No, in two ways. It appears only the first time on each Mac. And it goes away entirely once the app is signed and notarised with an Apple Developer certificate.",
+	},
+	{
+		q: "It says the app is damaged and should be moved to the Bin.",
+		a: "That is a different error, and it usually means the zip was unpacked with a tool that broke the app bundle. Download it again and open it with the built-in Archive Utility — double-clicking the zip in Finder — rather than a third-party unzip app.",
+	},
+	{
+		q: "Which Macs does it run on?",
+		a: "Apple Silicon (M1 and newer) on macOS 12 or later. There is no Intel build at the moment.",
+	},
+	{
+		q: "Where does it keep my clips and settings?",
+		a: "Clips go to the folder you choose in Settings. The licence and any downloaded speech model live in ~/Library/Application Support/SoftClipper, so moving or reinstalling the app does not lose your activation.",
+	},
+];
+---
+
+<Page
+	title="Install Soft Clipper on a Mac"
+	heading="Installing on macOS"
+	description="How to install and open Soft Clipper on a Mac, including the first-run security warning and what it actually means."
+	intro="Five steps, and one of them is a macOS warning that looks alarming and is not. Here is exactly what it says and what to do."
+	eyebrow="Help"
+	crumbs={crumbs}
+	noindex
+	cta={false}
+	narrow
+	schema={[
+		faqSchema(faqs),
+		breadcrumbSchema(crumbs),
+		howToSchema({
+			name: "Install Soft Clipper on macOS",
+			description: "Unzip, move to Applications, allow it in Privacy & Security, and activate.",
+			totalTime: "PT3M",
+			steps,
+		}),
+	]}
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<p class="answer">
+				<strong>The short version:</strong> the first time you open it, macOS will refuse and
+				say it cannot verify the app. Go to System Settings → Privacy & Security → <em>Open
+				Anyway</em>, then open it again. That is the whole obstacle, and it happens once.
+			</p>
+		</div>
+	</section>
+
+	<section class="pt-0">
+		<div class="wrap wrap-narrow">
+			<ol class="steps">
+				{
+					steps.map((s) => (
+						<li>
+							<h2>{s.name}</h2>
+							<p>{s.text}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+			<p class="mt-lg muted">
+				Stuck at any step? WhatsApp <a href={SITE.waLink} target="_blank" rel="noopener">{SITE.phone}</a>
+				or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> — a screenshot of what macOS
+				said is usually enough to sort it in one reply.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	ol.steps h2 {
+		font-size: 1.05rem;
+		margin-bottom: 4px;
+	}
+</style>
