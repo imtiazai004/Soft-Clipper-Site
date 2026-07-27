@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Faq from "../components/Faq.astro";
 import CtaBand from "../components/CtaBand.astro";
+import HeroVideo from "../components/HeroVideo.astro";
 import { SITE, PRICE, PRODUCT } from "../consts";
 import { faqSchema, softwareSchema, howToSchema, type FaqItem } from "../lib/schema";
 
@@ -78,6 +79,7 @@ const schema = [
 		</div>
 
 		<div class="wrap shot-wrap">
+			<HeroVideo caption="One long video on the left, the clip Soft Clipper made from it on the right">
 			<div class="shot" role="img" aria-label="A 16:9 source video being reframed into a 9:16 clip with captions">
 				<div class="pane source">
 					<span class="tag">Long video · 16:9</span>
@@ -106,6 +108,7 @@ const schema = [
 					</div>
 				</div>
 			</div>
+			</HeroVideo>
 		</div>
 	</section>
 

@@ -1,0 +1,118 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import { SITE } from "../consts";
+
+interface Props {
+	/** Base name in public/ — expects <name>.mp4, optionally .webm, and <name>.jpg */
+	name?: string;
+	caption: string;
+}
+
+const { name = "hero", caption } = Astro.props;
+
+// Checked at build time so the page never ships a <video> pointing at a file
+// that is not there: until the real video exists, the slotted fallback renders
+// instead and the page looks finished either way.
+const publicDir = path.resolve("public");
+const has = (ext: string) => fs.existsSync(path.join(publicDir, `${name}.${ext}`));
+const hasVideo = has("mp4");
+const hasWebm = has("webm");
+const poster = has("jpg") ? `/${name}.jpg` : undefined;
+
+// Google can show a video result for a page carrying this, which is a second
+// way onto the results page for the same content.
+const schema = hasVideo
+	? {
+			"@context": "https://schema.org",
+			"@type": "VideoObject",
+			name: `${SITE.name} — ${caption}`,
+			description: caption,
+			thumbnailUrl: poster ? new URL(poster, SITE.origin).href : undefined,
+			contentUrl: new URL(`/${name}.mp4`, SITE.origin).href,
+			uploadDate: new Date().toISOString().slice(0, 10),
+			isFamilyFriendly: true,
+		}
+	: null;
+---
+
+{
+	hasVideo ? (
+		<figure class="hero-video">
+			{/*
+			  muted + playsinline are what make autoplay legal in a browser at all;
+			  without them it silently refuses and the visitor sees a still frame.
+			  preload="none" keeps the file off the critical path — the poster
+			  carries the page until the video is ready.
+			*/}
+			<video
+				autoplay
+				muted
+				loop
+				playsinline
+				preload="none"
+				poster={poster}
+				aria-label={caption}
+			>
+				{hasWebm && <source src={`/${name}.webm`} type="video/webm" />}
+				<source src={`/${name}.mp4`} type="video/mp4" />
+			</video>
+			<figcaption class="small muted">{caption}</figcaption>
+			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+		</figure>
+	) : (
+		<slot />
+	)
+}
+
+<style>
+	.hero-video {
+		margin: 0;
+		border: 1px solid var(--border);
+		border-radius: 24px;
+		overflow: hidden;
+		background: var(--bg-soft);
+	}
+
+	video {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		padding: 12px 18px;
+		border-top: 1px solid var(--border);
+		text-align: center;
+	}
+
+	/* Someone who has asked the system to reduce motion should get the poster,
+	   not a loop running behind their text. */
+	@media (prefers-reduced-motion: reduce) {
+		video {
+			display: none;
+		}
+		.hero-video {
+			background-image: var(--poster);
+			background-size: cover;
+			aspect-ratio: 16 / 9;
+		}
+	}
+</style>
+
+<script>
+	// The CSS above hides the video for reduced-motion users, but a hidden
+	// <video> still downloads and still plays. Stop it properly.
+	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+		document.querySelectorAll<HTMLVideoElement>(".hero-video video").forEach((v) => {
+			v.autoplay = false;
+			v.pause();
+			v.removeAttribute("src");
+			v.querySelectorAll("source").forEach((s) => s.remove());
+			const poster = v.getAttribute("poster");
+			if (poster) {
+				(v.parentElement as HTMLElement).style.setProperty("--poster", `url(${poster})`);
+			}
+		});
+	}
+</script>
