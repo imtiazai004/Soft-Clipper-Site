@@ -40,8 +40,12 @@ export const PRICE = {
 export const PRODUCT = {
 	platform: "Windows 10 and 11 (64-bit)",
 	licence: "1 licence = 1 PC, activated online, then works offline",
-	fileSize: "~180 MB installer",
+	// It is a portable ZIP, not an installer — build_release.py produces
+	// Soft-Clipper.zip and the app runs from the extracted folder. Saying
+	// "installer" here would have people hunting for a setup wizard.
+	fileSize: "~160 MB ZIP, no installer",
 	requirements: "8 GB RAM recommended, no GPU required",
+	ratios: "9:16 vertical, 1:1 square and 16:9",
 	/** Kept vague on purpose until the web version has a date. */
 	webStatus: "in development",
 } as const;

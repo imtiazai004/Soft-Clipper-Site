@@ -11,9 +11,9 @@ const crumbs = [
 ];
 
 const steps = [
-	{ name: "Open the download link", text: "It is in your purchase email, next to your licence key. The file is around 180 MB." },
-	{ name: "Run the installer", text: "Double-click the downloaded file. If Windows shows a blue SmartScreen panel, choose More info and then Run anyway — new releases have not built signing reputation yet." },
-	{ name: "Launch Soft Clipper", text: "It opens in a window of its own. The first launch takes a few seconds longer while it unpacks." },
+	{ name: "Open the download link", text: "It is in your purchase email, next to your licence key. The file is a ZIP of around 160 MB." },
+	{ name: "Extract the ZIP", text: "Right-click it, choose Extract All, and pick a folder you will keep — Documents works well. Running the app from inside the Downloads folder is how people lose it later." },
+	{ name: "Run Soft Clipper.exe", text: "Open the extracted folder and double-click the exe. If Windows shows a blue SmartScreen panel, choose More info and then Run anyway — new releases have not built signing reputation yet. The first launch takes a few seconds longer while it unpacks." },
 	{ name: "Enter your licence key", text: "Paste the key from your email. Activation needs an internet connection once; after that the app runs offline." },
 	{ name: "Add a Gemini API key", text: "Open Settings and paste a Google Gemini API key. Creating one is free at Google AI Studio and takes about a minute." },
 	{ name: "Run a short video first", text: "Try a five-minute clip before a two-hour recording. It confirms the whole chain works in a minute rather than an hour." },
@@ -21,16 +21,20 @@ const steps = [
 
 const faqs: FaqItem[] = [
 	{
-		q: "Windows blocked the installer. What now?",
-		a: "That is SmartScreen, not an antivirus detection. Click More info on the panel, then Run anyway. It appears on any installer without established signing reputation, and goes away as a release gets downloaded more.",
+		q: "Windows blocked the app from starting. What now?",
+		a: "That is SmartScreen, not an antivirus detection. Click More info on the panel, then Run anyway. It appears on any unsigned executable without established reputation, and eases off as a release gets downloaded more.",
 	},
 	{
 		q: "Where does it install and where do clips go?",
-		a: "The app installs per user, and rendered clips are written to a folder you choose in Settings. Source downloads and finished clips are both large, so pick a drive with a few gigabytes free.",
+		a: "It does not install — the app runs from the folder you extracted, and rendered clips are written alongside it. Source downloads and finished clips are both large, so extract it to a drive with a few gigabytes free.",
+	},
+	{
+		q: "How do I uninstall it?",
+		a: "Delete the folder. Nothing is written to the registry or to Windows system folders, and there is no entry in Add or Remove Programs.",
 	},
 	{
 		q: "Do I need ffmpeg or Python installed?",
-		a: "No. Everything the app needs is inside the installer — that is why it is not a small download.",
+		a: "No. Everything the app needs is bundled inside the download, ffmpeg included — that is why the ZIP is not small.",
 	},
 	{
 		q: "Can I install it without admin rights?",

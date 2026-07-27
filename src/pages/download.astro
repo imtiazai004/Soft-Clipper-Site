@@ -11,7 +11,8 @@ const crumbs = [
 
 const steps = [
 	{ name: "Buy a licence", text: `Pay ${PRICE.display} once. Your licence key arrives by email within a minute, along with a download link.` },
-	{ name: "Run the installer", text: `Open the downloaded file and follow the prompts. Windows may warn about an unrecognised publisher on new releases — choose More info, then Run anyway.` },
+	{ name: "Extract the ZIP", text: "There is no installer. Right-click the downloaded ZIP, choose Extract All, and put the folder somewhere permanent — Documents is fine, the Downloads folder is not." },
+	{ name: "Run Soft Clipper.exe", text: "Open the extracted folder and run the exe. Windows may warn about an unrecognised publisher on new releases — choose More info, then Run anyway." },
 	{ name: "Paste your key", text: "On first launch Soft Clipper asks for the licence key from your email. It activates online once and then works without a connection." },
 	{ name: "Add your Gemini key", text: "In Settings, paste a Google Gemini API key. It is free to create, and it is what powers moment detection and transcription." },
 ];
@@ -20,6 +21,10 @@ const faqs: FaqItem[] = [
 	{
 		q: "Is there a free trial?",
 		a: "No trial build, but there is a 14-day refund. Buy it, use it properly on a real video, and if it does not fit, email us for a full refund.",
+	},
+	{
+		q: "Is there an installer?",
+		a: "No. Soft Clipper ships as a ZIP you extract and run — nothing is written to your system folders and nothing appears in Add or Remove Programs. To uninstall, delete the folder.",
 	},
 	{
 		q: "Windows says the publisher is unrecognised. Is that normal?",
@@ -44,7 +49,7 @@ const faqs: FaqItem[] = [
 	title="Download Soft Clipper"
 	heading="Download and install"
 	description={`Download Soft Clipper for ${PRODUCT.platform}. Buy once for ${PRICE.display}, activate with your licence key, and start cutting vertical clips.`}
-	intro={`Soft Clipper is a ${PRODUCT.fileSize} desktop app for ${PRODUCT.platform}. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
+	intro={`Soft Clipper is a desktop app for ${PRODUCT.platform}, delivered as a ${PRODUCT.fileSize.replace(", no installer", " you extract and run")}. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
 	eyebrow="Download"
 	crumbs={crumbs}
 	schema={[

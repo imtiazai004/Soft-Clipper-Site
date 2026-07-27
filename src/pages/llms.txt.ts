@@ -24,8 +24,10 @@ export const GET: APIRoute = () =>
 - Web version: ${PRODUCT.webStatus}; it is not included with the desktop licence.
 - Processing: clips are cut, reframed, captioned and exported locally on the user's PC. The video file is never uploaded to ${SITE.company}.
 - AI: moment detection and transcription use Google Gemini via the user's own API key. Usage beyond Google's free tier is billed by Google, not by ${SITE.company}.
-- Output: MP4, vertical 9:16, up to 1080p. No watermark, no export limit.
-- Not included: scheduling, auto-posting, virality scoring, 4K export, team seats.
+- Output: MP4, up to 1080p, in ${PRODUCT.ratios}. No watermark, no export limit.
+- Each suggested clip includes a virality score, a hook title, a post caption with hashtags and a one-line reason.
+- Not included: scheduling, auto-posting, 4K export, team seats, editing the transcribed caption wording.
+- Distribution: a ZIP that is extracted and run. There is no installer and nothing is written to the Windows registry.
 - Refunds: 14 days from purchase, no reason required.
 - Contact: ${SITE.email}, or WhatsApp ${SITE.phone}.
 

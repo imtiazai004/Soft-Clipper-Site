@@ -25,7 +25,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Does Soft Clipper have a virality score?",
-		a: "No, and that is deliberate. A 0-100 score implies a precision no model has. Soft Clipper gives a plain reason for each suggested clip instead, which is the part of a score that was ever useful.",
+		a: "Yes. Every suggested clip comes with a score, a hook title, a ready-made caption with hashtags, and a one-line reason for the pick. Treat the number as a sorting aid rather than a prediction — that is true of every tool that shows one.",
 	},
 	{
 		q: "Can Soft Clipper post to TikTok for me?",
@@ -46,7 +46,9 @@ const rows = [
 	{ f: "Runs on", a: PRODUCT.platform, b: "Any browser, any OS" },
 	{ f: "Works offline", a: "Cutting and export, yes", b: "No" },
 	{ f: "Auto-post & scheduling", a: "No", b: "Yes" },
-	{ f: "Virality score", a: "No — reasons instead", b: "Yes" },
+	{ f: "Virality score", a: "Yes, with a reason for each pick", b: "Yes" },
+	{ f: "Caption and hashtags written for you", a: "Yes", b: "Yes" },
+	{ f: "Aspect ratios", a: "9:16, 1:1 and 16:9", b: "9:16 on free, more on paid" },
 	{ f: "Team seats", a: "One licence per PC", b: "Team plans available" },
 	{ f: "Ongoing AI cost", a: "Your own Gemini key (free tier covers normal use)", b: "Included in the subscription" },
 ];
