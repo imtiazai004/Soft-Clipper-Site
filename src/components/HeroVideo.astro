@@ -100,19 +100,29 @@ const schema = hasVideo
 	}
 </style>
 
-<script>
-	// The CSS above hides the video for reduced-motion users, but a hidden
-	// <video> still downloads and still plays. Stop it properly.
-	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-		document.querySelectorAll<HTMLVideoElement>(".hero-video video").forEach((v) => {
-			v.autoplay = false;
-			v.pause();
-			v.removeAttribute("src");
-			v.querySelectorAll("source").forEach((s) => s.remove());
-			const poster = v.getAttribute("poster");
-			if (poster) {
-				(v.parentElement as HTMLElement).style.setProperty("--poster", `url(${poster})`);
+{/*
+  Inside the conditional and marked is:inline so it exists only when a video
+  does. A plain <script> here would be hoisted into the bundle and shipped on
+  every page whether or not there is anything for it to do — which is how a
+  site that ships no JavaScript quietly starts shipping some.
+*/}
+{
+	hasVideo && (
+		<script is:inline>
+			{`
+			// The CSS hides the video for reduced-motion users, but a hidden
+			// <video> still downloads and still plays. Stop it properly.
+			if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				document.querySelectorAll(".hero-video video").forEach(function (v) {
+					v.autoplay = false;
+					v.pause();
+					v.removeAttribute("src");
+					v.querySelectorAll("source").forEach(function (s) { s.remove(); });
+					var poster = v.getAttribute("poster");
+					if (poster) v.parentElement.style.setProperty("--poster", "url(" + poster + ")");
+				});
 			}
-		});
-	}
-</script>
+			`}
+		</script>
+	)
+}

@@ -84,12 +84,16 @@ const schema = [
 				<div class="pane source">
 					<span class="tag">Long video · 16:9</span>
 					<div class="frame">
+						{/* The speaker the crop is following. Both move on the same
+						    timing, which is the whole idea being demonstrated. */}
+						<div class="speaker"></div>
 						<div class="crop"></div>
 					</div>
 					<div class="timeline">
 						<span style="left:14%;width:16%"></span>
 						<span class="hot" style="left:38%;width:13%"></span>
 						<span style="left:60%;width:20%"></span>
+						<div class="playhead"></div>
 					</div>
 				</div>
 				<div class="arrow" aria-hidden="true">
@@ -103,7 +107,13 @@ const schema = [
 					<span class="tag cyan">Clip · 9:16</span>
 					<div class="phone">
 						<div class="head"></div>
-						<div class="cap"></div>
+						{/* Three words lighting up in turn — the caption style the app
+						    actually renders, shown rather than described. */}
+						<div class="words">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
 						<div class="cap short"></div>
 					</div>
 				</div>
@@ -359,12 +369,142 @@ const schema = [
 		border: 1px solid rgba(139, 92, 246, 0.3);
 		background: linear-gradient(150deg, #101024, #0a0a16);
 	}
+	/* ── the animation ───────────────────────────────────────────────────────
+	   This is the product's whole idea in six seconds: a speaker moves across a
+	   wide frame, the crop follows them, and captions light up word by word in
+	   the vertical result. It is CSS rather than a video because it costs about
+	   3 KB, stays sharp on any screen, and is never blocked by autoplay rules.
+	   Everything animates transform and opacity only, so it does not force
+	   layout while someone is scrolling. */
+
+	.speaker {
+		position: absolute;
+		top: 34%;
+		left: 50%;
+		width: 16%;
+		aspect-ratio: 1;
+		margin-left: -8%;
+		border-radius: 50%;
+		background: radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.85), rgba(99, 102, 241, 0.2));
+		animation: walk 7s ease-in-out infinite;
+	}
+
 	.crop {
 		position: absolute;
 		inset: 6% 38% 6% 34%;
 		border: 2px dashed var(--cyan);
 		border-radius: 8px;
 		background: rgba(34, 211, 238, 0.07);
+		/* A beat behind the speaker, and smoother — a camera operator following
+		   someone, not a box snapping onto them. */
+		animation: follow 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	}
+
+	@keyframes walk {
+		0%,
+		12% {
+			transform: translateX(-95%);
+		}
+		38%,
+		55% {
+			transform: translateX(70%);
+		}
+		78%,
+		100% {
+			transform: translateX(-95%);
+		}
+	}
+
+	@keyframes follow {
+		0%,
+		15% {
+			transform: translateX(-15%);
+		}
+		41%,
+		58% {
+			transform: translateX(11%);
+		}
+		81%,
+		100% {
+			transform: translateX(-15%);
+		}
+	}
+
+	.playhead {
+		position: absolute;
+		top: -2px;
+		bottom: -2px;
+		width: 2px;
+		border-radius: 2px;
+		background: var(--cyan);
+		box-shadow: 0 0 8px var(--cyan);
+		animation: scrub 7s linear infinite;
+	}
+
+	@keyframes scrub {
+		from {
+			left: 0;
+		}
+		to {
+			left: 100%;
+		}
+	}
+
+	.words {
+		display: flex;
+		gap: 5px;
+		width: 86%;
+		justify-content: center;
+	}
+	.words span {
+		height: 13px;
+		flex: 1;
+		border-radius: 4px;
+		background: var(--violet);
+		opacity: 0.35;
+		animation: speak 2.1s steps(1, end) infinite;
+	}
+	.words span:nth-child(2) {
+		animation-delay: 0.7s;
+	}
+	.words span:nth-child(3) {
+		animation-delay: 1.4s;
+	}
+
+	/* One word lit at a time, the rest still visible — exactly what the app's
+	   word-by-word caption mode does. */
+	@keyframes speak {
+		0%,
+		33% {
+			background: var(--cyan);
+			opacity: 1;
+			transform: scaleY(1.15);
+		}
+		34%,
+		100% {
+			background: var(--violet);
+			opacity: 0.35;
+			transform: scaleY(1);
+		}
+	}
+
+	/* Anyone who has asked for less motion gets the still frame, which still
+	   reads perfectly well — that is why the layout carries the meaning and the
+	   movement only reinforces it. */
+	@media (prefers-reduced-motion: reduce) {
+		.speaker,
+		.crop,
+		.playhead,
+		.words span {
+			animation: none;
+		}
+		.playhead {
+			left: 44%;
+		}
+		.words span:first-child {
+			background: var(--cyan);
+			opacity: 1;
+		}
 	}
 
 	.timeline {
