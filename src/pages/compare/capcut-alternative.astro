@@ -1,0 +1,172 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import { PRICE, PRODUCT } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+	{ label: "CapCut alternative", href: "/compare/capcut-alternative/" },
+];
+
+const CHECKED = "July 2026";
+
+const faqs: FaqItem[] = [
+	{
+		q: "Why would I pay for Soft Clipper when CapCut is free?",
+		a: "For one reason: finding the moments. CapCut is a full video editor and a very good one, and its free tier does more than most paid tools. What it does not do for free is watch a two-hour recording and tell you which ninety seconds are worth posting. That search is the slow part of clipping, and it is the part Soft Clipper is built around.",
+	},
+	{
+		q: "Does CapCut have AI clipping now?",
+		a: `Yes. As of ${CHECKED} CapCut has a long-video-to-shorts feature that proposes clips. It sits behind the paid tier and, like most AI features there, draws on a monthly credit allowance rather than being unlimited. So the honest comparison is not "AI versus no AI" — it is a metered allowance inside a subscription against an unmetered one you own.`,
+	},
+	{
+		q: "What does CapCut cost?",
+		a: `As of ${CHECKED}, CapCut has a genuinely useful free tier, and a Pro subscription whose price depends heavily on where you buy it — roughly $8 a month on web with annual billing, noticeably more month-to-month, and more again through the iOS and Android stores, which take a cut. Check the price on the platform you would actually buy on.`,
+	},
+	{
+		q: "Can I use both?",
+		a: "That is what we would suggest, and plenty of people do. Let Soft Clipper find the moments, cut them, reframe them and burn the captions in, then open anything that needs real editing — a b-roll cutaway, a sound design pass, a thumbnail — in CapCut. They are not competing for the same job.",
+	},
+	{
+		q: "Is Soft Clipper an editor?",
+		a: "No, and it is not trying to be. It has a frame editor for moving a crop, text overlays, stickers, look effects and speed. If you want a timeline, keyframes and multi-track audio, that is CapCut's ground and you should use CapCut.",
+	},
+];
+
+const rows = [
+	{ f: "Price", a: `${PRICE.display} one-time`, b: "Free tier, or a Pro subscription" },
+	{ f: "Finds the moments for you", a: "Yes, scored and explained", b: "Paid tier, from a credit allowance" },
+	{ f: "Clip limits", a: "None", b: "AI features draw on monthly credits" },
+	{ f: "Batch: one long video to many clips", a: "Yes, in one pass", b: "Largely one at a time" },
+	{ f: "Speaker-tracking reframe", a: "Yes, plus five other modes", b: "Auto-reframe available" },
+	{ f: "Burned-in captions", a: "Yes, six styles", b: "Yes, many styles" },
+	{ f: "Caption text and hashtags written for you", a: "Yes", b: "No" },
+	{ f: "Full editing timeline", a: "No", b: "Yes — this is what it is for" },
+	{ f: "Effects, transitions, audio library", a: "Basic", b: "Extensive" },
+	{ f: "Platform", a: PRODUCT.platform, b: "Windows, Mac, iOS, Android, web" },
+	{ f: "Renders on your machine", a: "Yes", b: "Yes on desktop" },
+	{ f: "Watermark", a: "Never", b: "On some free templates and effects" },
+];
+---
+
+<Page
+	title="Soft Clipper vs CapCut"
+	heading="Soft Clipper as a CapCut alternative"
+	description={`CapCut is free and very good. This is an honest look at what it does not do — finding the moments in a long recording — and when paying ${PRICE.display} once is worth it. Checked ${CHECKED}.`}
+	intro="CapCut is the best free video editor most people will ever use, and this page is not going to pretend otherwise. It is also not a clipping tool, and that difference is the entire comparison."
+	eyebrow="Comparison"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">
+				<strong>Short answer:</strong> if you already know which bit of the video you want,
+				CapCut will cut it beautifully and cost you nothing. If you have a two-hour recording
+				and no idea where the good ninety seconds are, that is the job Soft Clipper does —
+				and it is the job that takes the afternoon.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<h2>Side by side</h2>
+			<p class="lead">
+				Checked {CHECKED}. CapCut's tiers and regional pricing move about more than most —
+				verify on the platform you would buy on.
+			</p>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr><th>&nbsp;</th><th>Soft Clipper</th><th>CapCut</th></tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((r) => (
+								<tr>
+									<td><strong>{r.f}</strong></td>
+									<td>{r.a}</td>
+									<td>{r.b}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card">
+					<h2>Where CapCut wins</h2>
+					<ul class="checks">
+						<li><strong>It is free</strong>, and the free tier is not a crippled demo.</li>
+						<li><strong>It is a real editor.</strong> Timeline, keyframes, transitions, audio — none of which Soft Clipper has.</li>
+						<li><strong>It runs on everything</strong>, including the phone in your pocket.</li>
+						<li><strong>Effects and templates</strong> in a quantity we are not going to match.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h2>Where Soft Clipper wins</h2>
+					<ul class="checks">
+						<li><strong>It reads the whole recording</strong> and comes back with the moments, each with a score and the reason it was picked.</li>
+						<li><strong>The whole batch at once.</strong> Six clips out of one episode in a single pass, not six separate sessions.</li>
+						<li><strong>Nothing is metered.</strong> No credits behind the part you actually came for.</li>
+						<li><strong>The post is written</strong> — hook title, caption and hashtags per clip.</li>
+						<li><strong>Reframing built for talking footage</strong>, including split-screen for two speakers and a gameplay-plus-camera layout.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>What "free" actually costs here</h2>
+			</div>
+			<p class="lead">
+				Scrubbing a two-hour podcast for the good bits is roughly two to four hours of
+				work — per episode, every episode, forever. That is the price of the free option,
+				and it is paid in the only thing you cannot buy more of. If you publish once a month
+				it is a fair trade. If you have forty episodes sitting in a folder, it is the reason
+				they are still sitting there.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>Using both is the sensible answer</h2>
+			</div>
+			<p class="lead">
+				These tools do not overlap as much as the category names suggest. Soft Clipper is a
+				finder and a batch renderer; CapCut is an editor. Find and cut in one, polish in the
+				other. We would rather say that than pretend a Windows app with no timeline replaces
+				the most widely used editor on earth.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.2rem;
+		margin-bottom: 14px;
+	}
+</style>

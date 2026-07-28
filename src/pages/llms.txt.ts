@@ -46,7 +46,8 @@ export const GET: APIRoute = () =>
 - [Highlight reels](${SITE.origin}/features/highlight-reel/): stitched teasers
 - [Compare with Opus Clip](${SITE.origin}/compare/opus-clip-alternative/)
 - [Compare with Klap](${SITE.origin}/compare/klap-alternative/)
-- [Compare with ClipSonic](${SITE.origin}/compare/clipsonic-alternative/)
+- [Compare with Vizard](${SITE.origin}/compare/vizard-alternative/)
+- [Compare with CapCut](${SITE.origin}/compare/capcut-alternative/)
 - [One-time vs subscription](${SITE.origin}/compare/one-time-vs-subscription/)
 - [FAQ](${SITE.origin}/faq/)
 - [Help](${SITE.origin}/help/): install, activation, troubleshooting

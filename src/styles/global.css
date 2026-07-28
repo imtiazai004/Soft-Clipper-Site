@@ -42,6 +42,12 @@
 	--cyan: #06697f;
 	--cyan-bright: #22d3ee;
 	--grad: linear-gradient(135deg, #7c3aed 0%, #5b53f0 50%, #0ea5c4 100%);
+	--grad-text: linear-gradient(115deg, #1b1440 0%, #5b3fd6 55%, #0a91ad 100%);
+	/* The button fill is a separate gradient because --grad's cyan end is only
+	   2.9:1 against the white label sitting on it, and the label's last few
+	   characters are exactly where that end lands. Same violet-to-teal move,
+	   stopped at a teal that carries white text at 4.6:1. */
+	--grad-btn: linear-gradient(135deg, #7c3aed 0%, #5b53f0 55%, #0d7f9c 100%);
 
 	/* Both of these were picked by eye first and failed contrast at the sizes
 	   they are actually used — "Learn more" links and the Yes column in the
@@ -68,6 +74,85 @@
 
 	--font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 	--mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+	/* The sticky header sits over content, so it needs the page colour at 85%
+	   rather than a fixed white. */
+	--nav-bg: rgba(255, 255, 255, 0.85);
+
+	/* The ambient glow behind everything. Tokens because it has to be far
+	   fainter on white than it can afford to be on black. */
+	--glow-a: rgba(124, 58, 237, 0.07);
+	--glow-b: rgba(14, 165, 196, 0.06);
+
+	color-scheme: light;
+}
+
+/*
+ * Dark.
+ *
+ * The theme is resolved and stamped onto <html> before the first paint, so this
+ * is the only selector needed — there is no prefers-color-scheme rule to fight
+ * with, and no flash of the wrong theme on load.
+ *
+ * Two things needed real thought rather than inversion:
+ *
+ * 1. The dark stage. On a light page a near-black panel is obviously a panel.
+ *    On a dark page it would disappear. So here the page is lifted *above* the
+ *    stage colour and the stage stays the darkest thing on the screen — the
+ *    product demos keep reading as inset windows, which is the whole point of
+ *    the split this palette is built around.
+ *
+ * 2. The accents. Light mode uses deliberately darkened violet, teal, green and
+ *    amber, because the app's own palette is unreadable as small text on white.
+ *    On dark that reverses exactly: the darkened values fail and the app's real
+ *    colours are the ones that pass. So the accents are not shared between the
+ *    themes — each gets the pair that works.
+ */
+:root[data-theme="dark"] {
+	--bg: #0f0e1e;
+	--bg-soft: #17152e;
+	--panel: #17152e;
+	--panel-strong: #1e1c3a;
+	--border: rgba(255, 255, 255, 0.11);
+	--border-strong: rgba(255, 255, 255, 0.2);
+
+	--text: #eeecf8;
+	--muted: #a8a3c8;
+	--dim: #918cb2;
+
+	--violet: #a78bfa;
+	--indigo: #818cf8;
+	--cyan: #22d3ee;
+
+	--ok: #34d399;
+	--warn: #fbbf24;
+
+	/* The headline gradient, lifted well clear of the page. The light version
+	   starts at near-black, which on this background is invisible. */
+	--grad-text: linear-gradient(115deg, #d6cbff 0%, #a78bfa 45%, #22d3ee 100%);
+
+	/* Below the page, not above it. */
+	--stage: #08071a;
+	--stage-soft: #100e26;
+
+	/* Soft grey shadows are invisible on black; depth here has to come from
+	   real darkness under the element. */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+	--shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+	--shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.55);
+
+	--nav-bg: rgba(15, 14, 30, 0.85);
+
+	--glow-a: rgba(124, 58, 237, 0.16);
+	--glow-b: rgba(14, 165, 196, 0.12);
+
+	color-scheme: dark;
+}
+
+/* The stage is dark in both themes, so on a dark page it is the border rather
+   than the fill that separates it from what is behind it. */
+:root[data-theme="dark"] .stage {
+	border: 1px solid var(--border);
 }
 
 *,
@@ -113,8 +198,8 @@ body::before {
 	z-index: 0;
 	pointer-events: none;
 	background:
-		radial-gradient(760px 460px at 10% -8%, rgba(124, 58, 237, 0.07), transparent 60%),
-		radial-gradient(820px 520px at 92% 0%, rgba(14, 165, 196, 0.06), transparent 58%);
+		radial-gradient(760px 460px at 10% -8%, var(--glow-a), transparent 60%),
+		radial-gradient(820px 520px at 92% 0%, var(--glow-b), transparent 58%);
 }
 
 main,
@@ -160,8 +245,11 @@ a:hover {
 	text-decoration-color: currentColor;
 }
 
+/* Its own gradient, not --grad. That one is a fill sitting under white button
+   text and can afford to be dark; this one *is* the text, and on a dark page
+   the same stops disappear into the background. */
 .gradient-text {
-	background: linear-gradient(115deg, #1b1440 0%, #5b3fd6 55%, #0a91ad 100%);
+	background: var(--grad-text);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -309,7 +397,7 @@ a.card .more {
 }
 
 .btn-primary {
-	background: var(--grad);
+	background: var(--grad-btn);
 	color: #fff;
 	box-shadow: 0 6px 20px rgba(91, 45, 214, 0.28);
 }

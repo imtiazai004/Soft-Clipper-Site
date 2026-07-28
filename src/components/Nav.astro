@@ -35,16 +35,62 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 			</ul>
 		</nav>
 
+		<button class="theme" type="button" id="theme-toggle" aria-label="Switch theme">
+			<svg class="ic sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+			</svg>
+			<svg class="ic moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+			</svg>
+		</button>
+
 		<a class="btn btn-primary buy" href="/pricing/">Get Soft Clipper</a>
 	</div>
 </header>
+
+{/*
+  is:inline for the same reason as the head script: this is the only other
+  script on the site and bundling it would start shipping a JavaScript file to
+  every page for one button.
+*/}
+<script is:inline>
+	(function () {
+		var root = document.documentElement;
+		var button = document.getElementById("theme-toggle");
+		var meta = document.getElementById("theme-color");
+		if (!button) return;
+
+		var PAGE = { light: "#ffffff", dark: "#0f0e1e" };
+
+		function paint() {
+			var dark = root.dataset.theme === "dark";
+			// The label says what pressing it will do, not what is on screen.
+			button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+			if (meta) meta.setAttribute("content", dark ? PAGE.dark : PAGE.light);
+		}
+
+		button.addEventListener("click", function () {
+			var next = root.dataset.theme === "dark" ? "light" : "dark";
+			root.dataset.theme = next;
+			try {
+				localStorage.setItem("theme", next);
+			} catch (e) {
+				/* No storage: the choice holds for this page only. */
+			}
+			paint();
+		});
+
+		paint();
+	})();
+</script>
 
 <style>
 	header {
 		position: sticky;
 		top: 0;
 		z-index: 50;
-		background: rgba(255, 255, 255, 0.85);
+		background: var(--nav-bg);
 		backdrop-filter: blur(14px);
 		border-bottom: 1px solid var(--border);
 	}
@@ -68,6 +114,51 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 		align-items: center;
 		gap: 24px;
 		height: 68px;
+	}
+
+	/* ── theme toggle ────────────────────────────────────────────────────── */
+
+	.theme {
+		flex: none;
+		width: 38px;
+		height: 38px;
+		display: grid;
+		place-items: center;
+		border-radius: 10px;
+		border: 1px solid var(--border);
+		background: transparent;
+		color: var(--muted);
+		cursor: pointer;
+		transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+	}
+	.theme:hover {
+		color: var(--text);
+		border-color: var(--border-strong);
+		background: var(--panel-strong);
+	}
+	.theme:focus-visible {
+		outline: 2px solid var(--violet);
+		outline-offset: 2px;
+	}
+	.theme .ic {
+		grid-area: 1 / 1;
+	}
+
+	/* The icon shown is the one you are about to get, not the one you are in —
+	   a moon on a light page, a sun on a dark one. :global() because the theme
+	   attribute lives on <html>, which is outside this component and so must not
+	   be given a scoping attribute. */
+	.theme .sun {
+		display: none;
+	}
+	.theme .moon {
+		display: block;
+	}
+	:global(:root[data-theme="dark"]) .theme .sun {
+		display: block;
+	}
+	:global(:root[data-theme="dark"]) .theme .moon {
+		display: none;
 	}
 
 	.brand {
@@ -140,6 +231,11 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 			margin-left: 0;
 			overflow-x: auto;
 			scrollbar-width: none;
+		}
+		/* With the links on their own row, the brand keeps the left and the two
+		   controls take the right. */
+		.theme {
+			margin-left: auto;
 		}
 		nav::-webkit-scrollbar {
 			display: none;

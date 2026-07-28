@@ -1,0 +1,180 @@
+---
+import Page from "../../layouts/Page.astro";
+import Faq from "../../components/Faq.astro";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
+import { PRICE, PRODUCT } from "../../consts";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Compare", href: "/compare/" },
+	{ label: "Vizard alternative", href: "/compare/vizard-alternative/" },
+];
+
+const CHECKED = "July 2026";
+
+const faqs: FaqItem[] = [
+	{
+		q: "Is Soft Clipper a good Vizard alternative?",
+		a: `If the thing that bothers you about Vizard is the monthly bill and the credit counter, yes — Soft Clipper is ${PRICE.display} once, renders on your own PC, and has no quota of any kind. If what you value is uploading from a phone, collaborating with a team, or posting straight to your social accounts, Vizard does those and Soft Clipper does not.`,
+	},
+	{
+		q: "What does Vizard cost?",
+		a: `As of ${CHECKED}, Vizard publishes a free tier with a small monthly credit allowance, 720p exports and short-lived storage, and paid Creator and Business tiers. Paying monthly costs roughly twice what paying for a year up front does — around $29 a month against about $14.50 a month on the annual plan for Creator, with Business higher again. Check their pricing page before you decide; cloud tools change tiers often.`,
+	},
+	{
+		q: "What are credits and why do they matter?",
+		a: "Cloud clip tools meter you, because every minute you upload costs them compute. Credits or upload minutes are that meter. It means the cost of a busy month is not the number on the pricing page, and a back catalogue you want to work through all at once is exactly the case the meter punishes. Soft Clipper has no meter: the limit is how fast your own PC encodes video.",
+	},
+	{
+		q: "Does my video get uploaded?",
+		a: "To Vizard, yes — that is how a cloud tool works, and there is nothing sinister about it. With Soft Clipper the video file never leaves your machine. Audio goes out for transcription if you use a cloud AI key, and even that stops if you switch on local transcription.",
+	},
+	{
+		q: "Which one should a team pick?",
+		a: "Vizard, in most cases. It has shared workspaces, brand kits and per-seat billing built for exactly that. Soft Clipper is one licence per machine — fine for an agency that buys one per editor, but there is no shared library and no review flow.",
+	},
+];
+
+const rows = [
+	{ f: "Price", a: `${PRICE.display} one-time`, b: "Monthly or annual subscription" },
+	{ f: "Upload or render limits", a: "None — your PC is the limit", b: "Credit / minute allowance per month" },
+	{ f: "Where rendering happens", a: "Your PC", b: "Their servers" },
+	{ f: "Your video leaves your machine", a: "No — audio only, and optional", b: "Yes, the whole file" },
+	{ f: "Works offline", a: "Cutting, reframing and export, yes", b: "No" },
+	{ f: "Watermark", a: "Never — there is no free tier", b: "On the free tier" },
+	{ f: "Export quality on the free tier", a: "n/a", b: "Reduced" },
+	{ f: "Speaker-tracking reframe", a: "Yes", b: "Yes" },
+	{ f: "Burned-in captions", a: "Yes, six styles", b: "Yes" },
+	{ f: "Aspect ratios", a: PRODUCT.ratios, b: "Vertical, square, landscape" },
+	{ f: "Team workspaces and brand kits", a: "No", b: "Yes" },
+	{ f: "Publish straight to social accounts", a: "No", b: "Yes" },
+	{ f: "Works from a phone or tablet", a: "No", b: "Yes, in a browser" },
+	{ f: "Platform", a: PRODUCT.platform, b: "Any browser" },
+	{ f: "Keeps working if the company stops trading", a: "Yes — it is on your disk", b: "No" },
+];
+---
+
+<Page
+	title="Soft Clipper vs Vizard"
+	heading="Soft Clipper as a Vizard alternative"
+	description={`An honest comparison of a one-time desktop clip tool and a metered cloud one. Credits, uploads, offline use and what each costs over two years. Pricing checked ${CHECKED}.`}
+	intro="Vizard is a good cloud tool. The question is not whether it works — it does — but whether renting video processing by the minute is the right shape for what you are doing."
+	eyebrow="Comparison"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section class="pt-0">
+		<div class="wrap">
+			<p class="answer">
+				<strong>Short answer:</strong> if you work in a team, post from a phone, or want
+				publishing built in, use Vizard. If you are one person with a back catalogue and a
+				computer that already renders video, Soft Clipper costs {PRICE.display} once and
+				never counts your minutes.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<h2>Side by side</h2>
+			<p class="lead">
+				Checked {CHECKED} against Vizard's published material. Cloud tiers change often —
+				treat the pricing line as a shape, not a quote, and read theirs before you buy.
+			</p>
+			<div class="table-scroll mt-lg">
+				<table>
+					<thead>
+						<tr><th>&nbsp;</th><th>Soft Clipper</th><th>Vizard</th></tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((r) => (
+								<tr>
+									<td><strong>{r.f}</strong></td>
+									<td>{r.a}</td>
+									<td>{r.b}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card">
+					<h2>Where Vizard wins</h2>
+					<ul class="checks">
+						<li><strong>It runs anywhere there is a browser</strong> — including a Mac, a Chromebook and a phone. Soft Clipper needs {PRODUCT.platform}.</li>
+						<li><strong>Teams.</strong> Shared workspaces, brand kits and per-seat billing are built in.</li>
+						<li><strong>It posts for you.</strong> Connect the accounts and publish from the same screen.</li>
+						<li><strong>No hardware requirement.</strong> Rendering happens on their machines, so a slow laptop does not slow you down.</li>
+						<li><strong>Nothing to install</strong> and nothing to update.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h2>Where Soft Clipper wins</h2>
+					<ul class="checks">
+						<li><strong>{PRICE.display} once.</strong> No renewal, no card on file, no price rise next year.</li>
+						<li><strong>No credits.</strong> Clip a hundred episodes in a weekend if you like — nothing counts them.</li>
+						<li><strong>Your video stays on your disk.</strong> Only audio leaves, and only if you let it.</li>
+						<li><strong>No upload wait.</strong> A two-hour recording does not have to travel anywhere first.</li>
+						<li><strong>It still works</strong> if the internet is down, or if we stop trading.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>The number that actually decides it</h2>
+			</div>
+			<p class="lead">
+				A subscription is not expensive because of its monthly price; it is expensive because
+				it does not stop. At around ${PRICE.competitorMonthly} a month, two years of a cloud
+				clip tool is roughly ${PRICE.competitorMonthly * 24} — against {PRICE.display} once.
+				That gap is the whole argument, and it only matters if you are still clipping in two
+				years. If this is a one-off project, a month of Vizard is cheaper than either.
+			</p>
+			<p class="mt-lg">
+				<a href="/compare/one-time-vs-subscription/">See the full two-year cost comparison →</a>
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>The upload is not just a privacy question</h2>
+			</div>
+			<p class="lead">
+				Sending a two-hour recording to a server is a real cost even when you trust the
+				server completely: it is your upstream bandwidth, and it is time you sit and wait.
+				On a domestic connection a 4 GB file is a coffee break before any work starts. Soft
+				Clipper reads the file where it already is. That is not a privacy feature, it is a
+				speed one — the privacy is a side effect.
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<Faq items={faqs} />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+	.card h2 {
+		font-size: 1.2rem;
+		margin-bottom: 14px;
+	}
+</style>

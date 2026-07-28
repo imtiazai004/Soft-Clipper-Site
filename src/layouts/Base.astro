@@ -71,13 +71,49 @@ const baseSchema = [
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		{/*
+		  The theme, decided before anything is painted.
+
+		  This has to be inline, in the head, and ahead of the stylesheet. A
+		  deferred or bundled script runs after the first paint, which means a
+		  dark-theme visitor gets a white flash on every single page load — the
+		  one bug that makes a theme switcher feel broken.
+
+		  is:inline also keeps it out of Astro's bundle, so the site still ships
+		  no JavaScript file. This and the toggle in the nav are the only script
+		  on the site, and together they are under a kilobyte.
+
+		  No stored choice means follow the operating system, which is the right
+		  default: someone who has set their machine to dark has already told us.
+		*/}
+		<script is:inline>
+			(function () {
+				var theme = "light";
+				try {
+					var saved = localStorage.getItem("theme");
+					theme =
+						saved === "dark" || saved === "light"
+							? saved
+							: window.matchMedia("(prefers-color-scheme: dark)").matches
+								? "dark"
+								: "light";
+				} catch (e) {
+					/* Private mode can throw on localStorage. Light is the fallback. */
+				}
+				document.documentElement.dataset.theme = theme;
+			})();
+		</script>
+
 		<title>{fullTitle}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		{!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
 
-		<meta name="theme-color" content="#ffffff" />
+		{/* Kept in step with the theme by the toggle, so the browser's own chrome
+		    on mobile matches the page instead of staying white. */}
+		<meta id="theme-color" name="theme-color" content="#ffffff" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
