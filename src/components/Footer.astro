@@ -188,15 +188,20 @@ const year = new Date().getFullYear();
 	   column. That is what made the footer 1,500px of stacked links. */
 	.cols {
 		display: grid;
-		grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr));
-		gap: 30px 26px;
+		grid-template-columns: minmax(0, 1.35fr) repeat(4, minmax(0, 1fr));
+		gap: 36px 34px;
 	}
 
+	/* One rule, between who we are and where to go. Four rules between four
+	   columns would read as a table; none at all let the whole block run
+	   together, which is what it was doing. */
 	.about {
 		display: grid;
-		gap: 8px;
+		gap: 10px;
 		align-content: start;
-		max-width: 30ch;
+		max-width: 32ch;
+		padding-right: 34px;
+		border-right: 1px solid var(--border);
 	}
 	/* The same mark as the nav, so the page closes with the thing it opened
 	   with. */
@@ -280,7 +285,7 @@ const year = new Date().getFullYear();
 	ul {
 		list-style: none;
 		display: grid;
-		gap: 7px;
+		gap: 11px;
 	}
 	ul a {
 		display: inline-block;
@@ -297,8 +302,8 @@ const year = new Date().getFullYear();
 
 	/* Copyright left, legal right, one line — where everyone looks for them. */
 	.base {
-		margin-top: 36px;
-		padding-top: 18px;
+		margin-top: 46px;
+		padding-top: 22px;
 		border-top: 1px solid var(--border);
 		position: relative;
 		display: flex;
@@ -341,22 +346,31 @@ const year = new Date().getFullYear();
 		opacity: 0.45;
 	}
 
+	/* Small print, and it should look like small print rather than a fourth
+	   paragraph competing with the rest. */
 	.disclaimer {
-		margin-top: 14px;
-		font-size: 0.76rem;
-		line-height: 1.5;
+		margin-top: 22px;
+		font-size: 0.75rem;
+		line-height: 1.6;
 		color: var(--dim);
-		max-width: 92ch;
+		max-width: 76ch;
+		opacity: 0.85;
 	}
 
 	@media (max-width: 900px) {
 		.cols {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 26px 20px;
+			gap: 30px 22px;
 		}
+		/* Full width, so the rule that separated it from the columns has nothing
+		   left to separate. */
 		.about {
 			grid-column: 1 / -1;
 			max-width: none;
+			padding-right: 0;
+			padding-bottom: 26px;
+			border-right: 0;
+			border-bottom: 1px solid var(--border);
 		}
 	}
 

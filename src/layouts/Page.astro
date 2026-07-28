@@ -44,7 +44,14 @@ const {
 	<section class="head">
 		<div class={narrow ? "wrap wrap-narrow" : "wrap"}>
 			{eyebrow && <span class="eyebrow">{eyebrow}</span>}
-			<h1>{heading ?? title}</h1>
+			{/*
+			  The same gradient the home page's headline uses. Every page's H1
+			  should be the same colour statement — one treatment across the site
+			  rather than a gradient on the front page and flat ink everywhere
+			  else. It is only the H1: the gradient is a signature, and a signature
+			  on every line is a pattern.
+			*/}
+			<h1 class="gradient-text">{heading ?? title}</h1>
 			{intro && <p class="lead">{intro}</p>}
 		</div>
 	</section>
