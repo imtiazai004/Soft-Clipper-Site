@@ -1,6 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 import Faq from "../../components/Faq.astro";
+import FramingModes from "../../components/FramingModes.astro";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
 
 const crumbs = [
@@ -64,7 +65,13 @@ const modes = [
 	<section class="pt-0">
 		<div class="wrap">
 			<h2>Four framing modes</h2>
-			<p class="lead">Pick per clip, or set one for the whole batch.</p>
+			<p class="lead">
+				Pick per clip, or set one for the whole batch. This is a real frame from a
+				two-person podcast — switch modes and watch what each one keeps.
+			</p>
+			<div class="mt-lg">
+				<FramingModes />
+			</div>
 			<div class="table-scroll mt-lg">
 				<table>
 					<thead>

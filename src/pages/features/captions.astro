@@ -1,6 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 import Faq from "../../components/Faq.astro";
+import CaptionStyles from "../../components/CaptionStyles.astro";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
 
 const crumbs = [
@@ -48,7 +49,16 @@ const faqs: FaqItem[] = [
 >
 	<section class="pt-0">
 		<div class="wrap">
-			<div class="grid grid-2">
+			<h2>Six styles, on a real frame</h2>
+			<p class="lead">
+				Every colour here is the one the app burns into your clip. Click through and
+				judge them against footage rather than against a swatch.
+			</p>
+			<div class="mt-lg">
+				<CaptionStyles />
+			</div>
+
+			<div class="grid grid-2 mt-lg">
 				<div class="card">
 					<div class="ico">⏱️</div>
 					<h3>Timed to the words</h3>
