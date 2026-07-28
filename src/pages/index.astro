@@ -66,26 +66,34 @@ const schema = [
 ---
 
 <Base title={SITE.name} description={SITE.description} schema={schema}>
+	{/*
+	  The headline sets it up, the loop shows it, and only then does it ask for
+	  anything. Someone who has just watched an episode go in and three captioned
+	  clips come out is being asked to buy something they have already seen work.
+	*/}
 	<section class="hero">
 		<div class="wrap center">
-			<span class="pill accent">One-time {PRICE.display} · no subscription</span>
 			<h1 class="gradient-text">Turn long videos into viral vertical clips</h1>
 			<p class="lead">
 				Soft Clipper is a Windows app that reads your long video, finds the moments worth
 				posting, and cuts them into 9:16 clips with captions — in the time it takes to make
 				coffee.
 			</p>
-			<div class="btn-row center-row">
-				<a class="btn btn-primary" href="/pricing/">Get Soft Clipper — {PRICE.display}</a>
-				<a class="btn btn-ghost" href="/features/">See how it works</a>
-			</div>
-			<p class="small muted">{PRODUCT.platform} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
 		</div>
 
 		<div class="wrap shot-wrap">
 			<HeroVideo caption="A long video going in, and the clips Soft Clipper made from it coming out">
 				<PipelineHero />
 			</HeroVideo>
+		</div>
+
+		<div class="wrap center ask">
+			<div class="btn-row center-row">
+				<a class="btn btn-primary" href="/pricing/">Get Soft Clipper — {PRICE.display}</a>
+				<a class="btn btn-ghost" href="/features/">See how it works</a>
+			</div>
+			<p class="small muted">{PRODUCT.platform} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
+			<span class="pill accent">One-time {PRICE.display} · no subscription</span>
 		</div>
 	</section>
 
@@ -313,15 +321,28 @@ const schema = [
 		padding-top: clamp(40px, 7vw, 76px);
 		padding-bottom: 24px;
 	}
+	/* No pill above it any more, so the headline is the first thing on the page
+	   and carries its own top spacing. */
 	.hero h1 {
-		margin-block: 18px 20px;
+		margin-bottom: 20px;
 	}
-	.center-row {
-		justify-content: center;
-		margin-block: 30px 16px;
+	.hero .lead {
+		margin-inline: auto;
 	}
 
 	.shot-wrap {
-		margin-top: clamp(36px, 6vw, 60px);
+		margin-top: clamp(30px, 5vw, 48px);
+	}
+
+	/* The ask, under the demo. */
+	.ask {
+		display: grid;
+		justify-items: center;
+		gap: 14px;
+		margin-top: clamp(26px, 4vw, 40px);
+	}
+	.center-row {
+		justify-content: center;
+		margin: 0;
 	}
 </style>
