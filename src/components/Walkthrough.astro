@@ -58,7 +58,7 @@ const stages = [
 						</header>
 
 						{s.shot ? (
-							<img src={s.shot} alt={s.title} loading="lazy" decoding="async" />
+							<img src={s.shot} alt={s.title} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
 						) : (
 							<div class={`mock m${i + 1}`}>
 								{i === 0 && (
@@ -165,6 +165,9 @@ const stages = [
 		display: block;
 		width: 100%;
 		height: auto;
+		max-height: 62vh;
+		object-fit: contain;
+		background: #08071a;
 	}
 
 	.say {
