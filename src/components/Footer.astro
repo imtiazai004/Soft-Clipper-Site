@@ -1,8 +1,13 @@
 ---
 import { SITE, PRICE } from "../consts";
 
-// The footer is also the site's internal-linking backbone: every important page
-// is reachable from every page, which is how crawlers find the deeper ones.
+/*
+ * The footer is the site's internal-linking backbone — every important page is
+ * reachable from every page, which is how crawlers find the deeper ones — but a
+ * backbone is not a sitemap. Five columns of everything reads as a dumped
+ * directory, so the legal pages live in the bottom bar where people look for
+ * them anyway, and what is left fits four tight columns beside the brand.
+ */
 const columns = [
 	{
 		title: "Product",
@@ -23,15 +28,17 @@ const columns = [
 			{ href: "/use-cases/youtubers/", label: "YouTubers" },
 			{ href: "/use-cases/coaches/", label: "Coaches & creators" },
 			{ href: "/use-cases/agencies/", label: "Agencies" },
+			{ href: "/blog/", label: "Blog" },
+			{ href: "/about/", label: "About" },
 		],
 	},
 	{
 		title: "Compare",
 		links: [
-			{ href: "/compare/opus-clip-alternative/", label: "Opus Clip alternative" },
-			{ href: "/compare/klap-alternative/", label: "Klap alternative" },
-			{ href: "/compare/vizard-alternative/", label: "Vizard alternative" },
-			{ href: "/compare/capcut-alternative/", label: "CapCut alternative" },
+			{ href: "/compare/opus-clip-alternative/", label: "vs Opus Clip" },
+			{ href: "/compare/klap-alternative/", label: "vs Klap" },
+			{ href: "/compare/vizard-alternative/", label: "vs Vizard" },
+			{ href: "/compare/capcut-alternative/", label: "vs CapCut" },
 			{ href: "/compare/one-time-vs-subscription/", label: "One-time vs subscription" },
 		],
 	},
@@ -46,16 +53,12 @@ const columns = [
 			{ href: "/contact/", label: "Contact" },
 		],
 	},
-	{
-		title: "Company",
-		links: [
-			{ href: "/about/", label: "About" },
-			{ href: "/blog/", label: "Blog" },
-			{ href: "/legal/privacy/", label: "Privacy policy" },
-			{ href: "/legal/terms/", label: "Terms" },
-			{ href: "/legal/refund/", label: "Refund policy" },
-		],
-	},
+];
+
+const legal = [
+	{ href: "/legal/privacy/", label: "Privacy" },
+	{ href: "/legal/terms/", label: "Terms" },
+	{ href: "/legal/refund/", label: "Refunds" },
 ];
 
 const year = new Date().getFullYear();
@@ -66,11 +69,11 @@ const year = new Date().getFullYear();
 		<div class="cols">
 			<div class="about">
 				<span class="brand">{SITE.name}</span>
-				<p class="small muted">
-					A Windows desktop app that turns long videos into ready-to-post vertical clips.
-					Pay once, use forever.
+				<p class="blurb">
+					A Windows app that turns long videos into ready-to-post vertical clips. Pay once,
+					use forever.
 				</p>
-				<p class="small muted contact-lines">
+				<p class="contact">
 					<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
 					<a href={SITE.waLink} target="_blank" rel="noopener">WhatsApp {SITE.phone}</a>
 				</p>
@@ -92,13 +95,22 @@ const year = new Date().getFullYear();
 			}
 		</div>
 
-		<div class="base small muted">
-			<p>&copy; {year} {SITE.company}. Registered in the {SITE.companyCountry}.</p>
-			<p>
-				Soft Clipper is not affiliated with TikTok, YouTube, Instagram, Opus Clip or Klap.
-				Process only video you own or have the right to use.
+		<div class="base">
+			<p class="legalline">
+				&copy; {year} {SITE.company}
+				<span class="sep" aria-hidden="true">·</span>
+				<span>Registered in the {SITE.companyCountry}</span>
 			</p>
+			<nav class="legal" aria-label="Legal">
+				{legal.map((l) => <a href={l.href}>{l.label}</a>)}
+			</nav>
 		</div>
+
+		<p class="disclaimer">
+			Soft Clipper is an independent product and is not affiliated with, endorsed by or
+			connected to TikTok, YouTube, Instagram or any of the tools it is compared with.
+			Process only video you own or have the right to use.
+		</p>
 	</div>
 </footer>
 
@@ -106,61 +118,126 @@ const year = new Date().getFullYear();
 	footer {
 		border-top: 1px solid var(--border);
 		margin-top: 40px;
-		padding-block: 56px 32px;
+		padding-block: 48px 26px;
 		background: linear-gradient(180deg, transparent, rgba(109, 63, 224, 0.04));
 	}
 
+	/* A fixed number of tracks, on purpose.
+	   This was `1.4fr repeat(auto-fit, minmax(150px, 1fr))`, which is invalid —
+	   repeat(auto-fit) cannot sit in a track list that also has an fr elsewhere —
+	   so the whole declaration was dropped and every browser fell back to one
+	   column. That is what made the footer 1,500px of stacked links. */
 	.cols {
 		display: grid;
-		grid-template-columns: 1.4fr repeat(auto-fit, minmax(150px, 1fr));
-		gap: 32px 24px;
+		grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr));
+		gap: 30px 26px;
 	}
 
 	.about {
-		max-width: 34ch;
 		display: grid;
-		gap: 10px;
+		gap: 8px;
 		align-content: start;
+		max-width: 30ch;
 	}
 	.brand {
 		font-weight: 800;
 		letter-spacing: -0.02em;
-		font-size: 1.05rem;
+		font-size: 1.02rem;
 	}
-	.contact-lines {
+	.blurb {
+		font-size: 0.855rem;
+		line-height: 1.55;
+		color: var(--muted);
+	}
+	.contact {
 		display: grid;
-		gap: 4px;
+		gap: 3px;
 		justify-items: start;
+		font-size: 0.855rem;
+	}
+	.contact a {
+		color: var(--muted);
+		text-decoration: none;
+	}
+	.contact a:hover {
+		color: var(--text);
 	}
 
 	h2 {
-		font-size: 0.76rem;
-		letter-spacing: 0.14em;
+		font-size: 0.7rem;
+		letter-spacing: 0.13em;
 		text-transform: uppercase;
 		color: var(--dim);
 		font-weight: 700;
-		margin-bottom: 12px;
+		margin-bottom: 11px;
 	}
 
 	ul {
 		list-style: none;
 		display: grid;
-		gap: 9px;
+		gap: 7px;
 	}
 	ul a {
 		color: var(--muted);
 		text-decoration: none;
-		font-size: 0.9rem;
+		font-size: 0.865rem;
+		line-height: 1.4;
 	}
 	ul a:hover {
 		color: var(--text);
 	}
 
+	/* Copyright left, legal right, one line — where everyone looks for them. */
 	.base {
-		margin-top: 40px;
-		padding-top: 22px;
+		margin-top: 34px;
+		padding-top: 18px;
 		border-top: 1px solid var(--border);
-		display: grid;
-		gap: 6px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px 20px;
+		font-size: 0.83rem;
+		color: var(--muted);
+	}
+	.sep {
+		margin-inline: 7px;
+		opacity: 0.5;
+	}
+	.legal {
+		display: flex;
+		gap: 18px;
+	}
+	.legal a {
+		color: var(--muted);
+		text-decoration: none;
+	}
+	.legal a:hover {
+		color: var(--text);
+	}
+
+	.disclaimer {
+		margin-top: 14px;
+		font-size: 0.76rem;
+		line-height: 1.5;
+		color: var(--dim);
+		max-width: 92ch;
+	}
+
+	@media (max-width: 900px) {
+		.cols {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 26px 20px;
+		}
+		.about {
+			grid-column: 1 / -1;
+			max-width: none;
+		}
+	}
+
+	@media (max-width: 460px) {
+		.base {
+			justify-content: flex-start;
+		}
 	}
 </style>
