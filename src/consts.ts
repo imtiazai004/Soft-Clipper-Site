@@ -1,17 +1,19 @@
 /**
  * Every fact the site repeats lives here once.
  *
- * The domain is a placeholder until the real one is bought — change `origin`
- * and canonicals, the sitemap, Open Graph tags and all JSON-LD follow. Same for
- * the price: it appears on the pricing page, in the schema markup, in the FAQ
- * answers and in the comparison tables, and a mismatch between those is the
- * kind of thing that gets a Stripe account questioned.
+ * `origin` is the one place the domain is written. Canonicals, the sitemap,
+ * Open Graph tags and all JSON-LD follow from it. Same for the price: it appears
+ * on the pricing page, in the schema markup, in the FAQ answers and in the
+ * comparison tables, and a mismatch between those is the kind of thing that gets
+ * a Stripe account questioned.
  */
 
 export const SITE = {
 	name: "Soft Clipper",
-	// TODO: replace with the real domain once purchased (no trailing slash).
-	origin: "https://softclipper.com",
+	// The marketing site. The app itself and the licence API live on a different
+	// host — see LICENCE_SERVER in the desktop app's core/licence.py — because
+	// this is static hosting and those need a server.
+	origin: "https://softclipper.pro",
 	tagline: "Turn long videos into viral vertical clips",
 	description:
 		"Soft Clipper is a Windows desktop app that finds the best moments in a long video and cuts ready-to-post vertical clips for TikTok, Reels and Shorts — with AI captions and automatic 9:16 reframing. One-time payment, no subscription.",
