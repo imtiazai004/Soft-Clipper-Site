@@ -1,0 +1,306 @@
+---
+/**
+ * The product in one movement: a long video goes in on the left, passes
+ * through the box, and comes out on the right as clips.
+ *
+ * The clips are real. They are frames from videos this app actually cut —
+ * speaker framed, caption burned in — which is the part a competitor cannot
+ * fake without building the tool first. Everything else here is CSS, so the
+ * whole hero costs a few kilobytes and stays sharp on any screen.
+ */
+import fs from "node:fs";
+import path from "node:path";
+
+const shots = ["clip-1.jpg", "clip-2.jpg", "clip-3.jpg"].filter((f) =>
+	fs.existsSync(path.resolve("public/shots", f)),
+);
+const scores = [92, 87, 81];
+---
+
+<div class="rail stage" role="img" aria-label="A long video passing through Soft Clipper and coming out as three vertical clips with captions">
+	<!-- IN -->
+	<div class="zone source">
+		<div class="wide">
+			<div class="face"></div>
+			<div class="crop"></div>
+		</div>
+		<div class="meta mono">
+			<span>podcast-42.mp4</span>
+			<span class="dim">48:12 · 16:9</span>
+		</div>
+	</div>
+
+	<div class="arrow a1" aria-hidden="true"></div>
+
+	<!-- THE MACHINE -->
+	<div class="zone machine">
+		<div class="box">
+			<span class="placeholder">Paste a YouTube link</span>
+			<span class="go"></span>
+			<div class="scan"></div>
+		</div>
+		<span class="or small">or drop a video file</span>
+	</div>
+
+	<div class="arrow a2" aria-hidden="true"></div>
+
+	<!-- OUT -->
+	<div class="zone out">
+		<div class="clips">
+			{
+				shots.map((file, i) => (
+					<figure class={`clip c${i + 1}`}>
+						<img src={`/shots/${file}`} alt="" width="320" height="569" loading="eager" decoding="async" />
+						<figcaption class="score mono">{scores[i]}</figcaption>
+					</figure>
+				))
+			}
+			{
+				shots.length === 0 &&
+					[0, 1, 2].map((i) => (
+						<figure class={`clip c${i + 1} empty`}>
+							<figcaption class="score mono">{scores[i]}</figcaption>
+						</figure>
+					))
+			}
+		</div>
+		<span class="meta mono dim">3 clips · 9:16 · captions burned in</span>
+	</div>
+</div>
+
+<style>
+	.rail {
+		display: grid;
+		grid-template-columns: auto 28px auto 28px minmax(0, 1fr);
+		align-items: center;
+		gap: clamp(10px, 2vw, 22px);
+		padding: clamp(22px, 3.5vw, 38px);
+		overflow: hidden;
+	}
+
+	.zone {
+		display: grid;
+		gap: 10px;
+		justify-items: center;
+	}
+
+	.meta {
+		display: grid;
+		justify-items: center;
+		font-size: 0.66rem;
+		letter-spacing: 0.06em;
+		color: var(--stage-muted);
+	}
+	.dim {
+		opacity: 0.65;
+	}
+
+	/* ── in ──────────────────────────────────────────────────────────────── */
+
+	.wide {
+		position: relative;
+		width: clamp(130px, 15vw, 190px);
+		aspect-ratio: 16 / 9;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		background:
+			radial-gradient(55% 80% at 38% 55%, rgba(139, 92, 246, 0.45), transparent 70%),
+			linear-gradient(150deg, #1d1846, #0a0a18);
+		animation: feed 8s ease-in-out infinite;
+	}
+	.face {
+		position: absolute;
+		top: 30%;
+		left: 30%;
+		width: 20%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: radial-gradient(circle at 50% 35%, rgba(196, 181, 253, 0.95), rgba(99, 102, 241, 0.2));
+	}
+	.crop {
+		position: absolute;
+		inset: 6% 55% 6% 22%;
+		border: 2px solid var(--cyan-bright);
+		border-radius: 5px;
+	}
+
+	/* The source shrinks into the box, then reappears for the next pass. */
+	@keyframes feed {
+		0%, 6% { transform: translateX(-14px) scale(1); opacity: 0; }
+		14%, 26% { transform: translateX(0) scale(1); opacity: 1; }
+		38% { transform: translateX(34px) scale(0.55); opacity: 0; }
+		39%, 100% { transform: translateX(-14px) scale(1); opacity: 0; }
+	}
+
+	/* ── the machine ─────────────────────────────────────────────────────── */
+
+	.box {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 11px 12px;
+		width: clamp(150px, 17vw, 205px);
+		border-radius: 11px;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		background: rgba(255, 255, 255, 0.05);
+		overflow: hidden;
+		animation: think 8s ease-in-out infinite;
+	}
+	.placeholder {
+		font-size: 0.72rem;
+		color: var(--stage-muted);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.go {
+		margin-left: auto;
+		width: 20px;
+		height: 20px;
+		flex: none;
+		border-radius: 6px;
+		background: var(--grad);
+	}
+	/* The pass of light that says work is happening. */
+	.scan {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), transparent);
+		transform: translateX(-100%);
+		animation: scan 8s ease-in-out infinite;
+	}
+	.or {
+		color: var(--stage-muted);
+		font-size: 0.7rem;
+	}
+
+	@keyframes think {
+		0%, 32% { border-color: rgba(255, 255, 255, 0.18); }
+		38%, 52% { border-color: var(--cyan-bright); }
+		58%, 100% { border-color: rgba(255, 255, 255, 0.18); }
+	}
+	@keyframes scan {
+		0%, 34% { transform: translateX(-100%); }
+		52% { transform: translateX(100%); }
+		53%, 100% { transform: translateX(100%); opacity: 0; }
+	}
+
+	/* ── out ─────────────────────────────────────────────────────────────── */
+
+	.clips {
+		display: flex;
+		gap: clamp(8px, 1.4vw, 14px);
+	}
+
+	.clip {
+		position: relative;
+		margin: 0;
+		width: clamp(74px, 8.5vw, 104px);
+		aspect-ratio: 9 / 16;
+		border-radius: 9px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		background: #12102b;
+		box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+		opacity: 0;
+		/* Each clip slides out of the box in turn, 160ms apart. Decelerating,
+		   never bouncing — a bounce turns the whole thing into a toy. */
+		animation: emit 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+	}
+	.c1 { animation-delay: 0s; }
+	.c2 { animation-delay: 0.16s; }
+	.c3 { animation-delay: 0.32s; }
+
+	.clip img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.clip.empty {
+		background: linear-gradient(160deg, #241d4d, #0e0c22);
+	}
+
+	.score {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		padding: 1px 5px;
+		border-radius: 4px;
+		font-size: 0.6rem;
+		font-weight: 700;
+		color: #04212b;
+		background: var(--cyan-bright);
+	}
+
+	@keyframes emit {
+		0%, 44% { opacity: 0; transform: translateX(-26px) scale(0.94); }
+		56%, 88% { opacity: 1; transform: translateX(0) scale(1); }
+		96%, 100% { opacity: 0; transform: translateX(0) scale(1); }
+	}
+
+	/* ── arrows ──────────────────────────────────────────────────────────── */
+
+	.arrow {
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+		position: relative;
+	}
+	.arrow::after {
+		content: "";
+		position: absolute;
+		right: 0;
+		top: -3px;
+		border: 3.5px solid transparent;
+		border-left-color: rgba(255, 255, 255, 0.4);
+	}
+
+	/* ── narrow screens: the rail stands up ──────────────────────────────── */
+
+	@media (max-width: 780px) {
+		.rail {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+		.arrow {
+			width: 1px;
+			height: 22px;
+			justify-self: center;
+			background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+		}
+		.arrow::after {
+			right: -3px;
+			top: auto;
+			bottom: 0;
+			border-left-color: transparent;
+			border-top-color: rgba(255, 255, 255, 0.4);
+		}
+		@keyframes feed {
+			0%, 6% { transform: translateY(-10px); opacity: 0; }
+			14%, 26% { transform: translateY(0); opacity: 1; }
+			38% { transform: translateY(20px) scale(0.6); opacity: 0; }
+			39%, 100% { transform: translateY(-10px); opacity: 0; }
+		}
+		@keyframes emit {
+			0%, 44% { opacity: 0; transform: translateY(-14px) scale(0.94); }
+			56%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+			96%, 100% { opacity: 0; }
+		}
+	}
+
+	/* Reduced motion gets the finished state: video in, clips out, nothing
+	   moving. The layout carries the meaning; the movement only reinforces it. */
+	@media (prefers-reduced-motion: reduce) {
+		.wide, .box, .scan, .clip {
+			animation: none;
+		}
+		.wide, .clip {
+			opacity: 1;
+			transform: none;
+		}
+		.scan {
+			display: none;
+		}
+	}
+</style>
