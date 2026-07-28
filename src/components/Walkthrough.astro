@@ -1,0 +1,320 @@
+---
+/**
+ * The whole app, walked through by scrolling.
+ *
+ * Four stages. Each one's panel sticks while its text is read, then the next
+ * stage scrolls up over it — so the app appears to move through its steps
+ * under the reader's thumb without a single line of JavaScript. Sticky
+ * positioning does all of it, which means it behaves the same in every browser
+ * rather than depending on scroll-timeline support.
+ *
+ * Each stage shows a screenshot of the real app if one has been dropped into
+ * public/shots, and a faithful panel built in HTML if not — so the section is
+ * finished now and improves the moment real screenshots exist.
+ */
+import fs from "node:fs";
+import path from "node:path";
+
+const shot = (name: string) =>
+	fs.existsSync(path.resolve("public/shots", name)) ? `/shots/${name}` : null;
+
+const stages = [
+	{
+		n: "01",
+		title: "Load the video",
+		body: "Paste a link and Soft Clipper fetches it, or drop a file straight in. Nothing is uploaded anywhere — the file stays on your disk and everything after this happens on your machine.",
+		shot: shot("step-1.png") ?? shot("step-1.jpg"),
+	},
+	{
+		n: "02",
+		title: "It reads the whole thing",
+		body: "Captions are reused where they exist, transcribed where they do not — on your PC if you would rather not use a key. Then the moments come back with a score, a hook title and a caption you can post.",
+		shot: shot("step-2.png") ?? shot("step-2.jpg"),
+	},
+	{
+		n: "03",
+		title: "Choose the look, once",
+		body: "Framing mode, caption style, headline, effects. Set them on one clip and push them across the whole batch, so ten clips from one recording look like a set instead of ten separate jobs.",
+		shot: shot("step-3.png") ?? shot("step-3.jpg"),
+	},
+	{
+		n: "04",
+		title: "Render, review, fix",
+		body: "Clips are cut, reframed and captioned in one pass. Anything you do not like can be re-cut by hand or handed back to the AI with an instruction — then it lands in a folder, ready to upload.",
+		shot: shot("step-4.png") ?? shot("step-4.jpg"),
+	},
+];
+---
+
+<div class="walk">
+	{
+		stages.map((s, i) => (
+			<section class="stage-step" style={`--i:${i}`}>
+				<div class="sticky">
+					<div class="panel stage">
+						<header class="chrome">
+							<span class="dot r" /><span class="dot y" /><span class="dot g" />
+							<span class="title mono">Soft Clipper</span>
+						</header>
+
+						{s.shot ? (
+							<img src={s.shot} alt={s.title} loading="lazy" decoding="async" />
+						) : (
+							<div class={`mock m${i + 1}`}>
+								{i === 0 && (
+									<>
+										<div class="field"><span>https://youtube.com/watch?v=…</span><b /></div>
+										<div class="bar"><i /></div>
+										<span class="hint mono">downloading · 64%</span>
+									</>
+								)}
+								{i === 1 && (
+									<ul class="moments">
+										{[92, 87, 81].map((sc) => (
+											<li><span class="sc">{sc}</span><span class="ln w1" /><span class="ln w2" /></li>
+										))}
+									</ul>
+								)}
+								{i === 2 && (
+									<div class="opts">
+										{["Smart", "Fit + blur", "Split", "Game + cam"].map((t, k) => (
+											<span class={`chip ${k === 0 ? "on" : ""}`}>{t}</span>
+										))}
+										{["TikTok Bold", "Yellow Pop", "Neon", "Boxed"].map((t, k) => (
+											<span class={`chip ${k === 1 ? "on" : ""}`}>{t}</span>
+										))}
+									</div>
+								)}
+								{i === 3 && (
+									<ul class="queue mono">
+										<li>clip-01.mp4 <b class="ok">done</b></li>
+										<li>clip-02.mp4 <b class="ok">done</b></li>
+										<li>clip-03.mp4 <b class="go">rendering</b></li>
+										<li class="wait">clip-04.mp4 <b>queued</b></li>
+									</ul>
+								)}
+							</div>
+						)}
+					</div>
+				</div>
+
+				<div class="say">
+					<span class="n mono">{s.n}</span>
+					<h3>{s.title}</h3>
+					<p>{s.body}</p>
+				</div>
+			</section>
+		))
+	}
+</div>
+
+<style>
+	.walk {
+		display: grid;
+		gap: 0;
+	}
+
+	/* Each step is tall enough to be scrolled through while its panel sticks.
+	   The next step then scrolls up over it — that overlap is the whole effect. */
+	.stage-step {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: clamp(24px, 5vw, 56px);
+		align-items: center;
+		padding-block: clamp(40px, 7vw, 80px);
+	}
+
+	.sticky {
+		position: sticky;
+		top: 96px;
+	}
+
+	.panel {
+		border-radius: 16px;
+		overflow: hidden;
+		/* Later panels sit above earlier ones as they scroll up. */
+		box-shadow: 0 24px 60px rgba(10, 8, 30, 0.35);
+	}
+
+	.chrome {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 9px 12px;
+		border-bottom: 1px solid var(--stage-border);
+		background: rgba(255, 255, 255, 0.03);
+	}
+	.dot {
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background: #4b4763;
+	}
+	.dot.r { background: #ff5f57; }
+	.dot.y { background: #febc2e; }
+	.dot.g { background: #28c840; }
+	.chrome .title {
+		margin-left: 8px;
+		font-size: 0.66rem;
+		letter-spacing: 0.1em;
+		color: var(--stage-muted);
+	}
+
+	.panel img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.say {
+		display: grid;
+		gap: 10px;
+		align-content: center;
+	}
+	.n {
+		font-size: 0.72rem;
+		letter-spacing: 0.2em;
+		color: var(--violet);
+	}
+	.say h3 {
+		font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+		letter-spacing: -0.02em;
+	}
+	.say p {
+		color: var(--muted);
+		max-width: 46ch;
+	}
+
+	/* ── the built-in panels, used until real screenshots exist ──────────── */
+
+	.mock {
+		display: grid;
+		gap: 12px;
+		padding: clamp(20px, 3vw, 30px);
+		min-height: 210px;
+		align-content: center;
+	}
+
+	.field {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 11px 12px;
+		border-radius: 10px;
+		border: 1px solid var(--stage-border);
+		background: rgba(255, 255, 255, 0.04);
+		font-size: 0.76rem;
+		color: var(--stage-muted);
+	}
+	.field b {
+		margin-left: auto;
+		width: 20px;
+		height: 20px;
+		border-radius: 6px;
+		background: var(--grad);
+	}
+	.bar {
+		height: 6px;
+		border-radius: 3px;
+		background: rgba(255, 255, 255, 0.08);
+		overflow: hidden;
+	}
+	.bar i {
+		display: block;
+		width: 64%;
+		height: 100%;
+		background: var(--grad);
+	}
+	.hint {
+		font-size: 0.66rem;
+		color: var(--stage-muted);
+	}
+
+	.moments {
+		list-style: none;
+		display: grid;
+		gap: 9px;
+	}
+	.moments li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 10px 12px;
+		border-radius: 10px;
+		border: 1px solid var(--stage-border);
+		background: rgba(255, 255, 255, 0.03);
+	}
+	.sc {
+		flex: none;
+		padding: 1px 7px;
+		border-radius: 5px;
+		font-size: 0.68rem;
+		font-weight: 800;
+		color: #04212b;
+		background: var(--cyan-bright);
+	}
+	.ln {
+		height: 7px;
+		border-radius: 4px;
+		background: rgba(255, 255, 255, 0.16);
+	}
+	.ln.w1 { width: 42%; }
+	.ln.w2 { width: 24%; opacity: 0.6; }
+
+	.opts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px;
+	}
+	.chip {
+		padding: 6px 12px;
+		border-radius: 999px;
+		border: 1px solid var(--stage-border);
+		font-size: 0.74rem;
+		color: var(--stage-muted);
+	}
+	.chip.on {
+		color: #0b0a18;
+		background: var(--cyan-bright);
+		border-color: var(--cyan-bright);
+	}
+
+	.queue {
+		list-style: none;
+		display: grid;
+		gap: 8px;
+		font-size: 0.74rem;
+		color: var(--stage-muted);
+	}
+	.queue li {
+		display: flex;
+		justify-content: space-between;
+		padding: 9px 12px;
+		border-radius: 9px;
+		border: 1px solid var(--stage-border);
+		background: rgba(255, 255, 255, 0.03);
+	}
+	.queue b { font-weight: 700; }
+	.ok { color: #34d399; }
+	.go { color: var(--cyan-bright); }
+	.queue .wait { opacity: 0.55; }
+
+	/* ── narrow screens ──────────────────────────────────────────────────── */
+
+	@media (max-width: 860px) {
+		.stage-step {
+			grid-template-columns: 1fr;
+			gap: 20px;
+			padding-block: 28px;
+		}
+		/* Sticking a panel on a phone leaves the text with nowhere to go, so
+		   the steps simply stack and read top to bottom. */
+		.sticky {
+			position: static;
+		}
+		.say {
+			order: -1;
+		}
+	}
+</style>

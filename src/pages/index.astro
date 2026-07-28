@@ -4,6 +4,7 @@ import Faq from "../components/Faq.astro";
 import CtaBand from "../components/CtaBand.astro";
 import HeroVideo from "../components/HeroVideo.astro";
 import PipelineHero from "../components/PipelineHero.astro";
+import Walkthrough from "../components/Walkthrough.astro";
 import CaptionStyles from "../components/CaptionStyles.astro";
 import FramingModes from "../components/FramingModes.astro";
 import { SITE, PRICE, PRODUCT } from "../consts";
@@ -133,18 +134,13 @@ const schema = [
 		<div class="wrap">
 			<div class="section-head">
 				<span class="eyebrow">How it works</span>
-				<h2>Three steps, start to finish</h2>
+				<h2>Scroll through the whole app</h2>
+				<p class="lead">
+					Four steps from a link to a folder of finished clips. Everything after the first
+					one happens on your own machine.
+				</p>
 			</div>
-			<ol class="steps">
-				{
-					steps.map((s) => (
-						<li>
-							<h3>{s.name}</h3>
-							<p>{s.text}</p>
-						</li>
-					))
-				}
-			</ol>
+			<Walkthrough />
 			<p class="mt-lg">
 				<a href="/help/install/">Read the full install and first-run guide →</a>
 			</p>
