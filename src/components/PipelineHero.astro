@@ -11,22 +11,27 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const shots = ["clip-1.jpg", "clip-2.jpg", "clip-3.jpg"].filter((f) =>
-	fs.existsSync(path.resolve("public/shots", f)),
-);
+const has = (f: string) => fs.existsSync(path.resolve("public/shots", f));
+const shots = ["clip-1.jpg", "clip-2.jpg", "clip-3.jpg"].filter(has);
 const scores = [92, 87, 81];
+
+// The actual episode the three clips were cut from. Showing it closes the
+// loop: this long video went in, and those short ones came out. Without it the
+// left-hand box is a diagram and the viewer has to take the connection on
+// trust.
+const source = has("source.jpg") ? "/shots/source.jpg" : null;
 ---
 
 <div class="rail stage" role="img" aria-label="A long video passing through Soft Clipper and coming out as three vertical clips with captions">
 	<!-- IN -->
 	<div class="zone source">
 		<div class="wide">
-			<div class="face"></div>
+			{source ? <img src={source} alt="" width="440" height="248" loading="eager" decoding="async" /> : <div class="face" />}
 			<div class="crop"></div>
 		</div>
 		<div class="meta mono">
-			<span>podcast-42.mp4</span>
-			<span class="dim">48:12 · 16:9</span>
+			<span>the-full-episode.mp4</span>
+			<span class="dim">1:04:38 · 16:9</span>
 		</div>
 	</div>
 
@@ -99,7 +104,7 @@ const scores = [92, 87, 81];
 
 	.wide {
 		position: relative;
-		width: clamp(130px, 15vw, 190px);
+		width: clamp(150px, 17vw, 210px);
 		aspect-ratio: 16 / 9;
 		border-radius: 10px;
 		overflow: hidden;
@@ -108,6 +113,11 @@ const scores = [92, 87, 81];
 			radial-gradient(55% 80% at 38% 55%, rgba(139, 92, 246, 0.45), transparent 70%),
 			linear-gradient(150deg, #1d1846, #0a0a18);
 		animation: feed 8s ease-in-out infinite;
+	}
+	.wide img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 	.face {
 		position: absolute;
@@ -120,9 +130,10 @@ const scores = [92, 87, 81];
 	}
 	.crop {
 		position: absolute;
-		inset: 6% 55% 6% 22%;
+		inset: 5% 56% 5% 20%;
 		border: 2px solid var(--cyan-bright);
-		border-radius: 5px;
+		border-radius: 4px;
+		box-shadow: 0 0 0 100vmax rgba(6, 5, 16, 0.45);
 	}
 
 	/* The source shrinks into the box, then reappears for the next pass. */
