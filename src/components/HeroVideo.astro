@@ -102,9 +102,12 @@ const schema = hasVideo
 
 {/*
   Inside the conditional and marked is:inline so it exists only when a video
-  does. A plain <script> here would be hoisted into the bundle and shipped on
+  does. A plain script tag here would be hoisted into the bundle and shipped on
   every page whether or not there is anything for it to do — which is how a
   site that ships no JavaScript quietly starts shipping some.
+
+  Do not write the tag name in angle brackets in this comment: the compiler
+  reads it as a real element and parses the rest of the file as JavaScript.
 */}
 {
 	hasVideo && (
