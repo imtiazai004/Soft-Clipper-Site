@@ -296,6 +296,40 @@ section {
 	margin-bottom: 12px;
 }
 
+/*
+ * Section headings carry the same gradient as the H1, so the whole site speaks
+ * in one colour rather than a gradient on the front page and flat ink for every
+ * heading under it.
+ *
+ * Scoped to `main` on purpose: the footer's column labels are h2 as well, and
+ * they are 11px micro-caps. A gradient on those would be both illegible and
+ * absurd.
+ *
+ * The threshold that matters is WCAG's "large text" — 18.66px and bold. Above
+ * it a heading needs 3:1 and the palest stop in this gradient gives 3.71:1 on
+ * white; below it the requirement jumps to 4.5:1 and the gradient stops being
+ * usable. So anything smaller has to opt out, which is what `.flat-heading` is
+ * for. h3 and below are left alone entirely.
+ */
+main h2 {
+	background: var(--grad-text);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Headings that are visually labels rather than section titles: the title of a
+   card, the name of a step. Several of these render between 17.6px and 18.4px,
+   under the large-text threshold, and a card title is not structure anyway —
+   the gradient should mark where a page divides, not decorate every box on it. */
+main .card h2,
+main ol.steps h2,
+main h2.flat-heading {
+	background: none;
+	-webkit-text-fill-color: currentColor;
+	color: var(--text);
+}
+
 .eyebrow {
 	display: inline-block;
 	font-family: var(--mono);
