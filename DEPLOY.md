@@ -1,17 +1,35 @@
 # Going live
 
 The site is static: 34 HTML pages, no server, no JavaScript bundle. It is hosted
-on Vercel. The app itself and the licence API are not here — they run on the
-Hetzner box, because those need a server and this does not.
+on **Cloudflare Pages**. The app itself and the licence API are not here — they
+run on the Hetzner box, because those need a server and this does not.
 
 | Hostname | Points at | Serves |
 |---|---|---|
-| `softclipper.pro` | Vercel | This site |
-| `www.softclipper.pro` | Vercel | Redirect to the apex |
+| `softclipper.pro` | Cloudflare Pages | This site |
+| `www.softclipper.pro` | Cloudflare Pages | Redirect to the apex |
 | `app.softclipper.pro` | Hetzner `5.75.178.2` | The web app, the licence API, the Stripe webhook |
 
-The domain is registered at Hostinger. Nothing needs to move: DNS stays there
-and points at both hosts.
+The domain is registered at Hostinger and stays there. Only its **nameservers**
+move to Cloudflare, which costs nothing and is not a transfer. A domain
+registered in the last 60 days cannot be transferred anyway — ICANN forbids it —
+but nothing here needs one.
+
+## Why Cloudflare and not Vercel
+
+Vercel's Hobby plan is for non-commercial use only, and their own definition of
+commercial includes "any method of requesting or processing payment from
+visitors of the site". A $49 checkout is exactly that, so this site on Vercel
+needs the Pro plan at $20 a month — $240 a year, or five sales, for hosting that
+Cloudflare gives away.
+
+Cloudflare Pages' free tier permits commercial use and does not cap bandwidth.
+The things Vercel is genuinely better at — serverless functions, SSR — this site
+does not use: there is no API route here and no server rendering. The licence
+API lives on Hetzner.
+
+`vercel.json` was removed when this was decided. `public/_headers` carries the
+security headers in the format Cloudflare Pages reads.
 
 ## Where the domain is written
 
@@ -23,73 +41,87 @@ origin: "https://softclipper.pro"
 
 `astro.config.mjs` reads it, and canonicals, the sitemap, Open Graph tags and
 every JSON-LD block follow. The desktop app's `LICENCE_SERVER` is separate and
-lives in `core/licence.py` in the other repository, because it points at
-`app.` rather than here.
+lives in `core/licence.py` in the other repository, because it points at `app.`
+rather than here.
 
-## Push to GitHub
+## 1 — Push to GitHub
 
-Vercel deploys from a git host; this repository has no remote yet.
+Cloudflare Pages deploys from a git host; this repository has no remote yet.
 
 ```powershell
+cd "d:\VIBE CODING\Soft Clipper Site"
 gh repo create soft-clipper-site --private --source . --remote origin --push
 ```
 
 Private is deliberate. Nothing here is secret, but a public repository invites
-people to read the comparison pages' source and the unpublished blog drafts
-before they are finished.
+people to read unfinished pages before they are finished.
 
-## Vercel
+## 2 — Move the nameservers to Cloudflare
 
-1. https://vercel.com/new — import the repository
-2. Framework preset: **Astro**. Build command `npm run build`, output `dist`.
-   Vercel detects all three; check them rather than assuming.
-3. Deploy. It will come up on a `*.vercel.app` URL first — check that before
-   touching DNS.
-4. Project → **Settings → Domains** → add `softclipper.pro` and
-   `www.softclipper.pro`.
+1. https://dash.cloudflare.com/ — free account
+2. **Add a site** → `softclipper.pro` → **Free** plan
+3. Cloudflare scans the existing DNS and shows what it found. **Check the list
+   against Hostinger before continuing.** Anything it missed has to be added by
+   hand or it stops working the moment the nameservers change.
+4. It gives two nameservers, like `xxx.ns.cloudflare.com`
+5. Hostinger hPanel → **Domains → DNS / Nameservers → Change nameservers** →
+   paste both
+6. Wait. Usually minutes, sometimes hours. Cloudflare says **Active** when done.
 
-Vercel then shows the exact DNS records to create. **Use the values it shows
-you.** Vercel now issues per-project record values rather than one global pair,
-so a value copied out of a guide may be the old shared one — it still works, but
-there is no reason to use it when the dashboard is telling you the right answer.
+Email for this business is `info@aisofttechsolution.com` — a different domain
+entirely — so no mailbox depends on `softclipper.pro`'s DNS today. If an address
+on this domain is ever set up, its `MX` records have to exist in Cloudflare
+before they are needed.
 
-The shape is an `A` record on the apex and a `CNAME` on `www`. `www` cannot be a
-CNAME *and* the apex at the same time: a CNAME at a zone apex is not allowed,
-because the apex also has to carry `NS` and `MX` records and the DNS
-specification forbids a CNAME sitting alongside anything else.
+## 3 — Cloudflare Pages
 
-## Hostinger DNS
+1. https://dash.cloudflare.com/ → **Workers & Pages → Create → Pages →
+   Connect to Git**
+2. Pick the repository
+3. Build settings:
+   - Framework preset: **Astro**
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+4. Deploy. It comes up on a `*.pages.dev` URL — **check that before touching the
+   custom domain.**
+5. **Custom domains** → add `softclipper.pro` and `www.softclipper.pro`.
+   Because the domain is already on Cloudflare DNS, the records are created for
+   you; there is nothing to copy anywhere.
 
-hPanel → **Domains → DNS / Nameservers → Manage DNS records**. Add what Vercel
-gave you, plus the app:
+The free tier allows 500 builds a month — about sixteen a day. Every push to the
+default branch is one build.
 
-| Type | Name | Value |
-|---|---|---|
-| A | `@` | *(from Vercel)* |
-| CNAME | `www` | *(from Vercel)* |
-| A | `app` | `5.75.178.2` |
+## 4 — The `app` record, and the one setting that will bite
 
-Leave the `MX` records alone. Deleting those is how a business loses its email,
-and `info@aisofttechsolution.com` is the address on every page of this site and
-on every licence email.
+In Cloudflare DNS, add:
 
-## After DNS
+| Type | Name | Value | Proxy |
+|---|---|---|---|
+| A | `app` | `5.75.178.2` | **DNS only — grey cloud** |
+
+**This must be grey, not orange.** Two reasons, and the first one is not a
+preference:
+
+- Cloudflare's proxy caps a request body at **100 MB** on the free plan and
+  returns `413` above it. The web app takes video uploads and Caddy is
+  configured for 5 GB. Proxied, every upload over 100 MB fails.
+- Caddy gets its own certificate from Let's Encrypt for `app.softclipper.pro`.
+  With the orange cloud on, Cloudflare terminates TLS itself and that handshake
+  never reaches Caddy.
+
+The apex and `www` are Pages, so they are handled by Cloudflare either way.
+
+## 5 — Check it
 
 - `https://softclipper.pro` and `https://www.softclipper.pro` both load
-- HTTPS is automatic on both hosts — Vercel provisions its own, Caddy gets one
-  from Let's Encrypt for `app.` the first time it is asked for
-- `https://softclipper.pro/sitemap-index.xml` lists 32 pages, all with the real
-  domain
+- `https://app.softclipper.pro` reaches the web app over HTTPS
+- `https://softclipper.pro/sitemap-index.xml` lists 32 pages on the real domain
 - Submit that sitemap in Google Search Console
 
 ## A note on Strict-Transport-Security
 
-`vercel.json` sets it to two years. Browsers remember it for that long and
-refuse plain HTTP for the domain and every subdomain. That is what you want for
-a site that sells something — and it is not quickly reversible, so it should
-only go live once the domain is definitely staying where it is.
-
-## If Cloudflare is used instead
-
-`public/_headers` carries the same rules in Cloudflare Pages' format. It is
-inert on Vercel, and kept so the choice stays open.
+`public/_headers` sets it to two years, for the domain and every subdomain.
+Browsers remember it for that long and refuse plain HTTP afterwards. That is
+what you want for a site that sells something — and it is not quickly
+reversible, so it should only go live once the domain is definitely staying
+where it is, and once `app.` is definitely serving HTTPS.
