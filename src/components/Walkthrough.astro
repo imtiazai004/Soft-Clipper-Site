@@ -2,15 +2,19 @@
 /**
  * The whole app, walked through by scrolling.
  *
- * Four stages. Each one's panel sticks while its text is read, then the next
- * stage scrolls up over it — so the app appears to move through its steps
- * under the reader's thumb without a single line of JavaScript. Sticky
- * positioning does all of it, which means it behaves the same in every browser
- * rather than depending on scroll-timeline support.
+ * Four stages. Each panel sticks while its text is read, then the next stage
+ * scrolls up over it — and while that happens the panel itself is animated by
+ * the scroll position: it rises in, drifts inside its frame, and settles back
+ * as it leaves. That motion is scroll-driven CSS, not JavaScript, so it tracks
+ * the reader's thumb exactly and costs nothing to ship.
+ *
+ * Browsers without scroll-driven animations get the finished state of every
+ * stage — the section still reads top to bottom, it just does not move. Same
+ * for anyone who has asked the system to reduce motion.
  *
  * Each stage shows a screenshot of the real app if one has been dropped into
- * public/shots, and a faithful panel built in HTML if not — so the section is
- * finished now and improves the moment real screenshots exist.
+ * public/shots, and a faithful panel built in HTML if not, so the section is
+ * finished either way.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -21,26 +25,30 @@ const shot = (name: string) =>
 const stages = [
 	{
 		n: "01",
+		file: "Video source",
 		title: "Load the video",
 		body: "Paste a link and Soft Clipper fetches it, or drop a file straight in. Nothing is uploaded anywhere — the file stays on your disk and everything after this happens on your machine.",
 		shot: shot("step-1.png") ?? shot("step-1.jpg"),
 	},
 	{
 		n: "02",
+		file: "Moments",
 		title: "It reads the whole thing",
-		body: "Captions are reused where they exist, transcribed where they do not — on your PC if you would rather not use a key. Then the moments come back with a score, a hook title and a caption you can post.",
+		body: "Captions are reused where they exist, transcribed where they do not — on your PC if you would rather not use a key. Then the moments come back scored, each with a hook title, the reason it was picked and a caption you can post.",
 		shot: shot("step-2.png") ?? shot("step-2.jpg"),
 	},
 	{
 		n: "03",
+		file: "Clip settings",
 		title: "Choose the look, once",
-		body: "Framing mode, caption style, headline, effects. Set them on one clip and push them across the whole batch, so ten clips from one recording look like a set instead of ten separate jobs.",
+		body: "Aspect ratio, framing mode, caption style, headline. Set them on one clip and push them across the whole batch, so ten clips from one recording look like a set instead of ten separate jobs.",
 		shot: shot("step-3.png") ?? shot("step-3.jpg"),
 	},
 	{
 		n: "04",
+		file: "Generated clips",
 		title: "Render, review, fix",
-		body: "Clips are cut, reframed and captioned in one pass. Anything you do not like can be re-cut by hand or handed back to the AI with an instruction — then it lands in a folder, ready to upload.",
+		body: "Clips are cut, reframed and captioned in one pass. Anything you do not like can be re-cut by hand or handed back to the AI with an instruction — then the whole batch downloads as a ZIP.",
 		shot: shot("step-4.png") ?? shot("step-4.jpg"),
 	},
 ];
@@ -49,59 +57,73 @@ const stages = [
 <div class="walk">
 	{
 		stages.map((s, i) => (
-			<section class="stage-step" style={`--i:${i}`}>
+			<section class="stage-step">
 				<div class="sticky">
-					<div class="panel stage">
-						<header class="chrome">
-							<span class="dot r" /><span class="dot y" /><span class="dot g" />
-							<span class="title mono">Soft Clipper</span>
-						</header>
+					<div class="lift">
+						<div class="panel stage">
+							<header class="chrome">
+								<span class="dot r" /><span class="dot y" /><span class="dot g" />
+								<span class="title mono">Soft Clipper — {s.file}</span>
+							</header>
 
-						{s.shot ? (
-							<img src={s.shot} alt={s.title} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
-						) : (
-							<div class={`mock m${i + 1}`}>
-								{i === 0 && (
-									<>
-										<div class="field"><span>https://youtube.com/watch?v=…</span><b /></div>
-										<div class="bar"><i /></div>
-										<span class="hint mono">downloading · 64%</span>
-									</>
-								)}
-								{i === 1 && (
-									<ul class="moments">
-										{[92, 87, 81].map((sc) => (
-											<li><span class="sc">{sc}</span><span class="ln w1" /><span class="ln w2" /></li>
-										))}
-									</ul>
-								)}
-								{i === 2 && (
-									<div class="opts">
-										{["Smart", "Fit + blur", "Split", "Game + cam"].map((t, k) => (
-											<span class={`chip ${k === 0 ? "on" : ""}`}>{t}</span>
-										))}
-										{["TikTok Bold", "Yellow Pop", "Neon", "Boxed"].map((t, k) => (
-											<span class={`chip ${k === 1 ? "on" : ""}`}>{t}</span>
-										))}
-									</div>
-								)}
-								{i === 3 && (
-									<ul class="queue mono">
-										<li>clip-01.mp4 <b class="ok">done</b></li>
-										<li>clip-02.mp4 <b class="ok">done</b></li>
-										<li>clip-03.mp4 <b class="go">rendering</b></li>
-										<li class="wait">clip-04.mp4 <b>queued</b></li>
-									</ul>
-								)}
-							</div>
-						)}
+							{s.shot ? (
+								<div class="shot">
+									{/* A blurred copy of the same image fills the frame behind the
+									    sharp one, so a tall sidebar and a wide clip list can share
+									    one frame size without either being cropped or stranded on
+									    a flat rectangle. */}
+									<img class="haze" src={s.shot} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+									<img class="real" src={s.shot} alt={s.title} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
+								</div>
+							) : (
+								<div class={`mock m${i + 1}`}>
+									{i === 0 && (
+										<>
+											<div class="field"><span>https://youtube.com/watch?v=…</span><b /></div>
+											<div class="bar"><i /></div>
+											<span class="hint mono">downloading · 64%</span>
+										</>
+									)}
+									{i === 1 && (
+										<ul class="moments">
+											{[92, 87, 81].map((sc) => (
+												<li><span class="sc">{sc}</span><span class="ln w1" /><span class="ln w2" /></li>
+											))}
+										</ul>
+									)}
+									{i === 2 && (
+										<div class="opts">
+											{["Smart", "Fit + blur", "Split", "Game + cam"].map((t, k) => (
+												<span class={`chip ${k === 0 ? "on" : ""}`}>{t}</span>
+											))}
+											{["TikTok Bold", "Yellow Pop", "Neon", "Boxed"].map((t, k) => (
+												<span class={`chip ${k === 1 ? "on" : ""}`}>{t}</span>
+											))}
+										</div>
+									)}
+									{i === 3 && (
+										<ul class="queue mono">
+											<li>clip-01.mp4 <b class="ok">done</b></li>
+											<li>clip-02.mp4 <b class="ok">done</b></li>
+											<li>clip-03.mp4 <b class="go">rendering</b></li>
+											<li class="wait">clip-04.mp4 <b>queued</b></li>
+										</ul>
+									)}
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 
 				<div class="say">
-					<span class="n mono">{s.n}</span>
-					<h3>{s.title}</h3>
-					<p>{s.body}</p>
+					<div class="say-in">
+						<span class="n mono">
+							{s.n}<span class="of">/{String(stages.length).padStart(2, "0")}</span>
+						</span>
+						<h3>{s.title}</h3>
+						<p>{s.body}</p>
+						<span class="rail"><i /></span>
+					</div>
 				</div>
 			</section>
 		))
@@ -114,27 +136,32 @@ const stages = [
 		gap: 0;
 	}
 
-	/* Each step is tall enough to be scrolled through while its panel sticks.
-	   The next step then scrolls up over it — that overlap is the whole effect. */
+	/* The panel takes the wide column: these are screenshots of a desktop app,
+	   and shrinking one into half a page turns its text into grey noise. */
 	.stage-step {
 		position: relative;
 		display: grid;
-		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-		gap: clamp(24px, 5vw, 56px);
-		align-items: center;
-		padding-block: clamp(40px, 7vw, 80px);
+		grid-template-columns: minmax(0, 1fr) minmax(0, 310px);
+		gap: clamp(24px, 4vw, 48px);
+		/* Deliberately not `center`: the panel's column has to be as tall as the
+		   whole step, or there is nowhere for it to stick and the panel simply
+		   scrolls past like any other image. */
+		align-items: stretch;
+		min-height: 94vh;
+		padding-block: clamp(24px, 4vw, 40px);
 	}
 
 	.sticky {
 		position: sticky;
-		top: 96px;
+		top: 88px;
 	}
 
 	.panel {
 		border-radius: 16px;
 		overflow: hidden;
-		/* Later panels sit above earlier ones as they scroll up. */
-		box-shadow: 0 24px 60px rgba(10, 8, 30, 0.35);
+		/* Later panels scroll up over earlier ones — the shadow is what makes
+		   that read as one card passing in front of another. */
+		box-shadow: 0 30px 70px rgba(10, 8, 30, 0.42);
 	}
 
 	.chrome {
@@ -157,36 +184,148 @@ const stages = [
 	.chrome .title {
 		margin-left: 8px;
 		font-size: 0.66rem;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.08em;
 		color: var(--stage-muted);
 	}
 
-	.panel img {
-		display: block;
-		width: 100%;
-		height: auto;
+	/* One frame size for every stage, so the card does not jump between a wide
+	   clip list and a narrow sidebar. */
+	.shot {
+		position: relative;
+		aspect-ratio: 3 / 2;
 		max-height: 62vh;
-		object-fit: contain;
+		overflow: hidden;
 		background: #08071a;
+	}
+	.shot img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+	.haze {
+		object-fit: cover;
+		filter: blur(34px) saturate(1.5);
+		opacity: 0.5;
+		transform: scale(1.25);
+	}
+	.real {
+		object-fit: contain;
 	}
 
 	.say {
 		display: grid;
-		gap: 10px;
 		align-content: center;
 	}
+	.say-in {
+		display: grid;
+		gap: 10px;
+	}
 	.n {
-		font-size: 0.72rem;
+		font-size: 0.74rem;
 		letter-spacing: 0.2em;
 		color: var(--violet);
 	}
+	.of {
+		opacity: 0.45;
+	}
 	.say h3 {
-		font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+		font-size: clamp(1.3rem, 2.4vw, 1.7rem);
 		letter-spacing: -0.02em;
 	}
 	.say p {
 		color: var(--muted);
-		max-width: 46ch;
+	}
+
+	/* Fills as the stage is scrolled, so there is a visible measure of how far
+	   through the step you are. */
+	.rail {
+		display: block;
+		height: 2px;
+		margin-top: 6px;
+		border-radius: 2px;
+		background: var(--border);
+		overflow: hidden;
+	}
+	.rail i {
+		display: block;
+		height: 100%;
+		width: 100%;
+		background: var(--grad);
+		transform-origin: left;
+	}
+
+	/* ── the motion ──────────────────────────────────────────────────────────
+	   Everything above is the finished state. The animations below only exist
+	   where the browser can drive them from scroll position; nothing here is
+	   needed for the section to make sense. */
+
+	@supports (animation-timeline: view()) {
+		@media (prefers-reduced-motion: no-preference) and (min-width: 861px) {
+			.stage-step {
+				view-timeline-name: --step;
+			}
+
+			/* Ranges are all expressed against `cover` — the whole time the
+			   section is anywhere on screen — because these sections are taller
+			   than the viewport, which makes entry/exit ranges behave oddly. */
+			.lift {
+				animation: lift linear both;
+				animation-timeline: --step;
+				animation-range: cover 2% cover 24%;
+			}
+			.panel {
+				animation: settle linear both;
+				animation-timeline: --step;
+				animation-range: cover 74% cover 98%;
+			}
+			.real {
+				animation: drift linear both;
+				animation-timeline: --step;
+				animation-range: cover 0% cover 100%;
+			}
+			.say-in {
+				animation: say linear both;
+				animation-timeline: --step;
+				animation-range: cover 8% cover 30%;
+			}
+			.rail i {
+				animation: fill linear both;
+				animation-timeline: --step;
+				animation-range: cover 14% cover 84%;
+			}
+		}
+	}
+
+	@keyframes lift {
+		from { opacity: 0; transform: translateY(56px) scale(0.94); }
+		to { opacity: 1; transform: none; }
+	}
+
+	/* The outgoing card shrinks a little and dims, so the incoming one reads as
+	   being in front rather than simply overlapping. */
+	@keyframes settle {
+		from { transform: scale(1); filter: none; }
+		to { transform: scale(0.93); filter: brightness(0.62); }
+	}
+
+	/* The screenshot moves inside its frame for the whole pass. This is the part
+	   you actually feel: the app is never static while you scroll. */
+	@keyframes drift {
+		from { transform: translateY(2.5%) scale(1.06); }
+		38%, 62% { transform: none; }
+		to { transform: translateY(-2.5%) scale(1.05); }
+	}
+
+	@keyframes say {
+		from { opacity: 0; transform: translateY(22px); }
+		to { opacity: 1; transform: none; }
+	}
+
+	@keyframes fill {
+		from { transform: scaleX(0); }
+		to { transform: scaleX(1); }
 	}
 
 	/* ── the built-in panels, used until real screenshots exist ──────────── */
@@ -308,16 +447,21 @@ const stages = [
 	@media (max-width: 860px) {
 		.stage-step {
 			grid-template-columns: 1fr;
-			gap: 20px;
-			padding-block: 28px;
+			gap: 18px;
+			min-height: 0;
+			padding-block: 26px;
 		}
-		/* Sticking a panel on a phone leaves the text with nowhere to go, so
-		   the steps simply stack and read top to bottom. */
+		/* Sticking a panel on a phone leaves the text with nowhere to go, so the
+		   steps simply stack and read top to bottom. */
 		.sticky {
 			position: static;
 		}
 		.say {
 			order: -1;
+		}
+		.shot {
+			aspect-ratio: 4 / 3;
+			max-height: none;
 		}
 	}
 </style>
