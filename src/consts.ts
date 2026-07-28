@@ -21,7 +21,11 @@ export const SITE = {
 	// for a real, consistent business identity across the site.
 	company: "Atlantic Ltd Store Limited",
 	companyCountry: "United Kingdom",
-	email: "info@aisofttechsolution.com",
+	// On the same domain the customer buys from, deliberately. A licence key for
+	// something bought on softclipper.pro arriving from an unrelated domain is
+	// what a phishing email looks like, and a buyer who has just paid $49 is
+	// exactly the person primed to think so.
+	email: "info@softclipper.pro",
 	// WhatsApp is the fastest channel for most buyers, so it sits on every page.
 	// `phoneE164` is the dialable form; `waLink` is what wa.me expects (digits only).
 	phone: "+44 7462 086661",
