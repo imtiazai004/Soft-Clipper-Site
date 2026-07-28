@@ -41,6 +41,17 @@ export const PRICE = {
 	display: "$49",
 	/** What a subscription competitor costs per month, for the comparison maths. */
 	competitorMonthly: 29,
+	/**
+	 * The Stripe Payment Link. A hosted checkout page, which is what a static
+	 * site needs: creating a Checkout Session requires a server, and there is no
+	 * server here. Fulfilment does not depend on the browser coming back — the
+	 * licence is minted by the `checkout.session.completed` webhook on the
+	 * licence service, so a customer who closes the tab still gets their key.
+	 *
+	 * Empty until the link is created in the Stripe dashboard. While it is empty
+	 * the buy button does not pretend to work: see PayButton.astro.
+	 */
+	checkoutUrl: "",
 } as const;
 
 export const PRODUCT = {

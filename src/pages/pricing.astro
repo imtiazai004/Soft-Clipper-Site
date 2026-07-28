@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Faq from "../components/Faq.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PayButton from "../components/PayButton.astro";
 import { PRICE, PRODUCT, SITE } from "../consts";
 import { faqSchema, softwareSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
 
@@ -106,7 +107,7 @@ const notIncluded = [
 					</p>
 				</div>
 
-				<a class="btn btn-primary buy" href="/download/" data-checkout>Buy {SITE.name}</a>
+				<PayButton class="buy" label={`Buy ${SITE.name}`} />
 				<p class="small muted center">
 					Secure checkout · Instant licence key by email · 14-day refund
 				</p>

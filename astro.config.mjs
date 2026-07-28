@@ -8,6 +8,9 @@ import { SITE } from "./src/consts";
 const NOINDEX_PATHS = [
 	// The Mac build is not verified yet — see the note at the top of that page.
 	"/help/install-mac/",
+	// Only reachable by paying. In search results it would rank for the brand and
+	// then congratulate a visitor on a purchase they have not made.
+	"/thank-you/",
 ];
 
 // `site` is what makes canonical URLs, the sitemap and JSON-LD point at the real

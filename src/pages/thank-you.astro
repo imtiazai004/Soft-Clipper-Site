@@ -1,0 +1,93 @@
+---
+/**
+ * Where Stripe sends someone after they pay.
+ *
+ * It deliberately promises nothing this page can see. A static page cannot
+ * check whether the payment succeeded, and the licence is minted by the webhook
+ * on the licence server — which runs whether or not the browser ever comes
+ * back here. So this page's job is to set expectations and give a way out if
+ * the email does not arrive, not to pretend it knows anything.
+ *
+ * noindex: a thank-you page in search results is a page that ranks for the
+ * brand and then tells the visitor about a purchase they have not made.
+ */
+import Base from "../layouts/Base.astro";
+import { SITE, PRICE, PRODUCT } from "../consts";
+---
+
+<Base
+	title="Thank you"
+	description="Your Soft Clipper licence key is on its way by email."
+	noindex
+>
+	<section class="wrap wrap-narrow pad">
+		<span class="eyebrow">Order complete</span>
+		<h1 class="gradient-text">Thank you — check your email</h1>
+		<p class="lead">
+			Your licence key and download link are on the way to the address you paid with.
+			It usually arrives within a minute.
+		</p>
+
+		<ol class="steps mt-lg">
+			<li>
+				<h2>Open the email from {SITE.email}</h2>
+				<p>
+					It has your licence key and the download link. If it is not in your inbox
+					after a few minutes, look in spam — a first email from a new sender often
+					lands there.
+				</p>
+			</li>
+			<li>
+				<h2>Download and extract</h2>
+				<p>
+					{PRODUCT.fileSize}. There is no installer: extract the ZIP somewhere
+					permanent and run <code>Soft Clipper.exe</code> from the extracted folder.
+				</p>
+			</li>
+			<li>
+				<h2>Paste the key once</h2>
+				<p>
+					The app asks for it on first run and activates online. After that it works
+					offline. {PRODUCT.licence}.
+				</p>
+			</li>
+		</ol>
+
+		<div class="card mt-lg">
+			<h2>Nothing arrived?</h2>
+			<p>
+				Message us and we will find your order and resend the key. Have the email
+				address you paid with to hand — that is how the order is looked up.
+			</p>
+			<div class="btn-row mt-lg">
+				<a class="btn btn-primary" href={SITE.waLink} target="_blank" rel="noopener">
+					WhatsApp {SITE.phone}
+				</a>
+				<a class="btn btn-ghost" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+			</div>
+		</div>
+
+		<p class="small muted mt-lg">
+			{PRICE.display} paid once. Nothing recurring has been set up — there is no
+			subscription to cancel. Refunds within 14 days, no reason needed:
+			<a href="/legal/refund/">refund policy</a>.
+		</p>
+	</section>
+</Base>
+
+<style>
+	.pad {
+		padding-block: clamp(30px, 6vw, 60px);
+	}
+	h1 {
+		margin-block: 14px 18px;
+	}
+	.card h2 {
+		font-size: 1.15rem;
+		margin-bottom: 8px;
+	}
+	ol.steps h2 {
+		font-size: 1.05rem;
+		margin-bottom: 4px;
+	}
+</style>

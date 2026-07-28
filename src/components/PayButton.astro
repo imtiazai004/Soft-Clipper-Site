@@ -1,0 +1,62 @@
+---
+/**
+ * The buy button, in one place so every page that sells says the same thing.
+ *
+ * When the Stripe Payment Link is configured it goes straight there. When it is
+ * not, it does not quietly fall back to a page that cannot take money — that is
+ * how a site ends up with a button that looks like it works, sends nobody
+ * anywhere useful, and loses the sale silently. It says what is true and gives
+ * the buyer a person to talk to instead, and the build prints a warning so this
+ * state cannot be forgotten.
+ */
+import { PRICE, SITE } from "../consts";
+
+interface Props {
+	/** Button text. `$49` is appended by the caller if they want it. */
+	label?: string;
+	/** `ghost` for secondary placements. */
+	variant?: "primary" | "ghost";
+	class?: string;
+}
+
+const { label = `Buy ${SITE.name} — ${PRICE.display}`, variant = "primary", class: extra = "" } = Astro.props;
+
+const ready = PRICE.checkoutUrl.length > 0;
+
+if (!ready && !globalThis.__softClipperCheckoutWarned) {
+	globalThis.__softClipperCheckoutWarned = true;
+	console.warn(
+		"\n  ⚠  PRICE.checkoutUrl is empty — the site cannot take payments.\n" +
+			"     Create a Stripe Payment Link and put it in src/consts.ts.\n",
+	);
+}
+
+const href = ready
+	? PRICE.checkoutUrl
+	: `${SITE.waLink}?text=${encodeURIComponent(`Hi, I would like to buy ${SITE.name}.`)}`;
+---
+
+<a
+	class={`btn btn-${variant} ${extra}`}
+	href={href}
+	rel={ready ? "nofollow" : "nofollow noopener"}
+	target={ready ? undefined : "_blank"}
+>
+	{ready ? label : "Message us to buy"}
+</a>
+
+{
+	!ready && (
+		<p class="small muted pending">
+			Card checkout is being switched on. Until it is, message us and we will send
+			your licence key the same day.
+		</p>
+	)
+}
+
+<style>
+	.pending {
+		margin-top: 8px;
+		max-width: 42ch;
+	}
+</style>
