@@ -381,11 +381,11 @@ const pinHeight = `calc(100vh + ${n} * 72vh)`;
 
 			.where .w {
 				display: block;
-				animation: label linear both;
+				animation: walk-label linear both;
 				animation-timeline: --tour;
 			}
-			.where .w.first { animation-name: label-first; }
-			.where .w.last { animation-name: label-last; }
+			.where .w.first { animation-name: walk-label-first; }
+			.where .w.last { animation-name: walk-label-last; }
 			.where .w:not(.first) {
 				position: absolute;
 				inset: 0;
@@ -403,12 +403,12 @@ const pinHeight = `calc(100vh + ${n} * 72vh)`;
 				display: block;
 				border-bottom: 0;
 				opacity: 0;
-				animation: pass linear both;
+				animation: walk-pass linear both;
 				animation-timeline: --tour;
 				will-change: opacity, transform;
 			}
-			.shot.first { animation-name: pass-first; }
-			.shot.last { animation-name: pass-last; }
+			.shot.first { animation-name: walk-pass-first; }
+			.shot.last { animation-name: walk-pass-last; }
 
 			.pic {
 				position: absolute;
@@ -455,7 +455,7 @@ const pinHeight = `calc(100vh + ${n} * 72vh)`;
 				background: var(--grad);
 				transform: scaleX(0);
 				transform-origin: left;
-				animation: fill linear both;
+				animation: walk-fill linear both;
 				animation-timeline: --tour;
 				animation-range: contain 0% contain 100%;
 			}
@@ -470,7 +470,7 @@ const pinHeight = `calc(100vh + ${n} * 72vh)`;
 				letter-spacing: 0.28em;
 				text-transform: uppercase;
 				color: var(--muted);
-				animation: cue linear both;
+				animation: walk-cue linear both;
 				animation-timeline: --tour;
 				animation-range: contain 0% contain 7%;
 			}
@@ -479,38 +479,38 @@ const pinHeight = `calc(100vh + ${n} * 72vh)`;
 
 	/* Cross-fade with a slow push-in. The first stop starts already visible and
 	   the last one stays; the ones between do both. */
-	@keyframes pass {
+	@keyframes walk-pass {
 		0% { opacity: 0; transform: scale(1); }
 		16%, 84% { opacity: 1; }
 		100% { opacity: 0; transform: scale(1.06); }
 	}
-	@keyframes pass-first {
+	@keyframes walk-pass-first {
 		0% { opacity: 1; transform: scale(1); }
 		84% { opacity: 1; }
 		100% { opacity: 0; transform: scale(1.06); }
 	}
-	@keyframes pass-last {
+	@keyframes walk-pass-last {
 		0% { opacity: 0; transform: scale(1); }
 		16% { opacity: 1; }
 		100% { opacity: 1; transform: scale(1.06); }
 	}
 
-	@keyframes label {
+	@keyframes walk-label {
 		0%, 100% { opacity: 0; }
 		18%, 82% { opacity: 1; }
 	}
-	@keyframes label-first {
+	@keyframes walk-label-first {
 		0%, 82% { opacity: 1; }
 		100% { opacity: 0; }
 	}
-	@keyframes label-last {
+	@keyframes walk-label-last {
 		0% { opacity: 0; }
 		18%, 100% { opacity: 1; }
 	}
-	@keyframes fill {
+	@keyframes walk-fill {
 		to { transform: scaleX(1); }
 	}
-	@keyframes cue {
+	@keyframes walk-cue {
 		to { opacity: 0; translate: -50% 12px; }
 	}
 </style>

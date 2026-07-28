@@ -1,37 +1,91 @@
 ---
 /**
- * The product in one movement: a long video goes in on the left, passes
- * through the box, and comes out on the right as clips.
+ * The product in one movement: a long video goes in on the left, passes through
+ * the box, and comes out on the right as clips — over and over, with a
+ * different video each time.
  *
- * The clips are real. They are frames from videos this app actually cut —
- * speaker framed, caption burned in — which is the part a competitor cannot
- * fake without building the tool first. Everything else here is CSS, so the
- * whole hero costs a few kilobytes and stays sharp on any screen.
+ * Everything here is real. The four wide frames are stills from two podcast
+ * episodes the app has actually processed, each with the crop drawn where smart
+ * mode put it. The six vertical thumbnails are frames from the clips it
+ * produced, captions burned in, and the number on each one is the score the
+ * moment detector actually gave it. That is the part a competitor cannot fake
+ * without building the tool first.
+ *
+ * The loop runs a batch every 2.4 seconds and the batches overlap, so there is
+ * never an empty frame and never a pause — the earlier version played one batch
+ * every eight seconds with a dead gap in the middle, which read as a static
+ * picture that occasionally twitched.
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const has = (f: string) => fs.existsSync(path.resolve("public/shots", f));
-const shots = ["clip-1.jpg", "clip-2.jpg", "clip-3.jpg"].filter(has);
-const scores = [92, 87, 81];
 
-// The actual episode the three clips were cut from. Showing it closes the
-// loop: this long video went in, and those short ones came out. Without it the
-// left-hand box is a diagram and the viewer has to take the connection on
-// trust.
-const source = has("source.jpg") ? "/shots/source.jpg" : null;
+/** Seconds per batch. One number, and the whole loop follows from it. */
+const STEP = 2.4;
+
+/**
+ * Two real episodes, four frames. `cx` is where the speaker is across the
+ * frame, so each one carries its crop box in the right place instead of a
+ * rectangle parked wherever it suited the first picture.
+ */
+const sources = [
+	{ img: "hero-src-1.webp", cx: 22, file: "government-collapse.mp4", len: "16:37" },
+	{ img: "hero-src-3.webp", cx: 62, file: "dmt-laser-experiment.mp4", len: "19:31" },
+	{ img: "hero-src-4.webp", cx: 45, file: "government-collapse.mp4", len: "16:37" },
+	{ img: "hero-src-2.webp", cx: 57, file: "government-collapse.mp4", len: "16:37" },
+].filter((s) => has(s.img));
+
+/** Each thumbnail with the score the detector gave that moment. */
+const thumbs: Record<string, number> = {
+	"hero-clip-1.webp": 89,
+	"hero-clip-2.webp": 84,
+	"hero-clip-3.webp": 95,
+	"hero-clip-4.webp": 92,
+	"hero-clip-5.webp": 80,
+	"hero-clip-6.webp": 87,
+};
+
+const batches = [
+	["hero-clip-3.webp", "hero-clip-4.webp", "hero-clip-1.webp"],
+	["hero-clip-6.webp", "hero-clip-2.webp", "hero-clip-5.webp"],
+	["hero-clip-4.webp", "hero-clip-1.webp", "hero-clip-6.webp"],
+	["hero-clip-3.webp", "hero-clip-2.webp", "hero-clip-5.webp"],
+]
+	.map((b) => b.filter(has))
+	.filter((b) => b.length > 0);
+
+const cycle = Math.max(sources.length, batches.length) * STEP;
 ---
 
-<div class="rail stage" role="img" aria-label="A long video passing through Soft Clipper and coming out as three vertical clips with captions">
+<div
+	class="rail stage"
+	style={`--step:${STEP}s; --cycle:${cycle}s`}
+	role="img"
+	aria-label="Long podcast episodes passing through Soft Clipper and coming out as vertical clips with captions"
+>
 	<!-- IN -->
 	<div class="zone source">
 		<div class="wide">
-			{source ? <img src={source} alt="" width="440" height="248" loading="eager" decoding="async" /> : <div class="face" />}
-			<div class="crop"></div>
+			{
+				sources.map((s, i) => (
+					<figure class="src" style={`--i:${i}; --cx:${s.cx}%`}>
+						<img src={`/shots/${s.img}`} alt="" width="368" height="207" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+						<i class="crop" />
+					</figure>
+				))
+			}
+			{sources.length === 0 && <div class="face" />}
 		</div>
 		<div class="meta mono">
-			<span>the-full-episode.mp4</span>
-			<span class="dim">1:04:38 · 16:9</span>
+			{
+				sources.map((s, i) => (
+					<span class="label" style={`--i:${i}`}>
+						{s.file}
+						<b class="dim">{s.len} · 16:9</b>
+					</span>
+				))
+			}
 		</div>
 	</div>
 
@@ -53,20 +107,27 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 	<div class="zone out">
 		<div class="clips">
 			{
-				shots.map((file, i) => (
-					<figure class={`clip c${i + 1}`}>
-						<img src={`/shots/${file}`} alt="" width="320" height="569" loading="eager" decoding="async" />
-						<figcaption class="score mono">{scores[i]}</figcaption>
-					</figure>
+				batches.map((batch, i) => (
+					<div class="batch" style={`--i:${i}`}>
+						{batch.map((file, k) => (
+							<figure class="clip" style={`--k:${k}`}>
+								<img src={`/shots/${file}`} alt="" width="182" height="324" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+								<figcaption class="score mono">{thumbs[file]}</figcaption>
+							</figure>
+						))}
+					</div>
 				))
 			}
 			{
-				shots.length === 0 &&
-					[0, 1, 2].map((i) => (
-						<figure class={`clip c${i + 1} empty`}>
-							<figcaption class="score mono">{scores[i]}</figcaption>
-						</figure>
-					))
+				batches.length === 0 && (
+					<div class="batch lone">
+						{[95, 92, 89].map((s, k) => (
+							<figure class="clip empty" style={`--k:${k}`}>
+								<figcaption class="score mono">{s}</figcaption>
+							</figure>
+						))}
+					</div>
+				)
 			}
 		</div>
 		<span class="meta mono dim">3 clips · 9:16 · captions burned in</span>
@@ -90,6 +151,7 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 	}
 
 	.meta {
+		position: relative;
 		display: grid;
 		justify-items: center;
 		font-size: 0.66rem;
@@ -98,6 +160,7 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 	}
 	.dim {
 		opacity: 0.65;
+		font-weight: inherit;
 	}
 
 	/* ── in ──────────────────────────────────────────────────────────────── */
@@ -109,16 +172,37 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		border-radius: 10px;
 		overflow: hidden;
 		border: 1px solid rgba(255, 255, 255, 0.14);
-		background:
-			radial-gradient(55% 80% at 38% 55%, rgba(139, 92, 246, 0.45), transparent 70%),
-			linear-gradient(150deg, #1d1846, #0a0a18);
-		animation: feed 8s ease-in-out infinite;
+		background: linear-gradient(150deg, #1d1846, #0a0a18);
 	}
-	.wide img {
+
+	.src {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+		opacity: 0;
+		animation: rail-feed var(--cycle) linear infinite;
+		animation-delay: calc(var(--i) * var(--step));
+	}
+	.src img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		display: block;
 	}
+
+	/* The 9:16 window smart mode picks, on the speaker in that frame. 31.64% is
+	   what a 9:16 slice of a 16:9 frame comes to. */
+	.crop {
+		position: absolute;
+		top: 5%;
+		bottom: 5%;
+		left: calc(var(--cx) - 15.82%);
+		width: 31.64%;
+		border: 2px solid var(--cyan-bright);
+		border-radius: 4px;
+		box-shadow: 0 0 0 100vmax rgba(6, 5, 16, 0.45);
+	}
+
 	.face {
 		position: absolute;
 		top: 30%;
@@ -128,20 +212,48 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		border-radius: 50%;
 		background: radial-gradient(circle at 50% 35%, rgba(196, 181, 253, 0.95), rgba(99, 102, 241, 0.2));
 	}
-	.crop {
-		position: absolute;
-		inset: 5% 56% 5% 20%;
-		border: 2px solid var(--cyan-bright);
-		border-radius: 4px;
-		box-shadow: 0 0 0 100vmax rgba(6, 5, 16, 0.45);
+
+	/* The filename changes with the frame, because three of these are one
+	   episode and one is another, and a caption that never changes would be
+	   claiming otherwise. */
+	.label {
+		grid-area: 1 / 1;
+		display: grid;
+		justify-items: center;
+		gap: 1px;
+		opacity: 0;
+		animation: rail-label var(--cycle) linear infinite;
+		animation-delay: calc(var(--i) * var(--step));
 	}
 
-	/* The source shrinks into the box, then reappears for the next pass. */
-	@keyframes feed {
-		0%, 6% { transform: translateX(-14px) scale(1); opacity: 0; }
-		14%, 26% { transform: translateX(0) scale(1); opacity: 1; }
-		38% { transform: translateX(34px) scale(0.55); opacity: 0; }
-		39%, 100% { transform: translateX(-14px) scale(1); opacity: 0; }
+	/* Every keyframes name here is prefixed, and that is not decoration.
+	   @keyframes are global no matter which component's <style> they sit in, and
+	   Astro does not scope them. This file and Walkthrough.astro both defined
+	   plain `label`; they landed in one stylesheet, the later one won, and the
+	   filename under the video was silently being animated by the walkthrough's
+	   timings — three of them on screen at once, printing over each other. It
+	   looked like a font bug. The only defence is names that cannot collide.
+	   (rail-feed and rail-emit are each defined twice below, inside a media
+	   query — that one is deliberate, and conditional.) */
+
+	/* Slides in, holds, then shrinks into the box as the next one arrives.
+	   The tail runs past 25% — one whole slot — on purpose: the next frame
+	   begins its own fade-in at 25%, so the two overlap for about a fifth of a
+	   second instead of leaving a blink of empty box between them. */
+	@keyframes rail-feed {
+		0% { opacity: 0; transform: translateX(-18px) scale(1); }
+		4% { opacity: 1; transform: translateX(0) scale(1); }
+		18% { opacity: 1; transform: translateX(0) scale(1); }
+		27% { opacity: 0; transform: translateX(26px) scale(0.55); }
+		28%, 100% { opacity: 0; transform: translateX(-18px) scale(1); }
+	}
+	/* The label does not crossfade. Two dissolving photographs read as a
+	   dissolve; two dissolving filenames read as broken text, because the eye
+	   tries to parse both at once. It clears out before the next one starts. */
+	@keyframes rail-label {
+		0% { opacity: 0; }
+		4%, 20% { opacity: 1; }
+		23%, 100% { opacity: 0; }
 	}
 
 	/* ── the machine ─────────────────────────────────────────────────────── */
@@ -157,7 +269,7 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		border: 1px solid rgba(255, 255, 255, 0.18);
 		background: rgba(255, 255, 255, 0.05);
 		overflow: hidden;
-		animation: think 8s ease-in-out infinite;
+		animation: rail-think var(--step) ease-in-out infinite;
 	}
 	.placeholder {
 		font-size: 0.72rem;
@@ -174,33 +286,39 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		border-radius: 6px;
 		background: var(--grad);
 	}
-	/* The pass of light that says work is happening. */
+	/* One pass of light per batch — the sign that work is happening. */
 	.scan {
 		position: absolute;
 		inset: 0;
 		background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), transparent);
 		transform: translateX(-100%);
-		animation: scan 8s ease-in-out infinite;
+		animation: rail-scan var(--step) ease-in-out infinite;
 	}
 	.or {
 		color: var(--stage-muted);
 		font-size: 0.7rem;
 	}
 
-	@keyframes think {
-		0%, 32% { border-color: rgba(255, 255, 255, 0.18); }
-		38%, 52% { border-color: var(--cyan-bright); }
-		58%, 100% { border-color: rgba(255, 255, 255, 0.18); }
+	@keyframes rail-think {
+		0%, 40% { border-color: rgba(255, 255, 255, 0.18); }
+		55%, 80% { border-color: var(--cyan-bright); }
+		100% { border-color: rgba(255, 255, 255, 0.18); }
 	}
-	@keyframes scan {
-		0%, 34% { transform: translateX(-100%); }
-		52% { transform: translateX(100%); }
-		53%, 100% { transform: translateX(100%); opacity: 0; }
+	@keyframes rail-scan {
+		0%, 30% { transform: translateX(-100%); opacity: 1; }
+		78% { transform: translateX(100%); opacity: 1; }
+		79%, 100% { transform: translateX(100%); opacity: 0; }
 	}
 
 	/* ── out ─────────────────────────────────────────────────────────────── */
 
 	.clips {
+		position: relative;
+		display: grid;
+		min-height: calc(clamp(74px, 8.5vw, 104px) * 16 / 9);
+	}
+	.batch {
+		grid-area: 1 / 1;
 		display: flex;
 		gap: clamp(8px, 1.4vw, 14px);
 	}
@@ -216,21 +334,23 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		background: #12102b;
 		box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
 		opacity: 0;
-		/* Each clip slides out of the box in turn, 160ms apart. Decelerating,
-		   never bouncing — a bounce turns the whole thing into a toy. */
-		animation: emit 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		/* Decelerating, never bouncing — a bounce turns the whole thing into a
+		   toy. Each clip in a batch is 120ms behind the one before it. */
+		animation: rail-emit var(--cycle) cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		animation-delay: calc(var(--i) * var(--step) + var(--k) * 0.12s);
 	}
-	.c1 { animation-delay: 0s; }
-	.c2 { animation-delay: 0.16s; }
-	.c3 { animation-delay: 0.32s; }
-
 	.clip img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		display: block;
 	}
 	.clip.empty {
 		background: linear-gradient(160deg, #241d4d, #0e0c22);
+	}
+	.lone .clip {
+		opacity: 1;
+		animation: none;
 	}
 
 	.score {
@@ -245,10 +365,17 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 		background: var(--cyan-bright);
 	}
 
-	@keyframes emit {
-		0%, 44% { opacity: 0; transform: translateX(-26px) scale(0.94); }
-		56%, 88% { opacity: 1; transform: translateX(0) scale(1); }
-		96%, 100% { opacity: 0; transform: translateX(0) scale(1); }
+	/* Out of the box, held until the next batch has arrived, then away to the
+	   right. The exit has to travel: when the outgoing batch merely faded on the
+	   spot, it dissolved into the incoming one and three pairs of different
+	   faces and captions turned into a smear. Leaving right while the next
+	   arrives from the left reads as a conveyor instead. */
+	@keyframes rail-emit {
+		0%, 19% { opacity: 0; transform: translateX(-26px) scale(0.94); }
+		28% { opacity: 1; transform: none; }
+		45% { opacity: 1; transform: none; }
+		52% { opacity: 0; transform: translateX(28px) scale(0.94); }
+		53%, 100% { opacity: 0; transform: translateX(-26px) scale(0.94); }
 	}
 
 	/* ── arrows ──────────────────────────────────────────────────────────── */
@@ -287,28 +414,43 @@ const source = has("source.jpg") ? "/shots/source.jpg" : null;
 			border-left-color: transparent;
 			border-top-color: rgba(255, 255, 255, 0.4);
 		}
-		@keyframes feed {
-			0%, 6% { transform: translateY(-10px); opacity: 0; }
-			14%, 26% { transform: translateY(0); opacity: 1; }
-			38% { transform: translateY(20px) scale(0.6); opacity: 0; }
-			39%, 100% { transform: translateY(-10px); opacity: 0; }
+		@keyframes rail-feed {
+			0% { opacity: 0; transform: translateY(-12px); }
+			5% { opacity: 1; transform: translateY(0); }
+			17% { opacity: 1; transform: translateY(0); }
+			24% { opacity: 0; transform: translateY(18px) scale(0.6); }
+			25%, 100% { opacity: 0; transform: translateY(-12px); }
 		}
-		@keyframes emit {
-			0%, 44% { opacity: 0; transform: translateY(-14px) scale(0.94); }
-			56%, 88% { opacity: 1; transform: translateY(0) scale(1); }
-			96%, 100% { opacity: 0; }
+		@keyframes rail-emit {
+			0%, 19% { opacity: 0; transform: translateY(-16px) scale(0.94); }
+			28% { opacity: 1; transform: none; }
+			45% { opacity: 1; transform: none; }
+			52% { opacity: 0; transform: translateY(18px) scale(0.94); }
+			53%, 100% { opacity: 0; transform: translateY(-16px) scale(0.94); }
 		}
 	}
 
-	/* Reduced motion gets the finished state: video in, clips out, nothing
-	   moving. The layout carries the meaning; the movement only reinforces it. */
+	/* Reduced motion gets the finished state: one video in, its clips out,
+	   nothing moving. The layout carries the meaning; the movement only
+	   reinforces it. */
 	@media (prefers-reduced-motion: reduce) {
-		.wide, .box, .scan, .clip {
+		.src,
+		.label,
+		.box,
+		.scan,
+		.clip {
 			animation: none;
 		}
-		.wide, .clip {
-			opacity: 1;
+		.src,
+		.label,
+		.clip {
+			opacity: 0;
 			transform: none;
+		}
+		.src:first-of-type,
+		.label:first-of-type,
+		.batch:first-of-type .clip {
+			opacity: 1;
 		}
 		.scan {
 			display: none;
