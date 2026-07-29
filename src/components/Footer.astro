@@ -116,10 +116,14 @@ const year = new Date().getFullYear();
 		</div>
 
 		<div class="base">
+			{/* The trading disclosure. It belongs on every page, which is what a
+			    footer is for — not only in the terms, where nobody looks. */}
 			<p class="legalline">
 				&copy; {year} {SITE.company}
 				<span class="sep" aria-hidden="true">·</span>
-				<span>Registered in the {SITE.companyCountry}</span>
+				<span>Registered in {SITE.companyRegisteredIn} no. {SITE.companyNumber}</span>
+				<span class="sep" aria-hidden="true">·</span>
+				<span>{SITE.companyAddressLine}</span>
 			</p>
 			<nav class="legal" aria-label="Legal">
 				{legal.map((l) => <a href={l.href}>{l.label}</a>)}

@@ -28,8 +28,13 @@ const UPDATED = "26 July 2026";
 		<div class="wrap wrap-narrow prose">
 			<h2>Who we are</h2>
 			<p>
-				{SITE.name} is published by {SITE.company}, registered in the {SITE.companyCountry}. For
-				any privacy question, write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+				{SITE.name} is published by {SITE.company}, a company registered in
+				{" "}{SITE.companyRegisteredIn} under company number {SITE.companyNumber}, with its
+				registered office at {SITE.companyAddressLine}. That company is the data controller
+				for everything described on this page.
+			</p>
+			<p>
+				For any privacy question, write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
 			</p>
 
 			<h2>What the desktop app sends</h2>

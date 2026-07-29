@@ -42,7 +42,21 @@ const baseSchema = [
 		logo: `${SITE.origin}/soft-clipper-logo.svg`,
 		email: SITE.email,
 		telephone: SITE.phoneE164,
-		address: { "@type": "PostalAddress", addressCountry: "GB" },
+		// The real registered office, not just a country code. Search engines use
+		// this to decide whether a name on a page is a real, identifiable
+		// organisation, and a company selling software benefits from being one.
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: SITE.companyAddress.slice(0, 2).join(", "),
+			addressLocality: SITE.companyAddress[2],
+			postalCode: SITE.companyAddress[3],
+			addressCountry: "GB",
+		},
+		identifier: {
+			"@type": "PropertyValue",
+			name: "Company number",
+			value: SITE.companyNumber,
+		},
 		contactPoint: [
 			{
 				"@type": "ContactPoint",

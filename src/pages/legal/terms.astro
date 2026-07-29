@@ -91,10 +91,15 @@ const UPDATED = "26 July 2026";
 				and Wales have exclusive jurisdiction.
 			</p>
 
-			<h2>10. Contact</h2>
+			<h2>10. Who you are contracting with</h2>
 			<p>
-				{SITE.company}, {SITE.companyCountry} —
-				<a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+				{SITE.company}, a company registered in {SITE.companyRegisteredIn} under
+				company number {SITE.companyNumber}.
+			</p>
+			<p>
+				Registered office: {SITE.companyAddressLine}.<br />
+				Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> · WhatsApp:
+				<a href={SITE.waLink} target="_blank" rel="noopener"> {SITE.phone}</a>.
 			</p>
 		</div>
 	</section>

@@ -21,6 +21,23 @@ export const SITE = {
 	// for a real, consistent business identity across the site.
 	company: "Atlantic Ltd Store Limited",
 	companyCountry: "United Kingdom",
+	/**
+	 * A UK limited company has to publish its registered number, where it is
+	 * registered and its registered office. Not optional decoration: it is a
+	 * Companies Act requirement, a buyer checking whether this is a real
+	 * business looks for exactly this, and a payment processor verifying an
+	 * account expects the site to carry it.
+	 *
+	 * "England and Wales" rather than "United Kingdom" — the place of
+	 * registration is the jurisdiction, and the UK has three of them.
+	 */
+	companyNumber: "15025294",
+	companyRegisteredIn: "England and Wales",
+	companyAddress: ["4 Blenheim Court", "Peppercorn Close", "Peterborough", "PE1 2DU"],
+	/** One line, for prose and for the footer. */
+	get companyAddressLine() {
+		return this.companyAddress.join(", ");
+	},
 	// On the same domain the customer buys from, deliberately. A licence key for
 	// something bought on softclipper.pro arriving from an unrelated domain is
 	// what a phishing email looks like, and a buyer who has just paid $49 is
