@@ -53,9 +53,34 @@ export const SITE = {
 } as const;
 
 export const PRICE = {
-	amount: 49,
+	/**
+	 * What a customer is actually charged. Everything on the site derives from
+	 * this — headings, FAQ answers, comparison tables, the break-even maths and
+	 * the JSON-LD offer — so this and the Stripe Payment Link must agree. A site
+	 * that advertises one number and a checkout that charges another is the
+	 * clearest possible reason for a chargeback, and Stripe sides with the buyer.
+	 */
+	amount: 39,
 	currency: "USD",
-	display: "$49",
+	display: "$39",
+	/**
+	 * The price this site genuinely carried before the discount, shown struck
+	 * through beside the current one.
+	 *
+	 * It has to be a real former price, not a decorative one. UK price-marking
+	 * rules treat a "was" figure as a claim about the past, and $49 is one we can
+	 * stand behind: it was the published price on softclipper.pro. If the price
+	 * ever settles at $39 for good, delete these three fields rather than leaving
+	 * a comparison that stopped being true.
+	 */
+	listAmount: 49,
+	listDisplay: "$49",
+	get savingDisplay() {
+		return `$${this.listAmount - this.amount}`;
+	},
+	get percentOff() {
+		return Math.round((1 - this.amount / this.listAmount) * 100);
+	},
 	/** What a subscription competitor costs per month, for the comparison maths. */
 	competitorMonthly: 29,
 	/**

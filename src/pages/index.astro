@@ -7,6 +7,7 @@ import PipelineHero from "../components/PipelineHero.astro";
 import Walkthrough from "../components/Walkthrough.astro";
 import CaptionStyles from "../components/CaptionStyles.astro";
 import FramingModes from "../components/FramingModes.astro";
+import PriceTag from "../components/PriceTag.astro";
 import { SITE, PRICE, PRODUCT } from "../consts";
 import { faqSchema, softwareSchema, howToSchema, type FaqItem } from "../lib/schema";
 
@@ -93,7 +94,7 @@ const schema = [
 				<a class="btn btn-ghost" href="/features/">See how it works</a>
 			</div>
 			<p class="small muted">{PRODUCT.platform} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
-			<span class="pill accent">One-time {PRICE.display} · no subscription</span>
+			<span class="pill accent">One-time <PriceTag /> · no subscription</span>
 		</div>
 	</section>
 
