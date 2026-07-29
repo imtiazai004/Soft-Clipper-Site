@@ -38,10 +38,12 @@ import { SITE, PRICE, PRODUCT } from "../consts";
 				</p>
 			</li>
 			<li>
-				<h2>Download and extract</h2>
+				<h2>Download and install</h2>
 				<p>
-					{PRODUCT.fileSize}. There is no installer: extract the ZIP somewhere
-					permanent and run <code>Soft Clipper.exe</code> from the extracted folder.
+					<a href={PRODUCT.installerUrl} download>Download the installer</a> ({PRODUCT.installerSize})
+					and run it. Windows will warn about an unrecognised publisher the first time —
+					choose <strong>More info</strong>, then <strong>Run anyway</strong>. It installs
+					for you only, so there is no administrator prompt.
 				</p>
 			</li>
 			<li>

@@ -31,7 +31,7 @@ export const GET: APIRoute = () =>
 - Captions: six styles, optional word-by-word highlighting, burned in.
 - A fixed-length mode cuts a whole video into 30/45/60/90/120-second clips at natural pauses with no AI involved.
 - Not included: scheduling, auto-posting, 4K export, team seats, editing the transcribed caption wording, macOS.
-- Distribution: a ZIP that is extracted and run. There is no installer and nothing is written to the Windows registry.
+- Distribution: a Windows installer (~120 MB) that installs per-user, so it never asks for administrator rights. A ZIP of the same build is also available for anyone who prefers to extract and run it.
 - Refunds: 14 days from purchase, no reason required.
 - Contact: ${SITE.email}, or WhatsApp ${SITE.phone}.
 

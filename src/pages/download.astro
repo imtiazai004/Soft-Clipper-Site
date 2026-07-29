@@ -10,9 +10,9 @@ const crumbs = [
 ];
 
 const steps = [
-	{ name: "Buy a licence", text: `Pay ${PRICE.display} once. Your licence key arrives by email within a minute, along with a download link.` },
-	{ name: "Extract the ZIP", text: "There is no installer. Right-click the downloaded ZIP, choose Extract All, and put the folder somewhere permanent — Documents is fine, the Downloads folder is not." },
-	{ name: "Run Soft Clipper.exe", text: "Open the extracted folder and run the exe. Windows may warn about an unrecognised publisher on new releases — choose More info, then Run anyway." },
+	{ name: "Download the installer", text: `${PRODUCT.installerSize}, straight from this page — you do not need a licence to download it.` },
+	{ name: "Run the installer", text: "Double-click it and follow the wizard. Windows will warn about an unrecognised publisher the first time — choose More info, then Run anyway. It installs for you only, so there is no administrator prompt." },
+	{ name: "Buy a licence", text: `Pay ${PRICE.display} once. Your key arrives by email within a minute.` },
 	{ name: "Paste your key", text: "On first launch Soft Clipper asks for the licence key from your email. It activates online once and then works without a connection." },
 	{ name: "Add your Gemini key", text: "In Settings, paste a Google Gemini API key. It is free to create, and it is what powers moment detection and transcription." },
 ];
@@ -24,7 +24,11 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Is there an installer?",
-		a: "No. Soft Clipper ships as a ZIP you extract and run — nothing is written to your system folders and nothing appears in Add or Remove Programs. To uninstall, delete the folder.",
+		a: "Yes, and it is the recommended way. It installs for you only, so Windows never asks for administrator rights, and it puts a proper entry in Add or Remove Programs. If you would rather not run a setup wizard, the same build is available as a ZIP you extract and run from any folder.",
+	},
+	{
+		q: "Where does it install, and what does uninstalling remove?",
+		a: "Into your own user folder, not Program Files — the app writes exported clips beside itself, and Windows does not allow that under Program Files. Uninstalling removes the app and its cached downloads but deliberately leaves your exported clips where they are.",
 	},
 	{
 		q: "Windows says the publisher is unrecognised. Is that normal?",
@@ -49,7 +53,7 @@ const faqs: FaqItem[] = [
 	title="Download Soft Clipper"
 	heading="Download and install"
 	description={`Download Soft Clipper for ${PRODUCT.platform}. Buy once for ${PRICE.display}, activate with your licence key, and start cutting vertical clips.`}
-	intro={`Soft Clipper is a desktop app for ${PRODUCT.platform}, delivered as a ${PRODUCT.fileSize.replace(", no installer", " you extract and run")}. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
+	intro={`Soft Clipper is a desktop app for ${PRODUCT.platform}, delivered as a ${PRODUCT.installerSize} installer. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
 	eyebrow="Download"
 	crumbs={crumbs}
 	schema={[
@@ -65,18 +69,33 @@ const faqs: FaqItem[] = [
 >
 	<section class="pt-0">
 		<div class="wrap">
+			{/*
+			  The installer is on a public URL, and this page says so.
+
+			  It does not need hiding: the app will not run without a licence key,
+			  and the key is what is sold. Pretending the file were secret would
+			  be a claim anyone could disprove by pasting the link — and a site
+			  that sells software cannot afford to be caught overstating anything.
+			*/}
 			<div class="buy-box">
 				<div>
-					<h2>You need a licence first</h2>
+					<h2>Download it now, activate it when you buy</h2>
 					<p class="muted">
-						The download link is sent with your key when you buy. That is the only place it
-						comes from — there is no public installer to pass around.
+						The installer is free to download. It will not run without a licence key, and
+						the key arrives by email the moment you buy — so there is nothing to wait for
+						except the payment.
 					</p>
 				</div>
 				<div class="btn-row">
-					<a class="btn btn-primary" href="/pricing/">Buy for {PRICE.display}</a>
-					<a class="btn btn-ghost" href={`mailto:${SITE.email}`}>Lost your link?</a>
+					<a class="btn btn-primary" href={PRODUCT.installerUrl} download>
+						Download for {PRODUCT.platform.split(" ")[0]} — {PRODUCT.installerSize}
+					</a>
+					<a class="btn btn-ghost" href="/pricing/">Buy a licence — {PRICE.display}</a>
 				</div>
+				<p class="small muted alt">
+					Prefer no installer? <a href={PRODUCT.zipUrl} download>Download the ZIP ({PRODUCT.zipSize})</a> and
+					run it from any folder. Same app, same files.
+				</p>
 			</div>
 		</div>
 	</section>

@@ -57,10 +57,18 @@ export const PRICE = {
 export const PRODUCT = {
 	platform: "Windows 10 and 11 (64-bit)",
 	licence: "1 licence = 1 PC, activated online, then works offline",
-	// It is a portable ZIP, not an installer — build_release.py produces
-	// Soft-Clipper.zip and the app runs from the extracted folder. Saying
-	// "installer" here would have people hunting for a setup wizard.
-	fileSize: "~160 MB ZIP, no installer",
+	fileSize: "~120 MB installer",
+
+	// Both are served from R2 on our own domain. The installer is what the
+	// licence email links to; the ZIP stays for anyone who would rather not run
+	// a setup wizard, and is the same build either way.
+	//
+	// The filenames must not change between releases: an email sent last month
+	// has to keep working, so a new build replaces the object at the same key.
+	installerUrl: "https://dl.softclipper.pro/Soft-Clipper-Setup.exe",
+	installerSize: "120 MB",
+	zipUrl: "https://dl.softclipper.pro/Soft-Clipper.zip",
+	zipSize: "164 MB",
 	requirements: "8 GB RAM recommended, no GPU required",
 	ratios: "9:16 vertical, 1:1 square and 16:9",
 	/** Kept vague on purpose until the web version has a date. */
