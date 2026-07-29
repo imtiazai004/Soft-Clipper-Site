@@ -3,6 +3,7 @@ import { SITE } from "../consts";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ReferralTag from "../components/ReferralTag.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -158,5 +159,7 @@ const baseSchema = [
 		</main>
 		<Footer />
 		<WhatsAppButton />
+		{/* Last, and after the buttons exist in the DOM, because it rewrites them. */}
+		<ReferralTag />
 	</body>
 </html>

@@ -1,0 +1,278 @@
+---
+/**
+ * The affiliate programme — recruitment page and the terms in one.
+ *
+ * Deliberately not two pages. Someone deciding whether to promote this wants to
+ * know the rate, when they get paid and what disqualifies them, and splitting
+ * those across a friendly page and a legal one means the rules are read by
+ * nobody until there is an argument about them.
+ */
+import Page from "../layouts/Page.astro";
+import Faq from "../components/Faq.astro";
+import { PRICE, SITE } from "../consts";
+import { faqSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Affiliates", href: "/affiliates/" },
+];
+const UPDATED = "30 July 2026";
+
+/** Kept in step with AFFILIATE_RATE_PCT and AFFILIATE_HOLD_DAYS on the server. */
+const RATE = 30;
+const HOLD_DAYS = 30;
+const COOKIE_DAYS = 60;
+const perSale = ((PRICE.amount * RATE) / 100).toFixed(2);
+
+const faqs: FaqItem[] = [
+	{
+		q: "How much do I earn per sale?",
+		a: `${RATE}% of what the customer actually pays. At today's price of ${PRICE.display} that is $${perSale} a sale, and there is no cap on how many.`,
+	},
+	{
+		q: "How long does the referral last?",
+		a: `${COOKIE_DAYS} days from the click. If someone follows your link and buys five weeks later, it is still your sale. If they follow a different affiliate's link in between, it becomes theirs — the most recent link wins.`,
+	},
+	{
+		q: "When do I get paid?",
+		a: `Commission is released ${HOLD_DAYS} days after the sale, once the 14-day refund window has closed and then some. After that it is paid out on request or monthly, whichever comes first.`,
+	},
+	{
+		q: "How do I get paid?",
+		a: "Automatically through Stripe if you are in a country Stripe pays out to — you connect an account once and the money arrives on its own. If you are not, we send it by Wise or PayPal by hand. Either way it is the same commission on the same schedule.",
+	},
+	{
+		q: "What happens if my referral asks for a refund?",
+		a: "The commission is cancelled, because the sale was. This is the reason for the holding period rather than paying on the day — it means the money you are told you have earned is money you get to keep.",
+	},
+	{
+		q: "Can I buy through my own link?",
+		a: "No. Self-referrals earn nothing and are the one thing that gets an account closed. If you want the software for yourself, ask and we will sort you out.",
+	},
+	{
+		q: "Can I run ads on the brand name?",
+		a: "Not on 'Soft Clipper' or close variants. Bidding on our own name puts you between us and people already looking for us, which costs us money to win back a customer we already had.",
+	},
+	{
+		q: "How do I join?",
+		a: `Email ${SITE.email} with where you would be promoting. We reply with your link, and there is nothing to install.`,
+	},
+];
+
+const rules = [
+	{
+		t: "Say what it is",
+		d: "A Windows app that cuts long videos into vertical clips. Do not promise a Mac version, a mobile app, cloud rendering or auto-posting — none of those exist, and the refund lands on us.",
+	},
+	{
+		t: "Say the price honestly",
+		d: `${PRICE.display} one time. Do not invent discounts, countdowns or a "was ${PRICE.listDisplay} today only" that is not real.`,
+	},
+	{
+		t: "No brand bidding",
+		d: "No paid search on our name or close misspellings, and no domain that could be mistaken for ours.",
+	},
+	{
+		t: "No spam, no fake accounts",
+		d: "No unsolicited email, no comment spam, no cookie stuffing, no bought traffic. One complaint of this kind ends the arrangement.",
+	},
+	{
+		t: "No self-referral",
+		d: "Your own purchase, your family's, or an account you control earns nothing.",
+	},
+	{
+		t: "Do not speak for us",
+		d: "You are an independent promoter, not an employee or agent. Do not answer support questions on our behalf — send them to us.",
+	},
+];
+---
+
+<Page
+	title={`Affiliate programme — earn ${RATE}% per sale`}
+	heading={`Earn $${perSale} for every copy you sell`}
+	description={`Promote Soft Clipper and earn ${RATE}% of every sale — $${perSale} on a ${PRICE.display} licence. ${COOKIE_DAYS}-day attribution, paid by Stripe or by hand depending on your country.`}
+	intro={`${RATE}% commission, no cap, and a ${COOKIE_DAYS}-day window from the click. Paid automatically through Stripe where Stripe reaches, and by Wise or PayPal where it does not.`}
+	eyebrow="Affiliates"
+	crumbs={crumbs}
+	schema={[faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+	<section>
+		<div class="wrap">
+			<div class="numbers">
+				<div class="card stat">
+					<span class="big gradient-text">{RATE}%</span>
+					<p>of every sale, uncapped</p>
+				</div>
+				<div class="card stat">
+					<span class="big gradient-text">${perSale}</span>
+					<p>per licence at today's price</p>
+				</div>
+				<div class="card stat">
+					<span class="big gradient-text">{COOKIE_DAYS} days</span>
+					<p>from the click to the sale</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<h2>How it works</h2>
+			<ol class="steps">
+				<li>
+					<strong>You get a link</strong> — something like
+					<code>{SITE.origin}/?ref=yourname</code>. Put it anywhere: a video
+					description, a newsletter, a blog post, a pinned comment.
+				</li>
+				<li>
+					<strong>Someone follows it and buys</strong>, on that visit or up to
+					{COOKIE_DAYS} days later. They pay the normal price — a referral link
+					costs the buyer nothing extra.
+				</li>
+				<li>
+					<strong>The sale is recorded against you</strong> the moment the payment
+					clears, and you can see it counted.
+				</li>
+				<li>
+					<strong>It is paid {HOLD_DAYS} days later</strong>, once it can no longer
+					be refunded.
+				</li>
+			</ol>
+
+			<h2>Getting paid</h2>
+			<p>
+				Where you live decides how, not how much.
+			</p>
+			<div class="cols">
+				<div class="card">
+					<h3>Stripe pays out to your country</h3>
+					<p>
+						You connect an account once — Stripe collects your details and does its
+						own identity checks. After that commission arrives automatically and we
+						never touch your bank details.
+					</p>
+				</div>
+				<div class="card">
+					<h3>Stripe does not</h3>
+					<p>
+						Pakistan, Bangladesh, Nigeria and a good many others. We send it by Wise
+						or PayPal by hand instead, on the same schedule. Nothing about your
+						commission changes; only the plumbing does.
+					</p>
+				</div>
+			</div>
+
+			<h2>The rules</h2>
+			<p>
+				Short, and all of them are here because breaking them costs us a customer
+				rather than because a lawyer liked the sound of them.
+			</p>
+			<div class="rules">
+				{
+					rules.map((r) => (
+						<div class="rule">
+							<h3>{r.t}</h3>
+							<p>{r.d}</p>
+						</div>
+					))
+				}
+			</div>
+
+			<h2>The boring part</h2>
+			<p class="small muted">
+				This programme is run by {SITE.company}, company number {SITE.companyNumber},
+				registered in {SITE.companyRegisteredIn} at {SITE.companyAddressLine}. Commission
+				is paid on completed, non-refunded sales only. You are responsible for any tax
+				on what you earn, and for following the advertising rules and disclosure
+				requirements where you live — most places require you to say that a link is an
+				affiliate link. We can change the rate or end the programme with 30 days'
+				notice, and commission already earned is still paid. We can close an account
+				immediately for the things listed above, in which case unpaid commission on
+				affected sales is not paid. Last updated {UPDATED}.
+			</p>
+
+			<div class="join card">
+				<h2 style="margin-top:0">Join</h2>
+				<p>
+					Email <a href={`mailto:${SITE.email}?subject=Affiliate%20programme`}>{SITE.email}</a>
+					and say where you would be promoting. We will send your link back, usually the
+					same day. There is nothing to install and no minimum audience.
+				</p>
+				<p class="small muted" style="margin-bottom:0">
+					Already have a link? Just use it — it starts working the first time someone
+					clicks it.
+				</p>
+			</div>
+
+			<Faq items={faqs} heading="Questions" />
+		</div>
+	</section>
+</Page>
+
+<style>
+	.numbers {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 16px;
+	}
+	.stat {
+		text-align: center;
+	}
+	.stat .big {
+		display: block;
+		font-size: clamp(2.2rem, 6vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.05;
+	}
+	.stat p {
+		margin: 6px 0 0;
+		color: var(--muted);
+		font-size: 0.92rem;
+	}
+
+	h2 {
+		margin-top: 44px;
+		margin-bottom: 14px;
+	}
+
+	.steps {
+		display: grid;
+		gap: 14px;
+		padding-left: 20px;
+	}
+	.steps li {
+		padding-left: 4px;
+	}
+	.steps code {
+		white-space: nowrap;
+	}
+
+	.cols {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+	}
+	.cols h3 {
+		margin-bottom: 8px;
+	}
+
+	.rules {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 18px 28px;
+	}
+	.rule h3 {
+		font-size: 1rem;
+		margin-bottom: 5px;
+	}
+	.rule p {
+		color: var(--muted);
+		font-size: 0.94rem;
+		margin: 0;
+	}
+
+	.join {
+		margin-top: 40px;
+	}
+</style>

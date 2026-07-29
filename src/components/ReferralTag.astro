@@ -1,0 +1,90 @@
+---
+/**
+ * Carries an affiliate's tag from their link to the Stripe checkout.
+ *
+ * The whole attribution chain is: someone arrives at any page with `?ref=ali`,
+ * we remember it, and when they eventually press Buy we append it to the Stripe
+ * Payment Link as `client_reference_id`. Stripe hands it back on the
+ * `checkout.session.completed` webhook, and the licence server credits Ali.
+ *
+ * That is the entire reason a static site can run an affiliate programme with
+ * no server of its own: Stripe carries the tag across the gap.
+ *
+ * Two decisions worth knowing about.
+ *
+ * **It remembers, rather than only reading the current URL.** An affiliate links
+ * to a blog post or the features page; nobody buys from the page they landed on.
+ * Without storage, every referral that involved a single click would be lost —
+ * which is most of them.
+ *
+ * **Last link wins, for 60 days.** If two affiliates both reach the same person,
+ * the one whose link they followed most recently gets the sale. That is the
+ * common convention, it is written into the affiliate terms so it is not a
+ * surprise, and it beats first-touch for the honest reason that the person who
+ * finally convinced someone is usually the more recent one.
+ */
+---
+
+<script is:inline>
+	(function () {
+		var STORE = "sc-ref";
+		var DAYS = 60;
+
+		function read() {
+			try {
+				var raw = localStorage.getItem(STORE);
+				if (!raw) return "";
+				var saved = JSON.parse(raw);
+				// An expired tag is deleted rather than ignored: leaving it there
+				// means it reappears the moment this logic is ever loosened.
+				if (!saved.code || Date.now() > saved.until) {
+					localStorage.removeItem(STORE);
+					return "";
+				}
+				return saved.code;
+			} catch (e) {
+				return "";
+			}
+		}
+
+		function capture() {
+			var found = new URLSearchParams(location.search).get("ref") || "";
+			// Same normalisation as the server's, so a code that is stored here is
+			// a code that will be recognised there. Anything else is a referral
+			// that looks tracked, is not, and nobody finds out until an affiliate
+			// asks where their commission went.
+			found = found.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+			if (found.length >= 3) {
+				try {
+					localStorage.setItem(
+						STORE,
+						JSON.stringify({ code: found, until: Date.now() + DAYS * 864e5 }),
+					);
+				} catch (e) {
+					/* private mode, or storage full — the sale still works, untracked */
+				}
+			}
+			return found.length >= 3 ? found : read();
+		}
+
+		var code = capture();
+		if (!code) return;
+
+		// Rewrite the checkout links. Done on every page rather than only where a
+		// button exists, because the buy button appears in several places and any
+		// of them can be the one that gets pressed.
+		document.querySelectorAll('a[href*="buy.stripe.com"]').forEach(function (a) {
+			try {
+				var url = new URL(a.href);
+				// Never overwrite one that is already set — a hand-built link with
+				// its own tag is deliberate.
+				if (!url.searchParams.has("client_reference_id")) {
+					url.searchParams.set("client_reference_id", code);
+					a.href = url.toString();
+				}
+			} catch (e) {
+				/* not a URL we can parse; leave it exactly as it was */
+			}
+		});
+	})();
+</script>
