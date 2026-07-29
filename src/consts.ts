@@ -50,8 +50,15 @@ export const PRICE = {
 	 *
 	 * Empty until the link is created in the Stripe dashboard. While it is empty
 	 * the buy button does not pretend to work: see PayButton.astro.
+	 *
+	 * ⚠ THIS IS THE TEST-MODE LINK. It takes no money. Stripe keeps test and
+	 * live links separate, so going live means creating the product and link
+	 * again with the dashboard toggled to live, and replacing this string with
+	 * the buy.stripe.com/… one (no `test_`). PayButton shows a banner on the
+	 * page and the build prints a warning until that happens, so it cannot be
+	 * quietly forgotten.
 	 */
-	checkoutUrl: "",
+	checkoutUrl: "https://buy.stripe.com/test_eVqbJ3fDK8po52h0DJefC00",
 } as const;
 
 export const PRODUCT = {

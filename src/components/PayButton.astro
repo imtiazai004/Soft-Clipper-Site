@@ -23,12 +23,28 @@ const { label = `Buy ${SITE.name} — ${PRICE.display}`, variant = "primary", cl
 
 const ready = PRICE.checkoutUrl.length > 0;
 
-if (!ready && !globalThis.__softClipperCheckoutWarned) {
+/**
+ * A Stripe test link takes no money. Shipping one to a live site is a silent
+ * failure: the button works, the checkout looks real, the customer believes
+ * they have bought something, and nothing was ever charged. So it is called out
+ * on the page as well as in the build — a warning only the developer sees would
+ * not protect the person clicking the button.
+ */
+const isTestLink = PRICE.checkoutUrl.includes("/test_");
+
+if (!globalThis.__softClipperCheckoutWarned) {
 	globalThis.__softClipperCheckoutWarned = true;
-	console.warn(
-		"\n  ⚠  PRICE.checkoutUrl is empty — the site cannot take payments.\n" +
-			"     Create a Stripe Payment Link and put it in src/consts.ts.\n",
-	);
+	if (!ready) {
+		console.warn(
+			"\n  ⚠  PRICE.checkoutUrl is empty — the site cannot take payments.\n" +
+				"     Create a Stripe Payment Link and put it in src/consts.ts.\n",
+		);
+	} else if (isTestLink) {
+		console.warn(
+			"\n  ⚠  PRICE.checkoutUrl is a Stripe TEST link — this build takes no money.\n" +
+				"     Replace it with the live link before announcing the product.\n",
+		);
+	}
 }
 
 const href = ready
@@ -54,9 +70,32 @@ const href = ready
 	)
 }
 
+{
+	ready && isTestLink && (
+		<p class="testmode">
+			<strong>Test mode.</strong> This checkout takes no money — we are still setting
+			payments up. Nothing you enter here will be charged.
+		</p>
+	)
+}
+
 <style>
 	.pending {
 		margin-top: 8px;
 		max-width: 42ch;
+	}
+
+	/* Deliberately loud. Its whole job is to stop someone believing they have
+	   bought something they have not. */
+	.testmode {
+		margin-top: 10px;
+		padding: 9px 13px;
+		border-radius: 10px;
+		border: 1px solid var(--warn);
+		background: color-mix(in srgb, var(--warn) 12%, transparent);
+		color: var(--text);
+		font-size: 0.85rem;
+		line-height: 1.5;
+		max-width: 46ch;
 	}
 </style>
