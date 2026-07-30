@@ -1,0 +1,109 @@
+---
+/**
+ * The install that shows no security warning at all.
+ *
+ * Both warnings people hit come from a flag the *browser* attaches to the file:
+ * `com.apple.quarantine` on macOS, the Mark of the Web on Windows. Gatekeeper
+ * and SmartScreen read that flag and act on it. `curl` and `Invoke-WebRequest`
+ * do not set it, so a file fetched that way is not marked, and neither warning
+ * has anything to fire on. Nothing is being bypassed — there is nothing there
+ * to bypass.
+ *
+ * Offered second, never first. Two reasons.
+ *
+ * Most buyers will not open a terminal, and telling them to is a worse first
+ * impression than a warning they can click past.
+ *
+ * And "paste this command to fix your problem" is the exact shape of a live
+ * attack — fake error pages that talk people into pasting a command have been
+ * one of the more effective ways to infect a machine. Teaching a customer that
+ * habit is not a favour, so the commands here are plain and readable, with
+ * nothing piped into a shell, and every line does something you can see.
+ */
+import { PRODUCT, SITE } from "../consts";
+
+interface Props {
+	/** Which one to show. */
+	os: "windows" | "mac";
+}
+const { os } = Astro.props;
+
+const mac = `curl -L -o ~/Downloads/soft-clipper.zip \\
+  ${PRODUCT.macUrl}
+unzip -o ~/Downloads/soft-clipper.zip -d /Applications
+open "/Applications/Soft Clipper.app"`;
+
+const windows = `Invoke-WebRequest "${PRODUCT.installerUrl}" \`
+  -OutFile "$env:TEMP\\soft-clipper-setup.exe"
+& "$env:TEMP\\soft-clipper-setup.exe"`;
+---
+
+<div class="term">
+	<h3>Prefer no warnings at all?</h3>
+	<p>
+		{
+			os === "mac"
+				? "Paste these three lines into Terminal instead. macOS shows no security warning, because the warning comes from a flag your browser attaches to downloads and curl does not attach one."
+				: "Paste these two lines into PowerShell instead. SmartScreen shows nothing, because the blue panel is triggered by a mark your browser puts on downloaded files and PowerShell does not put one there."
+		}
+	</p>
+	<pre><code>{os === "mac" ? mac : windows}</code></pre>
+	<p class="small">
+		{
+			os === "mac"
+				? "Line one downloads it, line two unpacks it into Applications, line three opens it."
+				: "Line one downloads the installer, line two runs it. The installer itself is unchanged."
+		}
+		{" "}Nothing here is piped into a shell — read each line before you run it, here and anywhere
+		else. If a website ever tells you to paste a command you cannot read, do not.
+	</p>
+	<p class="small muted">
+		Not sure? Use the normal download above. Both give you exactly the same app, and the
+		warning is safe to click past — <a href={os === "mac" ? "/help/install-mac/" : "/help/install/"}
+		>the install guide</a> shows how, or <a href={SITE.waLink}>message us</a> and we will walk
+		you through it.
+	</p>
+</div>
+
+<style>
+	.term {
+		margin-top: 28px;
+		padding: 20px 22px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius);
+		background: var(--panel-strong);
+	}
+	.term h3 {
+		margin: 0 0 6px;
+		font-size: 1.02rem;
+	}
+	.term p {
+		margin: 0 0 12px;
+		color: var(--muted);
+		font-size: 0.94rem;
+	}
+	.term p.small {
+		font-size: 0.84rem;
+		margin-top: 12px;
+		margin-bottom: 0;
+	}
+	.term p.small + p.small {
+		margin-top: 8px;
+	}
+	pre {
+		margin: 0;
+		padding: 14px 16px;
+		border-radius: var(--radius-sm);
+		background: var(--stage);
+		color: var(--stage-text);
+		/* Commands must not wrap: a broken line pasted into a shell is a command
+		   that does something other than what it looks like. */
+		overflow-x: auto;
+	}
+	code {
+		font-family: var(--mono);
+		font-size: 0.82rem;
+		line-height: 1.6;
+		white-space: pre;
+	}
+</style>

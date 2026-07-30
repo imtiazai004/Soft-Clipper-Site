@@ -1,6 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 import Faq from "../../components/Faq.astro";
+import TerminalInstall from "../../components/TerminalInstall.astro";
 import { PRODUCT, SITE } from "../../consts";
 import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
 
@@ -115,6 +116,12 @@ const faqs: FaqItem[] = [
 					))
 				}
 			</ol>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap wrap-narrow">
+			<TerminalInstall os="windows" />
 		</div>
 	</section>
 
