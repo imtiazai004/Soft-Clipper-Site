@@ -34,7 +34,20 @@ export interface RemoteSettings {
 		installerUrl?: string;
 		installerSize?: string;
 		offMessage?: string;
+		// The Mac switch and its two values. They were already arriving and being
+		// spread into `downloads` in consts.ts — the interface is a compile-time
+		// annotation and strips nothing at runtime — so this documents what is
+		// really in the response rather than changing what the site does.
+		macEnabled?: boolean;
+		macUrl?: string;
+		macSize?: string;
 	};
+	/**
+	 * What the *desktop app* is told when it checks for updates. The site does not
+	 * read it — it is here so that this interface describes the response rather
+	 * than half of it, and so nobody adds it a second time thinking it is missing.
+	 */
+	version?: { latest?: string; notes?: string; winUrl?: string; macUrl?: string };
 	affiliates?: { enabled?: boolean; ratePct?: number; holdDays?: number };
 	notice?: { enabled?: boolean; text?: string; tone?: string };
 }
