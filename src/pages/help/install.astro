@@ -10,39 +10,76 @@ const crumbs = [
 	{ label: "Install", href: "/help/install/" },
 ];
 
+/**
+ * Written around the two moments where people stop and give up: the browser
+ * offering to delete the file, and the blue SmartScreen panel with no obvious
+ * way past it. Both are named here before they happen, with the exact words on
+ * the button, because someone who was warned expects them and someone who was
+ * not assumes the file is dangerous and deletes it.
+ */
 const steps = [
-	{ name: "Open the download link", text: "It is in your purchase email, next to your licence key, and also on the download page. The installer is around 120 MB." },
-	{ name: "Run the installer", text: "Double-click it. If Windows shows a blue SmartScreen panel, choose More info and then Run anyway — new releases have not built signing reputation yet. It installs for you only, so Windows never asks for administrator rights." },
-	{ name: "Open Soft Clipper", text: "From the Start menu, or the desktop shortcut if you asked for one. The first launch takes a few seconds longer while it unpacks." },
-	{ name: "Enter your licence key", text: "Paste the key from your email. Activation needs an internet connection once; after that the app runs offline." },
-	{ name: "Add a Gemini API key", text: "Open Settings and paste a Google Gemini API key. Creating one is free at Google AI Studio and takes about a minute." },
-	{ name: "Run a short video first", text: "Try a five-minute clip before a two-hour recording. It confirms the whole chain works in a minute rather than an hour." },
+	{
+		name: "Download the installer",
+		text: "The link is in your purchase email next to your licence key, and on the download page. It is about 120 MB.",
+	},
+	{
+		name: 'If your browser says "not commonly downloaded", choose Keep',
+		text: 'Chrome and Edge say this about any file few people have downloaded yet, and they offer to delete it. Click the arrow or the three dots next to the warning and choose Keep, then Keep anyway. Nothing was found in the file — it is new, not suspect.',
+	},
+	{
+		name: "Run it, then click More info → Run anyway",
+		text: 'Windows shows a blue panel saying it "protected your PC". The Run anyway button is hidden until you click More info first, which is why this stops most people. It is one extra click, not a dead end.',
+	},
+	{
+		name: "Finish the installer",
+		text: "It installs for you only, so Windows never asks for an administrator password. Tick the desktop shortcut if you want one.",
+	},
+	{
+		name: "Open it and paste your licence key",
+		text: "From the Start menu or the shortcut. Paste the key from your email — activation needs the internet once, and the app runs offline afterwards.",
+	},
+	{
+		name: "Add an AI key, or choose not to need one",
+		text: "Settings takes a free Google Gemini key, made in about a minute at Google AI Studio. Or pick Ollama or LM Studio with transcription set to On this PC, and no key is needed at all.",
+	},
+	{
+		name: "Try a five-minute video first",
+		text: "It confirms the whole chain works in a minute rather than an hour, before you point it at a two-hour recording.",
+	},
 ];
 
 const faqs: FaqItem[] = [
 	{
-		q: "Windows blocked the app from starting. What now?",
-		a: "That is SmartScreen, not an antivirus detection. Click More info on the panel, then Run anyway. It appears on any unsigned executable without established reputation, and eases off as a release gets downloaded more.",
+		q: 'Windows says it "protected your PC" and there is only a Don\'t run button.',
+		a: 'Click More info on that panel first. A Run anyway button appears underneath. The button is genuinely hidden until you do that, which is why this stops so many people.',
 	},
 	{
-		q: "Where does it install and where do clips go?",
-		a: "It does not install — the app runs from the folder you extracted, and rendered clips are written alongside it. Source downloads and finished clips are both large, so extract it to a drive with a few gigabytes free.",
+		q: "My browser deleted the file, or offered to.",
+		a: 'Chrome and Edge warn about any file that few people have downloaded yet. In the downloads list, click the three dots or the arrow next to Soft Clipper and choose Keep, then Keep anyway. If it is already gone, download it again and choose Keep when asked.',
+	},
+	{
+		q: "Is that warning telling me the file has a virus?",
+		a: "No. SmartScreen reports how many people have run a file and whether the publisher paid for a code-signing certificate. Ours has not yet, so every new release starts with no reputation and the warning appears until enough people have installed it. It is a statement about paperwork, not about the file.",
+	},
+	{
+		q: "Will it ask for an administrator password?",
+		a: "No. It installs for your user account only, which is also why it works on a locked-down work laptop.",
+	},
+	{
+		q: "Where does it install, and where do the clips go?",
+		a: "Into your own AppData folder, not Program Files. Clips go to the folder you pick in Settings, and stay there when you uninstall — an uninstall never touches your clips.",
 	},
 	{
 		q: "How do I uninstall it?",
-		a: "Delete the folder. Nothing is written to the registry or to Windows system folders, and there is no entry in Add or Remove Programs.",
+		a: "Settings → Apps → Soft Clipper → Uninstall, the same as anything else. Your clips are left alone.",
 	},
 	{
-		q: "Do I need ffmpeg or Python installed?",
-		a: "No. Everything the app needs is bundled inside the download, ffmpeg included — that is why the ZIP is not small.",
+		q: "Do I need ffmpeg or Python installed first?",
+		a: "No. Everything is inside the download, ffmpeg included — which is why it is not a small file.",
 	},
 	{
-		q: "Can I install it without admin rights?",
-		a: "Yes. It installs for the current user and does not require an administrator account.",
-	},
-	{
-		q: "How do I get a Gemini API key?",
-		a: "Sign in at Google AI Studio with a Google account and create an API key. The free tier is enough for ordinary use; any usage beyond it is billed by Google, never by us.",
+		q: "How do I get a Gemini API key, and do I have to?",
+		a: "Sign in at Google AI Studio with a Google account and create a key; the free tier covers ordinary use, and anything beyond it is billed by Google, never by us. You can also avoid it entirely: choose Ollama or LM Studio in Settings with transcription set to On this PC, and nothing goes to Google.",
 	},
 ];
 ---
@@ -51,7 +88,7 @@ const faqs: FaqItem[] = [
 	title="Install Soft Clipper on Windows"
 	heading="Installing Soft Clipper"
 	description={`Step-by-step install guide for ${SITE.name} on ${PRODUCT.platform}, including the Windows SmartScreen warning and first-run setup.`}
-	intro="From purchase email to first clip is about five minutes, and four of them are the download."
+	intro="About five minutes, and four of them are the download. Windows will warn you twice on the way — both are about the app being new, not about anything found in it, and both are one click each. Do not delete the file when your browser offers to."
 	eyebrow="Help"
 	crumbs={crumbs}
 	schema={[
