@@ -22,7 +22,9 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Does it run on Mac or on a phone?",
-		a: `Not yet. Soft Clipper is a Windows desktop app and needs ${PRODUCT.platform}. There is no Mac build and no mobile app — rendering video on a phone is not practical. A browser version is ${PRODUCT.webStatus}.`,
+		a: PRODUCT.macEnabled
+			? `On a Mac, yes — ${PRODUCT.macPlatform}, and the same licence works on Windows or Mac. Not on a phone: rendering video on one is not practical. A browser version is ${PRODUCT.webStatus}.`
+			: `Not yet. Soft Clipper is a Windows desktop app and needs ${PRODUCT.platform}. There is no Mac build and no mobile app — rendering video on a phone is not practical. A browser version is ${PRODUCT.webStatus}.`,
 	},
 	{
 		q: "How many clips can I make?",
@@ -93,7 +95,7 @@ const schema = [
 				<a class="btn btn-primary" href="/pricing/">Get Soft Clipper — {PRICE.display}</a>
 				<a class="btn btn-ghost" href="/features/">See how it works</a>
 			</div>
-			<p class="small muted">{PRODUCT.platform} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
+			<p class="small muted">{PRODUCT.platforms} · {PRODUCT.fileSize} · {PRODUCT.licence}</p>
 			<span class="pill accent">One-time <PriceTag /> · no subscription</span>
 		</div>
 	</section>

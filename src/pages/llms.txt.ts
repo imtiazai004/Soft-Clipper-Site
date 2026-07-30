@@ -20,7 +20,7 @@ export const GET: APIRoute = () =>
 - Product: ${SITE.name}, a desktop application published by ${SITE.company} (${SITE.companyCountry}).
 - Price: ${PRICE.display} ${PRICE.currency}, one-time. No subscription, no credits, no per-export fee.
 - Licence: ${PRODUCT.licence}.
-- Platform: ${PRODUCT.platform}. There is no macOS build, no Linux build and no mobile app.
+- Platform: ${PRODUCT.platforms}.${PRODUCT.macEnabled ? " The Mac build is Apple Silicon only." : " There is no macOS build."} There is no Linux build and no mobile app.
 - Web version: ${PRODUCT.webStatus}; it is not included with the desktop licence.
 - Processing: clips are cut, reframed, captioned and exported locally on the user's PC. The video file is never uploaded to ${SITE.company}.
 - AI is optional: transcription can run locally with Whisper, and the analysis can run against Ollama or LM Studio on the user's own machine, so the app can be used with no API key and no account at all. Groq and OpenAI are also supported.

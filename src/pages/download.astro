@@ -45,7 +45,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "What are the system requirements?",
-		a: `${PRODUCT.platform}, ${PRODUCT.requirements}. Rendering uses your processor, so a faster CPU means faster exports, but no graphics card is required.`,
+		a: `${PRODUCT.platforms}, ${PRODUCT.requirements}. Rendering uses your processor, so a faster CPU means faster exports, but no graphics card is required.`,
 	},
 ];
 ---
@@ -53,8 +53,8 @@ const faqs: FaqItem[] = [
 <Page
 	title="Download Soft Clipper"
 	heading="Download and install"
-	description={`Download Soft Clipper for ${PRODUCT.platform}. Buy once for ${PRICE.display}, activate with your licence key, and start cutting vertical clips.`}
-	intro={`Soft Clipper is a desktop app for ${PRODUCT.platform}, delivered as a ${PRODUCT.installerSize} installer. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
+	description={`Download Soft Clipper for ${PRODUCT.platforms}. Buy once for ${PRICE.display}, activate with your licence key, and start cutting vertical clips.`}
+	intro={`Soft Clipper is a desktop app for ${PRODUCT.platforms}, delivered as a ${PRODUCT.installerSize} installer. There is no cloud account to create — the licence key in your purchase email is the whole setup.`}
 	eyebrow="Download"
 	crumbs={crumbs}
 	schema={[
@@ -168,7 +168,7 @@ const faqs: FaqItem[] = [
 			<div class="card req">
 				<h2>Requirements</h2>
 				<dl>
-					<dt>Operating system</dt><dd>{PRODUCT.platform}</dd>
+					<dt>Operating system</dt><dd>{PRODUCT.platforms}</dd>
 					<dt>Memory</dt><dd>{PRODUCT.requirements}</dd>
 					<dt>Disk</dt><dd>A few GB free — source videos and rendered clips are large</dd>
 					<dt>Internet</dt><dd>For activation and AI analysis only; rendering is offline</dd>

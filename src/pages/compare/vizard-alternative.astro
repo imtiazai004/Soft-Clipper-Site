@@ -49,7 +49,7 @@ const rows = [
 	{ f: "Team workspaces and brand kits", a: "No", b: "Yes" },
 	{ f: "Publish straight to social accounts", a: "No", b: "Yes" },
 	{ f: "Works from a phone or tablet", a: "No", b: "Yes, in a browser" },
-	{ f: "Platform", a: PRODUCT.platform, b: "Any browser" },
+	{ f: "Platform", a: PRODUCT.platforms, b: "Any browser" },
 	{ f: "Keeps working if the company stops trading", a: "Yes — it is on your disk", b: "No" },
 ];
 ---
@@ -108,7 +108,7 @@ const rows = [
 				<div class="card">
 					<h2>Where Vizard wins</h2>
 					<ul class="checks">
-						<li><strong>It runs anywhere there is a browser</strong> — including a Mac, a Chromebook and a phone. Soft Clipper needs {PRODUCT.platform}.</li>
+						<li><strong>It runs anywhere there is a browser</strong> — including a Chromebook and a phone. Soft Clipper needs {PRODUCT.platforms}.</li>
 						<li><strong>Teams.</strong> Shared workspaces, brand kits and per-seat billing are built in.</li>
 						<li><strong>It posts for you.</strong> Connect the accounts and publish from the same screen.</li>
 						<li><strong>No hardware requirement.</strong> Rendering happens on their machines, so a slow laptop does not slow you down.</li>

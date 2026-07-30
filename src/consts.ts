@@ -131,7 +131,26 @@ export const PRICE = {
 };
 
 export const PRODUCT = {
+	/** The Windows line specifically — the Windows button, the Windows guide. */
 	platform: "Windows 10 and 11 (64-bit)",
+
+	/**
+	 * What the product runs on, following the Mac switch.
+	 *
+	 * This exists because that switch did not do what its own comment promised.
+	 * Turning macOS on published the download, the install guide and the platform
+	 * line, and left a dozen sentences elsewhere still saying there is no Mac
+	 * build: the FAQ, the "not included" list on the pricing page, four
+	 * comparison tables, llms.txt. The download page offered a Mac build while
+	 * the page next to it said one did not exist.
+	 *
+	 * Anything describing what the app runs on uses this. `platform` is only for
+	 * the places that really are about Windows.
+	 */
+	platforms: downloads.macEnabled
+		? "Windows 10 and 11, or macOS 12+ (Apple Silicon)"
+		: "Windows 10 and 11 (64-bit)",
+
 	licence: "1 licence = 1 PC, activated online, then works offline",
 	fileSize: `~${downloads.installerSize} installer`,
 

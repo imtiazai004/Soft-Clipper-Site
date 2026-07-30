@@ -39,7 +39,7 @@ export const softwareSchema = () => ({
 	name: SITE.name,
 	applicationCategory: "MultimediaApplication",
 	applicationSubCategory: "Video editing",
-	operatingSystem: PRODUCT.platform,
+	operatingSystem: PRODUCT.platforms,
 	description: SITE.description,
 	url: SITE.origin,
 	publisher: { "@id": `${SITE.origin}/#organization` },

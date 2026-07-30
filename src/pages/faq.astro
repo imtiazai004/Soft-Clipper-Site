@@ -63,7 +63,9 @@ const groups: { title: string; items: FaqItem[] }[] = [
 		items: [
 			{
 				q: "Does it work on Mac?",
-				a: "No. Soft Clipper is Windows-only today. There is no macOS build and no timeline we are willing to promise.",
+				a: PRODUCT.macEnabled
+				? `Yes — there is a Mac build for ${PRODUCT.macPlatform}, and the same licence key works on either. Apple Silicon only; there is no Intel build.`
+				: "No. Soft Clipper is Windows-only today. There is no macOS build and no timeline we are willing to promise.",
 			},
 			{
 				q: "Is there a mobile app?",

@@ -67,7 +67,9 @@ const included = [
 ];
 
 const notIncluded = [
-	"macOS or Linux builds — Windows only for now",
+	...(PRODUCT.macEnabled
+		? ["A Linux build — Windows and macOS only"]
+		: ["macOS or Linux builds — Windows only for now"]),
 	"A mobile app — phones cannot render this reliably",
 	"The browser version, which is still in development",
 	"A Gemini API key — bring your own free one, or run the AI locally instead",
@@ -130,7 +132,7 @@ const notIncluded = [
 					<h3>Requirements</h3>
 					<dl>
 						<dt>Operating system</dt>
-						<dd>{PRODUCT.platform}</dd>
+						<dd>{PRODUCT.platforms}</dd>
 						<dt>Memory</dt>
 						<dd>{PRODUCT.requirements}</dd>
 						<dt>Download size</dt>
