@@ -2,7 +2,7 @@
 import Page from "../../layouts/Page.astro";
 import Faq from "../../components/Faq.astro";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
-import { PRICE } from "../../consts";
+import { PRICE, PRODUCT } from "../../consts";
 
 const crumbs = [
 	{ label: "Home", href: "/" },
@@ -21,7 +21,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Is a subscription ever the better deal?",
-		a: "Yes, in three cases: you need it for a single project and then never again; you need features only a cloud service can offer, like scheduling or team review; or you are not on Windows, in which case local software is not an option at all.",
+		a: `Yes, in three cases: you need it for a single project and then never again; you need features only a cloud service can offer, like scheduling or team review; or you are not ${PRODUCT.onPlatform}, in which case local software is not an option at all.`,
 	},
 	{
 		q: "What happens to my clips if I stop paying a subscription?",

@@ -9,7 +9,7 @@
  */
 import Page from "../layouts/Page.astro";
 import Faq from "../components/Faq.astro";
-import { AFFILIATES, PRICE, SITE } from "../consts";
+import { AFFILIATES, PRICE, PRODUCT, SITE } from "../consts";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
 
 const crumbs = [
@@ -66,7 +66,7 @@ const faqs: FaqItem[] = [
 const rules = [
 	{
 		t: "Say what it is",
-		d: "A Windows app that cuts long videos into vertical clips. Do not promise a Mac version, a mobile app, cloud rendering or auto-posting — none of those exist, and the refund lands on us.",
+		d: `${PRODUCT.appNoun.charAt(0).toUpperCase() + PRODUCT.appNoun.slice(1)} that cuts long videos into vertical clips. Do not promise${PRODUCT.macEnabled ? "" : " a Mac version,"} a mobile app, cloud rendering or auto-posting — none of those exist, and the refund lands on us.`,
 	},
 	{
 		t: "Say the price honestly",

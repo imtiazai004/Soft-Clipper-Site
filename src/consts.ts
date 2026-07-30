@@ -17,8 +17,14 @@ export const SITE = {
 	// this is static hosting and those need a server.
 	origin: "https://softclipper.pro",
 	tagline: "Turn long videos into viral vertical clips",
-	description:
-		"Soft Clipper is a Windows desktop app that finds the best moments in a long video and cuts ready-to-post vertical clips for TikTok, Reels and Shorts — with AI captions and automatic 9:16 reframing. One-time payment, no subscription.",
+	/**
+	 * A getter, because the wording follows the Mac switch and PLATFORM is
+	 * computed further down this file. Read at render time, long after the
+	 * module has finished evaluating, so the ordering is not a problem.
+	 */
+	get description() {
+		return `Soft Clipper is ${PLATFORM.desktopApp} that finds the best moments in a long video and cuts ready-to-post vertical clips for TikTok, Reels and Shorts — with AI captions and automatic 9:16 reframing. One-time payment, no subscription.`;
+	},
 	// The legal entity behind the product — Stripe, Meta ads and Google all look
 	// for a real, consistent business identity across the site.
 	company: "Atlantic Ltd Store Limited",
@@ -85,6 +91,33 @@ const price = { ...DEFAULTS.price, ...REMOTE.price };
 const downloads = { ...DEFAULTS.downloads, ...REMOTE.downloads };
 const affiliates = { ...DEFAULTS.affiliates, ...REMOTE.affiliates };
 
+/**
+ * How the product refers to itself in prose, following the Mac switch.
+ *
+ * Turning macOS on published the download and left sixteen sentences elsewhere
+ * calling this "a Windows app" — including the first line of the home page, the
+ * footer on every page, the meta description search engines read, and a line
+ * telling affiliates not to promise a Mac version. The download button offered
+ * one while the sentence above it said the product was for Windows.
+ *
+ * Phrases rather than a boolean at each call site: "a Windows app" appears in
+ * running text, and sixteen inline ternaries would be sixteen chances to write
+ * a sentence that only reads properly in one of the two states.
+ */
+const PLATFORM = {
+	/** "Soft Clipper is …" */
+	app: downloads.macEnabled ? "a Windows and Mac app" : "a Windows app",
+	desktopApp: downloads.macEnabled
+		? "a Windows and Mac desktop app"
+		: "a Windows desktop app",
+	/** "… if you are …" */
+	onIt: downloads.macEnabled ? "on Windows or a Mac" : "on Windows",
+	/** "… it needs …" */
+	needs: downloads.macEnabled ? "a Windows PC or a Mac" : "a Windows PC",
+	/** For lists of what a rival does that we do not. */
+	rivalHasMac: downloads.macEnabled ? "" : " a Mac,",
+};
+
 export const PRICE = {
 	/**
 	 * What a customer is actually charged — editable on the dashboard.
@@ -150,6 +183,13 @@ export const PRODUCT = {
 	platforms: downloads.macEnabled
 		? "Windows 10 and 11, or macOS 12+ (Apple Silicon)"
 		: "Windows 10 and 11 (64-bit)",
+
+	/** Prose forms of the platform, following the Mac switch — see PLATFORM. */
+	appNoun: PLATFORM.app,
+	desktopAppNoun: PLATFORM.desktopApp,
+	onPlatform: PLATFORM.onIt,
+	needsMachine: PLATFORM.needs,
+	rivalHasMac: PLATFORM.rivalHasMac,
 
 	licence: "1 licence = 1 PC, activated online, then works offline",
 	fileSize: `~${downloads.installerSize} installer`,

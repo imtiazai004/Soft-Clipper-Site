@@ -15,7 +15,7 @@ const CHECKED = "July 2026";
 const faqs: FaqItem[] = [
 	{
 		q: "Is Soft Clipper a good Klap alternative?",
-		a: `Yes if you are on Windows and want to stop paying monthly. Klap is a cloud tool priced per month with a cap on how many videos you may upload; Soft Clipper is a ${PRICE.display} one-time Windows app with no cap. Klap remains the better answer if you need a browser, a Mac, or 4K exports.`,
+		a: `Yes if you are ${PRODUCT.onPlatform} and want to stop paying monthly. Klap is a cloud tool priced per month with a cap on how many videos you may upload; Soft Clipper is a ${PRICE.display} one-time ${PRODUCT.appNoun.replace(/^a /, "")} with no cap. Klap remains the better answer if you need a browser,${PRODUCT.rivalHasMac} or 4K exports.`,
 	},
 	{
 		q: "What does Klap cost?",
@@ -46,7 +46,7 @@ const rows = [
 <Page
 	title="Soft Clipper vs Klap"
 	heading="Soft Clipper as a Klap alternative"
-	description={`Compare Soft Clipper and Klap: a ${PRICE.display} one-time Windows app with unlimited local rendering versus a monthly cloud plan capped by video count. Pricing checked ${CHECKED}.`}
+	description={`Compare Soft Clipper and Klap: a ${PRICE.display} one-time ${PRODUCT.appNoun.replace(/^a /, "")} with unlimited local rendering versus a monthly cloud plan capped by video count. Pricing checked ${CHECKED}.`}
 	intro="Klap built its name on reframing quality. This page compares that with local speaker tracking — and is straight about the two places Klap still wins."
 	eyebrow="Comparison"
 	crumbs={crumbs}
@@ -55,7 +55,7 @@ const rows = [
 	<section class="pt-0">
 		<div class="wrap">
 			<p class="answer">
-				<strong>Short answer:</strong> Soft Clipper if you are on Windows, publish more than a
+				<strong>Short answer:</strong> Soft Clipper if you are {PRODUCT.onPlatform}, publish more than a
 				handful of videos a month, and want to own the tool outright. Klap if you need a
 				browser tool, work on a Mac, or want 4K masters.
 			</p>

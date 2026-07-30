@@ -1,6 +1,6 @@
 ---
 import Page from "../layouts/Page.astro";
-import { SITE, PRICE } from "../consts";
+import { SITE, PRICE, PRODUCT } from "../consts";
 import { breadcrumbSchema } from "../lib/schema";
 
 const crumbs = [
@@ -58,7 +58,7 @@ const crumbs = [
 
 			<h2>Where it is going</h2>
 			<p>
-				A browser version is in development for people who are not on Windows. It will be sold
+				A browser version is in development for people who are not {PRODUCT.onPlatform}. It will be sold
 				separately and will not change anything about the desktop licence you own.
 			</p>
 		</div>

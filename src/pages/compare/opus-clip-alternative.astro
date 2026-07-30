@@ -17,7 +17,7 @@ const CHECKED = "July 2026";
 const faqs: FaqItem[] = [
 	{
 		q: "Is Soft Clipper a good Opus Clip alternative?",
-		a: `It is if the monthly fee and the upload quota are what bother you. Soft Clipper is a one-time ${PRICE.display} Windows app with no minute limits, because clips are rendered on your own PC. It is not the right choice if you need a browser tool, a Mac, scheduling or auto-posting.`,
+		a: `It is if the monthly fee and the upload quota are what bother you. Soft Clipper is a one-time ${PRICE.display} ${PRODUCT.appNoun.replace(/^a /, "")} with no minute limits, because clips are rendered on your own computer. It is not the right choice if you need a browser tool,${PRODUCT.rivalHasMac} scheduling or auto-posting.`,
 	},
 	{
 		q: "What does Opus Clip cost?",
@@ -66,7 +66,7 @@ const rows = [
 	<section class="pt-0">
 		<div class="wrap">
 			<p class="answer">
-				<strong>Short answer:</strong> choose Soft Clipper if you are on Windows, publish a
+				<strong>Short answer:</strong> choose Soft Clipper if you are {PRODUCT.onPlatform}, publish a
 				lot, and would rather pay {PRICE.display} once than a monthly fee with a minute quota.
 				Choose Opus Clip if you need it in a browser, work on a Mac, or want it to schedule
 				and post the clips for you.
@@ -105,7 +105,7 @@ const rows = [
 				<div class="card">
 					<h2>Where Opus Clip is the better tool</h2>
 					<ul class="checks">
-						<li><strong>You are not on Windows.</strong> It runs in a browser; Soft Clipper does not exist for macOS.</li>
+						<li><strong>You want it in a browser.</strong> Opus Clip runs in any tab, on any machine — Soft Clipper needs {PRODUCT.platforms}, so a Chromebook, a Linux box or a phone is out.</li>
 						<li><strong>You want posting handled.</strong> Scheduling and auto-posting are built in.</li>
 						<li><strong>Your PC is slow.</strong> Cloud rendering does not care what laptop you own.</li>
 						<li><strong>You publish rarely.</strong> Under an hour of source a month, the free tier may be all you need.</li>

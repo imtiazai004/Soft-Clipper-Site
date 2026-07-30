@@ -1,5 +1,5 @@
 ---
-import { SITE, PRICE } from "../consts";
+import { SITE, PRICE, PRODUCT } from "../consts";
 
 /*
  * The footer is the site's internal-linking backbone — every important page is
@@ -80,7 +80,7 @@ const year = new Date().getFullYear();
 					{SITE.name}
 				</span>
 				<p class="blurb">
-					A Windows app that turns long videos into ready-to-post vertical clips. Pay once,
+					{PRODUCT.appNoun.charAt(0).toUpperCase() + PRODUCT.appNoun.slice(1)} that turns long videos into ready-to-post vertical clips. Pay once,
 					use forever.
 				</p>
 				<div class="contact">
