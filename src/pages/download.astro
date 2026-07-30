@@ -1,7 +1,6 @@
 ---
 import Page from "../layouts/Page.astro";
 import Faq from "../components/Faq.astro";
-import TerminalInstall from "../components/TerminalInstall.astro";
 import { PRICE, PRODUCT, SITE } from "../consts";
 import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
 
@@ -25,7 +24,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Is there an installer?",
-		a: "Yes, and it is the recommended way. It installs for you only, so Windows never asks for administrator rights, and it puts a proper entry in Add or Remove Programs. If you would rather not click past the SmartScreen warning, the terminal command below downloads and runs the same installer without one.",
+		a: "Yes, and it is the only way we ship it. It installs for you only, so Windows never asks for administrator rights, and it puts a proper entry in Add or Remove Programs. If you would rather not click past the SmartScreen warning, the email with your key also carries a terminal command that downloads and runs the same installer without one.",
 	},
 	{
 		q: "Where does it install, and what does uninstalling remove?",
@@ -71,52 +70,48 @@ const faqs: FaqItem[] = [
 	<section class="pt-0">
 		<div class="wrap">
 			{/*
-			  The installer is on a public URL, and this page says so.
+			  The download link is not on this page any more.
 
-			  It does not need hiding: the app will not run without a licence key,
-			  and the key is what is sold. Pretending the file were secret would
-			  be a claim anyone could disprove by pasting the link — and a site
-			  that sells software cannot afford to be caught overstating anything.
+			  It used to be, on the reasoning that the file is useless without a
+			  licence key and pretending otherwise would be a claim anyone could
+			  disprove by pasting the URL. That reasoning still holds for what the
+			  link *protects* — this change hides it, it does not make the file
+			  unreachable, and the R2 URL is still public to anyone who has it.
+
+			  What it changes is who is handed it. A visitor who has not bought
+			  now gets the price and an explanation instead of a 168 MB installer
+			  they cannot run. Buyers get the link on the thank-you page and in the
+			  licence email, which is where it was always most useful.
+
+			  If this needs to become real gating rather than a quieter page, the
+			  answer is a download that checks a key before it serves anything —
+			  not this.
 			*/}
 			<div class="buy-box">
 				<div>
-					<h2>Download it now, activate it when you buy</h2>
+					<h2>Buy a licence, then install it</h2>
 					<p class="muted">
-						The installer is free to download. It will not run without a licence key, and
-						the key arrives by email the moment you buy — so there is nothing to wait for
-						except the payment.
+						The download arrives with your licence key, by email, the moment you buy.
+						There is no separate account to make and nothing to wait for — the key in
+						that email is the whole setup.
 					</p>
 				</div>
 				{
 					PRODUCT.downloadsEnabled ? (
 						<Fragment>
 							<div class="btn-row">
-								<a class="btn btn-primary" href={PRODUCT.installerUrl} download>
-									Download for {PRODUCT.platform.split(" ")[0]} — {PRODUCT.installerSize}
-								</a>
-								<a class="btn btn-ghost" href="/pricing/">Buy a licence — {PRICE.display}</a>
+								<a class="btn btn-primary" href="/pricing/">Buy a licence — {PRICE.display}</a>
+								<a class="btn btn-ghost" href="/help/install/">See how the install works</a>
 							</div>
-							{PRODUCT.macEnabled && (
-								<p class="small muted alt">
-									On a Mac?{" "}
-									<a href={PRODUCT.macUrl} download>
-										Download for macOS ({PRODUCT.macSize})
-									</a>
-									{" "}— {PRODUCT.macPlatform}. Open it and drag Soft Clipper onto
-									Applications. The first launch needs one extra step, which
-									the <a href="/help/install-mac/">Mac install guide</a> walks through.
-								</p>
-							)}
-
-							{/*
-							  The same files, fetched a way that arrives unmarked, so neither
-							  SmartScreen nor Gatekeeper has anything to warn about. Under the
-							  buttons rather than instead of them: this is the escape hatch for
-							  people who would rather not click past a warning, not the route
-							  most buyers should be sent down.
-							*/}
-							<TerminalInstall os="windows" variant="compact" />
-							{PRODUCT.macEnabled && <TerminalInstall os="mac" variant="compact" />}
+							<p class="small muted alt">
+								{PRODUCT.platforms}. {PRODUCT.installerSize} for Windows
+								{PRODUCT.macEnabled && `, ${PRODUCT.macSize} for macOS`}. One licence covers
+								one computer, and you can move it to another one whenever you like.
+							</p>
+							<p class="small muted alt">
+								Already bought? Your download link is in the email with your key —
+								or <a href={`mailto:${SITE.email}`}>email us</a> and we will resend it.
+							</p>
 						</Fragment>
 					) : (
 						/*
