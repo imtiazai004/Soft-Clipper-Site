@@ -71,13 +71,11 @@ const DEFAULTS = {
 	downloads: {
 		enabled: true,
 		installerUrl: "https://dl.softclipper.pro/Soft-Clipper-Setup.exe",
-		installerSize: "120 MB",
-		zipUrl: "https://dl.softclipper.pro/Soft-Clipper.zip",
-		zipSize: "164 MB",
+		installerSize: "161 MB",
 		offMessage: "Downloads are paused while we ship an update. Back shortly.",
-		macEnabled: false,
-		macUrl: "https://dl.softclipper.pro/Soft-Clipper-macOS.zip",
-		macSize: "95 MB",
+		macEnabled: true,
+		macUrl: "https://dl.softclipper.pro/Soft-Clipper.dmg",
+		macSize: "202 MB",
 	},
 	affiliates: { enabled: true, ratePct: 30, holdDays: 30 },
 	notice: { enabled: false, text: "", tone: "info" },
@@ -145,16 +143,16 @@ export const PRODUCT = {
 	downloadsEnabled: downloads.enabled,
 	downloadsOffMessage: downloads.offMessage,
 
-	// Both are served from R2 on our own domain. The installer is what the
-	// licence email links to; the ZIP stays for anyone who would rather not run
-	// a setup wizard, and is the same build either way.
+	// Served from R2 on our own domain, and the only two files we hand out: the
+	// Windows installer and the macOS disk image. A ZIP of the same build used to
+	// sit beside the installer. It is a different thing to give someone — the
+	// product as a folder, to open, read and pass on — so it is gone, from here,
+	// from the page and from the licence email.
 	//
 	// The filenames must not change between releases: an email sent last month
 	// has to keep working, so a new build replaces the object at the same key.
 	installerUrl: downloads.installerUrl,
 	installerSize: downloads.installerSize,
-	zipUrl: downloads.zipUrl,
-	zipSize: downloads.zipSize,
 
 	/**
 	 * The Mac build, published by one switch on the dashboard.

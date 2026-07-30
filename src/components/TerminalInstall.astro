@@ -30,9 +30,11 @@ interface Props {
 }
 const { os, variant = "full" } = Astro.props;
 
-const mac = `curl -L -o ~/Downloads/soft-clipper.zip \\
+const mac = `curl -L -o ~/Downloads/soft-clipper.dmg \\
   ${PRODUCT.macUrl}
-unzip -o ~/Downloads/soft-clipper.zip -d /Applications
+hdiutil attach ~/Downloads/soft-clipper.dmg
+cp -R "/Volumes/Soft Clipper/Soft Clipper.app" /Applications/
+hdiutil detach "/Volumes/Soft Clipper"
 open "/Applications/Soft Clipper.app"`;
 
 const windows = `Invoke-WebRequest "${PRODUCT.installerUrl}" \`
@@ -69,7 +71,7 @@ const warning = os === "mac" ? "macOS shows no security warning" : "SmartScreen 
 				<p class="small">
 					{
 						os === "mac"
-							? "Line one downloads it, line two unpacks it into Applications, line three opens it."
+							? "Line one downloads the disk image, line two opens it, line three copies the app into Applications, line four closes the image again, line five starts it."
 							: "Line one downloads the installer, line two runs it. The installer itself is unchanged."
 					}
 					{" "}Nothing here is piped into a shell — read each line before you run it, here and

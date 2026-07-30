@@ -25,7 +25,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "Is there an installer?",
-		a: "Yes, and it is the recommended way. It installs for you only, so Windows never asks for administrator rights, and it puts a proper entry in Add or Remove Programs. If you would rather not run a setup wizard, the same build is available as a ZIP you extract and run from any folder.",
+		a: "Yes, and it is the recommended way. It installs for you only, so Windows never asks for administrator rights, and it puts a proper entry in Add or Remove Programs. If you would rather not click past the SmartScreen warning, the terminal command below downloads and runs the same installer without one.",
 	},
 	{
 		q: "Where does it install, and what does uninstalling remove?",
@@ -96,18 +96,14 @@ const faqs: FaqItem[] = [
 								</a>
 								<a class="btn btn-ghost" href="/pricing/">Buy a licence — {PRICE.display}</a>
 							</div>
-							<p class="small muted alt">
-								Prefer no installer?{" "}
-								<a href={PRODUCT.zipUrl} download>Download the ZIP ({PRODUCT.zipSize})</a> and run
-								it from any folder. Same app, same files.
-							</p>
 							{PRODUCT.macEnabled && (
 								<p class="small muted alt">
 									On a Mac?{" "}
 									<a href={PRODUCT.macUrl} download>
 										Download for macOS ({PRODUCT.macSize})
 									</a>
-									{" "}— {PRODUCT.macPlatform}. The first launch needs one extra step, which
+									{" "}— {PRODUCT.macPlatform}. Open it and drag Soft Clipper onto
+									Applications. The first launch needs one extra step, which
 									the <a href="/help/install-mac/">Mac install guide</a> walks through.
 								</p>
 							)}

@@ -33,8 +33,6 @@ export interface RemoteSettings {
 		enabled?: boolean;
 		installerUrl?: string;
 		installerSize?: string;
-		zipUrl?: string;
-		zipSize?: string;
 		offMessage?: string;
 	};
 	affiliates?: { enabled?: boolean; ratePct?: number; holdDays?: number };

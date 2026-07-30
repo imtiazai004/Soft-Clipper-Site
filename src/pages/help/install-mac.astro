@@ -31,8 +31,12 @@ const crumbs = [
  */
 const steps = [
 	{
-		name: "Unzip it and drag it to Applications",
-		text: "Double-click the downloaded zip in Finder, then drag Soft Clipper into your Applications folder. Use Finder's own unzip rather than a third-party one.",
+		name: "Open the disk image and drag it to Applications",
+		text: "Double-click the downloaded .dmg in Finder. A window opens with Soft Clipper on one side and a shortcut to your Applications folder on the other — drag one onto the other. Then close the window and eject Soft Clipper from the sidebar.",
+	},
+	{
+		name: "Open it from Applications, not from the disk image",
+		text: "Running it straight out of the mounted image works once and then behaves strangely, because macOS launches it from a temporary read-only copy. Copy it across first, every time.",
 	},
 	{
 		name: "Double-click it, and expect to be refused",
@@ -107,7 +111,7 @@ const faqs: FaqItem[] = [
 		breadcrumbSchema(crumbs),
 		howToSchema({
 			name: "Install Soft Clipper on macOS",
-			description: "Unzip, move to Applications, allow it in Privacy & Security, and activate.",
+			description: "Open the disk image, drag it to Applications, allow it in Privacy & Security, and activate.",
 			totalTime: "PT3M",
 			steps,
 		}),
