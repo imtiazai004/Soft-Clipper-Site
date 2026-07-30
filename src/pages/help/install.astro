@@ -41,7 +41,7 @@ const steps = [
 	},
 	{
 		name: "Add an AI key, or choose not to need one",
-		text: "Settings takes a free Google Gemini key, made in about a minute at Google AI Studio. Or pick Ollama or LM Studio with transcription set to On this PC, and no key is needed at all.",
+		text: "Settings takes a free Google Gemini key, made in about a minute at Google AI Studio. You can avoid it for YouTube videos that already have captions — pick Ollama or LM Studio and nothing goes to Google. Anything else needs the key to turn speech into text.",
 	},
 	{
 		name: "Try a five-minute video first",
@@ -80,7 +80,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "How do I get a Gemini API key, and do I have to?",
-		a: "Sign in at Google AI Studio with a Google account and create a key; the free tier covers ordinary use, and anything beyond it is billed by Google, never by us. You can also avoid it entirely: choose Ollama or LM Studio in Settings with transcription set to On this PC, and nothing goes to Google.",
+		a: "Sign in at Google AI Studio with a Google account and create a key; the free tier covers ordinary use, and anything beyond it is billed by Google, never by us. You can avoid it for YouTube videos that already carry captions: choose Ollama or LM Studio in Settings and nothing goes to Google. A local file, or a video without captions, still needs the key — turning speech into text is the one step only Gemini does in this build.",
 	},
 ];
 ---
