@@ -1,6 +1,7 @@
 ---
 import Page from "../layouts/Page.astro";
 import Faq from "../components/Faq.astro";
+import TerminalInstall from "../components/TerminalInstall.astro";
 import { PRICE, PRODUCT, SITE } from "../consts";
 import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
 
@@ -110,6 +111,16 @@ const faqs: FaqItem[] = [
 									the <a href="/help/install-mac/">Mac install guide</a> walks through.
 								</p>
 							)}
+
+							{/*
+							  The same files, fetched a way that arrives unmarked, so neither
+							  SmartScreen nor Gatekeeper has anything to warn about. Under the
+							  buttons rather than instead of them: this is the escape hatch for
+							  people who would rather not click past a warning, not the route
+							  most buyers should be sent down.
+							*/}
+							<TerminalInstall os="windows" variant="compact" />
+							{PRODUCT.macEnabled && <TerminalInstall os="mac" variant="compact" />}
 						</Fragment>
 					) : (
 						/*

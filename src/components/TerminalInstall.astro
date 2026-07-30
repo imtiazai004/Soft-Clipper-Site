@@ -7,7 +7,8 @@
  * and SmartScreen read that flag and act on it. `curl` and `Invoke-WebRequest`
  * do not set it, so a file fetched that way is not marked, and neither warning
  * has anything to fire on. Nothing is being bypassed — there is nothing there
- * to bypass.
+ * to bypass. Confirmed by downloading the real installer with Invoke-WebRequest
+ * and finding no Zone.Identifier stream on it.
  *
  * Offered second, never first. Two reasons.
  *
@@ -23,10 +24,11 @@
 import { PRODUCT, SITE } from "../consts";
 
 interface Props {
-	/** Which one to show. */
 	os: "windows" | "mac";
+	/** `full` explains itself; `compact` sits under a download button. */
+	variant?: "full" | "compact";
 }
-const { os } = Astro.props;
+const { os, variant = "full" } = Astro.props;
 
 const mac = `curl -L -o ~/Downloads/soft-clipper.zip \\
   ${PRODUCT.macUrl}
@@ -36,34 +38,81 @@ open "/Applications/Soft Clipper.app"`;
 const windows = `Invoke-WebRequest "${PRODUCT.installerUrl}" \`
   -OutFile "$env:TEMP\\soft-clipper-setup.exe"
 & "$env:TEMP\\soft-clipper-setup.exe"`;
+
+const command = os === "mac" ? mac : windows;
+const shell = os === "mac" ? "Terminal" : "PowerShell";
+const guide = os === "mac" ? "/help/install-mac/" : "/help/install/";
+const warning = os === "mac" ? "macOS shows no security warning" : "SmartScreen shows nothing";
 ---
 
-<div class="term">
-	<h3>Prefer no warnings at all?</h3>
-	<p>
-		{
-			os === "mac"
-				? "Paste these three lines into Terminal instead. macOS shows no security warning, because the warning comes from a flag your browser attaches to downloads and curl does not attach one."
-				: "Paste these two lines into PowerShell instead. SmartScreen shows nothing, because the blue panel is triggered by a mark your browser puts on downloaded files and PowerShell does not put one there."
-		}
-	</p>
-	<pre><code>{os === "mac" ? mac : windows}</code></pre>
-	<p class="small">
-		{
-			os === "mac"
-				? "Line one downloads it, line two unpacks it into Applications, line three opens it."
-				: "Line one downloads the installer, line two runs it. The installer itself is unchanged."
-		}
-		{" "}Nothing here is piped into a shell — read each line before you run it, here and anywhere
-		else. If a website ever tells you to paste a command you cannot read, do not.
-	</p>
-	<p class="small muted">
-		Not sure? Use the normal download above. Both give you exactly the same app, and the
-		warning is safe to click past — <a href={os === "mac" ? "/help/install-mac/" : "/help/install/"}
-		>the install guide</a> shows how, or <a href={SITE.waLink}>message us</a> and we will walk
-		you through it.
-	</p>
+<div class:list={["term", variant]}>
+	<div class="head">
+		<h3>{variant === "compact" ? `Install from ${shell} — no warnings` : "Prefer no warnings at all?"}</h3>
+		<button class="copy" type="button" data-copy aria-label={`Copy the ${shell} command`}>Copy</button>
+	</div>
+
+	{
+		variant === "full" && (
+			<p>
+				Paste this into {shell} instead. {warning}, because the warning comes from a flag your
+				browser attaches to downloads and {os === "mac" ? "curl" : "PowerShell"} does not
+				attach one.
+			</p>
+		)
+	}
+
+	<pre><code data-command>{command}</code></pre>
+
+	{
+		variant === "full" ? (
+			<Fragment>
+				<p class="small">
+					{
+						os === "mac"
+							? "Line one downloads it, line two unpacks it into Applications, line three opens it."
+							: "Line one downloads the installer, line two runs it. The installer itself is unchanged."
+					}
+					{" "}Nothing here is piped into a shell — read each line before you run it, here and
+					anywhere else. If a website ever tells you to paste a command you cannot read, do not.
+				</p>
+				<p class="small muted">
+					Not sure? Use the normal download above. Both give you exactly the same app, and the
+					warning is safe to click past — <a href={guide}>the install guide</a> shows how, or{" "}
+					<a href={SITE.waLink}>message us</a> and we will walk you through it.
+				</p>
+			</Fragment>
+		) : (
+			<p class="small muted">
+				Same app as the button above. <a href={guide}>What the warning is</a>, if you would
+				rather just click past it.
+			</p>
+		)
+	}
 </div>
+
+<script is:inline>
+	document.querySelectorAll("[data-copy]").forEach((btn) => {
+		btn.addEventListener("click", async () => {
+			const code = btn.closest(".term")?.querySelector("[data-command]");
+			if (!code) return;
+			try {
+				await navigator.clipboard.writeText(code.textContent || "");
+				btn.textContent = "Copied";
+			} catch {
+				// Clipboard access needs a secure context and permission. Selecting
+				// the text is a worse experience than copying it, but it is far
+				// better than a button that silently does nothing.
+				const range = document.createRange();
+				range.selectNodeContents(code);
+				const sel = window.getSelection();
+				sel?.removeAllRanges();
+				sel?.addRange(range);
+				btn.textContent = "Press Ctrl+C";
+			}
+			setTimeout(() => (btn.textContent = "Copy"), 2500);
+		});
+	});
+</script>
 
 <style>
 	.term {
@@ -73,9 +122,39 @@ const windows = `Invoke-WebRequest "${PRODUCT.installerUrl}" \`
 		border-radius: var(--radius);
 		background: var(--panel-strong);
 	}
+	.term.compact {
+		margin-top: 18px;
+		padding: 16px 18px;
+	}
+	.head {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		justify-content: space-between;
+		margin-bottom: 8px;
+	}
 	.term h3 {
-		margin: 0 0 6px;
+		margin: 0;
 		font-size: 1.02rem;
+	}
+	.term.compact h3 {
+		font-size: 0.94rem;
+	}
+	.copy {
+		flex-shrink: 0;
+		font: inherit;
+		font-size: 0.8rem;
+		font-weight: 600;
+		padding: 5px 13px;
+		border-radius: 999px;
+		border: 1px solid var(--border-strong);
+		background: var(--panel);
+		color: var(--text);
+		cursor: pointer;
+	}
+	.copy:hover {
+		border-color: var(--violet);
+		color: var(--violet);
 	}
 	.term p {
 		margin: 0 0 12px;
@@ -96,8 +175,8 @@ const windows = `Invoke-WebRequest "${PRODUCT.installerUrl}" \`
 		border-radius: var(--radius-sm);
 		background: var(--stage);
 		color: var(--stage-text);
-		/* Commands must not wrap: a broken line pasted into a shell is a command
-		   that does something other than what it looks like. */
+		/* Commands must not wrap: a line broken across two, pasted into a shell,
+		   is a command that does something other than what it looks like. */
 		overflow-x: auto;
 	}
 	code {

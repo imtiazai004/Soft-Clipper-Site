@@ -11,6 +11,7 @@
  * noindex: a thank-you page in search results is a page that ranks for the
  * brand and then tells the visitor about a purchase they have not made.
  */
+import TerminalInstall from "../components/TerminalInstall.astro";
 import Base from "../layouts/Base.astro";
 import { SITE, PRICE, PRODUCT } from "../consts";
 ---
@@ -41,10 +42,29 @@ import { SITE, PRICE, PRODUCT } from "../consts";
 				<h2>Download and install</h2>
 				<p>
 					<a href={PRODUCT.installerUrl} download>Download the installer</a> ({PRODUCT.installerSize})
-					and run it. Windows will warn about an unrecognised publisher the first time —
-					choose <strong>More info</strong>, then <strong>Run anyway</strong>. It installs
-					for you only, so there is no administrator prompt.
+					and run it. Windows warns about an unrecognised publisher the first time —
+					choose <strong>More info</strong>, then <strong>Run anyway</strong>. The button is
+					hidden until you click More info, which is the only thing tricky about it. It
+					installs for you only, so there is no administrator prompt.
 				</p>
+				{
+					PRODUCT.macEnabled && (
+						<p>
+							On a Mac, <a href={PRODUCT.macUrl} download>download the macOS build</a>{" "}
+							({PRODUCT.macSize}) and follow the{" "}
+							<a href="/help/install-mac/">Mac install guide</a> — macOS refuses it once
+							before letting you allow it, and that is expected.
+						</p>
+					)
+				}
+				{/*
+				  Someone who has just paid $39 and then meets a security warning is
+				  the person most likely to think they have been had. The command
+				  below avoids the warning entirely, and it belongs here more than
+				  anywhere else on the site.
+				*/}
+				<TerminalInstall os="windows" variant="compact" />
+				{PRODUCT.macEnabled && <TerminalInstall os="mac" variant="compact" />}
 			</li>
 			<li>
 				<h2>Paste the key once</h2>
