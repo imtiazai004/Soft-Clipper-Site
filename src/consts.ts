@@ -1,3 +1,5 @@
+import { REMOTE } from "./lib/remote";
+
 /**
  * Every fact the site repeats lives here once.
  *
@@ -52,35 +54,66 @@ export const SITE = {
 	twitter: "@softclipper",
 } as const;
 
+/**
+ * The values below marked "editable" are the **fallback**, not the source of
+ * truth. The live ones are set on the admin dashboard and fetched when the site
+ * builds — see `lib/remote.ts`. What is written here is what the site ships with
+ * if the licence server cannot be reached during a build, so it is kept in step
+ * with reality rather than left to rot.
+ */
+const DEFAULTS = {
+	price: {
+		amount: 39,
+		listAmount: 49,
+		currency: "USD",
+		checkoutUrl: "https://buy.stripe.com/test_eVqbJ3fDK8po52h0DJefC00",
+	},
+	downloads: {
+		enabled: true,
+		installerUrl: "https://dl.softclipper.pro/Soft-Clipper-Setup.exe",
+		installerSize: "120 MB",
+		zipUrl: "https://dl.softclipper.pro/Soft-Clipper.zip",
+		zipSize: "164 MB",
+		offMessage: "Downloads are paused while we ship an update. Back shortly.",
+	},
+	affiliates: { enabled: true, ratePct: 30, holdDays: 30 },
+	notice: { enabled: false, text: "", tone: "info" },
+};
+
+const price = { ...DEFAULTS.price, ...REMOTE.price };
+const downloads = { ...DEFAULTS.downloads, ...REMOTE.downloads };
+const affiliates = { ...DEFAULTS.affiliates, ...REMOTE.affiliates };
+
 export const PRICE = {
 	/**
-	 * What a customer is actually charged. Everything on the site derives from
-	 * this — headings, FAQ answers, comparison tables, the break-even maths and
-	 * the JSON-LD offer — so this and the Stripe Payment Link must agree. A site
-	 * that advertises one number and a checkout that charges another is the
-	 * clearest possible reason for a chargeback, and Stripe sides with the buyer.
-	 */
-	amount: 39,
-	currency: "USD",
-	display: "$39",
-	/**
-	 * The price this site genuinely carried before the discount, shown struck
-	 * through beside the current one.
+	 * What a customer is actually charged — editable on the dashboard.
 	 *
-	 * It has to be a real former price, not a decorative one. UK price-marking
-	 * rules treat a "was" figure as a claim about the past, and $49 is one we can
-	 * stand behind: it was the published price on softclipper.pro. If the price
-	 * ever settles at $39 for good, delete these three fields rather than leaving
-	 * a comparison that stopped being true.
+	 * Everything on the site derives from this: headings, FAQ answers, comparison
+	 * tables, the break-even maths and the JSON-LD offer. It must agree with what
+	 * the Stripe Payment Link charges, and nothing here can enforce that, because
+	 * the amount belongs to the link. A site that advertises one number while the
+	 * checkout charges another is the clearest possible reason for a chargeback,
+	 * and Stripe sides with the buyer. The dashboard says so on every save.
 	 */
-	listAmount: 49,
-	listDisplay: "$49",
-	get savingDisplay() {
-		return `$${this.listAmount - this.amount}`;
-	},
-	get percentOff() {
-		return Math.round((1 - this.amount / this.listAmount) * 100);
-	},
+	amount: price.amount,
+	currency: price.currency,
+	display: `$${price.amount}`,
+	/**
+	 * The price the site genuinely carried before the discount, shown struck
+	 * through beside the current one. 0 turns the comparison off everywhere.
+	 *
+	 * It has to be a real former price, not a decorative one — UK price-marking
+	 * rules treat a "was" figure as a claim about the past. $49 is one we can
+	 * stand behind: it was the published price on softclipper.pro. If the price
+	 * settles for good, set the "was" price to 0 on the dashboard rather than
+	 * leaving a comparison that has stopped being true.
+	 */
+	listAmount: price.listAmount,
+	listDisplay: `$${price.listAmount}`,
+	savingDisplay: `$${price.listAmount - price.amount}`,
+	percentOff: price.listAmount
+		? Math.round((1 - price.amount / price.listAmount) * 100)
+		: 0,
 	/** What a subscription competitor costs per month, for the comparison maths. */
 	competitorMonthly: 29,
 	/**
@@ -90,23 +123,24 @@ export const PRICE = {
 	 * licence is minted by the `checkout.session.completed` webhook on the
 	 * licence service, so a customer who closes the tab still gets their key.
 	 *
-	 * Empty until the link is created in the Stripe dashboard. While it is empty
-	 * the buy button does not pretend to work: see PayButton.astro.
-	 *
-	 * ⚠ THIS IS THE TEST-MODE LINK. It takes no money. Stripe keeps test and
-	 * live links separate, so going live means creating the product and link
-	 * again with the dashboard toggled to live, and replacing this string with
-	 * the buy.stripe.com/… one (no `test_`). PayButton shows a banner on the
-	 * page and the build prints a warning until that happens, so it cannot be
-	 * quietly forgotten.
+	 * Empty means nobody can buy, and the buy button says so rather than
+	 * pretending: see PayButton.astro.
 	 */
-	checkoutUrl: "https://buy.stripe.com/test_eVqbJ3fDK8po52h0DJefC00",
-} as const;
+	checkoutUrl: price.checkoutUrl,
+};
 
 export const PRODUCT = {
 	platform: "Windows 10 and 11 (64-bit)",
 	licence: "1 licence = 1 PC, activated online, then works offline",
-	fileSize: "~120 MB installer",
+	fileSize: `~${downloads.installerSize} installer`,
+
+	/**
+	 * Downloads can be switched off from the dashboard — mid-release, or when a
+	 * build turns out to be broken. The download page then explains itself
+	 * instead of handing out a file we do not want in circulation.
+	 */
+	downloadsEnabled: downloads.enabled,
+	downloadsOffMessage: downloads.offMessage,
 
 	// Both are served from R2 on our own domain. The installer is what the
 	// licence email links to; the ZIP stays for anyone who would rather not run
@@ -114,15 +148,27 @@ export const PRODUCT = {
 	//
 	// The filenames must not change between releases: an email sent last month
 	// has to keep working, so a new build replaces the object at the same key.
-	installerUrl: "https://dl.softclipper.pro/Soft-Clipper-Setup.exe",
-	installerSize: "120 MB",
-	zipUrl: "https://dl.softclipper.pro/Soft-Clipper.zip",
-	zipSize: "164 MB",
+	installerUrl: downloads.installerUrl,
+	installerSize: downloads.installerSize,
+	zipUrl: downloads.zipUrl,
+	zipSize: downloads.zipSize,
 	requirements: "8 GB RAM recommended, no GPU required",
 	ratios: "9:16 vertical, 1:1 square and 16:9",
 	/** Kept vague on purpose until the web version has a date. */
 	webStatus: "in development",
-} as const;
+};
+
+/** The affiliate programme, and whether it is open to new sign-ups. */
+export const AFFILIATES = {
+	open: affiliates.enabled,
+	ratePct: affiliates.ratePct,
+	holdDays: affiliates.holdDays,
+	/** How long a referral is remembered. Matches ReferralTag.astro. */
+	windowDays: 60,
+};
+
+/** A bar across every page. Off unless someone has turned it on. */
+export const NOTICE = { ...DEFAULTS.notice, ...REMOTE.notice };
 
 /** Primary navigation — also drives the footer sitemap and breadcrumb labels. */
 export const NAV = [

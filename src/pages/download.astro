@@ -86,16 +86,41 @@ const faqs: FaqItem[] = [
 						except the payment.
 					</p>
 				</div>
-				<div class="btn-row">
-					<a class="btn btn-primary" href={PRODUCT.installerUrl} download>
-						Download for {PRODUCT.platform.split(" ")[0]} — {PRODUCT.installerSize}
-					</a>
-					<a class="btn btn-ghost" href="/pricing/">Buy a licence — {PRICE.display}</a>
-				</div>
-				<p class="small muted alt">
-					Prefer no installer? <a href={PRODUCT.zipUrl} download>Download the ZIP ({PRODUCT.zipSize})</a> and
-					run it from any folder. Same app, same files.
-				</p>
+				{
+					PRODUCT.downloadsEnabled ? (
+						<Fragment>
+							<div class="btn-row">
+								<a class="btn btn-primary" href={PRODUCT.installerUrl} download>
+									Download for {PRODUCT.platform.split(" ")[0]} — {PRODUCT.installerSize}
+								</a>
+								<a class="btn btn-ghost" href="/pricing/">Buy a licence — {PRICE.display}</a>
+							</div>
+							<p class="small muted alt">
+								Prefer no installer?{" "}
+								<a href={PRODUCT.zipUrl} download>Download the ZIP ({PRODUCT.zipSize})</a> and run
+								it from any folder. Same app, same files.
+							</p>
+						</Fragment>
+					) : (
+						/*
+						 * Downloads switched off from the dashboard — a broken build, or
+						 * mid-release. It says why and offers a person, rather than
+						 * hiding the button and leaving the page looking broken. The buy
+						 * link is deliberately gone too: selling a licence for software
+						 * nobody can install is how a refund starts.
+						 */
+						<Fragment>
+							<div class="paused">
+								<p><strong>{PRODUCT.downloadsOffMessage}</strong></p>
+								<p class="small">
+									Already bought? Your licence is safe and your key still works — email{" "}
+									<a href={`mailto:${SITE.email}`}>{SITE.email}</a> and we will send you the
+									installer directly.
+								</p>
+							</div>
+						</Fragment>
+					)
+				}
 			</div>
 		</div>
 	</section>
@@ -144,6 +169,21 @@ const faqs: FaqItem[] = [
 </Page>
 
 <style>
+	.paused {
+		border: 1px solid var(--warn);
+		background: color-mix(in srgb, var(--warn) 10%, transparent);
+		border-radius: var(--radius-sm);
+		padding: 16px 18px;
+		max-width: 60ch;
+	}
+	.paused p {
+		margin: 0;
+	}
+	.paused p + p {
+		margin-top: 8px;
+		color: var(--muted);
+	}
+
 	.pt-0 {
 		padding-top: 8px;
 	}

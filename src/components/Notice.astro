@@ -1,0 +1,45 @@
+---
+/**
+ * A bar across the top of every page, switched on from the dashboard.
+ *
+ * For the things that are true for a few days and then are not: a sale ending,
+ * a broken build, "we are away until Monday". Those are exactly the messages
+ * that otherwise never get published, because publishing them means editing
+ * code and remembering to take them down again.
+ *
+ * It renders nothing at all when it is off — not a hidden element, not an empty
+ * bar. A layout that shifts by 40px depending on a setting is worse than one
+ * that does not have the feature.
+ */
+import { NOTICE } from "../consts";
+---
+
+{
+	NOTICE.enabled && NOTICE.text.trim() && (
+		<div class:list={["notice", NOTICE.tone]} role="status">
+			<p>{NOTICE.text}</p>
+		</div>
+	)
+}
+
+<style>
+	.notice {
+		padding: 10px 20px;
+		text-align: center;
+		font-size: 0.9rem;
+		font-weight: 500;
+		border-bottom: 1px solid var(--border-strong);
+		background: var(--panel-strong);
+		color: var(--text);
+	}
+	.notice p {
+		margin: 0;
+		max-width: 80ch;
+		margin-inline: auto;
+	}
+	/* Loud enough to read as a warning, not so loud it looks like an error page. */
+	.notice.warn {
+		background: color-mix(in srgb, var(--warn) 14%, var(--bg));
+		border-bottom-color: var(--warn);
+	}
+</style>

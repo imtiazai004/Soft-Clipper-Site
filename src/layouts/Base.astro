@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import ReferralTag from "../components/ReferralTag.astro";
+import Notice from "../components/Notice.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -153,6 +154,7 @@ const baseSchema = [
 	</head>
 
 	<body>
+		<Notice />
 		<Nav />
 		<main id="main">
 			<slot />

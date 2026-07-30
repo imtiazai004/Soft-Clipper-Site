@@ -9,7 +9,7 @@
  */
 import Page from "../layouts/Page.astro";
 import Faq from "../components/Faq.astro";
-import { PRICE, SITE } from "../consts";
+import { AFFILIATES, PRICE, SITE } from "../consts";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
 
 const crumbs = [
@@ -18,10 +18,14 @@ const crumbs = [
 ];
 const UPDATED = "30 July 2026";
 
-/** Kept in step with AFFILIATE_RATE_PCT and AFFILIATE_HOLD_DAYS on the server. */
-const RATE = 30;
-const HOLD_DAYS = 30;
-const COOKIE_DAYS = 60;
+/**
+ * The same numbers the licence server pays out on, read from it at build time.
+ * Advertising 30% here while the server credits 20% is the kind of mismatch
+ * that is only discovered by the person it shortchanged.
+ */
+const RATE = AFFILIATES.ratePct;
+const HOLD_DAYS = AFFILIATES.holdDays;
+const COOKIE_DAYS = AFFILIATES.windowDays;
 const perSale = ((PRICE.amount * RATE) / 100).toFixed(2);
 
 const faqs: FaqItem[] = [
@@ -192,16 +196,41 @@ const rules = [
 			</p>
 
 			<div class="join card">
-				<h2 style="margin-top:0">Join</h2>
-				<p>
-					Email <a href={`mailto:${SITE.email}?subject=Affiliate%20programme`}>{SITE.email}</a>
-					and say where you would be promoting. We will send your link back, usually the
-					same day. There is nothing to install and no minimum audience.
-				</p>
-				<p class="small muted" style="margin-bottom:0">
-					Already have a link? Just use it — it starts working the first time someone
-					clicks it.
-				</p>
+				<h2 style="margin-top:0">{AFFILIATES.open ? "Join" : "Sign-ups are closed"}</h2>
+				{
+					AFFILIATES.open ? (
+						<Fragment>
+							<p>
+								Email <a href={`mailto:${SITE.email}?subject=Affiliate%20programme`}>{SITE.email}</a>
+								and say where you would be promoting. We will send your link back, usually the
+								same day. There is nothing to install and no minimum audience.
+							</p>
+							<p class="small muted" style="margin-bottom:0">
+								Already have a link? Just use it — it starts working the first time someone
+								clicks it.
+							</p>
+						</Fragment>
+					) : (
+						/*
+						 * Closed to new sign-ups, but the page stays up and stays honest.
+						 * People already promoting need the rules to keep existing, and
+						 * the one thing they will want to know first is whether they are
+						 * still getting paid.
+						 */
+						<Fragment>
+							<p>
+								We are not taking new affiliates at the moment. The page stays here because
+								the terms still apply to everyone already promoting.
+							</p>
+							<p class="small muted" style="margin-bottom:0">
+								<strong>If you already have a link:</strong> commission you have earned is
+								still owed and still being paid on the usual schedule. Email{" "}
+								<a href={`mailto:${SITE.email}?subject=Affiliate%20programme`}>{SITE.email}</a>
+								{" "}with anything at all.
+							</p>
+						</Fragment>
+					)
+				}
 			</div>
 
 			<Faq items={faqs} heading="Questions" />
