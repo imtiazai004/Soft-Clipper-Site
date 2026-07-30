@@ -71,7 +71,7 @@ const DEFAULTS = {
 	downloads: {
 		enabled: true,
 		installerUrl: "https://dl.softclipper.pro/Soft-Clipper-Setup.exe",
-		installerSize: "161 MB",
+		installerSize: "168 MB",
 		offMessage: "Downloads are paused while we ship an update. Back shortly.",
 		macEnabled: true,
 		macUrl: "https://dl.softclipper.pro/Soft-Clipper.dmg",
