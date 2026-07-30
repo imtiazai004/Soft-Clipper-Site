@@ -1,7 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 import { breadcrumbSchema } from "../../lib/schema";
-import { SITE } from "../../consts";
+import { PRODUCT, SITE } from "../../consts";
 
 const crumbs = [
 	{ label: "Home", href: "/" },
@@ -10,6 +10,11 @@ const crumbs = [
 
 const articles = [
 	{ href: "/help/install/", title: "Install Soft Clipper", text: "Download and run the installer, get past the Windows publisher warning, and complete first-run setup." },
+	// Only once the Mac download is published. A help article for a platform you
+	// cannot download from us is a dead end with our name on it.
+	...(PRODUCT.macEnabled
+		? [{ href: "/help/install-mac/", title: "Install on a Mac", text: "Installing on macOS, the first-run security warning, what it actually means, and how to get past it." }]
+		: []),
 	{ href: "/help/activate-licence/", title: "Activate or move your licence", text: "Enter your key, what activation sends, and how to release a licence when you change computer." },
 	{ href: "/help/troubleshooting/", title: "Troubleshooting", text: "Downloads that fail, missing captions, slow renders, blank clips and AI errors — with the actual causes." },
 	{ href: "/faq/", title: "FAQ", text: "Pricing, licensing, requirements, privacy and what the app deliberately does not do." },

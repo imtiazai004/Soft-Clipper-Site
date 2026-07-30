@@ -75,6 +75,9 @@ const DEFAULTS = {
 		zipUrl: "https://dl.softclipper.pro/Soft-Clipper.zip",
 		zipSize: "164 MB",
 		offMessage: "Downloads are paused while we ship an update. Back shortly.",
+		macEnabled: false,
+		macUrl: "https://dl.softclipper.pro/Soft-Clipper-macOS.zip",
+		macSize: "95 MB",
 	},
 	affiliates: { enabled: true, ratePct: 30, holdDays: 30 },
 	notice: { enabled: false, text: "", tone: "info" },
@@ -152,6 +155,21 @@ export const PRODUCT = {
 	installerSize: downloads.installerSize,
 	zipUrl: downloads.zipUrl,
 	zipSize: downloads.zipSize,
+
+	/**
+	 * The Mac build, published by one switch on the dashboard.
+	 *
+	 * That switch turns on the download, the install guide and every mention of
+	 * macOS together — including letting the guide be indexed. They were three
+	 * separate edits before, which is three chances to advertise a platform
+	 * whose download is not there yet, or to ship one nobody can find.
+	 *
+	 * Apple Silicon only: the build is arm64, and there is no Intel one.
+	 */
+	macEnabled: downloads.macEnabled,
+	macUrl: downloads.macUrl,
+	macSize: downloads.macSize,
+	macPlatform: "macOS 12 or later, Apple Silicon",
 	requirements: "8 GB RAM recommended, no GPU required",
 	ratios: "9:16 vertical, 1:1 square and 16:9",
 	/** Kept vague on purpose until the web version has a date. */

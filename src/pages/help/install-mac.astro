@@ -1,16 +1,14 @@
 ---
-// NOT LINKED AND NOT INDEXED YET, on purpose.
+// Indexed, or not, by the Mac switch on the admin dashboard — the same switch
+// that publishes the download itself. While it is off this page stays out of
+// search and out of the sitemap, so a direct link still works for a tester
+// while nothing advertises a platform whose download is not there.
 //
-// The macOS build exists and the pipeline produces it, but nobody has yet sat
-// at a Mac and confirmed a clip actually renders. Until that happens this page
-// is for the handful of testers who get a direct link — advertising Mac
-// support we have not verified is how you earn refunds.
-//
-// When the build is verified: drop `noindex`, link it from /help/ and
-// /download/, and update the Windows-only wording on pricing and the FAQ.
+// One switch rather than two edits, because the failure of two edits is a page
+// promising Mac support next to a download that does not exist.
 import Page from "../../layouts/Page.astro";
 import Faq from "../../components/Faq.astro";
-import { SITE } from "../../consts";
+import { PRODUCT, SITE } from "../../consts";
 import { faqSchema, howToSchema, breadcrumbSchema, type FaqItem } from "../../lib/schema";
 
 const crumbs = [
@@ -77,7 +75,7 @@ const faqs: FaqItem[] = [
 	intro="Five steps, and one of them is a macOS warning that looks alarming and is not. Here is exactly what it says and what to do."
 	eyebrow="Help"
 	crumbs={crumbs}
-	noindex
+	noindex={!PRODUCT.macEnabled}
 	cta={false}
 	narrow
 	schema={[

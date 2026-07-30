@@ -1,16 +1,18 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { SITE } from "./src/consts";
+import { PRODUCT, SITE } from "./src/consts";
 
 // Kept here rather than inferred, because the sitemap is generated from routes
 // and cannot see what a page rendered. Any page with `noindex` belongs here.
 const NOINDEX_PATHS = [
-	// The Mac build is not verified yet — see the note at the top of that page.
-	"/help/install-mac/",
 	// Only reachable by paying. In search results it would rank for the brand and
 	// then congratulate a visitor on a purchase they have not made.
 	"/thank-you/",
+	// The Mac install guide follows the same dashboard switch as the Mac
+	// download. Derived from it rather than listed by hand, so the page and the
+	// sitemap cannot end up disagreeing about whether Mac is a thing we sell.
+	...(PRODUCT.macEnabled ? [] : ["/help/install-mac/"]),
 ];
 
 // `site` is what makes canonical URLs, the sitemap and JSON-LD point at the real

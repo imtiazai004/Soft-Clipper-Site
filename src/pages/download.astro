@@ -100,6 +100,16 @@ const faqs: FaqItem[] = [
 								<a href={PRODUCT.zipUrl} download>Download the ZIP ({PRODUCT.zipSize})</a> and run
 								it from any folder. Same app, same files.
 							</p>
+							{PRODUCT.macEnabled && (
+								<p class="small muted alt">
+									On a Mac?{" "}
+									<a href={PRODUCT.macUrl} download>
+										Download for macOS ({PRODUCT.macSize})
+									</a>
+									{" "}— {PRODUCT.macPlatform}. The first launch needs one extra step, which
+									the <a href="/help/install-mac/">Mac install guide</a> walks through.
+								</p>
+							)}
 						</Fragment>
 					) : (
 						/*
