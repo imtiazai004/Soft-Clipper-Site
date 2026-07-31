@@ -9,8 +9,31 @@
  */
 import Page from "../layouts/Page.astro";
 import Faq from "../components/Faq.astro";
-import { AFFILIATES, PRICE, PRODUCT, SITE } from "../consts";
+import { AFFILIATES, API_ORIGIN, PRICE, PRODUCT, SITE } from "../consts";
 import { faqSchema, breadcrumbSchema, type FaqItem } from "../lib/schema";
+
+/**
+ * Every country, by name, in the visitor's alphabetical order.
+ *
+ * Built from the ISO codes rather than a hand-typed list of names, so it cannot
+ * quietly go out of date and cannot be missing somebody's — which matters more
+ * here than anywhere else on the site. Half of these are places Stripe will not
+ * pay out to, and an affiliate in one of them is paid by hand instead; a form
+ * that only offered the countries Stripe reaches would be a form that turned
+ * away exactly the people most likely to promote this.
+ */
+const ISO_CODES =
+	"AD AE AF AG AI AL AM AO AR AT AU AW AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BW BY BZ " +
+	"CA CD CF CG CH CI CL CM CN CO CR CU CV CW CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM " +
+	"FO FR GA GB GD GE GH GI GL GM GN GQ GR GT GW GY HK HN HR HT HU ID IE IL IM IN IQ IR IS IT JE " +
+	"JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH " +
+	"MK ML MM MN MO MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PG PH PK PL PR PS " +
+	"PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TC TD TG TH TJ " +
+	"TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VG VN VU WS XK YE ZA ZM ZW";
+const names = new Intl.DisplayNames(["en"], { type: "region" });
+const COUNTRIES = ISO_CODES.split(" ")
+	.map((code) => ({ code, name: (() => { try { return names.of(code) || code; } catch { return code; } })() }))
+	.sort((a, b) => a.name.localeCompare(b.name, "en"));
 
 const crumbs = [
 	{ label: "Home", href: "/" },
@@ -59,7 +82,17 @@ const faqs: FaqItem[] = [
 	},
 	{
 		q: "How do I join?",
-		a: `Email ${SITE.email} with where you would be promoting. We reply with your link, and there is nothing to install.`,
+		a: AFFILIATES.selfSignup
+			? "Fill in the form on this page. You confirm your email address, and your link works from that moment — there is nothing to install, no minimum audience and nobody to wait for."
+			: `Email ${SITE.email} with where you would be promoting. We reply with your link, and there is nothing to install.`,
+	},
+	{
+		q: "Do I have to be in a particular country?",
+		a: "No. Anywhere at all. Where you live decides how the money reaches you, not whether it does — Stripe pays out automatically in around fifty countries, and everywhere else we send it by Wise or PayPal ourselves, on the same schedule for the same commission.",
+	},
+	{
+		q: "Where do I see how I am doing?",
+		a: "You get your own dashboard — clicks, sales, what is still being held and what is ready to be paid, plus where you want the money sent. You sign in with your email address; there is no password to lose.",
 	},
 ];
 
@@ -124,8 +157,8 @@ const rules = [
 			<h2>How it works</h2>
 			<ol class="steps">
 				<li>
-					<strong>You get a link</strong> — something like
-					<code>{SITE.origin}/?ref=yourname</code>. Put it anywhere: a video
+					<strong>{AFFILIATES.selfSignup ? "You pick your link" : "You get a link"}</strong> —
+					something like <code>{SITE.origin}/?ref=yourname</code>. Put it anywhere: a video
 					description, a newsletter, a blog post, a pinned comment.
 				</li>
 				<li>
@@ -135,7 +168,8 @@ const rules = [
 				</li>
 				<li>
 					<strong>The sale is recorded against you</strong> the moment the payment
-					clears, and you can see it counted.
+					clears. Your <a href={AFFILIATES.portalUrl}>dashboard</a> shows it, alongside
+					how many people have followed your link.
 				</li>
 				<li>
 					<strong>It is paid {HOLD_DAYS} days later</strong>, once it can no longer
@@ -195,10 +229,102 @@ const rules = [
 				affected sales is not paid. Last updated {UPDATED}.
 			</p>
 
-			<div class="join card">
+			<div class="join card" id="join">
 				<h2 style="margin-top:0">{AFFILIATES.open ? "Join" : "Sign-ups are closed"}</h2>
 				{
-					AFFILIATES.open ? (
+					AFFILIATES.selfSignup ? (
+						<Fragment>
+							<p>
+								Sign yourself up — from anywhere in the world, in about a minute. You confirm
+								your email address and your link works from that moment. There is nothing to
+								install, no minimum audience and nobody to wait for.
+							</p>
+
+							<form id="joinForm" novalidate>
+								<div class="pair">
+									<label class="fld">
+										<span>Your name</span>
+										<input name="name" required autocomplete="name" placeholder="Ali Raza" />
+									</label>
+									<label class="fld">
+										<span>Email</span>
+										<input
+											name="email"
+											type="email"
+											required
+											autocomplete="email"
+											placeholder="you@example.com"
+										/>
+										<em>Where your link, your sign-in and your money are arranged.</em>
+									</label>
+								</div>
+
+								<div class="pair">
+									<label class="fld">
+										<span>Choose your link</span>
+										<input
+											name="code"
+											required
+											minlength="3"
+											maxlength="40"
+											autocapitalize="off"
+											autocorrect="off"
+											spellcheck="false"
+											placeholder="aliraza"
+										/>
+										<em id="linkPreview">Letters and numbers. This is what people will see.</em>
+									</label>
+									<label class="fld">
+										<span>Country</span>
+										<select name="country">
+											<option value="">Choose…</option>
+											{COUNTRIES.map((c) => <option value={c.code}>{c.name}</option>)}
+										</select>
+										<em>Only decides how we send the money, never how much.</em>
+									</label>
+								</div>
+
+								<label class="fld">
+									<span>Where will you be promoting? (optional)</span>
+									<input
+										name="promo"
+										maxlength="500"
+										placeholder="YouTube channel about video editing, 12k subs"
+									/>
+								</label>
+
+								{/*
+								  A field no person ever sees and no person ever fills in. Bots fill
+								  in everything on a form, so anything arriving with this set is
+								  answered with a polite success and quietly dropped. Hidden with
+								  position rather than `display:none` or `hidden`, both of which the
+								  better scripts know to skip.
+								*/}
+								<div class="hp" aria-hidden="true">
+									<label>
+										Website
+										<input name="website" tabindex="-1" autocomplete="off" />
+									</label>
+								</div>
+
+								<div class="row">
+									<button class="btn btn-primary" type="submit" id="joinBtn">
+										Create my link
+									</button>
+									<span class="small muted">
+										{AFFILIATES.ratePct}% per sale · no cap · nothing to install
+									</span>
+								</div>
+								<p id="joinMsg" class="joinmsg" hidden />
+							</form>
+
+							<p class="small muted" style="margin-bottom:0">
+								Already signed up? <a href={AFFILIATES.portalUrl}>Open your dashboard</a> — it
+								emails you a way in. Already have a link? Just use it; it starts working the
+								first time someone clicks it.
+							</p>
+						</Fragment>
+					) : AFFILIATES.open ? (
 						<Fragment>
 							<p>
 								Email <a href={`mailto:${SITE.email}?subject=Affiliate%20programme`}>{SITE.email}</a>
@@ -237,6 +363,90 @@ const rules = [
 		</div>
 	</section>
 </Page>
+
+{
+	/*
+	 * The sign-up form, posted straight to the licence server.
+	 *
+	 * This site is static and has no server of its own, which is why the whole
+	 * affiliate programme has until now run on Stripe carrying a tag across the
+	 * gap. Signing somebody up genuinely needs one, so the form posts across to
+	 * the licence API — the same host the desktop app activates against, and the
+	 * only cross-origin caller it accepts.
+	 *
+	 * Everything it says back is the server's own wording. "That code is taken",
+	 * "there is already an account for that email" — those answers are decisions
+	 * the server makes and it is the only thing that knows them, so repeating a
+	 * guess at them here would be two sets of rules to keep in step.
+	 */
+	AFFILIATES.selfSignup && (
+		<script is:inline define:vars={{ api: API_ORIGIN, origin: SITE.origin }}>
+			(function () {
+				var form = document.getElementById("joinForm");
+				if (!form) return;
+				var btn = document.getElementById("joinBtn");
+				var msg = document.getElementById("joinMsg");
+				var codeInput = form.elements.code;
+				var preview = document.getElementById("linkPreview");
+
+				function say(text, good) {
+					msg.textContent = text;
+					msg.className = "joinmsg " + (good ? "good" : "bad");
+					msg.hidden = false;
+				}
+
+				// Same normalisation as the server's, shown live. Somebody typing
+				// "Ali Raza" should see what that actually becomes before they commit
+				// to it, not find out from their own link a week later.
+				function tidy(value) {
+					return String(value || "").trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+				}
+
+				codeInput.addEventListener("input", function () {
+					var code = tidy(codeInput.value);
+					preview.textContent = code.length >= 3
+						? "Your link: " + origin + "/?ref=" + code
+						: "Letters and numbers. This is what people will see.";
+				});
+
+				form.addEventListener("submit", async function (e) {
+					e.preventDefault();
+					var data = Object.fromEntries(new FormData(form).entries());
+					data.code = tidy(data.code);
+
+					msg.hidden = true;
+					btn.disabled = true;
+					var was = btn.textContent;
+					btn.textContent = "Creating…";
+					try {
+						var res = await fetch(api + "/api/affiliates/apply", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify(data),
+						});
+						var body = await res.json().catch(function () { return {}; });
+						if (!res.ok) throw new Error(body.error || "Something went wrong. Try again in a moment.");
+
+						// The form is replaced rather than cleared. The only thing that
+						// matters now is that they go and open their email, and a form
+						// still sitting there invites filling it in a second time.
+						form.innerHTML = "";
+						say(
+							"Check your email. We have sent " + data.email + " a link to confirm the " +
+							"address — click it and your link is live straight away. If it is not there " +
+							"in a couple of minutes, look in spam.",
+							true,
+						);
+					} catch (err) {
+						say(err.message, false);
+						btn.disabled = false;
+						btn.textContent = was;
+					}
+				});
+			})();
+		</script>
+	)
+}
 
 <style>
 	.numbers {
@@ -303,5 +513,81 @@ const rules = [
 
 	.join {
 		margin-top: 40px;
+	}
+
+	/* The sign-up form. Built from the site's own variables rather than fixed
+	   colours so it follows the theme like everything else on the page. */
+	#joinForm {
+		margin: 20px 0 18px;
+		display: grid;
+		gap: 14px;
+	}
+	.pair {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+		gap: 14px;
+	}
+	.fld {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+	.fld > span {
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+	.fld input,
+	.fld select {
+		font: inherit;
+		color: var(--text);
+		background: var(--panel);
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-sm);
+		padding: 10px 12px;
+		width: 100%;
+	}
+	.fld input:focus,
+	.fld select:focus {
+		outline: 2px solid var(--violet);
+		outline-offset: 1px;
+	}
+	.fld em {
+		font-style: normal;
+		font-size: 0.82rem;
+		color: var(--dim);
+		/* Reserves its own line so the live link preview appearing under the code
+		   box does not shove the rest of the form down as somebody types. */
+		min-height: 1.2em;
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		flex-wrap: wrap;
+	}
+
+	/* Off-screen rather than display:none — a script that fills in forms skips
+	   what is hidden the obvious way, and this only works if it gets filled in. */
+	.hp {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.joinmsg {
+		margin: 4px 0 0;
+		padding: 12px 14px;
+		border-radius: var(--radius-sm);
+		font-size: 0.92rem;
+	}
+	.joinmsg.good {
+		border: 1px solid var(--ok);
+		background: color-mix(in srgb, var(--ok) 8%, transparent);
+	}
+	.joinmsg.bad {
+		border: 1px solid var(--warn);
+		background: color-mix(in srgb, var(--warn) 8%, transparent);
 	}
 </style>

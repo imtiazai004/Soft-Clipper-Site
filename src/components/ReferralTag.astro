@@ -22,6 +22,11 @@
  * common convention, it is written into the affiliate terms so it is not a
  * surprise, and it beats first-touch for the honest reason that the person who
  * finally convinced someone is usually the more recent one.
+ *
+ * It also counts the click, so an affiliate can see whether anything is landing
+ * rather than only whether it sold. That is fire-and-forget: nothing on this
+ * page waits for it, and a licence server that is down costs a statistic and
+ * never a sale.
  */
 ---
 
@@ -29,6 +34,15 @@
 	(function () {
 		var STORE = "sc-ref";
 		var DAYS = 60;
+		// The licence server. Written out rather than imported because this script
+		// is inlined into the page as-is — see API_ORIGIN in src/consts.ts, which
+		// is the same host and the one to change if it ever moves.
+		var API = "https://app.softclipper.pro";
+		// Set when the URL we arrived on carried a valid tag. Only that counts as a
+		// click: a tag read back out of storage is the same person still browsing,
+		// and counting it on every page view would turn one click into eleven and
+		// make an affiliate's conversion rate meaningless.
+		var fresh = "";
 
 		function read() {
 			try {
@@ -55,6 +69,7 @@
 			// asks where their commission went.
 			found = found.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
 			if (found.length >= 3) {
+				fresh = found;
 				try {
 					localStorage.setItem(
 						STORE,
@@ -67,7 +82,30 @@
 			return found.length >= 3 ? found : read();
 		}
 
+		/**
+		 * Tell the licence server somebody followed this link.
+		 *
+		 * `sendBeacon` with the code in the query and no body: that makes it a
+		 * simple cross-origin POST, so the browser does not stop to ask permission
+		 * first, and it survives the visitor navigating away a moment later. The
+		 * answer is never read — this is a counter, and there is nothing it could
+		 * say that this page would do anything about.
+		 */
+		function ping(code) {
+			try {
+				var url = API + "/api/affiliates/click?code=" + encodeURIComponent(code);
+				if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+					navigator.sendBeacon(url);
+				} else if (typeof fetch !== "undefined") {
+					fetch(url, { method: "POST", mode: "no-cors", keepalive: true });
+				}
+			} catch (e) {
+				/* no network, a blocker, an old browser — the referral still works */
+			}
+		}
+
 		var code = capture();
+		if (fresh) ping(fresh);
 		if (!code) return;
 
 		// Rewrite the checkout links. Done on every page rather than only where a

@@ -83,7 +83,7 @@ const DEFAULTS = {
 		macUrl: "https://dl.softclipper.pro/Soft-Clipper.dmg",
 		macSize: "202 MB",
 	},
-	affiliates: { enabled: true, ratePct: 30, holdDays: 30 },
+	affiliates: { enabled: true, ratePct: 30, holdDays: 30, selfSignup: true },
 	notice: { enabled: false, text: "", tone: "info" },
 };
 
@@ -233,11 +233,33 @@ export const PRODUCT = {
 	webStatus: "in development",
 };
 
+/**
+ * Where the licence server answers.
+ *
+ * The site is static and has no server of its own, so the two things that need
+ * one — signing up as an affiliate, and counting a click on a referral link —
+ * are posted here from the visitor's browser. It is the same host the desktop
+ * app activates against and the same one this file's settings were read from at
+ * build time; see `lib/remote.ts`.
+ */
+export const API_ORIGIN = "https://app.softclipper.pro";
+
 /** The affiliate programme, and whether it is open to new sign-ups. */
 export const AFFILIATES = {
 	open: affiliates.enabled,
 	ratePct: affiliates.ratePct,
 	holdDays: affiliates.holdDays,
+	/**
+	 * Whether the page offers a form or asks people to email.
+	 *
+	 * Set on the dashboard and baked in at build time like the price, so turning
+	 * it off needs a publish to reach the page. The endpoint obeys the setting
+	 * immediately either way — a form left on a cached page still gets a straight
+	 * answer rather than quietly recording an application nobody wanted.
+	 */
+	selfSignup: affiliates.enabled && affiliates.selfSignup !== false,
+	/** Where an affiliate signs in to see their own clicks, sales and earnings. */
+	portalUrl: `${API_ORIGIN}/affiliate`,
 	/** How long a referral is remembered. Matches ReferralTag.astro. */
 	windowDays: 60,
 };

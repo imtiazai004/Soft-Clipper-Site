@@ -48,7 +48,18 @@ export interface RemoteSettings {
 	 * than half of it, and so nobody adds it a second time thinking it is missing.
 	 */
 	version?: { latest?: string; notes?: string; winUrl?: string; macUrl?: string };
-	affiliates?: { enabled?: boolean; ratePct?: number; holdDays?: number };
+	affiliates?: {
+		enabled?: boolean;
+		ratePct?: number;
+		holdDays?: number;
+		/**
+		 * Whether the affiliates page shows a sign-up form or the older "email us"
+		 * paragraph. Published rather than assumed: a form that posts to an endpoint
+		 * which is refusing sign-ups is worse than no form, because it takes
+		 * somebody's details and only then turns them down.
+		 */
+		selfSignup?: boolean;
+	};
 	notice?: { enabled?: boolean; text?: string; tone?: string };
 }
 

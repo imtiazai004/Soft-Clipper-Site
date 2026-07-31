@@ -23,6 +23,7 @@ const body = src.split("<script is:inline>")[1].split("</script>")[0];
 function run(search, storeSeed, buyHref = "https://buy.stripe.com/abc123") {
   const store = new Map(storeSeed ? [["sc-ref", storeSeed]] : []);
   const link = { href: buyHref };
+  const beacons = [];
   const g = {
     localStorage: {
       getItem: (k) => (store.has(k) ? store.get(k) : null),
@@ -31,10 +32,15 @@ function run(search, storeSeed, buyHref = "https://buy.stripe.com/abc123") {
     },
     location: { search },
     document: { querySelectorAll: () => [link] },
+    // The click counter. Stubbed rather than left undefined so the script is
+    // exercised on the path a real browser takes — the version of this that only
+    // stubbed what the attribution needed would have passed while the beacon
+    // threw on every page load.
+    navigator: { sendBeacon: (url) => beacons.push(url) },
     URL, URLSearchParams, Date, JSON,
   };
   new Function(...Object.keys(g), body)(...Object.values(g));
-  return { href: link.href, stored: store.get("sc-ref") };
+  return { href: link.href, stored: store.get("sc-ref"), beacons };
 }
 
 const ref = (h) => new URL(h).searchParams.get("client_reference_id");
@@ -75,6 +81,20 @@ check(
   ref(run("?ref=ali", null, "https://buy.stripe.com/abc?client_reference_id=fixed").href),
   "fixed",
 );
+
+// 8. The click counter. Only a link that was actually followed counts — a tag
+//    read back out of storage is the same visitor still browsing, and counting
+//    it on every page would turn one click into a dozen and make every
+//    affiliate's conversion rate a fiction.
+check(
+  "following a link counts one click",
+  run("?ref=ali").beacons[0],
+  "https://app.softclipper.pro/api/affiliates/click?code=ali",
+);
+check("a later page with no query counts nothing", run("", seeded).beacons.length, 0);
+check("a too-short code counts nothing", run("?ref=ab").beacons.length, 0);
+check("the counted code is the normalised one", run("?ref=%20ALI-ONE%20").beacons[0],
+  "https://app.softclipper.pro/api/affiliates/click?code=ali-one");
 
 console.log(fails ? `\n${fails} FAILED` : "\nall passed");
 process.exit(fails ? 1 : 0);
