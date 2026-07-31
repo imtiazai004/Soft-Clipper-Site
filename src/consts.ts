@@ -285,12 +285,79 @@ export const AFFILIATES = {
 /** A bar across every page. Off unless someone has turned it on. */
 export const NOTICE = { ...DEFAULTS.notice, ...REMOTE.notice };
 
-/** Primary navigation — also drives the footer sitemap and breadcrumb labels. */
+/**
+ * Primary navigation — also drives breadcrumb labels.
+ *
+ * Every top-level entry is a real page in its own right, and the ones with
+ * `children` open a panel listing what is under them. Both matter: the panel is
+ * how somebody browsing finds the page they wanted, and the link is how
+ * somebody who knows what they want skips the panel entirely. A menu whose
+ * heading goes nowhere makes the second person click twice.
+ *
+ * The children mirror the footer's columns rather than being a second, slightly
+ * different list. Two hand-maintained maps of the same site drift, and the way
+ * that shows up is a page reachable from the bottom of the site and not the top.
+ *
+ * `all` is the last row of the panel, back to the section's own page. Written
+ * out rather than derived from the heading: doing that produced "All compare"
+ * and "All help", which are not sentences.
+ *
+ * `note` is what the panel prints under each link. It is there to answer "which
+ * of these do I want" without a click — a bare list of four feature names does
+ * not.
+ */
 export const NAV = [
-	{ href: "/features/", label: "Features" },
-	{ href: "/use-cases/", label: "Use cases" },
-	{ href: "/compare/", label: "Compare" },
+	{
+		href: "/features/",
+		label: "Features",
+		all: "See all features",
+		children: [
+			{ href: "/features/ai-moment-detection/", label: "AI moment detection", note: "Finds the moments worth posting" },
+			{ href: "/features/auto-reframe/", label: "Auto-reframe to 9:16", note: "Keeps the speaker in frame" },
+			{ href: "/features/captions/", label: "Auto captions", note: "20 styles, 12 writing systems" },
+			{ href: "/features/highlight-reel/", label: "Highlight reels", note: "Several moments, one clip" },
+		],
+	},
+	{
+		href: "/use-cases/",
+		label: "Use cases",
+		all: "See every use case",
+		children: [
+			{ href: "/use-cases/podcasters/", label: "Podcasters", note: "An hour of talk into a week of clips" },
+			{ href: "/use-cases/youtubers/", label: "YouTubers", note: "Shorts from what you already filmed" },
+			{ href: "/use-cases/coaches/", label: "Coaches & creators", note: "Turn one session into daily posts" },
+			{ href: "/use-cases/agencies/", label: "Agencies", note: "Every client, no per-seat bill" },
+		],
+	},
+	{
+		href: "/compare/",
+		label: "Compare",
+		all: "See all comparisons",
+		children: [
+			{ href: "/compare/opus-clip-alternative/", label: "vs Opus Clip", note: "The one most people arrive from" },
+			{ href: "/compare/klap-alternative/", label: "vs Klap", note: "Where the two differ" },
+			{ href: "/compare/vizard-alternative/", label: "vs Vizard", note: "Minutes, credits and limits" },
+			{ href: "/compare/capcut-alternative/", label: "vs CapCut", note: "Editor against clip-finder" },
+			{ href: "/compare/one-time-vs-subscription/", label: "One-time vs subscription", note: "What each costs after a year" },
+		],
+	},
 	{ href: "/pricing/", label: "Pricing" },
+	{
+		href: "/help/",
+		label: "Help",
+		all: "Open the help centre",
+		children: [
+			{ href: "/help/install/", label: "Install on Windows", note: "Including the SmartScreen warning" },
+			{ href: "/help/install-mac/", label: "Install on a Mac", note: "Getting past the Gatekeeper notice" },
+			{ href: "/help/activate-licence/", label: "Activate your licence", note: "And how to move to a new PC" },
+			{ href: "/help/troubleshooting/", label: "Troubleshooting", note: "Download errors and slow renders" },
+			{ href: "/faq/", label: "FAQ", note: "The questions we get most" },
+			{ href: "/contact/", label: "Contact us", note: "Email or WhatsApp, a person answers" },
+		],
+	},
 	{ href: "/blog/", label: "Blog" },
-	{ href: "/help/", label: "Help" },
+	// Its own place in the bar rather than buried in a menu. Nobody goes looking
+	// for an affiliate programme they have not heard of, so the only way anyone
+	// joins is by seeing it while they are here for something else.
+	{ href: "/affiliates/", label: "Affiliates" },
 ] as const;

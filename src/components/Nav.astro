@@ -21,16 +21,64 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 			<span class="name">{SITE.name}</span>
 		</a>
 
+		{/*
+		  Every link is in the HTML, always — nothing here is built by script.
+		  A menu that only exists once JavaScript has run is a menu a crawler
+		  never sees, and these are the pages the site most wants indexed.
+
+		  Each group is a link *and* a button, not a link doing both jobs. The
+		  link goes to the section's own page for somebody who knows where they
+		  are going; the button opens the panel for somebody who does not, and is
+		  the part that works with a keyboard and on a touchscreen, where there is
+		  no such thing as hover.
+		*/}
 		<nav aria-label="Main">
 			<ul>
 				{
-					NAV.map((item) => (
-						<li>
-							<a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
-								{item.label}
-							</a>
-						</li>
-					))
+					NAV.map((item) => {
+						const current = isActive(item.href);
+						const children = "children" in item ? item.children : null;
+						const id = `menu-${item.href.replace(/\W+/g, "-")}`;
+						return (
+							<li class={children ? "grp" : undefined}>
+								<span class="top">
+									<a href={item.href} aria-current={current ? "page" : undefined}>
+										{item.label}
+									</a>
+									{children && (
+										<button
+											class="caret"
+											type="button"
+											aria-expanded="false"
+											aria-controls={id}
+											aria-label={`Show what is under ${item.label}`}
+										>
+											<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+												<path d="m6 9 6 6 6-6"></path>
+											</svg>
+										</button>
+									)}
+								</span>
+								{children && (
+									<div class="panel" id={id}>
+										<ul class="panel-list">
+											{children.map((child) => (
+												<li>
+													<a href={child.href} aria-current={pathname === child.href ? "page" : undefined}>
+														<strong>{child.label}</strong>
+														<span>{child.note}</span>
+													</a>
+												</li>
+											))}
+											<li class="all">
+												<a href={item.href}>{item.all} →</a>
+											</li>
+										</ul>
+									</div>
+								)}
+							</li>
+						);
+					})
 				}
 			</ul>
 		</nav>
@@ -82,6 +130,63 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 		});
 
 		paint();
+	})();
+
+	/**
+	 * The menus.
+	 *
+	 * Opening on hover is done in CSS, and only where hovering is a real thing —
+	 * see the `@media (hover: hover)` block below. This script is for everywhere
+	 * hover is not: a keyboard, and a touchscreen, where the first tap on a
+	 * hover-only menu either does nothing or follows the link past the menu you
+	 * were trying to open.
+	 *
+	 * So the caret is a button and this toggles it. Escape closes and puts focus
+	 * back, which is the one keyboard behaviour people actually reach for.
+	 */
+	(function () {
+		var groups = [].slice.call(document.querySelectorAll("nav .grp"));
+		if (!groups.length) return;
+
+		function close(group) {
+			group.classList.remove("open");
+			var caret = group.querySelector(".caret");
+			if (caret) caret.setAttribute("aria-expanded", "false");
+		}
+
+		function closeAll(except) {
+			groups.forEach(function (g) {
+				if (g !== except) close(g);
+			});
+		}
+
+		groups.forEach(function (group) {
+			var caret = group.querySelector(".caret");
+			if (!caret) return;
+
+			caret.addEventListener("click", function () {
+				var open = group.classList.toggle("open");
+				caret.setAttribute("aria-expanded", String(open));
+				// One at a time. Two panels overlapping is the state where nobody
+				// can tell which link belongs to which heading.
+				if (open) closeAll(group);
+			});
+		});
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key !== "Escape") return;
+			var open = document.querySelector("nav .grp.open");
+			if (!open) return;
+			close(open);
+			var caret = open.querySelector(".caret");
+			if (caret) caret.focus();
+		});
+
+		// A click anywhere else means you are done with the menu. Includes clicks
+		// on the page behind it, which is what most people try first.
+		document.addEventListener("click", function (e) {
+			if (!e.target.closest || !e.target.closest("nav .grp")) closeAll(null);
+		});
 	})();
 </script>
 
@@ -185,28 +290,162 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 	nav {
 		margin-left: auto;
 	}
-	nav ul {
+	nav > ul {
 		display: flex;
-		gap: 4px;
+		gap: 2px;
 		list-style: none;
 	}
-	nav a {
+	nav > ul > li {
+		position: relative;
+	}
+
+	/* The link and its caret read as one control, so they share a background and
+	   the gap between them is not a dead strip that closes the menu. */
+	.top {
+		display: flex;
+		align-items: center;
+		border-radius: 9px;
+		transition: background 0.15s ease;
+	}
+	.top > a {
 		display: block;
-		padding: 8px 12px;
+		padding: 8px 10px;
 		border-radius: 9px;
 		color: var(--muted);
 		text-decoration: none;
 		font-size: 0.94rem;
 		font-weight: 550;
-		transition: color 0.15s ease, background 0.15s ease;
+		white-space: nowrap;
+		transition: color 0.15s ease;
 	}
-	nav a:hover {
-		color: var(--text);
+	.top:hover,
+	.grp.open .top {
 		background: var(--panel);
 	}
-	nav a[aria-current="page"] {
+	.top:hover > a,
+	.grp.open .top > a {
 		color: var(--text);
+	}
+	.top > a[aria-current="page"] {
+		color: var(--text);
+	}
+	nav > ul > li:has(> .top > a[aria-current="page"]) .top {
 		background: var(--panel-strong);
+	}
+
+	.caret {
+		display: grid;
+		place-items: center;
+		padding: 8px 8px 8px 0;
+		border: 0;
+		background: none;
+		color: inherit;
+		cursor: pointer;
+		border-radius: 9px;
+	}
+	.caret svg {
+		transition: transform 0.18s ease;
+	}
+	.caret:focus-visible {
+		outline: 2px solid var(--violet);
+		outline-offset: -2px;
+	}
+
+	/* ── the panels ──────────────────────────────────────────────────────── */
+
+	.panel {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 40;
+		/* A transparent strip above the card, so a mouse travelling from the
+		   label down to the first link never crosses a gap that closes it. */
+		padding-top: 8px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-6px);
+		transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+	}
+	.panel-list {
+		list-style: none;
+		width: max-content;
+		max-width: min(420px, calc(100vw - 32px));
+		padding: 8px;
+		background: var(--panel);
+		border: 1px solid var(--border-strong);
+		border-radius: 14px;
+		box-shadow: var(--shadow-lg);
+	}
+	.panel-list a {
+		display: block;
+		padding: 9px 12px;
+		border-radius: 10px;
+		text-decoration: none;
+		color: var(--text);
+		transition: background 0.13s ease;
+	}
+	.panel-list a:hover,
+	.panel-list a:focus-visible {
+		background: var(--panel-strong);
+	}
+	.panel-list strong {
+		display: block;
+		font-size: 0.92rem;
+		font-weight: 650;
+	}
+	.panel-list span {
+		display: block;
+		margin-top: 1px;
+		font-size: 0.82rem;
+		color: var(--dim);
+		line-height: 1.4;
+	}
+	.panel-list a[aria-current="page"] {
+		background: var(--panel-strong);
+	}
+	.all {
+		margin-top: 4px;
+		border-top: 1px solid var(--border);
+		padding-top: 4px;
+	}
+	.all a {
+		font-size: 0.86rem;
+		font-weight: 600;
+		color: var(--violet);
+	}
+
+	/* Open on hover only where hovering exists. On a touchscreen `:hover` sticks
+	   after a tap, which leaves a panel open over the page with no way to shut
+	   it — there the caret button does the work instead. */
+	@media (hover: hover) and (pointer: fine) {
+		.grp:hover > .panel {
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+		}
+		.grp:hover .caret svg {
+			transform: rotate(180deg);
+		}
+	}
+
+	/* Keyboard and script get the same result by a different route. */
+	.grp:focus-within > .panel,
+	.grp.open > .panel {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+	}
+	.grp:focus-within .caret svg,
+	.grp.open .caret svg {
+		transform: rotate(180deg);
+	}
+
+	/* Somebody who has asked for less movement gets the panel, not the slide. */
+	@media (prefers-reduced-motion: reduce) {
+		.panel,
+		.caret svg {
+			transition: none;
+		}
 	}
 
 	.buy {
@@ -215,10 +454,15 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 		flex: none;
 	}
 
-	/* Below 980px the links wrap into a scrollable strip under the bar rather
-	   than hiding behind a hamburger — one less thing to get wrong, and crawlers
-	   see the same links either way. */
-	@media (max-width: 980px) {
+	/* Below 1120px the links drop onto their own row under the bar rather than
+	   hiding behind a hamburger — one less thing to get wrong, and crawlers see
+	   the same links either way. The breakpoint moved up from 980 when the bar
+	   gained a seventh entry.
+
+	   The row **wraps**; it used to scroll sideways. A scrolling strip is an
+	   overflow container, and an absolutely positioned panel inside one is
+	   clipped at its edge — the menus would have opened and been invisible. */
+	@media (max-width: 1120px) {
 		.bar {
 			height: auto;
 			flex-wrap: wrap;
@@ -229,26 +473,48 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(href
 			order: 3;
 			width: 100%;
 			margin-left: 0;
-			overflow-x: auto;
-			scrollbar-width: none;
 		}
 		/* With the links on their own row, the brand keeps the left and the two
 		   controls take the right. */
 		.theme {
 			margin-left: auto;
 		}
-		nav::-webkit-scrollbar {
-			display: none;
-		}
-		nav ul {
-			gap: 2px;
-		}
-		nav a {
-			white-space: nowrap;
-			padding-inline: 10px;
+		nav > ul {
+			flex-wrap: wrap;
+			gap: 2px 0;
 		}
 		.buy {
 			margin-left: auto;
+		}
+
+		/* Panels stop floating and become part of the page, opening a full-width
+		   block under the row. Floating them here would put a card over the top
+		   of the article somebody is reading, on the screens with least room for
+		   it. Hover is not involved — only the caret opens these, which is the
+		   only thing that works on a touchscreen anyway. */
+		nav > ul > li {
+			position: static;
+		}
+		.panel {
+			position: absolute;
+			left: 0;
+			right: 0;
+			padding-top: 6px;
+		}
+		.panel-list {
+			width: auto;
+			max-width: none;
+		}
+		.grp:hover > .panel {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-6px);
+		}
+		.grp.open > .panel,
+		.grp:focus-within > .panel {
+			opacity: 1;
+			visibility: visible;
+			transform: none;
 		}
 	}
 </style>
