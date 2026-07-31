@@ -475,14 +475,19 @@ const rules = [
 		margin-bottom: 14px;
 	}
 
-	.steps {
-		display: grid;
-		gap: 14px;
-		padding-left: 20px;
-	}
-	.steps li {
-		padding-left: 4px;
-	}
+	/*
+	 * No padding rules here.
+	 *
+	 * This page used to set `.steps li { padding-left: 4px }`, and because a
+	 * scoped Astro style outranks the global one it beat `ol.steps li`'s
+	 * `padding-left: 62px` — the gap the numbered badge is absolutely positioned
+	 * into. The badges landed on top of the first word of every step: "Y1et a
+	 * link", "S2eone follows it and buys". It rendered, it deployed, and it read
+	 * as broken to everyone who saw it.
+	 *
+	 * The global `ol.steps` styling is already the card-with-a-number look this
+	 * page wants, so the right amount of CSS here is none.
+	 */
 	.steps code {
 		white-space: nowrap;
 	}
