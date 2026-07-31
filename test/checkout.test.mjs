@@ -36,4 +36,25 @@ test("the supplied Bank Al-Habib QR is published with the checkout", () => {
 	assert.equal(existsSync(join(root, "dist", "payments", "bank-al-habib-qr.jpeg")), true);
 });
 
+test("the QR opens full size, and can be closed without a mouse", () => {
+	assert.match(checkout, /id="qrZoom"[^>]*aria-haspopup="dialog"/);
+	assert.match(checkout, /id="qrModal"[^>]*role="dialog"[^>]*aria-modal="true"/);
+	assert.match(checkout, /id="qrModal"[^>]*hidden/);
+	assert.match(checkout, /"Escape"/);
+});
+
+test("a display rule never outranks the hidden attribute", () => {
+	// Both the QR button and the dialog set `display`, which beats the browser's
+	// own `[hidden] { display: none }`. JazzCash hides the QR this way, and the
+	// dialog starts hidden — without these rules both are permanently visible.
+	// Astro extracts <style> to a stylesheet, so this has to read the built CSS.
+	const hrefs = [...checkout.matchAll(/<link rel="stylesheet" href="([^"]+\.css)"/g)].map((m) => m[1]);
+	assert.ok(hrefs.length > 0, "the checkout page loads no stylesheet");
+	const css = hrefs.map((href) => readFileSync(join(root, "dist", href), "utf8")).join("\n");
+	for (const selector of [".bank-qr", ".qr-modal"]) {
+		// Astro appends its own [data-astro-cid-…] scope attribute to every selector.
+		assert.match(css, new RegExp(`\\${selector}(\\[[^\\]]+\\])*\\[hidden\\]\\s*\\{\\s*display:\\s*none`));
+	}
+});
+
 console.log("\nall passed");

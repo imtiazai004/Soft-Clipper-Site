@@ -120,7 +120,10 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 										<div><dt id="receiverNumberLabel">IBAN</dt><dd><span id="receiverNumber"></span><button class="copy" type="button" data-copy="receiverNumber">Copy</button></dd></div>
 									</dl>
 								</div>
-								<img id="bankQr" class="bank-qr" alt="Bank Al-Habib payment QR code" />
+								<button id="qrZoom" class="bank-qr" type="button" aria-haspopup="dialog">
+									<img id="bankQr" alt="Bank Al-Habib payment QR code" />
+									<span>Tap to enlarge</span>
+								</button>
 							</div>
 
 							<p class="instruction">After sending the exact amount, enter the transaction ID shown by your bank or JazzCash. We verify the actual incoming credit before issuing a licence.</p>
@@ -147,6 +150,14 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div id="qrModal" class="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" hidden>
+			<div class="qr-modal-card">
+				<h2 id="qrModalTitle">Scan to pay</h2>
+				<img id="qrModalImage" alt="Bank Al-Habib payment QR code, enlarged" />
+				<p id="qrModalAmount"></p>
+				<button id="qrModalClose" class="btn btn-primary full" type="button">Close</button>
 			</div>
 		</div>
 	</section>
@@ -234,7 +245,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 			document.getElementById("receiverNumberLabel").textContent = useJazz ? "Mobile number" : "IBAN";
 			document.getElementById("receiverNumber").textContent = useJazz ? receiver.number : (receiver.iban || receiver.account);
 			var qr = document.getElementById("bankQr");
-			qr.hidden = useJazz;
+			document.getElementById("qrZoom").hidden = useJazz;
 			if (!useJazz) qr.src = receiver.qr_url;
 			document.getElementById("bankStart").hidden = true;
 			document.getElementById("bankPay").hidden = false;
@@ -278,6 +289,37 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 					window.prompt("Copy this value", value);
 				}
 			});
+		});
+
+		// The printed QR is 150px wide — enough to see that it is a QR, not enough
+		// for a phone held at arm's length over a laptop screen. Clicking it shows
+		// the same image at the size a camera actually wants.
+		var qrModal = document.getElementById("qrModal");
+		var qrZoom = document.getElementById("qrZoom");
+
+		function openQr() {
+			var source = document.getElementById("bankQr");
+			if (!source.getAttribute("src")) return;
+			document.getElementById("qrModalImage").src = source.src;
+			document.getElementById("qrModalAmount").textContent = document.getElementById("pkrAmount").textContent;
+			qrModal.hidden = false;
+			document.body.style.overflow = "hidden";
+			document.getElementById("qrModalClose").focus();
+		}
+
+		function closeQr() {
+			qrModal.hidden = true;
+			document.body.style.overflow = "";
+			qrZoom.focus();
+		}
+
+		qrZoom.addEventListener("click", openQr);
+		document.getElementById("qrModalClose").addEventListener("click", closeQr);
+		qrModal.addEventListener("click", function (event) {
+			if (event.target === qrModal) closeQr();
+		});
+		document.addEventListener("keydown", function (event) {
+			if (event.key === "Escape" && !qrModal.hidden) closeQr();
 		});
 
 		function readProof(file) {
@@ -374,7 +416,17 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 	.detail-copy dt { color: var(--dim); font-size: .76rem; }
 	.detail-copy dd { color: var(--text); overflow-wrap: anywhere; }
 	.copy { margin-left: 7px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); color: var(--violet); padding: 3px 7px; cursor: pointer; }
-	.bank-qr { width: 150px; aspect-ratio: 1; object-fit: contain; border-radius: 9px; background: white; }
+	.bank-qr { display: grid; gap: 6px; width: 150px; padding: 0; border: 0; background: transparent; color: var(--dim); font: inherit; font-size: .72rem; text-align: center; cursor: zoom-in; }
+	.bank-qr img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 9px; background: white; }
+	.bank-qr[hidden] { display: none; }
+	.bank-qr:hover span { color: var(--violet); }
+	.bank-qr:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 11px; }
+	.qr-modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgba(8, 8, 13, .8); }
+	.qr-modal[hidden] { display: none; }
+	.qr-modal-card { display: grid; gap: 14px; justify-items: center; width: min(400px, 100%); padding: clamp(20px, 4vw, 28px); border: 1px solid var(--border-strong); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
+	.qr-modal-card h2 { font-size: 1.05rem; }
+	.qr-modal-card img { width: min(320px, 60vh, 100%); aspect-ratio: 1; object-fit: contain; padding: 10px; border-radius: 12px; background: white; }
+	#qrModalAmount { color: var(--violet); font-size: 1.15rem; font-weight: 800; }
 	.instruction { color: var(--muted); font-size: .87rem; margin: 17px 0; }
 	.alert { margin-top: 14px; padding: 11px 13px; border-radius: 9px; font-size: .86rem; }
 	.alert.error { color: #b42318; background: rgba(248, 113, 113, .11); border: 1px solid rgba(248, 113, 113, .32); }
