@@ -389,6 +389,36 @@ const rules = [
 				var codeInput = form.elements.code;
 				var preview = document.getElementById("linkPreview");
 
+				/**
+				 * Work out which kind of "it did not arrive" this was.
+				 *
+				 * `no-cors` on purpose: the answer cannot be read and does not need to
+				 * be. All that is being asked is whether a request to that host leaves
+				 * this browser at all. If one does and the sign-up did not, something is
+				 * picking requests off by their address — a blocker. If neither does,
+				 * the host is not reachable from this network, which is a different
+				 * problem with a different answer.
+				 */
+				async function whyDidThatFail() {
+					try {
+						await fetch(api + "/admin", { mode: "no-cors", cache: "no-store" });
+						return (
+							"Your sign-up could not be sent, though our server is reachable — so " +
+							"something in this browser is cancelling that one request. An ad " +
+							"blocker or privacy extension is much the most likely. Try a private " +
+							"window, or turn the blocker off for this site. Emailing us works too: " +
+							"we will set you up by hand."
+						);
+					} catch (e) {
+						return (
+							"We cannot reach our own server from this browser. That is usually the " +
+							"network rather than the site — a VPN, a company or school firewall, or " +
+							"an internet provider blocking it. Try mobile data or a VPN. If it still " +
+							"will not go, email us and we will set you up by hand."
+						);
+					}
+				}
+
 				function say(text, good) {
 					msg.textContent = text;
 					msg.className = "joinmsg " + (good ? "good" : "bad");
@@ -425,7 +455,15 @@ const rules = [
 							body: JSON.stringify(data),
 						});
 						var body = await res.json().catch(function () { return {}; });
-						if (!res.ok) throw new Error(body.error || "Something went wrong. Try again in a moment.");
+						if (!res.ok) {
+							// Carry the status, so the handler below can tell a real answer
+							// from the server ("that code is taken") apart from no answer at
+							// all. Without it a plain 409 would be diagnosed as a network
+							// failure and the visitor told to try a VPN.
+							var httpErr = new Error(body.error || "Something went wrong. Try again in a moment.");
+							httpErr.status = res.status;
+							throw httpErr;
+						}
 
 						// The form is replaced rather than cleared. The only thing that
 						// matters now is that they go and open their email, and a form
@@ -438,7 +476,13 @@ const rules = [
 							true,
 						);
 					} catch (err) {
-						say(err.message, false);
+						// A request that never reached the server hands JavaScript one
+						// string — "Failed to fetch" — with no status, no body and no
+						// reason. It reads as "this site is broken" and points nowhere,
+						// and it is the same string whether the network dropped it, an
+						// extension cancelled it, or the host is unreachable. So ask a
+						// second question before saying anything.
+						say(err.status === undefined ? await whyDidThatFail() : err.message, false);
 						btn.disabled = false;
 						btn.textContent = was;
 					}
