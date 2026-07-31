@@ -5,3 +5,5 @@ dist/
 .env.production
 .DS_Store
 *.log
+# wrangler's local state — created by any deploy or dev run
+.wrangler/

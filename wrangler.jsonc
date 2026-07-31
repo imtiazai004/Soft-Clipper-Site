@@ -1,0 +1,38 @@
+// How this site is deployed: as static files, and nothing else.
+//
+// This file exists because of what happens without it. `wrangler deploy` finds
+// no configuration, decides it had better set one up, and — with no human there
+// to say no — answers its own "Proceed with setup?" with yes. It then runs
+// `astro add cloudflare`, rewrites astro.config.mjs, and rebuilds the site as a
+// server-rendered Worker. Every build. The site still worked, because every page
+// prerenders anyway, but the architecture was being changed underneath us on a
+// schedule nobody set, and the build log filled with warnings about KV session
+// bindings and sharp not running on the edge — for a site that needs neither.
+//
+// The whole design here depends on being static: the price and the download
+// links are fetched once at build time and baked into HTML, so there is no
+// server between Cloudflare and the visitor, nothing to keep alive, and nothing
+// to attack. That is a decision, not an accident, and it belongs written down
+// where the deploy can read it.
+//
+// `name` must match the Worker that already exists and that softclipper.pro
+// points at. It is `soft-clippe-site` — a typo from whenever it was created, and
+// not worth renaming: the name is load-bearing, and a corrected one would deploy
+// to a brand new Worker while the live site carried on serving the old one.
+// Everything would report success and nothing would change.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "soft-clippe-site",
+	"compatibility_date": "2026-07-31",
+
+	// No `main`. A Worker script is what you add when something has to run per
+	// request, and nothing here does — 36 prerendered pages and a sitemap.
+	"assets": {
+		"directory": "./dist",
+		// Astro builds with `format: "directory"`, so /pricing/ is
+		// dist/pricing/index.html and Cloudflare resolves that itself. This is
+		// only about the misses: serve the real 404 page rather than a bare
+		// Cloudflare error, so a mistyped URL still looks like the site.
+		"not_found_handling": "404-page"
+	}
+}
