@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "astro build && node test/referral.test.mjs && node test/nav.test.mjs"
+		"test": "astro build && node test/referral.test.mjs && node test/nav.test.mjs && node test/checkout.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

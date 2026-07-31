@@ -11,7 +11,7 @@ const crumbs = [
 	{ label: "Home", href: "/" },
 	{ label: "Privacy policy", href: "/legal/privacy/" },
 ];
-const UPDATED = "26 July 2026";
+const UPDATED = "31 July 2026";
 ---
 
 <Page
@@ -68,7 +68,14 @@ const UPDATED = "26 July 2026";
 
 			<h2>What the website collects</h2>
 			<ul>
-				<li><strong>Purchases.</strong> Payments are handled by Stripe. We receive your email address, order details and country for tax purposes. We never see or store your card number.</li>
+				<li>
+					<strong>Purchases.</strong> Card payments are handled by Stripe. We receive your
+					email address, order details and country for tax purposes, but never see or store
+					your card number. If you choose Pakistani bank or JazzCash payment, we receive
+					your email, order reference, quoted amount, payment method, transaction ID and any
+					optional payment screenshot you submit. Screenshots are stored privately and are
+					used only to help verify, support or investigate that payment.
+				</li>
 				<li><strong>Email you send us.</strong> Kept as long as needed to support you, then deleted.</li>
 				<li><strong>Advertising measurement.</strong> If advertising pixels are running, they may record that a visit or a purchase happened. This is disclosed in the cookie notice at the point it applies.</li>
 				<li>
@@ -76,8 +83,8 @@ const UPDATED = "26 July 2026";
 					<a href="/affiliates/">affiliate link</a>, the affiliate's code — a short
 					word such as <code>ali</code>, nothing about you — is stored in your
 					browser for 60 days so that whoever recommended us is credited if you
-					buy. It is passed to Stripe with your purchase and never leaves your
-					browser otherwise. Clearing your browser's site data removes it, and
+					buy. It is passed to Stripe with a card purchase or attached to your
+					pending bank-payment order. Clearing your browser's site data removes it, and
 					nothing on the site behaves differently if it is not there.
 				</li>
 			</ul>

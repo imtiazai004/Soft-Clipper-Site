@@ -2,12 +2,10 @@
 /**
  * The buy button, in one place so every page that sells says the same thing.
  *
- * When the Stripe Payment Link is configured it goes straight there. When it is
- * not, it does not quietly fall back to a page that cannot take money — that is
- * how a site ends up with a button that looks like it works, sends nobody
- * anywhere useful, and loses the sale silently. It says what is true and gives
- * the buyer a person to talk to instead, and the build prints a warning so this
- * state cannot be forgotten.
+ * When the Stripe Payment Link is configured it opens our shared checkout,
+ * where the buyer can choose card or a Pakistani transfer. When it is not, it
+ * does not quietly fall back to a page that cannot take money. It says what is
+ * true and gives the buyer a person to talk to instead.
  */
 import { PRICE, SITE } from "../consts";
 
@@ -41,21 +39,24 @@ if (!globalThis.__softClipperCheckoutWarned) {
 		);
 	} else if (isTestLink) {
 		console.warn(
-			"\n  ⚠  PRICE.checkoutUrl is a Stripe TEST link — this build takes no money.\n" +
-				"     Replace it with the live link before announcing the product.\n",
+			"\n  ⚠  PRICE.checkoutUrl is a Stripe TEST link — card payments take no money.\n" +
+				"     Replace it with the live link before announcing card checkout.\n",
 		);
 	}
 }
 
+// A real checkout link means the shared checkout page can offer both that card
+// path and the Pakistani bank path. Stripe itself is still the destination of
+// the card button; this only gives the customer a choice first.
 const href = ready
-	? PRICE.checkoutUrl
+	? "/checkout/"
 	: `${SITE.waLink}?text=${encodeURIComponent(`Hi, I would like to buy ${SITE.name}.`)}`;
 ---
 
 <a
 	class={`btn btn-${variant} ${extra}`}
 	href={href}
-	rel={ready ? "nofollow" : "nofollow noopener"}
+	rel={ready ? undefined : "nofollow noopener"}
 	target={ready ? undefined : "_blank"}
 >
 	{ready ? label : "Message us to buy"}
@@ -73,8 +74,8 @@ const href = ready
 {
 	ready && isTestLink && (
 		<p class="testmode">
-			<strong>Test mode.</strong> This checkout takes no money — we are still setting
-			payments up. Nothing you enter here will be charged.
+			<strong>Card test mode.</strong> The Stripe card option does not take real card
+			payments yet. The Pakistani bank/wallet option is a separate manual transfer.
 		</p>
 	)
 }
