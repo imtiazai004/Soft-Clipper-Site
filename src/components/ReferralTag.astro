@@ -93,7 +93,7 @@
 		 */
 		function ping(code) {
 			try {
-				var url = API + "/api/affiliates/click?code=" + encodeURIComponent(code);
+				var url = API + "/api/partner/visit?code=" + encodeURIComponent(code);
 				if (typeof navigator !== "undefined" && navigator.sendBeacon) {
 					navigator.sendBeacon(url);
 				} else if (typeof fetch !== "undefined") {

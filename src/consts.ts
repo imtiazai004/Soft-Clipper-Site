@@ -258,8 +258,15 @@ export const AFFILIATES = {
 	 * answer rather than quietly recording an application nobody wanted.
 	 */
 	selfSignup: affiliates.enabled && affiliates.selfSignup !== false,
-	/** Where an affiliate signs in to see their own clicks, sales and earnings. */
-	portalUrl: `${API_ORIGIN}/affiliate`,
+	/**
+	 * Where an affiliate signs in to see their own clicks, sales and earnings.
+	 *
+	 * `/partner`, not `/affiliate`. Ad and tracker blockers match request URLs
+	 * against keyword lists and "affiliate" is on them, so the sign-up form's
+	 * fetch was being cancelled by the browser before it left — which arrives in
+	 * JavaScript as a bare "Failed to fetch" with nothing in it to diagnose.
+	 */
+	portalUrl: `${API_ORIGIN}/partner`,
 	/** How long a referral is remembered. Matches ReferralTag.astro. */
 	windowDays: 60,
 };

@@ -419,7 +419,7 @@ const rules = [
 					var was = btn.textContent;
 					btn.textContent = "Creating…";
 					try {
-						var res = await fetch(api + "/api/affiliates/apply", {
+						var res = await fetch(api + "/api/partner/join", {
 							method: "POST",
 							headers: { "Content-Type": "application/json" },
 							body: JSON.stringify(data),
