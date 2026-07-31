@@ -8,7 +8,7 @@
   # analytics — so the policy can say exactly that. 'unsafe-inline' is needed
   # for the two inline scripts (theme) and the scoped <style> blocks Astro emits;
   # there is no external script origin at all, which is the part that matters.
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.softclipper.pro; form-action 'self' https://api.softclipper.pro https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
   # Two years, and only turn this on once the domain is definitely staying on
   # HTTPS — it is not something a browser lets you take back quickly.
   Strict-Transport-Security: max-age=63072000; includeSubDomains
