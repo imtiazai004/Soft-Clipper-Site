@@ -21,14 +21,15 @@ test("buy buttons now lead to the shared checkout", () => {
 	assert.match(pricing, /href="\/checkout\/"/);
 });
 
-test("checkout keeps Stripe and adds the Pakistani payment path", () => {
+test("checkout keeps Stripe and adds the bank transfer/wallet path", () => {
 	assert.match(checkout, /id="cardCheckout"[^>]+buy\.stripe\.com/);
-	assert.match(checkout, /id="bankTab"/);
+	assert.match(checkout, /id="bankTab"[^>]*>[\s\S]*?Bank Transfer\/Wallet/);
 	assert.match(checkout, /\/api\/checkout\/bank\/orders/);
+	assert.doesNotMatch(checkout, /Pakistani|Pakistan bank/i);
 });
 
 test("customer-visible HTML does not bake personal receiving details into every build", () => {
-	assert.doesNotMatch(checkout, /20300981005116011|03005863032/);
+	assert.doesNotMatch(checkout, /20300981005116011|PK76BAHL2030098100511601|03005863032/);
 });
 
 test("the supplied Bank Al-Habib QR is published with the checkout", () => {

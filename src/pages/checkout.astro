@@ -8,7 +8,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 
 <Base
 	title="Checkout"
-	description={`Choose card or Pakistani bank transfer to buy a ${SITE.name} lifetime licence.`}
+	description={`Choose card or bank transfer/wallet to buy a ${SITE.name} lifetime licence.`}
 	noindex={true}
 >
 	<section class="checkout-section">
@@ -46,7 +46,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 							<span aria-hidden="true">▣</span> Card / international
 						</button>
 						<button id="bankTab" class="method-tab" type="button" role="tab" aria-selected="false" aria-controls="bankPanel">
-							<span aria-hidden="true">▥</span> Pakistan bank / wallet
+							<span aria-hidden="true">▥</span> Bank Transfer/Wallet
 						</button>
 					</div>
 
@@ -75,7 +75,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 					<div id="bankPanel" class="method-panel" role="tabpanel" aria-labelledby="bankTab" hidden>
 						<div id="bankStart">
 							<div class="local-note">
-								<strong>For customers paying from Pakistan</strong>
+								<strong>Pay by bank transfer or wallet</strong>
 								<span>Your USD price is converted automatically using the latest State Bank of Pakistan offer rate.</span>
 							</div>
 
@@ -88,7 +88,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 								<legend>Where will you send the payment?</legend>
 								<label class="local-choice selected">
 									<input type="radio" name="localMethod" value="bank" checked />
-									<span><strong>Bank Al-Habib / Raast</strong><small>Bank app, IBAN/account transfer or QR</small></span>
+									<span><strong>Bank Al-Habib / Raast</strong><small>IBAN, Raast or QR</small></span>
 								</label>
 								<label class="local-choice">
 									<input type="radio" name="localMethod" value="jazzcash" />
@@ -117,7 +117,7 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 									<h3 id="receiverHeading">Bank Al-Habib</h3>
 									<dl>
 										<div><dt>Account title</dt><dd id="receiverTitle"></dd></div>
-										<div><dt id="receiverNumberLabel">Account number</dt><dd><span id="receiverNumber"></span><button class="copy" type="button" data-copy="receiverNumber">Copy</button></dd></div>
+										<div><dt id="receiverNumberLabel">IBAN</dt><dd><span id="receiverNumber"></span><button class="copy" type="button" data-copy="receiverNumber">Copy</button></dd></div>
 									</dl>
 								</div>
 								<img id="bankQr" class="bank-qr" alt="Bank Al-Habib payment QR code" />
@@ -231,8 +231,8 @@ const stripeTest = PRICE.checkoutUrl.includes("/test_");
 			document.getElementById("orderReference").textContent = order.reference;
 			document.getElementById("receiverHeading").textContent = useJazz ? "JazzCash" : receiver.name;
 			document.getElementById("receiverTitle").textContent = receiver.title;
-			document.getElementById("receiverNumberLabel").textContent = useJazz ? "Mobile number" : "Account number";
-			document.getElementById("receiverNumber").textContent = useJazz ? receiver.number : receiver.account;
+			document.getElementById("receiverNumberLabel").textContent = useJazz ? "Mobile number" : "IBAN";
+			document.getElementById("receiverNumber").textContent = useJazz ? receiver.number : (receiver.iban || receiver.account);
 			var qr = document.getElementById("bankQr");
 			qr.hidden = useJazz;
 			if (!useJazz) qr.src = receiver.qr_url;

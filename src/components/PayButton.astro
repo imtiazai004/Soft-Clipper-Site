@@ -3,7 +3,7 @@
  * The buy button, in one place so every page that sells says the same thing.
  *
  * When the Stripe Payment Link is configured it opens our shared checkout,
- * where the buyer can choose card or a Pakistani transfer. When it is not, it
+ * where the buyer can choose card or a bank transfer/wallet. When it is not, it
  * does not quietly fall back to a page that cannot take money. It says what is
  * true and gives the buyer a person to talk to instead.
  */
@@ -46,7 +46,7 @@ if (!globalThis.__softClipperCheckoutWarned) {
 }
 
 // A real checkout link means the shared checkout page can offer both that card
-// path and the Pakistani bank path. Stripe itself is still the destination of
+// path and the bank transfer/wallet path. Stripe itself is still the destination of
 // the card button; this only gives the customer a choice first.
 const href = ready
 	? "/checkout/"
@@ -75,7 +75,7 @@ const href = ready
 	ready && isTestLink && (
 		<p class="testmode">
 			<strong>Card test mode.</strong> The Stripe card option does not take real card
-			payments yet. The Pakistani bank/wallet option is a separate manual transfer.
+			payments yet. The Bank Transfer/Wallet option is a separate manual transfer.
 		</p>
 	)
 }
