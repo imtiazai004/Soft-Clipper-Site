@@ -238,11 +238,22 @@ export const PRODUCT = {
  *
  * The site is static and has no server of its own, so the two things that need
  * one — signing up as an affiliate, and counting a click on a referral link —
- * are posted here from the visitor's browser. It is the same host the desktop
- * app activates against and the same one this file's settings were read from at
- * build time; see `lib/remote.ts`.
+ * are posted here from the visitor's browser.
+ *
+ * `api.` and not `app.`, and the difference is the whole reason this constant
+ * has a comment this long. Both names are the same machine. `app.` resolves to
+ * that machine's bare IP address, and bare IPs are blocked wholesale in a
+ * number of countries — which produces the most misleading failure available:
+ * this site loads perfectly, because it is served by Cloudflare, and then every
+ * request the page makes dies at the network layer with a browser error that
+ * names no cause. `api.` is the same machine reached through Cloudflare, whose
+ * addresses are not blocked anywhere, because too much of the web is behind
+ * them.
+ *
+ * The video app keeps `app.`: it accepts uploads measured in gigabytes and
+ * Cloudflare's free plan stops at 100 MB.
  */
-export const API_ORIGIN = "https://app.softclipper.pro";
+export const API_ORIGIN = "https://api.softclipper.pro";
 
 /** The affiliate programme, and whether it is open to new sign-ups. */
 export const AFFILIATES = {

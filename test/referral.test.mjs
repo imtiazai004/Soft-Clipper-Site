@@ -89,12 +89,12 @@ check(
 check(
   "following a link counts one click",
   run("?ref=ali").beacons[0],
-  "https://app.softclipper.pro/api/partner/visit?code=ali",
+  "https://api.softclipper.pro/api/partner/visit?code=ali",
 );
 check("a later page with no query counts nothing", run("", seeded).beacons.length, 0);
 check("a too-short code counts nothing", run("?ref=ab").beacons.length, 0);
 check("the counted code is the normalised one", run("?ref=%20ALI-ONE%20").beacons[0],
-  "https://app.softclipper.pro/api/partner/visit?code=ali-one");
+  "https://api.softclipper.pro/api/partner/visit?code=ali-one");
 
 console.log(fails ? `\n${fails} FAILED` : "\nall passed");
 process.exit(fails ? 1 : 0);

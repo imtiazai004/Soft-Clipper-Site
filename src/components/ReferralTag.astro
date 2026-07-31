@@ -36,8 +36,9 @@
 		var DAYS = 60;
 		// The licence server. Written out rather than imported because this script
 		// is inlined into the page as-is — see API_ORIGIN in src/consts.ts, which
-		// is the same host and the one to change if it ever moves.
-		var API = "https://app.softclipper.pro";
+		// carries the reason this is `api.` and not `app.`, and is the one to
+		// change if it ever moves.
+		var API = "https://api.softclipper.pro";
 		// Set when the URL we arrived on carried a valid tag. Only that counts as a
 		// click: a tag read back out of storage is the same person still browsing,
 		// and counting it on every page view would turn one click into eleven and
