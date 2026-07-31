@@ -240,7 +240,30 @@ const rules = [
 								install, no minimum audience and nobody to wait for.
 							</p>
 
-							<form id="joinForm" novalidate>
+							{/*
+							  A plain form that submits itself. No `fetch`, no CORS, no
+							  JavaScript required for any of it to work.
+
+							  It used to post with `fetch`, and that failed for a real
+							  person on a real connection: an XHR to another host is the
+							  thing ad blockers, privacy extensions, company firewalls and
+							  antivirus proxies all filter, while leaving ordinary
+							  navigation alone. When one of them drops it the browser hands
+							  JavaScript "Failed to fetch" — no status, no reason — and the
+							  server, healthy and answering everybody else, has no record
+							  that anything was ever asked of it. There is no way to debug
+							  that from either end.
+
+							  A form post is a navigation. Nothing filters it, it survives
+							  JavaScript being off or broken, and the answer comes back as
+							  a page rather than a promise. The server replies with a
+							  redirect to the affiliate dashboard, which says what happened.
+							*/}
+							<form
+								id="joinForm"
+								method="post"
+								action={`${API_ORIGIN}/partner/join`}
+							>
 								<div class="pair">
 									<label class="fld">
 										<span>Your name</span>
@@ -315,7 +338,6 @@ const rules = [
 										{AFFILIATES.ratePct}% per sale · no cap · nothing to install
 									</span>
 								</div>
-								<p id="joinMsg" class="joinmsg" hidden />
 							</form>
 
 							<p class="small muted" style="margin-bottom:0">
@@ -366,68 +388,34 @@ const rules = [
 
 {
 	/*
-	 * The sign-up form, posted straight to the licence server.
+	 * Everything left that JavaScript does on this page: show what the chosen
+	 * code turns into, live.
 	 *
-	 * This site is static and has no server of its own, which is why the whole
-	 * affiliate programme has until now run on Stripe carrying a tag across the
-	 * gap. Signing somebody up genuinely needs one, so the form posts across to
-	 * the licence API — the same host the desktop app activates against, and the
-	 * only cross-origin caller it accepts.
+	 * The submitting used to live here too, as a `fetch`. It is gone — the form
+	 * posts itself now. See the comment on the <form> for why, but the short
+	 * version is that a cross-host XHR is the one kind of request that ad
+	 * blockers, privacy extensions and company firewalls filter, and when one of
+	 * them drops it the browser reports a bare "Failed to fetch" while the server
+	 * has no record the request ever existed.
 	 *
-	 * Everything it says back is the server's own wording. "That code is taken",
-	 * "there is already an account for that email" — those answers are decisions
-	 * the server makes and it is the only thing that knows them, so repeating a
-	 * guess at them here would be two sets of rules to keep in step.
+	 * What remains cannot fail in any way that matters: with the script blocked,
+	 * or JavaScript off entirely, the field simply keeps its written hint and the
+	 * form still works.
 	 */
 	AFFILIATES.selfSignup && (
-		<script is:inline define:vars={{ api: API_ORIGIN, origin: SITE.origin }}>
+		<script is:inline define:vars={{ origin: SITE.origin }}>
 			(function () {
 				var form = document.getElementById("joinForm");
 				if (!form) return;
-				var btn = document.getElementById("joinBtn");
-				var msg = document.getElementById("joinMsg");
 				var codeInput = form.elements.code;
 				var preview = document.getElementById("linkPreview");
+				if (!codeInput || !preview) return;
 
-				/**
-				 * Work out which kind of "it did not arrive" this was.
-				 *
-				 * `no-cors` on purpose: the answer cannot be read and does not need to
-				 * be. All that is being asked is whether a request to that host leaves
-				 * this browser at all. If one does and the sign-up did not, something is
-				 * picking requests off by their address — a blocker. If neither does,
-				 * the host is not reachable from this network, which is a different
-				 * problem with a different answer.
-				 */
-				async function whyDidThatFail() {
-					try {
-						await fetch(api + "/admin", { mode: "no-cors", cache: "no-store" });
-						return (
-							"Your sign-up could not be sent, though our server is reachable — so " +
-							"something in this browser is cancelling that one request. An ad " +
-							"blocker or privacy extension is much the most likely. Try a private " +
-							"window, or turn the blocker off for this site. Emailing us works too: " +
-							"we will set you up by hand."
-						);
-					} catch (e) {
-						return (
-							"We cannot reach our own server from this browser. That is usually the " +
-							"network rather than the site — a VPN, a company or school firewall, or " +
-							"an internet provider blocking it. Try mobile data or a VPN. If it still " +
-							"will not go, email us and we will set you up by hand."
-						);
-					}
-				}
-
-				function say(text, good) {
-					msg.textContent = text;
-					msg.className = "joinmsg " + (good ? "good" : "bad");
-					msg.hidden = false;
-				}
-
-				// Same normalisation as the server's, shown live. Somebody typing
-				// "Imtiaz Ahmad" should see what that actually becomes before they commit
-				// to it, not find out from their own link a week later.
+				// The same normalisation the server applies, shown as they type.
+				// Somebody entering "Imtiaz Ahmad" should see what that becomes before
+				// they commit to it, rather than finding out from their own link a week
+				// later. The server does it again on arrival — this is a courtesy, not
+				// a check, and nothing depends on it having run.
 				function tidy(value) {
 					return String(value || "").trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
 				}
@@ -437,55 +425,6 @@ const rules = [
 					preview.textContent = code.length >= 3
 						? "Your link: " + origin + "/?ref=" + code
 						: "Letters and numbers. This is what people will see.";
-				});
-
-				form.addEventListener("submit", async function (e) {
-					e.preventDefault();
-					var data = Object.fromEntries(new FormData(form).entries());
-					data.code = tidy(data.code);
-
-					msg.hidden = true;
-					btn.disabled = true;
-					var was = btn.textContent;
-					btn.textContent = "Creating…";
-					try {
-						var res = await fetch(api + "/api/partner/join", {
-							method: "POST",
-							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify(data),
-						});
-						var body = await res.json().catch(function () { return {}; });
-						if (!res.ok) {
-							// Carry the status, so the handler below can tell a real answer
-							// from the server ("that code is taken") apart from no answer at
-							// all. Without it a plain 409 would be diagnosed as a network
-							// failure and the visitor told to try a VPN.
-							var httpErr = new Error(body.error || "Something went wrong. Try again in a moment.");
-							httpErr.status = res.status;
-							throw httpErr;
-						}
-
-						// The form is replaced rather than cleared. The only thing that
-						// matters now is that they go and open their email, and a form
-						// still sitting there invites filling it in a second time.
-						form.innerHTML = "";
-						say(
-							"Check your email. We have sent " + data.email + " a link to confirm the " +
-							"address — click it and your link is live straight away. If it is not there " +
-							"in a couple of minutes, look in spam.",
-							true,
-						);
-					} catch (err) {
-						// A request that never reached the server hands JavaScript one
-						// string — "Failed to fetch" — with no status, no body and no
-						// reason. It reads as "this site is broken" and points nowhere,
-						// and it is the same string whether the network dropped it, an
-						// extension cancelled it, or the host is unreachable. So ask a
-						// second question before saying anything.
-						say(err.status === undefined ? await whyDidThatFail() : err.message, false);
-						btn.disabled = false;
-						btn.textContent = was;
-					}
 				});
 			})();
 		</script>
@@ -625,18 +564,4 @@ const rules = [
 		overflow: hidden;
 	}
 
-	.joinmsg {
-		margin: 4px 0 0;
-		padding: 12px 14px;
-		border-radius: var(--radius-sm);
-		font-size: 0.92rem;
-	}
-	.joinmsg.good {
-		border: 1px solid var(--ok);
-		background: color-mix(in srgb, var(--ok) 8%, transparent);
-	}
-	.joinmsg.bad {
-		border: 1px solid var(--warn);
-		background: color-mix(in srgb, var(--warn) 8%, transparent);
-	}
 </style>
