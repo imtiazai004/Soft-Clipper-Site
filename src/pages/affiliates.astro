@@ -244,7 +244,13 @@ const rules = [
 								<div class="pair">
 									<label class="fld">
 										<span>Your name</span>
-										<input name="name" required autocomplete="name" placeholder="Ali Raza" />
+										{/*
+										  A plainly invented person. A placeholder naming somebody real —
+										  the owner, a customer, anyone attached to the business — reads
+										  as a prefilled field rather than an example, and puts that
+										  person's name in the "affiliate" slot on our own page.
+										*/}
+										<input name="name" required autocomplete="name" placeholder="Sara Khan" />
 									</label>
 									<label class="fld">
 										<span>Email</span>
@@ -270,7 +276,7 @@ const rules = [
 											autocapitalize="off"
 											autocorrect="off"
 											spellcheck="false"
-											placeholder="aliraza"
+											placeholder="sarakhan"
 										/>
 										<em id="linkPreview">Letters and numbers. This is what people will see.</em>
 									</label>
@@ -396,7 +402,7 @@ const rules = [
 				}
 
 				// Same normalisation as the server's, shown live. Somebody typing
-				// "Ali Raza" should see what that actually becomes before they commit
+				// "Sara Khan" should see what that actually becomes before they commit
 				// to it, not find out from their own link a week later.
 				function tidy(value) {
 					return String(value || "").trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
