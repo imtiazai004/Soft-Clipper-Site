@@ -72,7 +72,7 @@ const DEFAULTS = {
 		amount: 39,
 		listAmount: 49,
 		currency: "USD",
-		checkoutUrl: "https://buy.stripe.com/test_eVqbJ3fDK8po52h0DJefC00",
+		checkoutUrl: "https://buy.stripe.com/eVqbJ3fDK8po52h0DJefC00",
 	},
 	downloads: {
 		enabled: true,
