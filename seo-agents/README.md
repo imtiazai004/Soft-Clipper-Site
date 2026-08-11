@@ -10,8 +10,9 @@ Actions every morning; nothing has to be installed or started by hand.
 | `keyword_gap_agent.py` | Queries ranking 8-20 — close enough to page one to be worth a push — and any query split across more than one of our own pages (cannibalisation) |
 | `indexing_health_agent.py` | Every sitemap URL's index status. Separates "Google has never crawled this" (needs a Request Indexing click) from a real blocker (noindex, robots.txt disallow) — they look identical in the raw API and mean very different things |
 | `aeo_agent.py` | Published FAQ answers, scored for whether an answer engine could lift them whole: 15-75 words, leading with the answer rather than a preamble |
+| `geo_agent.py` | Whether answer engines can reach and quote the site: AI crawler access in robots.txt (parsed with real group semantics), `llms.txt` health including whether its links still resolve, and whether pages open with a declared answer block. Does **not** claim to measure actual citations in ChatGPT or Perplexity — that needs paid API access, so no number is invented |
 
-`run_daily.py` runs all three and writes one Markdown report.
+`run_daily.py` runs all four and writes one Markdown report.
 `config.py` is the only site-specific file — adding a site is an entry there.
 
 ## Where the report goes

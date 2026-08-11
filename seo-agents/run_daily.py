@@ -20,6 +20,7 @@ import config
 import keyword_gap_agent
 import indexing_health_agent
 import aeo_agent
+import geo_agent
 
 
 def _fmt_keyword_section(kw):
@@ -120,6 +121,78 @@ def _fmt_aeo_section(results):
     return "\n".join(lines)
 
 
+def _fmt_geo_section(geo):
+    lines = ["### Answer-engine visibility (GEO)\n"]
+
+    c = geo["ai_crawlers"]
+    if "error" in c:
+        lines.append(f"_Could not read robots.txt: {c['error']}_\n")
+    else:
+        if c["blocked"]:
+            lines.append(f"**AI crawlers BLOCKED by robots.txt: {len(c['blocked'])}**\n")
+            for a in c["blocked"]:
+                lines.append(f"- {a} — {c['agents'][a]['what']}")
+            lines.append("")
+        else:
+            lines.append("No AI crawler is blocked by robots.txt.\n")
+
+        unnamed = c["retrieval_agents_not_named"]
+        if unnamed:
+            lines.append(
+                f"{len(unnamed)} retrieval crawler(s) are allowed only by the catch-all "
+                "`User-agent: *` rule rather than by name. They can reach the site today; "
+                "naming them makes the intent explicit and survives a future `Disallow`:\n"
+            )
+            for a in unnamed:
+                lines.append(f"- {a} — {c['agents'][a]['what']}")
+            lines.append("")
+
+    l = geo["llms_txt"]
+    if not l.get("exists"):
+        lines.append("**No /llms.txt** — assistants have no plain-language summary to quote.\n")
+    else:
+        facts = "with a facts block" if l["has_facts_block"] else "**without a facts block**"
+        lines.append(f"`/llms.txt` present ({l['bytes']} bytes, {facts}, {l['link_count']} links).")
+        if l["dead_links"]:
+            lines.append(
+                f"\n**Dead links in llms.txt: {len(l['dead_links'])}** — these point "
+                "assistants at nothing:\n"
+            )
+            for d in l["dead_links"]:
+                lines.append(f"- {d['url']} → {d['status']}")
+        else:
+            lines.append("Every link in it still resolves.")
+        lines.append("")
+
+    cit = geo["citability"]
+    lines.append(
+        f"\n**Citability:** {cit['citable']} of {cit['pages_checked']} pages open with a "
+        f"declared answer block an engine can lift ({cit['skipped']} noindex pages skipped).\n"
+    )
+    if cit["needs_work"]:
+        lines.append("Answer blocks worth reworking:\n")
+        for p in cit["needs_work"]:
+            lines.append(f"- {p['url']} — {'; '.join(p['issues'])}")
+        lines.append("")
+    if cit["opportunities"]:
+        lines.append(
+            f"{len(cit['opportunities'])} pages open with an intro rather than a declared "
+            "answer. Not a fault — but the ones that answer a real question are worth "
+            "giving an answer block:\n"
+        )
+        for p in cit["opportunities"][:15]:
+            lines.append(f"- {p['url']}")
+        if len(cit["opportunities"]) > 15:
+            lines.append(f"- ...and {len(cit['opportunities']) - 15} more")
+        lines.append("")
+
+    lines.append(
+        "_Not measured: whether ChatGPT or Perplexity actually cite the site. "
+        "That needs paid API access to those engines, so no number is invented here._\n"
+    )
+    return "\n".join(lines)
+
+
 def run_site(site):
     """Runs every agent for one site. Each agent is isolated: one blowing up
     does not take the rest of the report down with it."""
@@ -156,6 +229,13 @@ def run_site(site):
     except Exception:
         failures.append(("aeo", traceback.format_exc()))
         parts.append("### Answer-engine readiness\n\n_Agent failed - see log._\n")
+
+    try:
+        geo = geo_agent.run(site["origin"], page_urls)
+        parts.append(_fmt_geo_section(geo))
+    except Exception:
+        failures.append(("geo", traceback.format_exc()))
+        parts.append("### Answer-engine visibility (GEO)\n\n_Agent failed - see log._\n")
 
     return "\n".join(parts), failures
 
