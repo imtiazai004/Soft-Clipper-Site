@@ -32,6 +32,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Restore the trend history from the seo-reports branch
+        # history.json lives on the reports branch, not main. Without this the
+        # chart would reset to a single point on every run.
+        run: |
+          git fetch origin seo-reports || true
+          mkdir -p seo-agents/reports
+          git show origin/seo-reports:reports/history.json > seo-agents/reports/history.json 2>/dev/null \
+            || echo "No history yet - this run starts it."
+
       - name: Install dependencies
         working-directory: seo-agents
         run: pip install -r requirements.txt
@@ -43,6 +52,20 @@ jobs:
           GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
           GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
         run: python run_daily.py
+
+      - name: Build the dashboard
+        # runs even when an agent failed, so the dashboard still shows what
+        # did work plus a "this agent failed" row rather than going blank
+        if: always()
+        working-directory: seo-agents
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ -f reports/data.json ]; then
+            python build_dashboard.py
+          else
+            echo "No data.json was produced; skipping the dashboard."
+          fi
 
       - name: Publish the report to the seo-reports branch
         # runs even when an agent failed, so a partial report is still saved
@@ -68,8 +91,12 @@ jobs:
 
           mkdir -p reports
           cp seo-agents/reports/*.md reports/ 2>/dev/null || true
+          cp seo-agents/reports/*.json reports/ 2>/dev/null || true
+          # index.html at the branch root is what GitHub Pages serves
+          cp seo-agents/index.html . 2>/dev/null || true
 
           git add reports
+          [ -f index.html ] && git add index.html || true
           if git diff --staged --quiet; then
             echo "Report unchanged; nothing to commit."
           else
