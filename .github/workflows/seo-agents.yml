@@ -1,0 +1,86 @@
+name: SEO agents
+
+# Runs the Search Console agents on a schedule and publishes the report.
+#
+# The report is written to the run's job summary (readable from the Actions
+# tab, nothing to clone) and committed to the `seo-reports` branch for
+# history. It deliberately does NOT commit to main: main is what Cloudflare
+# Pages builds from, and a daily report is not a reason to rebuild the site.
+
+on:
+  schedule:
+    # 02:00 UTC daily = 07:00 Pakistan time, so the report is waiting in the
+    # morning. GitHub runs scheduled jobs on UTC and can delay them under
+    # load; a few minutes' drift does not matter here.
+    - cron: "0 2 * * *"
+  # lets you run it by hand from the Actions tab without waiting for 02:00
+  workflow_dispatch:
+
+# the job commits to a branch, so it needs write access to repo contents
+permissions:
+  contents: write
+
+jobs:
+  run-agents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: seo-agents
+        run: pip install -r requirements.txt
+
+      - name: Run the agents
+        working-directory: seo-agents
+        env:
+          GSC_CLIENT_ID: ${{ secrets.GSC_CLIENT_ID }}
+          GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
+          GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
+        run: python run_daily.py
+
+      - name: Publish the report to the seo-reports branch
+        # runs even when an agent failed, so a partial report is still saved
+        if: always()
+        run: |
+          set -e
+          if [ ! -f seo-agents/reports/latest.md ]; then
+            echo "No report was produced; nothing to publish."
+            exit 0
+          fi
+
+          git config user.name "seo-agents"
+          git config user.email "seo-agents@users.noreply.github.com"
+
+          # keep the reports on their own orphan-ish branch, away from main
+          git fetch origin seo-reports || true
+          if git show-ref --verify --quiet refs/remotes/origin/seo-reports; then
+            git checkout -B seo-reports origin/seo-reports
+          else
+            git checkout --orphan seo-reports
+            git rm -rf --cached . >/dev/null 2>&1 || true
+          fi
+
+          mkdir -p reports
+          cp seo-agents/reports/*.md reports/ 2>/dev/null || true
+
+          git add reports
+          if git diff --staged --quiet; then
+            echo "Report unchanged; nothing to commit."
+          else
+            git commit -m "SEO report $(date -u +%Y-%m-%d)"
+            git push origin seo-reports
+          fi
+
+      - name: Keep the raw report as a downloadable artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-report
+          path: seo-agents/reports/
+          if-no-files-found: ignore
