@@ -9,16 +9,41 @@ export const GET: APIRoute = () =>
 Allow: /
 
 # Answer and generative engines are welcome — being quoted by them is the point.
+# Two kinds, and the second kind is the one that decides whether an assistant
+# can cite this site in an answer it is writing right now. Naming both is
+# belt-and-braces: the catch-all above already allows them, but if that rule
+# ever tightens, these should not quietly go with it.
+
+# Training crawls
 User-agent: GPTBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Retrieval and citation
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Perplexity-User
 Allow: /
 
 Sitemap: ${SITE.origin}/sitemap-index.xml
