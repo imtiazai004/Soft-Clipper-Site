@@ -106,7 +106,7 @@ export const USE_CASES: UseCase[] = [
 			},
 			{
 				q: "Will it upload to YouTube for me?",
-				a: "No. Soft Clipper produces files; uploading and scheduling stay in your hands.",
+				a: "No. Soft Clipper produces finished video files in a folder on your computer; uploading and scheduling stay in your hands. It does write a hook title, caption and hashtags for each clip, so the description is ready to paste, but it never connects to your YouTube account.",
 			},
 		],
 	},
