@@ -12,6 +12,10 @@ SITES = [
         "gsc_property": "sc-domain:softclipper.pro",
         "origin": "https://softclipper.pro",
         "sitemap": "https://softclipper.pro/sitemap-index.xml",
+        # Deliberately kept out of the index. Google will never crawl these,
+        # so without this list they would sit in the report as a permanent
+        # "never crawled" warning that is not a problem and cannot be fixed.
+        "noindex_urls": ["https://softclipper.pro/checkout/"],
         "enabled": True,
     },
     {
@@ -22,6 +26,7 @@ SITES = [
         # because the server answers 200 with the app shell for any unknown
         # path, asking for it looks like it worked and yields zero URLs.
         "sitemap": "https://aisofttechsolution.com/sitemap.xml",
+        "noindex_urls": [],
         "enabled": True,
     },
 ]
