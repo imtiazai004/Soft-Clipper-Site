@@ -73,6 +73,9 @@ def run(site_url: str, days: int = 28, row_limit: int = 5000):
         "total_query_page_rows": len(rows),
         "striking_distance_keywords": striking_distance,
         "cannibalization_flags": cannibalization,
+        # kept so the content agent can mine the same pull instead of
+        # spending a second API call on identical data
+        "raw_rows": rows,
     }
 
 

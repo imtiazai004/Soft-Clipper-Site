@@ -21,6 +21,7 @@ import keyword_gap_agent
 import indexing_health_agent
 import aeo_agent
 import geo_agent
+import content_agent
 
 
 def _fmt_keyword_section(kw):
@@ -193,14 +194,42 @@ def _fmt_geo_section(geo):
     return "\n".join(lines)
 
 
+def _fmt_content_section(topics, min_impressions):
+    lines = ["### Content opportunities\n"]
+    if not topics:
+        lines.append(
+            f"Nothing yet. A topic only qualifies once a query has brought at least "
+            f"{min_impressions} impressions, still ranks outside the top {content_agent.MIN_POSITION}, "
+            "and no existing page covers it. On a site this new that threshold is simply "
+            "not reached yet — which is the honest answer, not a broken agent. It will "
+            "start producing as search history accumulates.\n"
+        )
+        return "\n".join(lines)
+
+    lines.append(
+        f"{len(topics)} search(es) brought people here and found nothing that answers them:\n"
+    )
+    lines.append("| Impressions | Best position | Query |")
+    lines.append("|---:|---:|---|")
+    for t in topics[:20]:
+        lines.append(f"| {t['impressions']} | {t['best_position']} | {t['query']} |")
+    lines.append(
+        "\n_These are evidence, not instructions. Drafting only runs when a human picks "
+        "one, and a draft is never committed to the site automatically._\n"
+    )
+    return "\n".join(lines)
+
+
 def run_site(site):
     """Runs every agent for one site. Each agent is isolated: one blowing up
     does not take the rest of the report down with it."""
     parts = [f"## {site['name']}\n"]
     failures = []
 
+    raw_rows = []
     try:
         kw = keyword_gap_agent.run(site["gsc_property"])
+        raw_rows = kw.get("raw_rows", [])
         parts.append(_fmt_keyword_section(kw))
     except Exception:
         failures.append(("keyword-gap", traceback.format_exc()))
@@ -236,6 +265,13 @@ def run_site(site):
     except Exception:
         failures.append(("geo", traceback.format_exc()))
         parts.append("### Answer-engine visibility (GEO)\n\n_Agent failed - see log._\n")
+
+    try:
+        topics = content_agent.find_topics(raw_rows, page_urls)
+        parts.append(_fmt_content_section(topics, content_agent.MIN_IMPRESSIONS))
+    except Exception:
+        failures.append(("content", traceback.format_exc()))
+        parts.append("### Content opportunities\n\n_Agent failed - see log._\n")
 
     return "\n".join(parts), failures
 

@@ -32,6 +32,17 @@ def _fetch_sitemap_urls(sitemap_url: str, seen=None):
 
     resp = requests.get(sitemap_url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
     resp.raise_for_status()
+
+    # Plenty of sites answer 200 with their HTML shell for any unknown path,
+    # so a 200 here does not mean the sitemap exists. Say that plainly rather
+    # than letting it surface as a baffling XML parse error.
+    if not resp.content.lstrip().startswith(b"<?xml") and b"<urlset" not in resp.content[:2000]:
+        raise RuntimeError(
+            f"{sitemap_url} returned {resp.status_code} but the body is not XML "
+            f"({len(resp.content)} bytes). The sitemap probably does not exist at "
+            "this path and the server is answering with a page instead."
+        )
+
     root = ET.fromstring(resp.content)
 
     urls = []

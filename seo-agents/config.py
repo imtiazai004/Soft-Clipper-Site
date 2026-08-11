@@ -18,9 +18,11 @@ SITES = [
         "name": "aisofttechsolution.com",
         "gsc_property": "sc-domain:aisofttechsolution.com",
         "origin": "https://aisofttechsolution.com",
-        "sitemap": "https://aisofttechsolution.com/sitemap-index.xml",
-        # off until softclipper.pro is proven end to end
-        "enabled": False,
+        # NOT sitemap-index.xml — that path does not exist on this site and,
+        # because the server answers 200 with the app shell for any unknown
+        # path, asking for it looks like it worked and yields zero URLs.
+        "sitemap": "https://aisofttechsolution.com/sitemap.xml",
+        "enabled": True,
     },
 ]
 
