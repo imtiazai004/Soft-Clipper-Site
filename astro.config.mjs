@@ -9,6 +9,9 @@ const NOINDEX_PATHS = [
 	// Only reachable by paying. In search results it would rank for the brand and
 	// then congratulate a visitor on a purchase they have not made.
 	"/thank-you/",
+	// Reachable, but noindex: it is a payment step, not a page to arrive on
+	// from a search result.
+	"/checkout/",
 	// The Mac install guide follows the same dashboard switch as the Mac
 	// download. Derived from it rather than listed by hand, so the page and the
 	// sitemap cannot end up disagreeing about whether Mac is a thing we sell.
