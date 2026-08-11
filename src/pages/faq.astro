@@ -38,7 +38,7 @@ const groups: { title: string; items: FaqItem[] }[] = [
 		items: [
 			{
 				q: "How much does it cost?",
-				a: `${PRICE.display}, once. There is no subscription, no credit pack and no per-export fee.`,
+				a: `${PRICE.display}, once. There is no subscription, no credit pack and no per-export fee. One licence covers one PC, updates to the version you bought are free, and the only thing you might pay for again is your own Google Gemini usage — billed by Google, and free at ordinary volumes.`,
 			},
 			{
 				q: "What does one licence cover?",
@@ -86,7 +86,7 @@ const groups: { title: string; items: FaqItem[] }[] = [
 		items: [
 			{
 				q: "Why do I need my own Gemini API key?",
-				a: "You do not have to. By default the app uses Google Gemini with your own free key, which keeps the price a one-off — AI analysis costs money per video, and rather than bury that in a subscription you pay Google directly if you ever exceed their free tier. If you would rather not have an account at all, transcription can run locally with Whisper and the analysis through Ollama or LM Studio on your own machine.",
+				a: "You do not have to. The app uses Google Gemini with your own free key by default, and that is what keeps the price a one-off: AI analysis costs money per video, so rather than bury it in a subscription you pay Google directly, only if you pass their free tier. To avoid an account entirely, run transcription locally with Whisper and analysis through Ollama or LM Studio.",
 			},
 			{
 				q: "Is my video uploaded anywhere?",
@@ -123,7 +123,7 @@ const groups: { title: string; items: FaqItem[] }[] = [
 			},
 			{
 				q: "Can it post the clips for me?",
-				a: "No. It writes files to a folder; posting stays with you.",
+				a: "No. Soft Clipper writes finished clips to a folder on your computer, and posting them stays with you. A hook title, caption and hashtags are generated for every clip, so the text is ready to paste, but there is no scheduler and no connection to TikTok, Instagram or YouTube.",
 			},
 		],
 	},
