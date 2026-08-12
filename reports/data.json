@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-12",
-  "generated_at": "2026-08-12 04:54 UTC",
+  "generated_at": "2026-08-12 05:14 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -58,10 +58,26 @@
       },
       "geo": {
         "blocked_crawlers": [
-          "Meta-ExternalAgent",
-          "Amazonbot",
-          "CCBot",
-          "Bytespider"
+          {
+            "agent": "Meta-ExternalAgent",
+            "purpose": "training",
+            "what": "Meta - training crawl"
+          },
+          {
+            "agent": "Amazonbot",
+            "purpose": "training",
+            "what": "Amazon - Alexa and Amazon AI"
+          },
+          {
+            "agent": "CCBot",
+            "purpose": "training",
+            "what": "Common Crawl - open dataset used by many models"
+          },
+          {
+            "agent": "Bytespider",
+            "purpose": "training",
+            "what": "ByteDance - training crawl"
+          }
         ],
         "retrieval_not_named": [],
         "robots_error": null,
