@@ -74,6 +74,40 @@ _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs 
 
 Nothing yet. A topic only qualifies once a query has brought at least 10 impressions, still ranks outside the top 20, and no existing page covers it. On a site this new that threshold is simply not reached yet — which is the honest answer, not a broken agent. It will start producing as search history accumulates.
 
+### Topic ideas (cold start)
+
+_364 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1118), klap.app (269), vizard.ai (289), www.submagic.co (902), 2short.ai (0). 92 of them we already cover._
+
+| Score | Suggested by | Best pos | Competitors | Phrase |
+|---:|---:|---:|---:|---|
+| 43 | 11 | 1 | 4 | how to cut long video to short |
+| 30 | 5 | 2 | 4 | how to convert long video to short video |
+| 29 | 4 | 1 | 4 | how to make videos longer |
+| 27 | 3 | 1 | 4 | ai video clipper for tiktok |
+| 26 | 2 | 0 | 4 | add captions to video |
+| 26 | 2 | 0 | 4 | add captions to video free |
+| 26 | 2 | 0 | 4 | add captions to video online free |
+| 26 | 2 | 0 | 4 | ai video editing software |
+| 26 | 3 | 2 | 4 | how to add captions to video iphone |
+| 25 | 2 | 1 | 4 | add captions to video free no watermark |
+| 25 | 2 | 1 | 4 | add captions to video online |
+| 25 | 3 | 3 | 4 | how to add captions to an existing video |
+| 25 | 2 | 1 | 4 | how to make a shorts video |
+| 24 | 1 | 0 | 4 | add captions to video for free |
+| 24 | 2 | 2 | 4 | add captions to video online free without watermark |
+| 24 | 1 | 0 | 4 | add captions to video software |
+| 24 | 1 | 0 | 4 | add captions to video without watermark |
+| 24 | 1 | 0 | 4 | add subtitles to video and translate |
+| 24 | 1 | 0 | 4 | ai video clip software |
+| 24 | 3 | 1 | 3 | ai video clipper for shorts |
+| 24 | 1 | 0 | 4 | ai video clipper youtube |
+| 24 | 2 | 2 | 4 | ai video cutting and editing |
+| 24 | 1 | 0 | 4 | auto crop video for tiktok |
+| 24 | 1 | 0 | 4 | best app to add captions to video |
+| 24 | 1 | 0 | 4 | can i add captions to video in canva |
+
+_**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
+
 ## aisofttechsolution.com
 
 ### Striking-distance keywords (positions 8-20)
@@ -136,3 +170,7 @@ _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs 
 ### Content opportunities
 
 Nothing yet. A topic only qualifies once a query has brought at least 10 impressions, still ranks outside the top 20, and no existing page covers it. On a site this new that threshold is simply not reached yet — which is the honest answer, not a broken agent. It will start producing as search history accumulates.
+
+### Topic ideas (cold start)
+
+_No cold-start seeds configured for this site (config.py -> coldstart.seeds)._
