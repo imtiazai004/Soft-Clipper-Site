@@ -1,0 +1,182 @@
+{
+  "generated": "2026-08-12",
+  "generated_at": "2026-08-12 04:01 UTC",
+  "sites": [
+    {
+      "name": "softclipper.pro",
+      "origin": "https://softclipper.pro",
+      "gsc_property": "sc-domain:softclipper.pro",
+      "failed_agents": [],
+      "keywords": {
+        "date_range": {
+          "start": "2026-07-12",
+          "end": "2026-08-09"
+        },
+        "total_query_page_rows": 6,
+        "striking_distance": [
+          {
+            "query": "softclipper",
+            "page": "http://softclipper.pro/",
+            "position": 10,
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0
+          },
+          {
+            "query": "soft clipper",
+            "page": "http://softclipper.pro/",
+            "position": 19,
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0
+          }
+        ],
+        "cannibalization": [
+          {
+            "query": "softclipper",
+            "pages": [
+              "http://softclipper.pro/",
+              "https://softclipper.pro/",
+              "https://softclipper.pro/download/"
+            ]
+          }
+        ]
+      },
+      "indexing": {
+        "total_urls_checked": 33,
+        "indexed": 34,
+        "never_crawled": [],
+        "crawled_not_indexed": [],
+        "technical_blockers": [],
+        "check_errors": []
+      },
+      "aeo": {
+        "pages_checked": 23,
+        "total_faqs": 141,
+        "snippet_ready": 141,
+        "problems": []
+      },
+      "geo": {
+        "blocked_crawlers": [
+          "Meta-ExternalAgent",
+          "Amazonbot",
+          "CCBot",
+          "Bytespider"
+        ],
+        "retrieval_not_named": [],
+        "robots_error": null,
+        "llms_txt": {
+          "llms_url": "https://softclipper.pro/llms.txt",
+          "exists": true,
+          "bytes": 3769,
+          "has_facts_block": true,
+          "link_count": 17,
+          "dead_links": []
+        },
+        "citability": {
+          "pages_checked": 34,
+          "citable": 12,
+          "skipped": 0,
+          "needs_work": [],
+          "opportunities": [
+            "https://softclipper.pro/",
+            "https://softclipper.pro/about/",
+            "https://softclipper.pro/affiliates/",
+            "https://softclipper.pro/blog/",
+            "https://softclipper.pro/blog/turn-long-videos-into-shorts/",
+            "https://softclipper.pro/blog/why-auto-reframing-looks-wrong/",
+            "https://softclipper.pro/compare/",
+            "https://softclipper.pro/contact/",
+            "https://softclipper.pro/download/",
+            "https://softclipper.pro/faq/",
+            "https://softclipper.pro/features/",
+            "https://softclipper.pro/features/ai-moment-detection/",
+            "https://softclipper.pro/features/auto-reframe/",
+            "https://softclipper.pro/features/captions/",
+            "https://softclipper.pro/features/highlight-reel/",
+            "https://softclipper.pro/help/",
+            "https://softclipper.pro/help/install/",
+            "https://softclipper.pro/help/troubleshooting/",
+            "https://softclipper.pro/legal/privacy/",
+            "https://softclipper.pro/legal/terms/",
+            "https://softclipper.pro/pricing/",
+            "https://softclipper.pro/use-cases/"
+          ]
+        }
+      },
+      "content": {
+        "min_impressions": 10,
+        "min_position": 20,
+        "topics": []
+      }
+    },
+    {
+      "name": "aisofttechsolution.com",
+      "origin": "https://aisofttechsolution.com",
+      "gsc_property": "sc-domain:aisofttechsolution.com",
+      "failed_agents": [],
+      "keywords": {
+        "date_range": {
+          "start": "2026-07-12",
+          "end": "2026-08-09"
+        },
+        "total_query_page_rows": 6,
+        "striking_distance": [],
+        "cannibalization": []
+      },
+      "indexing": {
+        "total_urls_checked": 7,
+        "indexed": 7,
+        "never_crawled": [],
+        "crawled_not_indexed": [],
+        "technical_blockers": [],
+        "check_errors": []
+      },
+      "aeo": {
+        "pages_checked": 5,
+        "total_faqs": 45,
+        "snippet_ready": 45,
+        "problems": []
+      },
+      "geo": {
+        "blocked_crawlers": [],
+        "retrieval_not_named": [
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "Claude-SearchBot",
+          "Claude-User",
+          "Perplexity-User"
+        ],
+        "robots_error": null,
+        "llms_txt": {
+          "llms_url": "https://aisofttechsolution.com/llms.txt",
+          "exists": true,
+          "bytes": 4906,
+          "has_facts_block": false,
+          "link_count": 0,
+          "dead_links": []
+        },
+        "citability": {
+          "pages_checked": 7,
+          "citable": 0,
+          "skipped": 0,
+          "needs_work": [],
+          "opportunities": [
+            "https://aisofttechsolution.com/",
+            "https://aisofttechsolution.com/profitscout",
+            "https://aisofttechsolution.com/soft-clipper",
+            "https://aisofttechsolution.com/blog",
+            "https://aisofttechsolution.com/profitscout-privacy",
+            "https://aisofttechsolution.com/privacy",
+            "https://aisofttechsolution.com/terms"
+          ]
+        }
+      },
+      "content": {
+        "min_impressions": 10,
+        "min_position": 20,
+        "topics": []
+      }
+    }
+  ]
+}
