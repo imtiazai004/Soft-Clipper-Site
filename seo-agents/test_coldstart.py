@@ -36,9 +36,15 @@ check("stopwords + short words dropped",
 
 # --- coverage matching -----------------------------------------------------
 sets = [cs.slug_words("https://opus.pro/blog/repurpose-long-videos-into-shorts")]
-check("2-word overlap counts", cs.covered_by("repurpose long videos", sets), True)
+check("most of the phrase present", cs.covered_by("repurpose long videos", sets), True)
 check("1-word overlap does not", cs.covered_by("videos everywhere", sets), False)
 check("single meaningful word never matches", cs.covered_by("videos", sets), False)
+# the bug this ratio exists to kill: two words in common with a big blog is not
+# coverage of a five-word phrase
+big = [cs.slug_words("https://opus.pro/blog/add-captions-fast")]
+check("2 of 5 words is not coverage",
+      cs.covered_by("best software to add captions automatically", big), False)
+check("2 of 2 words is coverage", cs.covered_by("add captions", big), True)
 
 # --- scoring ---------------------------------------------------------------
 e = {"hits": 3, "best_position": 0}
@@ -92,6 +98,42 @@ class BoomSession:
 h2 = cs.harvest(["x"], BoomSession(), max_requests=3, delay=0)
 check("network failure is recorded, not raised", len(h2["errors"]), 3)
 check("still returns a result", h2["phrases"], {})
+
+# --- clustering ------------------------------------------------------------
+def t(phrase, score=10, hits=1):
+    return {"phrase": phrase, "score": score, "autocomplete_hits": hits,
+            "best_position": 0, "competitors_covering": 0, "we_cover_it": False,
+            "seen_from": []}
+
+cl = cs.cluster([
+    t("add captions to video", 26, 2),
+    t("add captions to video free", 25, 1),
+    t("best app to add captions to video", 24, 1),
+    t("how to cut long video to short", 43, 11),
+    t("ai video editing software", 20, 1),
+])
+check("near-duplicate phrasings collapse", len(cl), 3)
+check("highest score becomes the head", cl[0]["phrase"], "how to cut long video to short")
+captions = [c for c in cl if c["phrase"] == "add captions to video"][0]
+check("variants kept, not discarded", len(captions["variants"]), 2)
+check("head keeps the cluster's best hit count", captions["autocomplete_hits"], 2)
+check("unrelated topic stays separate",
+      any(c["phrase"] == "ai video editing software" for c in cl), True)
+check("internal state is not leaked into the report",
+      any("_words" in c for c in cl), False)
+
+# --- negative words --------------------------------------------------------
+h = {"phrases": {
+    "how to make videos longer": {"phrase": "how to make videos longer", "hits": 4,
+                                  "best_position": 0, "from": []},
+    "how to cut long video": {"phrase": "how to cut long video", "hits": 4,
+                              "best_position": 0, "from": []},
+}}
+gaps, _ = cs.rank_topics(h, {}, [], negative_words=["longer"])
+check("opposite-intent phrase dropped",
+      [g["phrase"] for g in gaps], ["how to cut long video"])
+gaps2, _ = cs.rank_topics(h, {}, [], negative_words=[])
+check("without the list it survives (no hidden cleverness)", len(gaps2), 2)
 
 print("\n".join(fails) if fails else f"all tests passed")
 sys.exit(1 if fails else 0)

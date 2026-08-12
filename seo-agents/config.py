@@ -28,6 +28,14 @@ SITES = [
                 "add captions to video",
                 "highlight reel from long video",
             ],
+            # Autocomplete drifts into the opposite intent: seeding "turn long
+            # videos into shorts" also returns "how to make videos longer".
+            # These words mark a phrase as not-our-product. Kept as a list
+            # rather than inferred, because guessing intent from words quietly
+            # drops good topics too.
+            "negative_words": [
+                "longer", "download", "crack", "torrent", "apk", "mod",
+            ],
             # Competitors we compare against on /compare/, plus the two other
             # tools that own this search space.
             "competitors": [
@@ -52,7 +60,7 @@ SITES = [
         # No cold-start seeds yet: this site's positioning is not settled, and
         # guessing seeds produces a confident list of the wrong topics. Add
         # them here and the agent starts on the next run.
-        "coldstart": {"seeds": [], "competitors": []},
+        "coldstart": {"seeds": [], "competitors": [], "negative_words": []},
         "enabled": True,
     },
 ]

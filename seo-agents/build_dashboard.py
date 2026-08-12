@@ -265,7 +265,17 @@ def build_actions(site: dict):
                 if t["competitors_covering"]
                 else "no competitor has a page on it yet"
             )
-            + ". No page of ours covers it.\n\nSeen from: "
+            + ". No page of ours covers it."
+            + (
+                "\n\nSame topic, other phrasings people use ("
+                + str(len(t["variants"]))
+                + "): "
+                + "; ".join(t["variants"][:8])
+                + ("; …" if len(t["variants"]) > 8 else "")
+                if t.get("variants")
+                else ""
+            )
+            + "\n\nSeen from: "
             + ", ".join(t.get("seen_from") or []),
             "Open an issue to draft it",
             issue_url(
@@ -274,7 +284,15 @@ def build_actions(site: dict):
                 f"- Suggested by {t['autocomplete_hits']} autocomplete prefixes, "
                 f"best position {t['best_position']}\n"
                 f"- Competitors with a page on it: {t['competitors_covering']}\n"
-                f"- Prefixes it came from: {', '.join(t.get('seen_from') or [])}\n\n"
+                f"- Prefixes it came from: {', '.join(t.get('seen_from') or [])}\n"
+                + (
+                    "- Other phrasings to cover in the same post:\n"
+                    + "\n".join(f"  - {v}" for v in t["variants"])
+                    + "\n"
+                    if t.get("variants")
+                    else ""
+                )
+                + "\n"
                 "This is autocomplete + competitor evidence, **not search volume** "
                 "— no free source publishes volume and none was invented. Judge it "
                 "before writing.",

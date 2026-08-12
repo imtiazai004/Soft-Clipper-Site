@@ -236,19 +236,23 @@ def _fmt_coldstart_section(cs):
         f"_{cs['phrases_found']} phrases from {cs['requests_made']} autocomplete "
         f"queries; competitor pages read: "
         + ", ".join(f"{o.split('//')[-1]} ({n})" for o, n in cs["competitors_read"].items())
-        + f". {cs['already_covered']} of them we already cover._\n"
+        + f". {cs['already_covered']} of them we already cover; the rest cluster "
+        f"into {cs.get('phrases_clustered_into', len(cs.get('gaps') or []))} distinct "
+        "topics (near-duplicate phrasings are folded into one row, because they "
+        "are one post, not several)._\n"
     )
     gaps = cs.get("gaps") or []
     if not gaps:
         lines.append("No uncovered phrase came back this run.\n")
         return "\n".join(lines)
 
-    lines.append("| Score | Suggested by | Best pos | Competitors | Phrase |")
-    lines.append("|---:|---:|---:|---:|---|")
+    lines.append("| Score | Suggested by | Best pos | Competitors | Variants | Topic |")
+    lines.append("|---:|---:|---:|---:|---:|---|")
     for t in gaps[:25]:
         lines.append(
             f"| {t['score']} | {t['autocomplete_hits']} | {t['best_position']} | "
-            f"{t['competitors_covering']} | {t['phrase']} |"
+            f"{t['competitors_covering']} | {len(t.get('variants') or [])} | "
+            f"{t['phrase']} |"
         )
     lines.append(
         "\n_**Score is not search volume.** No free source publishes volume, and "
@@ -413,7 +417,10 @@ def run_site(site):
             }
         else:
             cold = coldstart_agent.run(
-                seeds, cs_conf.get("competitors") or [], page_urls
+                seeds,
+                cs_conf.get("competitors") or [],
+                page_urls,
+                negative_words=cs_conf.get("negative_words") or [],
             )
         parts.append(_fmt_coldstart_section(cold))
         data["coldstart"] = cold

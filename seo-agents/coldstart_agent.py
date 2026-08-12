@@ -32,6 +32,7 @@ Nothing here publishes anything. It produces a ranked list a human picks from.
 """
 
 import json
+import math
 import re
 import time
 import urllib.parse
@@ -245,14 +246,63 @@ def _phrase_words(phrase: str):
     return {w for w in words if w and w not in STOPWORDS and len(w) > 2}
 
 
-def covered_by(phrase: str, url_word_sets, min_overlap=2):
-    """A page counts as covering a phrase when it shares at least `min_overlap`
-    meaningful words with it. Deliberately loose: this is a signal, not a
-    claim that the page ranks for the phrase."""
+# Overlap required as a fraction of the phrase's own length. A flat "2 words
+# in common" sounded reasonable and was not: against a competitor with 1,100
+# blog URLs, almost every two-word phrase finds *something*, so the competitor
+# signal came back as 4-out-of-4 for nearly every row and stopped
+# distinguishing anything. Requiring most of the phrase's words fixes that.
+COVERAGE_RATIO = 0.6
+
+
+def covered_by(phrase: str, url_word_sets, ratio=COVERAGE_RATIO, min_overlap=2):
+    """A page counts as covering a phrase when one URL slug carries most of the
+    phrase's meaningful words - not merely two of them."""
     pw = _phrase_words(phrase)
     if len(pw) < min_overlap:
         return False
-    return any(len(pw & words) >= min_overlap for words in url_word_sets)
+    need = max(min_overlap, math.ceil(ratio * len(pw)))
+    return any(len(pw & words) >= need for words in url_word_sets)
+
+
+# ----------------------------------------------------------------------
+# Clustering
+# ----------------------------------------------------------------------
+# "add captions to video", "add captions to video free", "add captions to
+# video online", "best app to add captions to video" are one blog post, not
+# four. Left unclustered the list reads as forty opportunities when it is
+# really about ten - which is the same over-counting this project keeps having
+# to undo, wearing a different hat.
+CLUSTER_RATIO = 0.6
+
+
+def _same_topic(a_words, b_words, ratio=CLUSTER_RATIO):
+    if not a_words or not b_words:
+        return False
+    overlap = len(a_words & b_words)
+    return overlap >= 2 and overlap >= ratio * min(len(a_words), len(b_words))
+
+
+def cluster(topics):
+    """Greedy: highest-scoring phrase becomes the head of a cluster, weaker
+    phrasings of the same thing hang off it as `variants`. The head keeps the
+    cluster's best score so ranking is unaffected by how many ways people
+    phrase it."""
+    clusters = []
+    for t in sorted(topics, key=lambda x: (-x["score"], x["phrase"])):
+        words = _phrase_words(t["phrase"])
+        for c in clusters:
+            if _same_topic(words, c["_words"]):
+                c["variants"].append(t["phrase"])
+                c["autocomplete_hits"] = max(c["autocomplete_hits"], t["autocomplete_hits"])
+                break
+        else:
+            head = dict(t)
+            head["variants"] = []
+            head["_words"] = words
+            clusters.append(head)
+    for c in clusters:
+        c.pop("_words", None)
+    return clusters
 
 
 # ----------------------------------------------------------------------
@@ -270,11 +320,20 @@ def score(entry, competitor_hits):
     return breadth + rank + competitors
 
 
-def rank_topics(harvested, comp_index, our_url_word_sets, limit=40):
+def rank_topics(harvested, comp_index, our_url_word_sets, limit=40,
+                negative_words=()):
+    """Autocomplete drifts. Seeding "turn long videos into shorts" also returns
+    "how to make videos longer" - the opposite intent, from the same words.
+    `negative_words` is the escape hatch for that; it is a config list rather
+    than cleverness, because guessing intent from words is how you end up
+    silently dropping good topics."""
+    negatives = {w.lower() for w in negative_words}
     topics = []
     for phrase, entry in harvested["phrases"].items():
         if len(_phrase_words(phrase)) < 2:
             continue  # single-word head terms: not winnable, not useful
+        if negatives & set(re.split(r"[^a-z0-9]+", phrase.lower())):
+            continue
         comp_hits = sum(
             1 for sets in comp_index.values() if covered_by(phrase, sets)
         )
@@ -291,18 +350,20 @@ def rank_topics(harvested, comp_index, our_url_word_sets, limit=40):
             }
         )
     topics.sort(key=lambda t: (-t["score"], t["phrase"]))
-    gaps = [t for t in topics if not t["we_cover_it"]]
+    gaps = cluster([t for t in topics if not t["we_cover_it"]])
     return gaps[:limit], topics
 
 
 # ----------------------------------------------------------------------
 def run(seeds, competitors, our_urls, session=None, max_requests=MAX_REQUESTS,
-        delay=REQUEST_DELAY_SECONDS):
+        delay=REQUEST_DELAY_SECONDS, negative_words=()):
     session = session or requests.Session()
     harvested = harvest(seeds, session, max_requests=max_requests, delay=delay)
     comp_index = competitor_index(competitors, session)
     our_sets = [slug_words(u) for u in our_urls]
-    gaps, everything = rank_topics(harvested, comp_index, our_sets)
+    gaps, everything = rank_topics(
+        harvested, comp_index, our_sets, negative_words=negative_words
+    )
     return {
         "seeds": seeds,
         "requests_made": harvested["requests_made"],
@@ -310,6 +371,7 @@ def run(seeds, competitors, our_urls, session=None, max_requests=MAX_REQUESTS,
         "competitors_read": {o: len(v) for o, v in comp_index.items()},
         "errors": harvested["errors"],
         "gaps": gaps,
+        "phrases_clustered_into": len(gaps),
         "already_covered": len([t for t in everything if t["we_cover_it"]]),
     }
 
