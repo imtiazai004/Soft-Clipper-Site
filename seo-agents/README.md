@@ -12,8 +12,9 @@ Actions every morning; nothing has to be installed or started by hand.
 | `aeo_agent.py` | Published FAQ answers, scored for whether an answer engine could lift them whole: 15-75 words, leading with the answer rather than a preamble |
 | `geo_agent.py` | Whether answer engines can reach and quote the site: AI crawler access in robots.txt (parsed with real group semantics), `llms.txt` health including whether its links still resolve, and whether pages open with a declared answer block. Does **not** claim to measure actual citations in ChatGPT or Perplexity — that needs paid API access, so no number is invented |
 | `content_agent.py` | Queries that brought real impressions but have no page answering them. Evidence only — it proposes topics, it does not publish. Drafting is a separate, human-triggered call, because automated publishing at scale is exactly what Google's scaled-content policy exists to catch |
+| `coldstart_agent.py` | What to write about **before** the site has any traffic. Mines Google Autocomplete (question and comparison prefixes, not just the head term) and competitors' blog sitemaps, then ranks the phrases no page of ours covers. Its score is **not search volume** — no free source publishes volume and this project has no paid keyword API, so the score states its own ingredients instead of inventing a number |
 
-`run_daily.py` runs all five and writes the Markdown report plus
+`run_daily.py` runs all six and writes the Markdown report plus
 `reports/data.json` (today's findings) and `reports/history.json` (the few
 numbers worth plotting, appended per day).
 
@@ -24,7 +25,15 @@ page. That is what makes it publishable on GitHub Pages for free.
 `config.py` is the only site-specific file — adding a site is an entry there.
 `noindex_urls` there lists pages deliberately kept out of the index so they
 stop appearing forever as a "never crawled" warning that is neither a problem
-nor fixable.
+nor fixable. `coldstart.seeds` are the words a buyer would type — the cold-start
+agent skips a site entirely rather than guess them, because a guessed seed
+produces a confident list of the wrong topics.
+
+`test_coldstart.py` runs offline (every network call is a fixture):
+
+```bash
+python test_coldstart.py
+```
 
 ## Where the report goes
 

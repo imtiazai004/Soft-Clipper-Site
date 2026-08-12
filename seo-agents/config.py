@@ -16,6 +16,28 @@ SITES = [
         # so without this list they would sit in the report as a permanent
         # "never crawled" warning that is not a problem and cannot be fixed.
         "noindex_urls": ["https://softclipper.pro/checkout/"],
+        # Cold start: what to write about before the site has search history.
+        # Seeds are the words a buyer would actually type - not the product
+        # name, which nobody searches for yet.
+        "coldstart": {
+            "seeds": [
+                "ai video clipper",
+                "turn long videos into shorts",
+                "repurpose podcast into clips",
+                "auto reframe video",
+                "add captions to video",
+                "highlight reel from long video",
+            ],
+            # Competitors we compare against on /compare/, plus the two other
+            # tools that own this search space.
+            "competitors": [
+                "https://www.opus.pro",
+                "https://klap.app",
+                "https://vizard.ai",
+                "https://www.submagic.co",
+                "https://2short.ai",
+            ],
+        },
         "enabled": True,
     },
     {
@@ -27,6 +49,10 @@ SITES = [
         # path, asking for it looks like it worked and yields zero URLs.
         "sitemap": "https://aisofttechsolution.com/sitemap.xml",
         "noindex_urls": [],
+        # No cold-start seeds yet: this site's positioning is not settled, and
+        # guessing seeds produces a confident list of the wrong topics. Add
+        # them here and the agent starts on the next run.
+        "coldstart": {"seeds": [], "competitors": []},
         "enabled": True,
     },
 ]

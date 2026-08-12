@@ -252,6 +252,35 @@ def build_actions(site: dict):
             ),
         )
 
+    cold = site.get("coldstart") or {}
+    for t in (cold.get("gaps") or [])[:12]:
+        add(
+            "idea",
+            "Content",
+            f"Write: “{t['phrase']}”",
+            f"Google completed {t['autocomplete_hits']} different prefixes into this "
+            f"phrase (best position {t['best_position']}), and "
+            + (
+                f"{t['competitors_covering']} competitor(s) have a page on it"
+                if t["competitors_covering"]
+                else "no competitor has a page on it yet"
+            )
+            + ". No page of ours covers it.\n\nSeen from: "
+            + ", ".join(t.get("seen_from") or []),
+            "Open an issue to draft it",
+            issue_url(
+                f"[Content] {t['phrase']}",
+                f"**{t['phrase']}**\n\n"
+                f"- Suggested by {t['autocomplete_hits']} autocomplete prefixes, "
+                f"best position {t['best_position']}\n"
+                f"- Competitors with a page on it: {t['competitors_covering']}\n"
+                f"- Prefixes it came from: {', '.join(t.get('seen_from') or [])}\n\n"
+                "This is autocomplete + competitor evidence, **not search volume** "
+                "— no free source publishes volume and none was invented. Judge it "
+                "before writing.",
+            ),
+        )
+
     for a in site.get("failed_agents", []):
         add(
             "critical",
@@ -284,6 +313,24 @@ def _blocked_retrieval(geo: dict):
 
 def _blocked_training(geo: dict):
     return [b for b in _crawler_entries(geo) if b.get("purpose") == "training"]
+
+
+def _content_sub(site: dict, kw: dict) -> str:
+    """Two different things, kept apart on purpose: topics proven by our own
+    Search Console data, and ideas sourced from outside it. Merging them would
+    hide which ones are actually evidenced by our traffic."""
+    proven = len((site.get("content") or {}).get("topics") or [])
+    cold = site.get("coldstart") or {}
+    ideas = len(cold.get("gaps") or [])
+    bits = [
+        _plural(proven, "topic") + " from our own search data",
+        _plural(kw.get("total_query_page_rows") or 0, "query row"),
+    ]
+    if cold.get("skipped"):
+        bits.append("no cold-start seeds set")
+    else:
+        bits.append(_plural(ideas, "cold-start idea"))
+    return " · ".join(bits)
 
 
 def _plural(n: int, word: str) -> str:
@@ -366,9 +413,7 @@ def pillar_scores(site: dict):
             "key": "Content",
             "tone": "coverage",
             "pct": None,
-            "sub": _plural(len((site.get("content") or {}).get("topics") or []), "topic")
-            + " with search evidence · "
-            + _plural(kw.get("total_query_page_rows") or 0, "query row"),
+            "sub": _content_sub(site, kw),
         },
     ]
 

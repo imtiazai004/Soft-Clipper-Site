@@ -23,6 +23,7 @@ import indexing_health_agent
 import aeo_agent
 import geo_agent
 import content_agent
+import coldstart_agent
 
 
 def _now_utc():
@@ -225,6 +226,41 @@ def _fmt_content_section(topics, min_impressions):
     return "\n".join(lines)
 
 
+def _fmt_coldstart_section(cs):
+    lines = ["### Topic ideas (cold start)\n"]
+    if cs.get("skipped"):
+        lines.append(f"_{cs['skipped']}_\n")
+        return "\n".join(lines)
+
+    lines.append(
+        f"_{cs['phrases_found']} phrases from {cs['requests_made']} autocomplete "
+        f"queries; competitor pages read: "
+        + ", ".join(f"{o.split('//')[-1]} ({n})" for o, n in cs["competitors_read"].items())
+        + f". {cs['already_covered']} of them we already cover._\n"
+    )
+    gaps = cs.get("gaps") or []
+    if not gaps:
+        lines.append("No uncovered phrase came back this run.\n")
+        return "\n".join(lines)
+
+    lines.append("| Score | Suggested by | Best pos | Competitors | Phrase |")
+    lines.append("|---:|---:|---:|---:|---|")
+    for t in gaps[:25]:
+        lines.append(
+            f"| {t['score']} | {t['autocomplete_hits']} | {t['best_position']} | "
+            f"{t['competitors_covering']} | {t['phrase']} |"
+        )
+    lines.append(
+        "\n_**Score is not search volume.** No free source publishes volume, and "
+        "this project has no paid keyword API, so nothing is invented. The score "
+        "is: how many different prefixes Google completed into this phrase "
+        "(×2), how high it ranked in those suggestions, and how many "
+        "competitors have committed a page to it (×3). Treat it as evidence "
+        "worth a human's judgement, not as a forecast._\n"
+    )
+    return "\n".join(lines)
+
+
 def run_site(site):
     """Runs every agent for one site. Each agent is isolated: one blowing up
     does not take the rest of the report down with it.
@@ -364,6 +400,28 @@ def run_site(site):
         parts.append("### Content opportunities\n\n_Agent failed - see log._\n")
         data["failed_agents"].append("content")
 
+    # Cold start runs regardless of how much search history exists - that is
+    # the whole point of it. It is skipped only when no seeds are configured,
+    # because guessing them produces a confident list of the wrong topics.
+    try:
+        cs_conf = site.get("coldstart") or {}
+        seeds = cs_conf.get("seeds") or []
+        if not seeds:
+            cold = {
+                "skipped": "No cold-start seeds configured for this site "
+                "(config.py -> coldstart.seeds)."
+            }
+        else:
+            cold = coldstart_agent.run(
+                seeds, cs_conf.get("competitors") or [], page_urls
+            )
+        parts.append(_fmt_coldstart_section(cold))
+        data["coldstart"] = cold
+    except Exception:
+        failures.append(("coldstart", traceback.format_exc()))
+        parts.append("### Topic ideas (cold start)\n\n_Agent failed - see log._\n")
+        data["failed_agents"].append("coldstart")
+
     return "\n".join(parts), failures, data
 
 
@@ -388,6 +446,7 @@ def _history_point(day, site_data):
         "blockers": len(idx.get("technical_blockers") or []),
         "faqs_total": aeo.get("total_faqs"),
         "faqs_ready": aeo.get("snippet_ready"),
+        "topic_ideas": len(((site_data.get("coldstart") or {}).get("gaps")) or []),
         "pages_citable": cit.get("citable"),
         "pages_checked_geo": cit.get("pages_checked"),
     }
