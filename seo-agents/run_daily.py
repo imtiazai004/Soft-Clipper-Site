@@ -325,7 +325,14 @@ def run_site(site):
         c = geo["ai_crawlers"]
         cit = geo["citability"]
         data["geo"] = {
-            "blocked_crawlers": c.get("blocked", []),
+            "blocked_crawlers": [
+                {
+                    "agent": a,
+                    "purpose": (c.get("agents", {}).get(a) or {}).get("purpose"),
+                    "what": (c.get("agents", {}).get(a) or {}).get("what"),
+                }
+                for a in c.get("blocked", [])
+            ],
             "retrieval_not_named": c.get("retrieval_agents_not_named", []),
             "robots_error": c.get("error"),
             "llms_txt": geo["llms_txt"],

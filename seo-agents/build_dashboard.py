@@ -126,19 +126,24 @@ def build_actions(site: dict):
         )
 
     geo = site.get("geo") or {}
-    for agent in geo.get("blocked_crawlers", []):
+    # Only a blocked RETRIEVAL crawler is a finding. Training crawlers
+    # (GPTBot, CCBot, Bytespider...) are blocked on purpose here - surfacing
+    # those as "critical" is noise, and it is exactly the over-flagging this
+    # project keeps having to undo.
+    for a in _blocked_retrieval(geo):
         add(
             "critical",
             "GEO",
-            f"robots.txt blocks {agent}",
-            "This crawler is what lets an assistant read and cite the site. "
-            "Blocked means invisible in that engine's answers - not lower, absent.",
+            f"robots.txt blocks {a['agent']}",
+            f"{a.get('what') or 'A retrieval crawler.'} This is what lets an "
+            "assistant read and quote the site. Blocked means absent from that "
+            "engine's answers, not merely ranked lower.",
             "Open an issue",
             issue_url(
-                f"[GEO] robots.txt blocks {agent}",
-                f"`{agent}` is disallowed in {name}'s robots.txt. If that is not "
-                "deliberate, allow it - retrieval crawlers are how answer engines "
-                "quote the site.",
+                f"[GEO] robots.txt blocks {a['agent']}",
+                f"`{a['agent']}` is disallowed in {name}'s robots.txt. If that is "
+                "not deliberate, allow it - retrieval crawlers are how answer "
+                "engines cite the site.",
             ),
         )
 
@@ -262,6 +267,25 @@ def build_actions(site: dict):
     return actions
 
 
+def _crawler_entries(geo: dict):
+    """Tolerates both shapes: the old plain list of names and the current list
+    of dicts carrying purpose."""
+    out = []
+    for b in (geo or {}).get("blocked_crawlers") or []:
+        out.append({"agent": b, "purpose": None, "what": None} if isinstance(b, str) else b)
+    return out
+
+
+def _blocked_retrieval(geo: dict):
+    # purpose None = an older report that did not record it; treat as retrieval
+    # so a real block is never silently swallowed
+    return [b for b in _crawler_entries(geo) if b.get("purpose") in (None, "retrieval")]
+
+
+def _blocked_training(geo: dict):
+    return [b for b in _crawler_entries(geo) if b.get("purpose") == "training"]
+
+
 def _plural(n: int, word: str) -> str:
     return f"{n} {word}" if n == 1 else f"{n} {word}s"
 
@@ -296,7 +320,7 @@ def pillar_scores(site: dict):
     aeo_pct = round(100 * (aeo.get("snippet_ready") or 0) / faqs) if faqs else None
 
     checked = cit.get("pages_checked") or 0
-    open_to_ai = not geo.get("blocked_crawlers")
+    open_to_ai = not _blocked_retrieval(geo)
     geo_pct = round(100 * (cit.get("citable") or 0) / checked) if checked else None
 
     return [
@@ -322,8 +346,19 @@ def pillar_scores(site: dict):
             # not a defect, so this is not scored red
             "tone": "coverage",
             "pct": geo_pct,
-            "sub": (f"{cit.get('citable') or 0}/{checked} pages carry an answer block · "
-                    + ("crawlers open" if open_to_ai else "CRAWLER BLOCKED"))
+            "sub": (
+                f"{cit.get('citable') or 0}/{checked} pages carry an answer block · "
+                + (
+                    "retrieval crawlers open"
+                    if open_to_ai
+                    else f"{len(_blocked_retrieval(geo))} retrieval crawler(s) BLOCKED"
+                )
+                + (
+                    f" · {len(_blocked_training(geo))} training crawler(s) blocked on purpose"
+                    if _blocked_training(geo)
+                    else ""
+                )
+            )
             if checked
             else "not measured",
         },
