@@ -76,35 +76,35 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_364 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1118), klap.app (269), vizard.ai (289), www.submagic.co (902), 2short.ai (0). 92 of them we already cover._
+_364 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1118), klap.app (269), vizard.ai (289), www.submagic.co (902), 2short.ai (0). 72 of them we already cover; the rest cluster into 25 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several)._
 
-| Score | Suggested by | Best pos | Competitors | Phrase |
-|---:|---:|---:|---:|---|
-| 43 | 11 | 1 | 4 | how to cut long video to short |
-| 30 | 5 | 2 | 4 | how to convert long video to short video |
-| 29 | 4 | 1 | 4 | how to make videos longer |
-| 27 | 3 | 1 | 4 | ai video clipper for tiktok |
-| 26 | 2 | 0 | 4 | add captions to video |
-| 26 | 2 | 0 | 4 | add captions to video free |
-| 26 | 2 | 0 | 4 | add captions to video online free |
-| 26 | 2 | 0 | 4 | ai video editing software |
-| 26 | 3 | 2 | 4 | how to add captions to video iphone |
-| 25 | 2 | 1 | 4 | add captions to video free no watermark |
-| 25 | 2 | 1 | 4 | add captions to video online |
-| 25 | 3 | 3 | 4 | how to add captions to an existing video |
-| 25 | 2 | 1 | 4 | how to make a shorts video |
-| 24 | 1 | 0 | 4 | add captions to video for free |
-| 24 | 2 | 2 | 4 | add captions to video online free without watermark |
-| 24 | 1 | 0 | 4 | add captions to video software |
-| 24 | 1 | 0 | 4 | add captions to video without watermark |
-| 24 | 1 | 0 | 4 | add subtitles to video and translate |
-| 24 | 1 | 0 | 4 | ai video clip software |
-| 24 | 3 | 1 | 3 | ai video clipper for shorts |
-| 24 | 1 | 0 | 4 | ai video clipper youtube |
-| 24 | 2 | 2 | 4 | ai video cutting and editing |
-| 24 | 1 | 0 | 4 | auto crop video for tiktok |
-| 24 | 1 | 0 | 4 | best app to add captions to video |
-| 24 | 1 | 0 | 4 | can i add captions to video in canva |
+| Score | Suggested by | Best pos | Competitors | Variants | Topic |
+|---:|---:|---:|---:|---:|---|
+| 37 | 11 | 1 | 2 | 4 | how to cut long video to short |
+| 27 | 4 | 1 | 4 | 74 | ai video clipper for tiktok |
+| 26 | 3 | 0 | 4 | 103 | add captions to video |
+| 26 | 2 | 0 | 4 | 10 | ai video editing software |
+| 25 | 2 | 1 | 4 | 10 | how to make a shorts video |
+| 23 | 2 | 1 | 4 | 18 | ai video cutter youtube |
+| 21 | 1 | 3 | 4 | 1 | ai video clip api |
+| 21 | 1 | 0 | 3 | 5 | ai video clipping app |
+| 21 | 2 | 3 | 4 | 6 | auto resize video online |
+| 20 | 2 | 1 | 3 | 17 | ai video cutting tool |
+| 20 | 5 | 0 | 0 | 1 | how to turn long videos into viral shorts the ultimate guide for 2024 |
+| 17 | 1 | 4 | 3 | 3 | ai video editor free |
+| 13 | 1 | 5 | 2 | 1 | how to make short travel videos |
+| 13 | 2 | 1 | 0 | 0 | how to use auto reframe in premiere pro |
+| 12 | 1 | 0 | 0 | 0 | highlight reel from video |
+| 12 | 1 | 3 | 1 | 0 | how to shorten video length |
+| 11 | 2 | 3 | 0 | 3 | ai video trimmer online free |
+| 11 | 1 | 1 | 0 | 1 | auto delete software |
+| 10 | 1 | 5 | 1 | 0 | ai video crop online |
+| 10 | 1 | 2 | 0 | 0 | frame rate software |
+| 10 | 1 | 2 | 0 | 0 | how long should a highlight video be |
+| 9 | 1 | 3 | 0 | 0 | can you use hair clippers while charging |
+| 9 | 1 | 3 | 0 | 0 | if you trim a video on android does it keep the original |
+| 7 | 1 | 8 | 1 | 0 | youtube turning old videos into shorts |
+| 3 | 1 | 9 | 0 | 0 | how to use clipper app |
 
 _**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
 
