@@ -239,7 +239,13 @@ def _fmt_coldstart_section(cs):
         + f". {cs['already_covered']} of them we already cover; the rest cluster "
         f"into {cs.get('phrases_clustered_into', len(cs.get('gaps') or []))} distinct "
         "topics (near-duplicate phrasings are folded into one row, because they "
-        "are one post, not several)._\n"
+        "are one post, not several)"
+        + (
+            f"; the {cs['clusters_not_shown']} lowest-scoring are not listed"
+            if cs.get("clusters_not_shown")
+            else ""
+        )
+        + "._\n"
     )
     gaps = cs.get("gaps") or []
     if not gaps:
@@ -421,6 +427,7 @@ def run_site(site):
                 cs_conf.get("competitors") or [],
                 page_urls,
                 negative_words=cs_conf.get("negative_words") or [],
+                required_words=cs_conf.get("required_words") or [],
             )
         parts.append(_fmt_coldstart_section(cold))
         data["coldstart"] = cold

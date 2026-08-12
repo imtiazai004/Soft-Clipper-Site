@@ -25,9 +25,22 @@ page. That is what makes it publishable on GitHub Pages for free.
 `config.py` is the only site-specific file — adding a site is an entry there.
 `noindex_urls` there lists pages deliberately kept out of the index so they
 stop appearing forever as a "never crawled" warning that is neither a problem
-nor fixable. `coldstart.seeds` are the words a buyer would type — the cold-start
-agent skips a site entirely rather than guess them, because a guessed seed
-produces a confident list of the wrong topics.
+nor fixable. `coldstart` there has four lists, and all four exist because the first live
+run proved they were needed:
+
+- `seeds` — the words a buyer would type. The agent skips a site entirely
+  rather than guess these, because a guessed seed produces a confident list
+  of the wrong topics.
+- `competitors` — origins whose blog sitemaps are read.
+- `required_words` — a phrase must mention one of these (prefix-matched).
+  Autocomplete wanders: seeding `ai video clipper` also returns
+  *"can you use hair clippers while charging"*.
+- `negative_words` — opposite intent, piracy, other people's tools, and the
+  non-English completions that leak through despite `hl=en&gl=us`.
+
+Near-duplicate phrasings are clustered into one row (they are one post, not
+twenty) and the list is capped at 15 topics — with the number of clusters cut
+reported rather than silently dropped.
 
 `test_coldstart.py` runs offline (every network call is a fixture):
 

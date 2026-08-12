@@ -276,10 +276,17 @@ CLUSTER_RATIO = 0.6
 
 
 def _same_topic(a_words, b_words, ratio=CLUSTER_RATIO):
+    """Measured against the LONGER phrase, not the shorter one.
+
+    Against the shorter one, a two-word head like {captions, video} counts as
+    the same topic as anything else containing those two words - which swept
+    103 distinct phrases into a single row. Against the longer one, extra
+    concepts ("api", "automatically", "iphone") correctly split it apart.
+    """
     if not a_words or not b_words:
         return False
     overlap = len(a_words & b_words)
-    return overlap >= 2 and overlap >= ratio * min(len(a_words), len(b_words))
+    return overlap >= 2 and overlap >= ratio * max(len(a_words), len(b_words))
 
 
 def cluster(topics):
@@ -320,19 +327,28 @@ def score(entry, competitor_hits):
     return breadth + rank + competitors
 
 
-def rank_topics(harvested, comp_index, our_url_word_sets, limit=40,
-                negative_words=()):
+def rank_topics(harvested, comp_index, our_url_word_sets, limit=15,
+                negative_words=(), required_words=()):
     """Autocomplete drifts. Seeding "turn long videos into shorts" also returns
     "how to make videos longer" - the opposite intent, from the same words.
     `negative_words` is the escape hatch for that; it is a config list rather
     than cleverness, because guessing intent from words is how you end up
     silently dropping good topics."""
     negatives = {w.lower() for w in negative_words}
+    required = [w.lower() for w in required_words]
     topics = []
     for phrase, entry in harvested["phrases"].items():
         if len(_phrase_words(phrase)) < 2:
             continue  # single-word head terms: not winnable, not useful
-        if negatives & set(re.split(r"[^a-z0-9]+", phrase.lower())):
+        words = set(re.split(r"[^a-z0-9]+", phrase.lower()))
+        if negatives & words:
+            continue
+        # Autocomplete wanders far from the seed - "ai video clipper" also
+        # returns "can you use hair clippers while charging". A phrase has to
+        # mention something this product is actually about.
+        if required and not any(
+            w.startswith(r) for w in words for r in required
+        ):
             continue
         comp_hits = sum(
             1 for sets in comp_index.values() if covered_by(phrase, sets)
@@ -351,18 +367,26 @@ def rank_topics(harvested, comp_index, our_url_word_sets, limit=40,
         )
     topics.sort(key=lambda t: (-t["score"], t["phrase"]))
     gaps = cluster([t for t in topics if not t["we_cover_it"]])
-    return gaps[:limit], topics
+    # Capped on purpose. Free sources produce a long tail whose bottom half is
+    # noise no amount of tuning removes; a list of 45 reads as 45 opportunities
+    # and is really about a dozen. The count of what was cut is reported rather
+    # than hidden - a silent truncation would be the same lie in reverse.
+    return gaps[:limit], topics, len(gaps)
 
 
 # ----------------------------------------------------------------------
 def run(seeds, competitors, our_urls, session=None, max_requests=MAX_REQUESTS,
-        delay=REQUEST_DELAY_SECONDS, negative_words=()):
+        delay=REQUEST_DELAY_SECONDS, negative_words=(), required_words=()):
     session = session or requests.Session()
     harvested = harvest(seeds, session, max_requests=max_requests, delay=delay)
     comp_index = competitor_index(competitors, session)
     our_sets = [slug_words(u) for u in our_urls]
-    gaps, everything = rank_topics(
-        harvested, comp_index, our_sets, negative_words=negative_words
+    gaps, everything, total_clusters = rank_topics(
+        harvested,
+        comp_index,
+        our_sets,
+        negative_words=negative_words,
+        required_words=required_words,
     )
     return {
         "seeds": seeds,
@@ -371,7 +395,8 @@ def run(seeds, competitors, our_urls, session=None, max_requests=MAX_REQUESTS,
         "competitors_read": {o: len(v) for o, v in comp_index.items()},
         "errors": harvested["errors"],
         "gaps": gaps,
-        "phrases_clustered_into": len(gaps),
+        "phrases_clustered_into": total_clusters,
+        "clusters_not_shown": max(0, total_clusters - len(gaps)),
         "already_covered": len([t for t in everything if t["we_cover_it"]]),
     }
 

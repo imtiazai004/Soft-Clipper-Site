@@ -62,12 +62,13 @@ harvested = {"phrases": {
 }}
 comp = {"https://opus.pro": [cs.slug_words("https://opus.pro/blog/turn-long-videos-into-shorts")]}
 ours = [cs.slug_words("https://softclipper.pro/blog/turn-long-videos-into-shorts")]
-gaps, everything = cs.rank_topics(harvested, comp, ours)
+gaps, everything, total = cs.rank_topics(harvested, comp, ours)
 check("single-word head term excluded", any(t["phrase"] == "shorts" for t in everything), False)
 check("our existing post is not proposed again",
       any("turn long videos into shorts" in t["phrase"] for t in gaps), False)
 check("the uncovered one survives", [t["phrase"] for t in gaps], ["ai clip generator free"])
 check("covered count", cs.rank_topics(harvested, comp, ours)[1][0]["we_cover_it"], True)
+check("cluster total is reported", total, 1)
 
 # --- sitemap parsing -------------------------------------------------------
 check("locs", cs._urls_from_xml(
@@ -129,11 +130,61 @@ h = {"phrases": {
     "how to cut long video": {"phrase": "how to cut long video", "hits": 4,
                               "best_position": 0, "from": []},
 }}
-gaps, _ = cs.rank_topics(h, {}, [], negative_words=["longer"])
+gaps, _, _ = cs.rank_topics(h, {}, [], negative_words=["longer"])
 check("opposite-intent phrase dropped",
       [g["phrase"] for g in gaps], ["how to cut long video"])
-gaps2, _ = cs.rank_topics(h, {}, [], negative_words=[])
+gaps2, _, _ = cs.rank_topics(h, {}, [], negative_words=[])
 check("without the list it survives (no hidden cleverness)", len(gaps2), 2)
+
+# --- clustering measured against the LONGER phrase --------------------------
+# the bug: a two-word head swallowed 103 unrelated longer phrases
+head = cs._phrase_words("add captions to video")
+check("short variant joins",
+      cs._same_topic(head, cs._phrase_words("how to add captions to video")), True)
+# a longer phrase that is genuinely the same request still joins...
+check("a wordier way of asking the same thing joins",
+      cs._same_topic(head, cs._phrase_words("best software to add captions automatically to video")), True)
+# ...but one that piles on new concepts does not
+check("phrase piling on new concepts does not",
+      cs._same_topic(head,
+          cs._phrase_words("add captions to video for instagram reels using premiere pro")), False)
+
+# --- relevance gate ---------------------------------------------------------
+h3 = {"phrases": {
+    "can you use hair clippers while charging": {"phrase": "can you use hair clippers while charging",
+        "hits": 1, "best_position": 3, "from": []},
+    "frame rate software": {"phrase": "frame rate software", "hits": 1,
+        "best_position": 2, "from": []},
+    "how to add captions to a video": {"phrase": "how to add captions to a video",
+        "hits": 3, "best_position": 0, "from": []},
+    "video captioning tool": {"phrase": "video captioning tool", "hits": 2,
+        "best_position": 1, "from": []},
+}}
+req = ["video", "caption", "clip"]
+g3, _, _ = cs.rank_topics(h3, {}, [], negative_words=["hair"], required_words=req)
+names3 = sorted(t["phrase"] for t in g3) + sorted(v for t in g3 for v in t["variants"])
+check("off-topic and negative both gone",
+      sorted(set(names3)), ["how to add captions to a video", "video captioning tool"])
+check("prefix match: 'captioning' satisfies 'caption'",
+      any("captioning" in n for n in names3), True)
+g4, _, _ = cs.rank_topics(h3, {}, [], required_words=[])
+check("empty required list disables the gate entirely",
+      len(g4) + sum(len(t["variants"]) for t in g4), 4)
+
+# --- the cap ----------------------------------------------------------------
+# genuinely distinct phrases - sharing a single word must not cluster them
+nouns = ["captions", "trimming", "reframing", "thumbnails", "transcripts",
+         "subtitles", "cropping", "exporting", "watermarks", "aspect",
+         "loudness", "chapters", "hooks", "titles", "bitrate", "proxies",
+         "keyframes", "presets", "overlays", "rendering", "stabilise",
+         "denoise", "colour", "loudnorm", "sidecar", "waveform", "scrubbing",
+         "markers", "bins", "roughcut"]
+many = {"phrases": {f"video {n}": {
+    "phrase": f"video {n}", "hits": 1, "best_position": 0, "from": []}
+    for n in nouns}}
+g5, _, total5 = cs.rank_topics(many, {}, [], limit=15, required_words=["video"])
+check("list is capped", len(g5), 15)
+check("but the real total is still reported", total5, 30)
 
 print("\n".join(fails) if fails else f"all tests passed")
 sys.exit(1 if fails else 0)

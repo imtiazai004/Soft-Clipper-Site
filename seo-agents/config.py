@@ -34,7 +34,21 @@ SITES = [
             # rather than inferred, because guessing intent from words quietly
             # drops good topics too.
             "negative_words": [
+                # opposite intent, or piracy
                 "longer", "download", "crack", "torrent", "apk", "mod",
+                # a different product entirely - autocomplete returns
+                # "can you use hair clippers while charging" for "clipper"
+                "hair", "charging", "delete",
+                # someone else's tool, not a topic we can win
+                "canva",
+                # non-English completions leak through despite hl=en&gl=us
+                "untuk", "cara", "pakai", "gratis", "tanpa", "como", "para",
+            ],
+            # A phrase has to mention something this product is about.
+            # Prefix-matched, so "captions" and "captioning" both count.
+            "required_words": [
+                "video", "clip", "short", "caption", "subtitle", "reel",
+                "podcast", "reframe", "crop", "tiktok", "youtube", "transcript",
             ],
             # Competitors we compare against on /compare/, plus the two other
             # tools that own this search space.
@@ -60,7 +74,12 @@ SITES = [
         # No cold-start seeds yet: this site's positioning is not settled, and
         # guessing seeds produces a confident list of the wrong topics. Add
         # them here and the agent starts on the next run.
-        "coldstart": {"seeds": [], "competitors": [], "negative_words": []},
+        "coldstart": {
+            "seeds": [],
+            "competitors": [],
+            "negative_words": [],
+            "required_words": [],
+        },
         "enabled": True,
     },
 ]
