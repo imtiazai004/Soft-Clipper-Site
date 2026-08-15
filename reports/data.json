@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-14",
-  "generated_at": "2026-08-14 04:02 UTC",
+  "generated": "2026-08-15",
+  "generated_at": "2026-08-15 02:50 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,15 +9,23 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-14",
-          "end": "2026-08-11"
+          "start": "2026-07-15",
+          "end": "2026-08-12"
         },
-        "total_query_page_rows": 7,
+        "total_query_page_rows": 9,
         "striking_distance": [
           {
             "query": "softclipper",
             "page": "http://softclipper.pro/",
             "position": 10,
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0
+          },
+          {
+            "query": "clipper soft",
+            "page": "https://softclipper.pro/",
+            "position": 12,
             "clicks": 0,
             "impressions": 1,
             "ctr": 0
@@ -138,7 +146,7 @@
         "phrases_found": 364,
         "competitors_read": {
           "https://www.opus.pro": 1123,
-          "https://klap.app": 270,
+          "https://klap.app": 271,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 902,
           "https://2short.ai": 0
@@ -271,11 +279,11 @@
               "how do i add subtitles to video",
               "add captions to video for tiktok",
               "add subtitles to video online",
-              "how to add captions to videos for free",
               "add text to video for free online",
               "can i add captions to my youtube video",
               "how to add captions to an existing video",
               "how to add captions to video in capcut",
+              "how to add captions to videos for free",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
               "add captions to video software",
@@ -285,12 +293,12 @@
               "add captions to video free no watermark",
               "add captions to video without watermark free",
               "best way to add captions to video",
+              "how to add captions to video in premiere pro",
               "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
               "add captions to video tiktok",
               "best tool to add captions to video",
-              "how to add captions to video in premiere pro",
               "best software to add captions to video",
               "how do i add closed captions to a video for free",
               "add captions to video free no watermark online",
@@ -562,10 +570,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-14",
-          "end": "2026-08-11"
+          "start": "2026-07-15",
+          "end": "2026-08-12"
         },
-        "total_query_page_rows": 6,
+        "total_query_page_rows": 5,
         "striking_distance": [],
         "cannibalization": []
       },
