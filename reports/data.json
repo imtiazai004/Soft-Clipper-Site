@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-17",
-  "generated_at": "2026-08-17 02:58 UTC",
+  "generated": "2026-08-18",
+  "generated_at": "2026-08-18 02:53 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-17",
-          "end": "2026-08-14"
+          "start": "2026-07-18",
+          "end": "2026-08-15"
         },
-        "total_query_page_rows": 9,
+        "total_query_page_rows": 10,
         "striking_distance": [
           {
             "query": "softclipper",
@@ -145,8 +145,8 @@
         "requests_made": 150,
         "phrases_found": 364,
         "competitors_read": {
-          "https://www.opus.pro": 1123,
-          "https://klap.app": 273,
+          "https://www.opus.pro": 1125,
+          "https://klap.app": 274,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 902,
           "https://2short.ai": 0
@@ -251,10 +251,10 @@
               "add captions to video vs"
             ],
             "variants": [
-              "add captions to video for free",
+              "add captions to video free",
               "add captions to video online free",
               "add captions to video online",
-              "add captions to video free",
+              "add captions to video for free",
               "why add captions to video",
               "add captions to video for free online",
               "how do i add captions to video",
@@ -570,8 +570,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-17",
-          "end": "2026-08-14"
+          "start": "2026-07-18",
+          "end": "2026-08-15"
         },
         "total_query_page_rows": 5,
         "striking_distance": [],
