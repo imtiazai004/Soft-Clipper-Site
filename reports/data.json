@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-18",
-  "generated_at": "2026-08-18 02:53 UTC",
+  "generated": "2026-08-19",
+  "generated_at": "2026-08-19 02:55 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-18",
-          "end": "2026-08-15"
+          "start": "2026-07-19",
+          "end": "2026-08-16"
         },
         "total_query_page_rows": 10,
         "striking_distance": [
@@ -146,9 +146,9 @@
         "phrases_found": 364,
         "competitors_read": {
           "https://www.opus.pro": 1125,
-          "https://klap.app": 274,
+          "https://klap.app": 275,
           "https://vizard.ai": 289,
-          "https://www.submagic.co": 902,
+          "https://www.submagic.co": 878,
           "https://2short.ai": 0
         },
         "errors": [],
@@ -570,18 +570,23 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-18",
-          "end": "2026-08-15"
+          "start": "2026-07-19",
+          "end": "2026-08-16"
         },
-        "total_query_page_rows": 5,
+        "total_query_page_rows": 6,
         "striking_distance": [],
         "cannibalization": []
       },
       "indexing": {
         "total_urls_checked": 7,
-        "indexed": 7,
+        "indexed": 6,
         "never_crawled": [],
-        "crawled_not_indexed": [],
+        "crawled_not_indexed": [
+          {
+            "url": "https://aisofttechsolution.com/privacy",
+            "reason": "Alternate page with proper canonical tag"
+          }
+        ],
         "technical_blockers": [],
         "check_errors": []
       },
