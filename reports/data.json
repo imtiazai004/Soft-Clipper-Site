@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-19",
-  "generated_at": "2026-08-19 02:55 UTC",
+  "generated": "2026-08-20",
+  "generated_at": "2026-08-20 02:54 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-19",
-          "end": "2026-08-16"
+          "start": "2026-07-20",
+          "end": "2026-08-17"
         },
-        "total_query_page_rows": 10,
+        "total_query_page_rows": 11,
         "striking_distance": [
           {
             "query": "softclipper",
@@ -143,10 +143,10 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 364,
+        "phrases_found": 360,
         "competitors_read": {
           "https://www.opus.pro": 1125,
-          "https://klap.app": 275,
+          "https://klap.app": 276,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -170,73 +170,6 @@
             "variants": [
               "how to convert long video to short video",
               "how to convert long video into short video"
-            ]
-          },
-          {
-            "phrase": "ai video clipper for tiktok",
-            "score": 27,
-            "autocomplete_hits": 4,
-            "best_position": 1,
-            "competitors_covering": 4,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper for",
-              "ai video clipper f",
-              "ai video clipper t"
-            ],
-            "variants": [
-              "ai video clipper for shorts",
-              "ai video clipper youtube",
-              "ai music video clipper",
-              "ai video clipper and editor",
-              "ai video clipper generator",
-              "ai video cutter for tiktok",
-              "ai viral video clipper",
-              "ai youtube video clipper free",
-              "ai video clipper editor",
-              "ai video clipper no watermark",
-              "media io ai video clipper",
-              "ai video clipper free",
-              "ai video clipper online",
-              "veed io ai video clipper",
-              "ai long video clipper",
-              "ai video clipper free online",
-              "free ai video clipper generator",
-              "veed ai video clipper",
-              "ai video clipper github",
-              "ai video clipper reddit",
-              "best ai video clipper",
-              "best ai video clipper reddit",
-              "free ai video clipper tool",
-              "ai video clipper free trial",
-              "ai video clipper online free",
-              "best ai video clipper free",
-              "ai video clipper",
-              "ai video clipper capcut",
-              "ai video clipper for free",
-              "ai video clipper free reddit",
-              "ai video clipper lora",
-              "unlimited ai video clipper",
-              "what is the best ai video clipper",
-              "free ai video clipper reddit",
-              "local ai video clipper",
-              "vmaker ai video clipper",
-              "ai buat video clipper",
-              "ai yt video clipper",
-              "video ai video clipper",
-              "ai edit video clipper",
-              "crayo ai video clipper",
-              "ai pembuat video clipper",
-              "reelify ai video clipper",
-              "videotto ai video clipper",
-              "ai potong video clipper",
-              "completely free ai video clipper",
-              "restream ai video clipper",
-              "ai for video clipper",
-              "ai pemotong video clipper",
-              "reclip ai video clipper",
-              "ai gaming video clipper",
-              "video to ai video clipper"
             ]
           },
           {
@@ -279,11 +212,10 @@
               "how do i add subtitles to video",
               "add captions to video for tiktok",
               "add subtitles to video online",
-              "how to add captions to videos for free",
               "add text to video for free online",
               "can i add captions to my youtube video",
               "how to add captions to an existing video",
-              "how to add captions to video in capcut",
+              "how to add captions to videos for free",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
               "add captions to video software",
@@ -293,129 +225,200 @@
               "add captions to video free no watermark",
               "add captions to video without watermark free",
               "best way to add captions to video",
+              "how to add captions to video in premiere pro",
               "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
-              "add captions to video tiktok",
               "best tool to add captions to video",
-              "how to add captions to video in premiere pro",
+              "add captions to video instagram",
               "best software to add captions to video",
-              "how do i add closed captions to a video for free",
               "add captions to video free no watermark online",
+              "add captions to video capcut",
               "add captions to video free reddit",
               "best way to add captions to video reddit",
               "add captions to video adobe express",
-              "add captions to video capcut",
               "add captions to video editor",
               "add captions to video free no sign up",
               "best way to add captions to video for free",
               "add captions to video app",
-              "how to add captions to video in davinci resolve",
               "add captions to video free adobe",
+              "best app to add captions to video free",
+              "how to add captions to video in davinci resolve",
+              "best app to add captions to video reddit",
               "how to add captions to video in adobe express",
-              "add captions to video free app",
-              "best free tool to add captions to video"
+              "add captions to video free app"
             ]
           },
           {
-            "phrase": "ai video editing software",
-            "score": 26,
+            "phrase": "ai video clipper for shorts",
+            "score": 25,
+            "autocomplete_hits": 4,
+            "best_position": 0,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper for",
+              "ai video clipper f",
+              "ai video clipper s"
+            ],
+            "variants": [
+              "ai video clipper for tiktok",
+              "ai video clipper generator",
+              "how to make a shorts video",
+              "ai video clipper youtube",
+              "ai viral video clipper",
+              "ai music video clipper",
+              "ai video clipper and editor",
+              "ai video clipper tiktok",
+              "ai youtube video clipper free",
+              "ai video clipper editor",
+              "ai video clipper no watermark",
+              "media io ai video clipper",
+              "ai video clipper free",
+              "ai video clipper online",
+              "veed io ai video clipper",
+              "ai long video clipper",
+              "ai video clipper free online",
+              "free ai video clipper generator",
+              "ai video clipper github",
+              "ai video clipper reddit",
+              "best ai video clipper",
+              "best ai video clipper reddit",
+              "veed ai video clipper",
+              "ai video clipper free trial",
+              "ai video clipper online free",
+              "best ai video clipper free",
+              "free ai video clipper tool",
+              "ai video clipper",
+              "ai video clipper capcut",
+              "ai video clipper for free",
+              "ai video clipper free reddit",
+              "ai video clipper lora",
+              "ai video clipper unlimited",
+              "what is the best ai video clipper",
+              "ai video clipper twitch",
+              "ai video auto clipper",
+              "free ai video clipper reddit",
+              "local ai video clipper",
+              "video to ai video clipper",
+              "vmaker ai video clipper",
+              "ai buat video clipper",
+              "ai yt video clipper",
+              "ai edit video clipper",
+              "crayo ai video clipper",
+              "ai pembuat video clipper",
+              "reelify ai video clipper",
+              "videotto ai video clipper",
+              "ai potong video clipper",
+              "completely free ai video clipper",
+              "restream ai video clipper",
+              "ai for video clipper",
+              "ai gaming video clipper",
+              "ai pemotong video clipper",
+              "capcut's free ai video clipper",
+              "reclip ai video clipper"
+            ]
+          },
+          {
+            "phrase": "ai video clip software",
+            "score": 24,
             "autocomplete_hits": 2,
             "best_position": 0,
             "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
-              "ai video clipper software",
-              "ai video clipper s"
+              "ai video clipper software"
             ],
             "variants": [
-              "ai video clip software",
-              "ai video cutting and editing",
+              "ai video cutting software",
               "ai video editor software",
               "ai video editor software for pc",
-              "ai video cutting editing",
+              "ai video clip api",
               "free video repair software",
               "ai video editor software free",
               "free video restoration software",
               "best ai video editor software",
-              "best ai video editor software for pc"
+              "ai video clip cutter",
+              "best ai video editor software for pc",
+              "ai video clip app"
             ]
           },
           {
-            "phrase": "how to make a shorts video",
-            "score": 25,
+            "phrase": "ai video cutting and editing",
+            "score": 24,
             "autocomplete_hits": 2,
-            "best_position": 1,
+            "best_position": 2,
             "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
-              "turn long videos into shorts i",
-              "turn long videos into shorts p"
+              "ai video clipper vs",
+              "ai video clipper a"
             ],
             "variants": [
-              "how to make long video in shorts"
+              "ai video cutting editing",
+              "ai cutting video maker",
+              "ai video cutting tool",
+              "ai cutting video editor",
+              "ai video cutting tool free",
+              "ai video cutting planets",
+              "ai video cutting elements",
+              "best ai video cutting tool",
+              "ai video cake cutting",
+              "ai video cutting program",
+              "ai cutting video prompt",
+              "ai video cutting glass",
+              "ai video of cutting things",
+              "best ai for video cutting",
+              "ai video cutting app",
+              "ai video of cutting planets"
             ]
           },
           {
-            "phrase": "ai video cutter youtube",
+            "phrase": "ai video clipping app",
             "score": 23,
             "autocomplete_hits": 2,
-            "best_position": 1,
+            "best_position": 0,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper",
+              "ai video clipper a"
+            ],
+            "variants": [
+              "ai video clipping tool",
+              "ai video editor free app",
+              "ai video cutter app",
+              "ai video trimming app"
+            ]
+          },
+          {
+            "phrase": "ai video cutter for tiktok",
+            "score": 23,
+            "autocomplete_hits": 2,
+            "best_position": 3,
             "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
-              "ai video clipper y"
+              "ai video clipper for",
+              "ai video clipper t"
             ],
             "variants": [
+              "ai video cutter youtube",
               "ai video cutter and editor",
               "ai video cutter for youtube",
               "ai video cutter editor",
               "ai youtube video cutter online",
               "ai video highlight cutter",
-              "ai video clip cutter",
               "ai video cutter for reels",
               "ai video cutter online",
               "ai video cutter reddit",
-              "ai video auto cutter",
               "ai video cutter online free",
               "best ai video cutter",
               "ai video cutter free",
               "ai video cutter local",
               "video cutter ai github",
               "best free ai video cutter",
-              "ai video cutter app",
               "ai video cutter free online"
-            ]
-          },
-          {
-            "phrase": "ai video clip api",
-            "score": 21,
-            "autocomplete_hits": 1,
-            "best_position": 3,
-            "competitors_covering": 4,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video clip app"
-            ]
-          },
-          {
-            "phrase": "ai video clipping app",
-            "score": 21,
-            "autocomplete_hits": 1,
-            "best_position": 0,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video clipping tool",
-              "ai video editor free app",
-              "ai video cutting app",
-              "ai video trimming app"
             ]
           },
           {
@@ -436,30 +439,24 @@
             ]
           },
           {
-            "phrase": "ai video cutting tool",
+            "phrase": "ai video editor/trimmer",
             "score": 20,
             "autocomplete_hits": 2,
-            "best_position": 1,
+            "best_position": 3,
             "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
-              "ai video clipper t"
+              "ai video clipper vs",
+              "ai video clipper e"
             ],
             "variants": [
-              "ai video cutting tool free",
-              "ai cutting video maker",
-              "ai cutting video editor",
-              "ai cutting video generator",
-              "best ai video cutting tool",
-              "ai video cutting planets",
-              "ai video cutting elements",
-              "ai video cake cutting",
-              "ai cutting video prompt",
-              "ai video cutting glass",
-              "ai video cutting program",
-              "ai video of cutting things",
-              "best ai for video cutting",
-              "ai video of cutting planets"
+              "ai video editor free",
+              "ai video editor free online",
+              "ai video editor free no sign up",
+              "ai video trimmer online free",
+              "ai video trimmer online",
+              "best ai video trimmer",
+              "ai video trimmer free"
             ]
           },
           {
@@ -482,7 +479,7 @@
             ]
           },
           {
-            "phrase": "how to turn long videos into viral shorts the ultimate guide for 2024",
+            "phrase": "how to turn long videos into viral shorts. the ultimate guide for 2024",
             "score": 20,
             "autocomplete_hits": 5,
             "best_position": 0,
@@ -529,13 +526,13 @@
               "how do i add text to video in premiere pro",
               "add text to video without watermark free",
               "add text to video editor",
-              "best app add text to video",
-              "how do i add text to video on capcut",
-              "add subtitles to video editor",
               "how do i add text to video in davinci resolve",
-              "add text to video editor free",
+              "add subtitles to video editor",
+              "how do i add text to video on capcut",
+              "add text to video free software for pc",
               "add text to video no sign up",
               "add text to video online free no watermark",
+              "best app add text to video",
               "how do i add text to video in imovie"
             ]
           },
@@ -551,16 +548,29 @@
             ],
             "variants": [
               "how to add captions to videos on iphone",
+              "how to add captions to videos on capcut",
               "how to add captions to videos on tiktok",
               "how to add captions to videos on youtube",
-              "best free app to add captions to videos",
               "can capcut add captions to videos"
             ]
+          },
+          {
+            "phrase": "ai video clipper from youtube",
+            "score": 16,
+            "autocomplete_hits": 2,
+            "best_position": 4,
+            "competitors_covering": 2,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper for",
+              "ai video clipper f"
+            ],
+            "variants": []
           }
         ],
-        "phrases_clustered_into": 43,
-        "clusters_not_shown": 28,
-        "already_covered": 72
+        "phrases_clustered_into": 39,
+        "clusters_not_shown": 24,
+        "already_covered": 70
       }
     },
     {
@@ -570,8 +580,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-19",
-          "end": "2026-08-16"
+          "start": "2026-07-20",
+          "end": "2026-08-17"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
@@ -579,11 +589,19 @@
       },
       "indexing": {
         "total_urls_checked": 7,
-        "indexed": 6,
+        "indexed": 4,
         "never_crawled": [],
         "crawled_not_indexed": [
           {
+            "url": "https://aisofttechsolution.com/blog",
+            "reason": "Alternate page with proper canonical tag"
+          },
+          {
             "url": "https://aisofttechsolution.com/privacy",
+            "reason": "Alternate page with proper canonical tag"
+          },
+          {
+            "url": "https://aisofttechsolution.com/terms",
             "reason": "Alternate page with proper canonical tag"
           }
         ],
