@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-23",
-  "generated_at": "2026-08-23 03:00 UTC",
+  "generated": "2026-08-24",
+  "generated_at": "2026-08-24 03:01 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-23",
-          "end": "2026-08-20"
+          "start": "2026-07-24",
+          "end": "2026-08-21"
         },
-        "total_query_page_rows": 16,
+        "total_query_page_rows": 19,
         "striking_distance": [
           {
             "query": "softclipper",
@@ -40,6 +40,14 @@
           }
         ],
         "cannibalization": [
+          {
+            "query": "clip soft",
+            "pages": [
+              "https://softclipper.pro/download/",
+              "https://softclipper.pro/help/",
+              "https://softclipper.pro/use-cases/agencies/"
+            ]
+          },
           {
             "query": "softclip",
             "pages": [
@@ -154,7 +162,7 @@
         "phrases_found": 360,
         "competitors_read": {
           "https://www.opus.pro": 1125,
-          "https://klap.app": 279,
+          "https://klap.app": 280,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -183,7 +191,7 @@
           {
             "phrase": "add captions to video",
             "score": 26,
-            "autocomplete_hits": 3,
+            "autocomplete_hits": 2,
             "best_position": 0,
             "competitors_covering": 4,
             "we_cover_it": false,
@@ -203,12 +211,11 @@
               "why add subtitles to video",
               "add captions to video free online",
               "how do i add text to video for free",
-              "how to add captions to video for free",
               "add captions to video free ai",
               "add captions to video online free ai",
               "add captions to video online ai",
               "best ai to add captions to video",
-              "how to add captions to video iphone",
+              "how to add captions to video for free",
               "add subtitles to video for free",
               "add text to video online",
               "can i add text to video",
@@ -222,7 +229,6 @@
               "add subtitles to video online",
               "add text to video for free online",
               "can i add captions to my youtube video",
-              "how to add captions to an existing video",
               "how to add captions to videos for free",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
@@ -230,16 +236,18 @@
               "add captions to video without watermark",
               "add subtitles to video for free online",
               "best app to add captions to video",
+              "how to add captions to video iphone",
               "add captions to video free no watermark",
               "add captions to video without watermark free",
               "best way to add captions to video",
+              "how to add captions to an existing video",
               "how to add captions to video in premiere pro",
-              "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
               "best tool to add captions to video",
               "add captions to video instagram",
               "best software to add captions to video",
+              "add auto captions to video",
               "add captions to video free no watermark online",
               "add captions to video capcut",
               "add captions to video free reddit",
@@ -588,10 +596,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-23",
-          "end": "2026-08-20"
+          "start": "2026-07-24",
+          "end": "2026-08-21"
         },
-        "total_query_page_rows": 6,
+        "total_query_page_rows": 7,
         "striking_distance": [],
         "cannibalization": []
       },
