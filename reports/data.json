@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-24",
-  "generated_at": "2026-08-24 03:01 UTC",
+  "generated": "2026-08-25",
+  "generated_at": "2026-08-25 02:56 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-24",
-          "end": "2026-08-21"
+          "start": "2026-07-25",
+          "end": "2026-08-22"
         },
         "total_query_page_rows": 19,
         "striking_distance": [
@@ -162,7 +162,7 @@
         "phrases_found": 360,
         "competitors_read": {
           "https://www.opus.pro": 1125,
-          "https://klap.app": 280,
+          "https://klap.app": 281,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -191,7 +191,7 @@
           {
             "phrase": "add captions to video",
             "score": 26,
-            "autocomplete_hits": 2,
+            "autocomplete_hits": 3,
             "best_position": 0,
             "competitors_covering": 4,
             "we_cover_it": false,
@@ -211,11 +211,12 @@
               "why add subtitles to video",
               "add captions to video free online",
               "how do i add text to video for free",
+              "how to add captions to video for free",
               "add captions to video free ai",
               "add captions to video online free ai",
               "add captions to video online ai",
               "best ai to add captions to video",
-              "how to add captions to video for free",
+              "how to add captions to video iphone",
               "add subtitles to video for free",
               "add text to video online",
               "can i add text to video",
@@ -229,6 +230,7 @@
               "add subtitles to video online",
               "add text to video for free online",
               "can i add captions to my youtube video",
+              "how to add captions to an existing video",
               "how to add captions to videos for free",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
@@ -236,18 +238,16 @@
               "add captions to video without watermark",
               "add subtitles to video for free online",
               "best app to add captions to video",
-              "how to add captions to video iphone",
               "add captions to video free no watermark",
               "add captions to video without watermark free",
               "best way to add captions to video",
-              "how to add captions to an existing video",
               "how to add captions to video in premiere pro",
+              "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
               "best tool to add captions to video",
               "add captions to video instagram",
               "best software to add captions to video",
-              "add auto captions to video",
               "add captions to video free no watermark online",
               "add captions to video capcut",
               "add captions to video free reddit",
@@ -596,8 +596,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-24",
-          "end": "2026-08-21"
+          "start": "2026-07-25",
+          "end": "2026-08-22"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
@@ -605,15 +605,11 @@
       },
       "indexing": {
         "total_urls_checked": 7,
-        "indexed": 4,
+        "indexed": 5,
         "never_crawled": [],
         "crawled_not_indexed": [
           {
             "url": "https://aisofttechsolution.com/blog",
-            "reason": "Alternate page with proper canonical tag"
-          },
-          {
-            "url": "https://aisofttechsolution.com/privacy",
             "reason": "Alternate page with proper canonical tag"
           },
           {
