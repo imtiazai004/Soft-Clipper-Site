@@ -135,13 +135,33 @@ def _fmt_geo_section(geo):
     if "error" in c:
         lines.append(f"_Could not read robots.txt: {c['error']}_\n")
     else:
-        if c["blocked"]:
-            lines.append(f"**AI crawlers BLOCKED by robots.txt: {len(c['blocked'])}**\n")
-            for a in c["blocked"]:
+        # Split by purpose. Blocking a training crawler is a policy decision;
+        # blocking a retrieval crawler is what makes the site uncitable. Listing
+        # them together reported four deliberate choices as a problem.
+        blocked_retrieval = [
+            a for a in c["blocked"]
+            if c["agents"].get(a, {}).get("purpose") == "retrieval"
+        ]
+        blocked_training = [a for a in c["blocked"] if a not in blocked_retrieval]
+
+        if blocked_retrieval:
+            lines.append(
+                f"**Retrieval crawlers BLOCKED by robots.txt: "
+                f"{len(blocked_retrieval)}** — these are what let an assistant "
+                "quote the site:\n"
+            )
+            for a in blocked_retrieval:
                 lines.append(f"- {a} — {c['agents'][a]['what']}")
             lines.append("")
         else:
-            lines.append("No AI crawler is blocked by robots.txt.\n")
+            lines.append("No retrieval crawler is blocked by robots.txt.\n")
+
+        if blocked_training:
+            lines.append(
+                f"_{len(blocked_training)} training crawler(s) blocked on purpose: "
+                + ", ".join(blocked_training)
+                + ". Not a finding._\n"
+            )
 
         unnamed = c["retrieval_agents_not_named"]
         if unnamed:
