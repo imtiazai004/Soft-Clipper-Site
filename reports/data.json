@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-25",
-  "generated_at": "2026-08-25 02:56 UTC",
+  "generated": "2026-08-26",
+  "generated_at": "2026-08-26 03:02 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-25",
-          "end": "2026-08-22"
+          "start": "2026-07-26",
+          "end": "2026-08-23"
         },
         "total_query_page_rows": 19,
         "striking_distance": [
@@ -161,8 +161,8 @@
         "requests_made": 150,
         "phrases_found": 360,
         "competitors_read": {
-          "https://www.opus.pro": 1125,
-          "https://klap.app": 281,
+          "https://www.opus.pro": 1120,
+          "https://klap.app": 282,
           "https://vizard.ai": 289,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -596,8 +596,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-25",
-          "end": "2026-08-22"
+          "start": "2026-07-26",
+          "end": "2026-08-23"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
