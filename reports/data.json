@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-26",
-  "generated_at": "2026-08-26 03:02 UTC",
+  "generated": "2026-08-27",
+  "generated_at": "2026-08-27 12:15 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-26",
-          "end": "2026-08-23"
+          "start": "2026-07-27",
+          "end": "2026-08-24"
         },
         "total_query_page_rows": 19,
         "striking_distance": [
@@ -147,7 +147,17 @@
       "content": {
         "min_impressions": 10,
         "min_position": 20,
-        "topics": []
+        "topics": [
+          {
+            "query": "one-time pro upgrade license",
+            "impressions": 10,
+            "clicks": 0,
+            "best_position": 27.6,
+            "currently_shown_pages": [
+              "https://softclipper.pro/compare/one-time-vs-subscription/"
+            ]
+          }
+        ]
       },
       "coldstart": {
         "seeds": [
@@ -159,11 +169,11 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 360,
+        "phrases_found": 361,
         "competitors_read": {
-          "https://www.opus.pro": 1120,
-          "https://klap.app": 282,
-          "https://vizard.ai": 289,
+          "https://www.opus.pro": 1121,
+          "https://klap.app": 284,
+          "https://vizard.ai": 291,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
         },
@@ -228,10 +238,12 @@
               "how do i add subtitles to video",
               "add captions to video for tiktok",
               "add subtitles to video online",
+              "how to add captions to videos for free",
               "add text to video for free online",
               "can i add captions to my youtube video",
               "how to add captions to an existing video",
-              "how to add captions to videos for free",
+              "how to add captions to video in capcut",
+              "add captions to video instagram",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
               "add captions to video software",
@@ -241,28 +253,28 @@
               "add captions to video free no watermark",
               "add captions to video without watermark free",
               "best way to add captions to video",
-              "how to add captions to video in premiere pro",
               "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
               "best tool to add captions to video",
-              "add captions to video instagram",
+              "how to add captions to video in premiere pro",
+              "add captions to video tiktok",
               "best software to add captions to video",
+              "how do i add closed captions to a video for free",
               "add captions to video free no watermark online",
-              "add captions to video capcut",
               "add captions to video free reddit",
               "best way to add captions to video reddit",
-              "add captions to video adobe express",
               "add captions to video editor",
               "add captions to video free no sign up",
               "best way to add captions to video for free",
+              "add captions to video adobe express",
               "add captions to video app",
               "add captions to video free adobe",
               "best app to add captions to video free",
-              "how to add captions to video in davinci resolve",
               "best app to add captions to video reddit",
-              "how to add captions to video in adobe express",
-              "add captions to video free app"
+              "how to add captions to video in davinci resolve",
+              "add captions to video free app",
+              "how to add captions to video in adobe express"
             ]
           },
           {
@@ -279,12 +291,12 @@
             ],
             "variants": [
               "ai video clipper for tiktok",
-              "ai video clipper generator",
               "how to make a shorts video",
               "ai video clipper youtube",
               "ai viral video clipper",
               "ai music video clipper",
               "ai video clipper and editor",
+              "ai video clipper generator",
               "ai video clipper tiktok",
               "ai youtube video clipper free",
               "ai video clipper editor",
@@ -296,8 +308,8 @@
               "ai long video clipper",
               "ai video clipper free online",
               "free ai video clipper generator",
+              "ai video clipper capcut",
               "ai video clipper github",
-              "ai video clipper reddit",
               "best ai video clipper",
               "best ai video clipper reddit",
               "veed ai video clipper",
@@ -306,10 +318,10 @@
               "best ai video clipper free",
               "free ai video clipper tool",
               "ai video clipper",
-              "ai video clipper capcut",
               "ai video clipper for free",
               "ai video clipper free reddit",
               "ai video clipper lora",
+              "ai video clipper reddit",
               "ai video clipper unlimited",
               "what is the best ai video clipper",
               "ai video clipper twitch",
@@ -390,24 +402,6 @@
             ]
           },
           {
-            "phrase": "ai video clipping app",
-            "score": 23,
-            "autocomplete_hits": 2,
-            "best_position": 0,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper",
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video clipping tool",
-              "ai video editor free app",
-              "ai video cutter app",
-              "ai video trimming app"
-            ]
-          },
-          {
             "phrase": "ai video cutter for tiktok",
             "score": 23,
             "autocomplete_hits": 2,
@@ -430,11 +424,28 @@
               "ai video cutter reddit",
               "ai video cutter online free",
               "best ai video cutter",
+              "ai video cutter app",
               "ai video cutter free",
               "ai video cutter local",
               "video cutter ai github",
               "best free ai video cutter",
               "ai video cutter free online"
+            ]
+          },
+          {
+            "phrase": "ai video clipping app",
+            "score": 21,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper a"
+            ],
+            "variants": [
+              "ai video clipping tool",
+              "ai video editor free app",
+              "ai video trimming app"
             ]
           },
           {
@@ -563,9 +574,8 @@
               "what is add captions to video"
             ],
             "variants": [
+              "how to add captions to videos on instagram",
               "how to add captions to videos on iphone",
-              "how to add captions to videos on capcut",
-              "how to add captions to videos on tiktok",
               "how to add captions to videos on youtube",
               "can capcut add captions to videos"
             ]
@@ -596,8 +606,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-07-26",
-          "end": "2026-08-23"
+          "start": "2026-07-27",
+          "end": "2026-08-24"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
