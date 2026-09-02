@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-01",
-  "generated_at": "2026-09-01 07:05 UTC",
+  "generated": "2026-09-02",
+  "generated_at": "2026-09-02 06:43 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-01",
-          "end": "2026-08-29"
+          "start": "2026-08-02",
+          "end": "2026-08-30"
         },
         "total_query_page_rows": 21,
         "striking_distance": [
@@ -150,9 +150,9 @@
         "topics": [
           {
             "query": "one-time pro upgrade license",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
-            "best_position": 26.6,
+            "best_position": 26.7,
             "currently_shown_pages": [
               "https://softclipper.pro/compare/one-time-vs-subscription/"
             ]
@@ -172,7 +172,7 @@
         "phrases_found": 361,
         "competitors_read": {
           "https://www.opus.pro": 1121,
-          "https://klap.app": 288,
+          "https://klap.app": 289,
           "https://vizard.ai": 291,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -606,8 +606,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-01",
-          "end": "2026-08-29"
+          "start": "2026-08-02",
+          "end": "2026-08-30"
         },
         "total_query_page_rows": 8,
         "striking_distance": [],
