@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-02",
-  "generated_at": "2026-09-02 06:43 UTC",
+  "generated": "2026-09-03",
+  "generated_at": "2026-09-03 06:46 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-02",
-          "end": "2026-08-30"
+          "start": "2026-08-03",
+          "end": "2026-08-31"
         },
         "total_query_page_rows": 21,
         "striking_distance": [
@@ -169,10 +169,10 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 361,
+        "phrases_found": 356,
         "competitors_read": {
           "https://www.opus.pro": 1121,
-          "https://klap.app": 289,
+          "https://klap.app": 0,
           "https://vizard.ai": 291,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -181,10 +181,10 @@
         "gaps": [
           {
             "phrase": "how to cut long video to short",
-            "score": 37,
+            "score": 34,
             "autocomplete_hits": 11,
             "best_position": 1,
-            "competitors_covering": 2,
+            "competitors_covering": 1,
             "we_cover_it": false,
             "seen_from": [
               "best turn long videos into shorts",
@@ -200,10 +200,10 @@
           },
           {
             "phrase": "add captions to video",
-            "score": 26,
+            "score": 23,
             "autocomplete_hits": 3,
             "best_position": 0,
-            "competitors_covering": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "add captions to video",
@@ -217,6 +217,7 @@
               "why add captions to video",
               "add captions to video for free online",
               "how do i add captions to video",
+              "how to add captions to video iphone",
               "how to add captions to videos",
               "why add subtitles to video",
               "add captions to video free online",
@@ -226,49 +227,47 @@
               "add captions to video online free ai",
               "add captions to video online ai",
               "best ai to add captions to video",
-              "how to add captions to video iphone",
               "add subtitles to video for free",
               "add text to video online",
               "can i add text to video",
               "how do i add text to video",
-              "add captions to video for instagram",
-              "add text to video for free",
-              "add text to video online free",
-              "can i add captions to a video",
-              "how do i add subtitles to video",
-              "add captions to video for tiktok",
-              "add subtitles to video online",
-              "how to add captions to videos for free",
-              "add text to video for free online",
-              "can i add captions to my youtube video",
               "how to add captions to an existing video",
               "how to add captions to video in capcut",
-              "add captions to video instagram",
+              "add captions to video for instagram",
               "add captions to video online free without watermark",
               "add captions to video premiere pro",
               "add captions to video software",
               "add captions to video without watermark",
-              "add subtitles to video for free online",
+              "add text to video for free",
+              "add text to video online free",
               "best app to add captions to video",
+              "can i add captions to a video",
+              "how do i add subtitles to video",
+              "add captions to video for tiktok",
               "add captions to video free no watermark",
               "add captions to video without watermark free",
+              "add subtitles to video online",
               "best way to add captions to video",
+              "how to add captions to videos for free",
               "add auto captions to video",
               "add captions to video for free no watermark",
               "add captions to video iphone",
+              "add text to video for free online",
               "best tool to add captions to video",
+              "can i add captions to my youtube video",
               "how to add captions to video in premiere pro",
-              "add captions to video tiktok",
+              "add captions to video instagram",
+              "add subtitles to video for free online",
               "best software to add captions to video",
               "how do i add closed captions to a video for free",
-              "add captions to video free no watermark online",
+              "add captions to video free no sign up",
               "add captions to video free reddit",
               "best way to add captions to video reddit",
+              "add captions to video capcut",
               "add captions to video editor",
-              "add captions to video free no sign up",
+              "add captions to video free no watermark online",
               "best way to add captions to video for free",
               "add captions to video adobe express",
-              "add captions to video app",
               "add captions to video free adobe",
               "best app to add captions to video free",
               "best app to add captions to video reddit",
@@ -279,10 +278,10 @@
           },
           {
             "phrase": "ai video clipper for shorts",
-            "score": 25,
+            "score": 22,
             "autocomplete_hits": 4,
             "best_position": 0,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper for",
@@ -294,16 +293,15 @@
               "how to make a shorts video",
               "ai video clipper youtube",
               "ai viral video clipper",
-              "ai music video clipper",
               "ai video clipper and editor",
               "ai video clipper generator",
               "ai video clipper tiktok",
               "ai youtube video clipper free",
               "ai video clipper editor",
               "ai video clipper no watermark",
-              "media io ai video clipper",
               "ai video clipper free",
               "ai video clipper online",
+              "media io ai video clipper",
               "veed io ai video clipper",
               "ai long video clipper",
               "ai video clipper free online",
@@ -349,10 +347,10 @@
           },
           {
             "phrase": "ai video clip software",
-            "score": 24,
+            "score": 21,
             "autocomplete_hits": 2,
             "best_position": 0,
-            "competitors_covering": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper software"
@@ -364,7 +362,6 @@
               "ai video clip api",
               "free video repair software",
               "ai video editor software free",
-              "free video restoration software",
               "best ai video editor software",
               "ai video clip cutter",
               "best ai video editor software for pc",
@@ -373,10 +370,10 @@
           },
           {
             "phrase": "ai video cutting and editing",
-            "score": 24,
+            "score": 21,
             "autocomplete_hits": 2,
             "best_position": 2,
-            "competitors_covering": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper vs",
@@ -384,7 +381,6 @@
             ],
             "variants": [
               "ai video cutting editing",
-              "ai cutting video maker",
               "ai video cutting tool",
               "ai cutting video editor",
               "ai video cutting tool free",
@@ -403,10 +399,10 @@
           },
           {
             "phrase": "ai video cutter for tiktok",
-            "score": 23,
+            "score": 20,
             "autocomplete_hits": 2,
             "best_position": 3,
-            "competitors_covering": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper for",
@@ -433,11 +429,27 @@
             ]
           },
           {
+            "phrase": "how to turn long videos into viral shorts. the ultimate guide for 2024",
+            "score": 20,
+            "autocomplete_hits": 5,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "turn long videos into shorts g",
+              "turn long videos into shorts h",
+              "turn long videos into shorts t",
+              "turn long videos into shorts u",
+              "turn long videos into shorts v"
+            ],
+            "variants": []
+          },
+          {
             "phrase": "ai video clipping app",
-            "score": 21,
+            "score": 18,
             "autocomplete_hits": 1,
             "best_position": 0,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper a"
@@ -450,27 +462,27 @@
           },
           {
             "phrase": "auto resize video online",
-            "score": 21,
+            "score": 18,
             "autocomplete_hits": 1,
             "best_position": 3,
-            "competitors_covering": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "auto reframe video online"
             ],
             "variants": [
               "auto crop video online",
-              "auto resize video",
               "how to auto resize video in premiere pro",
+              "auto resize video",
               "auto crop video"
             ]
           },
           {
             "phrase": "ai video editor/trimmer",
-            "score": 20,
+            "score": 17,
             "autocomplete_hits": 2,
             "best_position": 3,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper vs",
@@ -488,45 +500,29 @@
           },
           {
             "phrase": "convert long video into youtube shorts",
-            "score": 20,
+            "score": 17,
             "autocomplete_hits": 2,
             "best_position": 1,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "turn long videos into shorts y"
             ],
             "variants": [
+              "convert long video into viral shorts",
               "how to convert long video in shorts",
               "convert video into shorts size",
-              "convert long video into viral shorts",
               "convert video into shorts online free",
               "convert full video into shorts free",
               "turn video into youtube shorts format"
             ]
           },
           {
-            "phrase": "how to turn long videos into viral shorts. the ultimate guide for 2024",
-            "score": 20,
-            "autocomplete_hits": 5,
-            "best_position": 0,
-            "competitors_covering": 0,
-            "we_cover_it": false,
-            "seen_from": [
-              "turn long videos into shorts g",
-              "turn long videos into shorts h",
-              "turn long videos into shorts t",
-              "turn long videos into shorts u",
-              "turn long videos into shorts v"
-            ],
-            "variants": []
-          },
-          {
             "phrase": "ai long form video clipper",
-            "score": 19,
+            "score": 16,
             "autocomplete_hits": 2,
             "best_position": 4,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper for",
@@ -536,10 +532,10 @@
           },
           {
             "phrase": "can i add text to video in youtube editor",
-            "score": 19,
+            "score": 16,
             "autocomplete_hits": 1,
             "best_position": 2,
-            "competitors_covering": 3,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "can i add captions to video"
@@ -551,10 +547,10 @@
               "can i add text to video in imovie",
               "how do i add text to video on iphone",
               "how do i add text to video in premiere pro",
+              "add subtitles to video editor",
               "add text to video without watermark free",
               "add text to video editor",
               "how do i add text to video in davinci resolve",
-              "add subtitles to video editor",
               "how do i add text to video on capcut",
               "add text to video free software for pc",
               "add text to video no sign up",
@@ -564,11 +560,34 @@
             ]
           },
           {
-            "phrase": "what apps add captions to videos",
-            "score": 18,
+            "phrase": "add subtitles to video and translate",
+            "score": 15,
             "autocomplete_hits": 1,
             "best_position": 0,
-            "competitors_covering": 2,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "add captions to video vs"
+            ],
+            "variants": [
+              "add subtitles to video and translate free",
+              "add subtitles to video software",
+              "add subtitles to video and save",
+              "add subtitles to video without watermark",
+              "add subtitles to video without watermark free",
+              "add subtitles to video software free",
+              "add subtitles to video without watermark online free",
+              "add subtitles to video for free without watermark",
+              "add subtitles to video no sign up",
+              "add subtitles to video online free without watermark"
+            ]
+          },
+          {
+            "phrase": "what apps add captions to videos",
+            "score": 15,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 1,
             "we_cover_it": false,
             "seen_from": [
               "what is add captions to video"
@@ -579,19 +598,6 @@
               "how to add captions to videos on youtube",
               "can capcut add captions to videos"
             ]
-          },
-          {
-            "phrase": "ai video clipper from youtube",
-            "score": 16,
-            "autocomplete_hits": 2,
-            "best_position": 4,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper for",
-              "ai video clipper f"
-            ],
-            "variants": []
           }
         ],
         "phrases_clustered_into": 39,
@@ -606,8 +612,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-02",
-          "end": "2026-08-30"
+          "start": "2026-08-03",
+          "end": "2026-08-31"
         },
         "total_query_page_rows": 8,
         "striking_distance": [],
