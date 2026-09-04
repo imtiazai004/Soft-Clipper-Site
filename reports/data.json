@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-04",
-  "generated_at": "2026-09-04 11:22 UTC",
+  "generated_at": "2026-09-04 18:44 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -540,9 +540,13 @@
       },
       "indexing": {
         "total_urls_checked": 7,
-        "indexed": 5,
+        "indexed": 4,
         "never_crawled": [],
         "crawled_not_indexed": [
+          {
+            "url": "https://aisofttechsolution.com/profitscout",
+            "reason": "Crawled - currently not indexed"
+          },
           {
             "url": "https://aisofttechsolution.com/blog",
             "reason": "Alternate page with proper canonical tag"

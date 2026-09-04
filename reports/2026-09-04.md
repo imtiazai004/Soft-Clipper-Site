@@ -125,8 +125,9 @@ No queries are being split across more than one page.
 **Never crawled by Google yet: 0**
 _None - every sitemap URL is known to Google._
 
-**Crawled but not indexed: 2** (worth investigating)
+**Crawled but not indexed: 3** (worth investigating)
 
+- https://aisofttechsolution.com/profitscout — Crawled - currently not indexed
 - https://aisofttechsolution.com/blog — Alternate page with proper canonical tag
 - https://aisofttechsolution.com/terms — Alternate page with proper canonical tag
 
