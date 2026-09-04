@@ -14,25 +14,20 @@ _Window 2026-08-04 to 2026-09-01, 21 query/page rows in total._
 
 ### Keyword cannibalisation
 
-- **clip soft** is targeted by 3 pages:
-  - https://softclipper.pro/download/
-  - https://softclipper.pro/help/
-  - https://softclipper.pro/use-cases/agencies/
 - **softclip** is targeted by 3 pages:
   - https://softclipper.pro/
   - https://softclipper.pro/compare/opus-clip-alternative/
   - https://softclipper.pro/help/
-- **softclipper** is targeted by 3 pages:
-  - http://softclipper.pro/
-  - https://softclipper.pro/
-  - https://softclipper.pro/download/
 
 ### Indexing health
 
-34 URLs checked from the sitemap.
+36 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 0**
-_None - every sitemap URL is known to Google._
+**Never crawled by Google yet: 2**
+_These need a "Request indexing" click in Search Console._
+
+- https://softclipper.pro/blog/how-ai-video-clippers-work/
+- https://softclipper.pro/blog/how-to-add-captions-to-video/
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
@@ -53,26 +48,26 @@ _4 training crawler(s) blocked on purpose: Meta-ExternalAgent, Amazonbot, CCBot,
 Every link in it still resolves.
 
 
-**Citability:** 12 of 34 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 18 of 36 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
-22 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+18 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
-- https://softclipper.pro/
 - https://softclipper.pro/about/
 - https://softclipper.pro/affiliates/
 - https://softclipper.pro/blog/
+- https://softclipper.pro/blog/how-ai-video-clippers-work/
+- https://softclipper.pro/blog/how-to-add-captions-to-video/
 - https://softclipper.pro/blog/turn-long-videos-into-shorts/
 - https://softclipper.pro/blog/why-auto-reframing-looks-wrong/
-- https://softclipper.pro/compare/
 - https://softclipper.pro/contact/
-- https://softclipper.pro/download/
 - https://softclipper.pro/faq/
 - https://softclipper.pro/features/
 - https://softclipper.pro/features/ai-moment-detection/
-- https://softclipper.pro/features/auto-reframe/
-- https://softclipper.pro/features/captions/
 - https://softclipper.pro/features/highlight-reel/
-- ...and 7 more
+- https://softclipper.pro/help/
+- https://softclipper.pro/help/install/
+- https://softclipper.pro/help/troubleshooting/
+- ...and 3 more
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
@@ -88,12 +83,11 @@ _These are evidence, not instructions. Drafting only runs when a human picks one
 
 ### Topic ideas (cold start)
 
-_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1121), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 70 of them we already cover; the rest cluster into 39 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 24 lowest-scoring are not listed._
+_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1121), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 135 of them we already cover; the rest cluster into 38 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 23 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
 | 34 | 11 | 1 | 1 | 2 | how to cut long video to short |
-| 23 | 3 | 0 | 3 | 64 | add captions to video |
 | 22 | 4 | 0 | 2 | 54 | ai video clipper for shorts |
 | 21 | 2 | 0 | 3 | 10 | ai video clip software |
 | 21 | 2 | 2 | 3 | 15 | ai video cutting and editing |
@@ -107,6 +101,7 @@ _356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro 
 | 16 | 1 | 2 | 2 | 16 | can i add text to video in youtube editor |
 | 15 | 1 | 0 | 1 | 10 | add subtitles to video and translate |
 | 15 | 1 | 0 | 1 | 4 | what apps add captions to videos |
+| 14 | 2 | 0 | 0 | 0 | ai video cutting planets in half |
 
 _**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
 

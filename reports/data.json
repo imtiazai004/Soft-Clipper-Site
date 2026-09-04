@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-04",
-  "generated_at": "2026-09-04 06:51 UTC",
+  "generated_at": "2026-09-04 10:32 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -41,35 +41,23 @@
         ],
         "cannibalization": [
           {
-            "query": "clip soft",
-            "pages": [
-              "https://softclipper.pro/download/",
-              "https://softclipper.pro/help/",
-              "https://softclipper.pro/use-cases/agencies/"
-            ]
-          },
-          {
             "query": "softclip",
             "pages": [
               "https://softclipper.pro/",
               "https://softclipper.pro/compare/opus-clip-alternative/",
               "https://softclipper.pro/help/"
-            ]
-          },
-          {
-            "query": "softclipper",
-            "pages": [
-              "http://softclipper.pro/",
-              "https://softclipper.pro/",
-              "https://softclipper.pro/download/"
-            ]
+            ],
+            "impressions": 6
           }
         ]
       },
       "indexing": {
-        "total_urls_checked": 33,
+        "total_urls_checked": 35,
         "indexed": 34,
-        "never_crawled": [],
+        "never_crawled": [
+          "https://softclipper.pro/blog/how-ai-video-clippers-work/",
+          "https://softclipper.pro/blog/how-to-add-captions-to-video/"
+        ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
         "check_errors": []
@@ -114,32 +102,28 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 34,
-          "citable": 12,
+          "pages_checked": 36,
+          "citable": 18,
           "skipped": 0,
           "needs_work": [],
           "opportunities": [
-            "https://softclipper.pro/",
             "https://softclipper.pro/about/",
             "https://softclipper.pro/affiliates/",
             "https://softclipper.pro/blog/",
+            "https://softclipper.pro/blog/how-ai-video-clippers-work/",
+            "https://softclipper.pro/blog/how-to-add-captions-to-video/",
             "https://softclipper.pro/blog/turn-long-videos-into-shorts/",
             "https://softclipper.pro/blog/why-auto-reframing-looks-wrong/",
-            "https://softclipper.pro/compare/",
             "https://softclipper.pro/contact/",
-            "https://softclipper.pro/download/",
             "https://softclipper.pro/faq/",
             "https://softclipper.pro/features/",
             "https://softclipper.pro/features/ai-moment-detection/",
-            "https://softclipper.pro/features/auto-reframe/",
-            "https://softclipper.pro/features/captions/",
             "https://softclipper.pro/features/highlight-reel/",
             "https://softclipper.pro/help/",
             "https://softclipper.pro/help/install/",
             "https://softclipper.pro/help/troubleshooting/",
             "https://softclipper.pro/legal/privacy/",
             "https://softclipper.pro/legal/terms/",
-            "https://softclipper.pro/pricing/",
             "https://softclipper.pro/use-cases/"
           ]
         }
@@ -196,84 +180,6 @@
             "variants": [
               "how to convert long video to short video",
               "how to convert long video into short video"
-            ]
-          },
-          {
-            "phrase": "add captions to video",
-            "score": 23,
-            "autocomplete_hits": 3,
-            "best_position": 0,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "add captions to video",
-              "add captions to video vs"
-            ],
-            "variants": [
-              "add captions to video free",
-              "add captions to video online free",
-              "add captions to video online",
-              "add captions to video for free",
-              "why add captions to video",
-              "add captions to video for free online",
-              "how do i add captions to video",
-              "how to add captions to video iphone",
-              "how to add captions to videos",
-              "why add subtitles to video",
-              "add captions to video free online",
-              "how do i add text to video for free",
-              "how to add captions to video for free",
-              "add captions to video free ai",
-              "add captions to video online free ai",
-              "add captions to video online ai",
-              "best ai to add captions to video",
-              "add subtitles to video for free",
-              "add text to video online",
-              "can i add text to video",
-              "how do i add text to video",
-              "how to add captions to an existing video",
-              "how to add captions to video in capcut",
-              "add captions to video for instagram",
-              "add captions to video online free without watermark",
-              "add captions to video premiere pro",
-              "add captions to video software",
-              "add captions to video without watermark",
-              "add text to video for free",
-              "add text to video online free",
-              "best app to add captions to video",
-              "can i add captions to a video",
-              "how do i add subtitles to video",
-              "add captions to video for tiktok",
-              "add captions to video free no watermark",
-              "add captions to video without watermark free",
-              "add subtitles to video online",
-              "best way to add captions to video",
-              "how to add captions to videos for free",
-              "add auto captions to video",
-              "add captions to video for free no watermark",
-              "add captions to video iphone",
-              "add text to video for free online",
-              "best tool to add captions to video",
-              "can i add captions to my youtube video",
-              "how to add captions to video in premiere pro",
-              "add captions to video instagram",
-              "add subtitles to video for free online",
-              "best software to add captions to video",
-              "how do i add closed captions to a video for free",
-              "add captions to video free no sign up",
-              "add captions to video free reddit",
-              "best way to add captions to video reddit",
-              "add captions to video capcut",
-              "add captions to video editor",
-              "add captions to video free no watermark online",
-              "best way to add captions to video for free",
-              "add captions to video adobe express",
-              "add captions to video free adobe",
-              "best app to add captions to video free",
-              "best app to add captions to video reddit",
-              "how to add captions to video in davinci resolve",
-              "add captions to video free app",
-              "how to add captions to video in adobe express"
             ]
           },
           {
@@ -598,11 +504,24 @@
               "how to add captions to videos on youtube",
               "can capcut add captions to videos"
             ]
+          },
+          {
+            "phrase": "ai video cutting planets in half",
+            "score": 14,
+            "autocomplete_hits": 2,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper i",
+              "ai video clipper p"
+            ],
+            "variants": []
           }
         ],
-        "phrases_clustered_into": 39,
-        "clusters_not_shown": 24,
-        "already_covered": 70
+        "phrases_clustered_into": 38,
+        "clusters_not_shown": 23,
+        "already_covered": 135
       }
     },
     {

@@ -758,13 +758,13 @@
     "striking_distance": 3,
     "impressions": 3,
     "clicks": 0,
-    "urls_checked": 33,
-    "never_crawled": 0,
+    "urls_checked": 35,
+    "never_crawled": 2,
     "blockers": 0,
     "faqs_total": 141,
     "faqs_ready": 141,
     "topic_ideas": 15,
-    "pages_citable": 12,
-    "pages_checked_geo": 34
+    "pages_citable": 18,
+    "pages_checked_geo": 36
   }
 ]
