@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-03",
-  "generated_at": "2026-09-03 06:46 UTC",
+  "generated": "2026-09-04",
+  "generated_at": "2026-09-04 06:51 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-03",
-          "end": "2026-08-31"
+          "start": "2026-08-04",
+          "end": "2026-09-01"
         },
         "total_query_page_rows": 21,
         "striking_distance": [
@@ -612,8 +612,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-03",
-          "end": "2026-08-31"
+          "start": "2026-08-04",
+          "end": "2026-09-01"
         },
         "total_query_page_rows": 8,
         "striking_distance": [],
