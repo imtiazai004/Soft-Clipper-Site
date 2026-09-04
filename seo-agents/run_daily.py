@@ -477,6 +477,7 @@ def _history_point(day, site_data):
         "clicks": sum(r.get("clicks", 0) for r in sd),
         "urls_checked": idx.get("total_urls_checked"),
         "never_crawled": len(idx.get("never_crawled") or []),
+        "crawled_not_indexed": len(idx.get("crawled_not_indexed") or []),
         "blockers": len(idx.get("technical_blockers") or []),
         "faqs_total": aeo.get("total_faqs"),
         "faqs_ready": aeo.get("snippet_ready"),

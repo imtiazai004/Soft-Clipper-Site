@@ -363,6 +363,14 @@ def short(url: str, limit: int = 52) -> str:
 # ----------------------------------------------------------------------
 # the four pillar scores
 # ----------------------------------------------------------------------
+def _pct(numerator: int, denominator: int):
+    """None means 'not measured', shown as a dash - never 0%, because those
+    mean opposite things. Shared by pillar_scores() (today's live numbers)
+    and _prev_scores() (yesterday's, from history.json) so the two are never
+    computed two different ways."""
+    return round(100 * numerator / denominator) if denominator else None
+
+
 def pillar_scores(site: dict):
     """Percentages, each with the raw numbers underneath so the number can be
     checked rather than trusted. None means 'not measured' - which is shown as
@@ -379,14 +387,14 @@ def pillar_scores(site: dict):
         + len(idx.get("crawled_not_indexed") or [])
         + len(idx.get("technical_blockers") or [])
     )
-    seo = round(100 * (total - problems) / total) if total else None
+    seo = _pct(total - problems, total)
 
     faqs = aeo.get("total_faqs") or 0
-    aeo_pct = round(100 * (aeo.get("snippet_ready") or 0) / faqs) if faqs else None
+    aeo_pct = _pct(aeo.get("snippet_ready") or 0, faqs)
 
     checked = cit.get("pages_checked") or 0
     open_to_ai = not _blocked_retrieval(geo)
-    geo_pct = round(100 * (cit.get("citable") or 0) / checked) if checked else None
+    geo_pct = _pct(cit.get("citable") or 0, checked)
 
     return [
         {
@@ -436,6 +444,34 @@ def pillar_scores(site: dict):
     ]
 
 
+def _prev_scores(site_name: str, history: list) -> dict:
+    """SEO/AEO/GEO percentages recomputed from the last previous run's raw
+    counts in history.json (not today's, which is normally already the last
+    entry by the time this runs - see run_daily.main()). Used only to draw a
+    'since last run' arrow on each card; deliberately reuses _pct() so a
+    trend arrow can never disagree with the number it is next to."""
+    pts = sorted(
+        (p for p in history if p.get("site") == site_name),
+        key=lambda p: p.get("date", ""),
+    )
+    if len(pts) < 2:
+        return {}
+    prev = pts[-2]
+
+    total = prev.get("urls_checked") or 0
+    problems = (
+        (prev.get("never_crawled") or 0)
+        + (prev.get("crawled_not_indexed") or 0)
+        + (prev.get("blockers") or 0)
+    )
+    return {
+        "date": prev.get("date"),
+        "SEO": _pct(total - problems, total),
+        "AEO": _pct(prev.get("faqs_ready") or 0, prev.get("faqs_total") or 0),
+        "GEO": _pct(prev.get("pages_citable") or 0, prev.get("pages_checked_geo") or 0),
+    }
+
+
 # ----------------------------------------------------------------------
 def build(data_path="reports/data.json", history_path="reports/history.json",
           out_path="index.html"):
@@ -460,6 +496,7 @@ def build(data_path="reports/data.json", history_path="reports/history.json",
                 "name": s["name"],
                 "origin": s.get("origin"),
                 "scores": pillar_scores(s),
+                "prev_scores": _prev_scores(s["name"], history),
                 "actions": build_actions(s),
                 "stats": {
                     "query_rows": (s.get("keywords") or {}).get("total_query_page_rows"),
@@ -506,19 +543,34 @@ h1{font-size:19px;margin:0;letter-spacing:-.2px}
   background:transparent;color:var(--dim);cursor:pointer;font-size:13px}
 .tab[aria-selected=true]{background:var(--panel);color:var(--ink);border-color:var(--dim)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:24px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+  cursor:pointer}
+.card:hover{border-color:var(--dim)}
+.card.pillar-active{border-color:var(--idea);box-shadow:0 0 0 1px var(--idea) inset}
 .card h3{margin:0 0 6px;font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--dim)}
 .pct{font-size:30px;font-weight:600;line-height:1.1;letter-spacing:-1px}
 .pct.na{color:var(--dim);font-size:22px}
 .card p{margin:4px 0 0;font-size:12.5px;color:var(--dim)}
 .bar{height:4px;border-radius:99px;background:var(--line);margin-top:9px;overflow:hidden}
 .bar i{display:block;height:100%;border-radius:99px}
+.trend{font-size:11px;margin-top:8px;font-weight:600}
+.trend.up{color:var(--ok)} .trend.down{color:var(--bad)} .trend.flat{color:var(--dim)}
 h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
   margin:28px 0 12px;font-weight:600}
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 .chip{padding:4px 11px;border:1px solid var(--line);border-radius:99px;background:transparent;
   color:var(--dim);cursor:pointer;font-size:12px}
 .chip[aria-pressed=true]{border-color:var(--idea);color:var(--ink)}
+.chip.pillar-chip{border-color:var(--idea);color:var(--ink)}
+.csvbtn{padding:4px 11px;border:1px solid var(--line);border-radius:99px;background:transparent;
+  color:var(--dim);cursor:pointer;font-size:12px;margin-left:auto}
+.csvbtn:hover{color:var(--ink);border-color:var(--dim)}
+.table-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.table-tools input[type=search]{flex:1;min-width:180px;padding:6px 10px;border:1px solid var(--line);
+  border-radius:7px;background:var(--panel);color:var(--ink);font-size:13px}
+.loadmore{display:block;margin:10px auto 0;padding:6px 16px;border:1px solid var(--line);
+  border-radius:7px;background:transparent;color:var(--dim);cursor:pointer;font-size:12.5px}
+.loadmore:hover{color:var(--ink);border-color:var(--dim)}
 .act{background:var(--panel);border:1px solid var(--line);border-left-width:3px;
   border-radius:8px;padding:12px 14px;margin-bottom:9px}
 .act.critical{border-left-color:var(--bad)} .act.warning{border-left-color:var(--warn)}
@@ -535,8 +587,12 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)
 table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);
   border:1px solid var(--line);border-radius:10px;overflow:hidden}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line)}
-th{color:var(--dim);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+th{color:var(--dim);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  position:sticky;top:0;background:var(--panel)}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{color:var(--ink)}
 tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:color-mix(in srgb, var(--ink) 4%, transparent)}
 td.n,th.n{text-align:right}
 svg.chart{width:100%;height:130px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);
@@ -560,16 +616,34 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);
   <div id="trend"></div>
 
   <h2>Close to page one</h2>
+  <div class="table-tools" id="strikingTools"></div>
   <div id="striking"></div>
 
   <footer id="foot"></footer>
 </div>
 <script>
 const D = __PAYLOAD__;
-let site = 0, filter = "all";
+let site = 0, filter = "all", pillarFilter = null;
+let strikingQuery = "", strikingSort = {key:"impressions", dir:"desc"}, strikingLimit = 25;
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const el = id => document.getElementById(id);
+
+/* GSC-style CSV export - client-side only, no backend to generate it. */
+function toCsv(rows, headers){
+  const cell = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+  return [headers.map(cell).join(",")]
+    .concat(rows.map(r => headers.map(h => cell(r[h])).join(",")))
+    .join("\r\n");
+}
+function downloadCsv(filename, csv){
+  const blob = new Blob([csv], {type: "text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
 
 el("meta").innerHTML =
   "Last run " + esc(D.generated_at || D.generated || "—") +
@@ -579,7 +653,11 @@ el("meta").innerHTML =
 el("tabs").innerHTML = D.sites.map((s,i) =>
   '<button class="tab" role="tab" data-i="'+i+'">'+esc(s.name)+'</button>').join("");
 el("tabs").onclick = e => { const b = e.target.closest(".tab");
-  if (b) { site = +b.dataset.i; render(); } };
+  if (b) {
+    site = +b.dataset.i; pillarFilter = null;
+    strikingQuery = ""; strikingSort = {key:"impressions", dir:"desc"}; strikingLimit = 25;
+    render();
+  } };
 
 function colour(p, tone){
   if (tone === "coverage") return "var(--idea)";
@@ -590,15 +668,29 @@ function render(){
   const s = D.sites[site];
   [...el("tabs").children].forEach((b,i) => b.setAttribute("aria-selected", i === site));
 
+  const prev = s.prev_scores || {};
   el("cards").innerHTML = s.scores.map(c => {
     const has = c.pct !== null && c.pct !== undefined;
-    return '<div class="card"><h3>'+esc(c.key)+'</h3>' +
+    const pp = prev[c.key];
+    let trend = "";
+    if (has && typeof pp === "number") {
+      const d = c.pct - pp;
+      const cls = d > 0 ? "up" : d < 0 ? "down" : "flat";
+      const arrow = d > 0 ? "▲" : d < 0 ? "▼" : "•";
+      trend = '<div class="trend '+cls+'">'+arrow+' '+
+        (d === 0 ? "no change" : Math.abs(d)+"pp") + ' since last run</div>';
+    }
+    return '<div class="card'+(pillarFilter===c.key?" pillar-active":"")+'" data-key="'+esc(c.key)+'">' +
+      '<h3>'+esc(c.key)+'</h3>' +
       '<div class="pct'+(has?"":" na")+'"'+(has?' style="color:'+colour(c.pct,c.tone)+'"':"")+'>' +
       (has ? c.pct + "%" : "—") + '</div>' +
       '<p>'+esc(c.sub)+'</p>' +
       (has ? '<div class="bar"><i style="width:'+c.pct+'%;background:'+colour(c.pct,c.tone)+'"></i></div>' : "") +
+      trend +
       '</div>';
   }).join("");
+  el("cards").onclick = e => { const card = e.target.closest(".card"); if (!card) return;
+    const k = card.dataset.key; pillarFilter = pillarFilter === k ? null : k; render(); };
 
   const counts = {critical:0, warning:0, idea:0};
   s.actions.forEach(a => counts[a.sev]++);
@@ -606,11 +698,18 @@ function render(){
                   warning:"Worth fixing "+counts.warning, idea:"Ideas "+counts.idea};
   el("filters").innerHTML = Object.keys(labels).map(k =>
     '<button class="chip" data-f="'+k+'" aria-pressed="'+(k===filter)+'">'+esc(labels[k])+'</button>'
-  ).join("");
-  el("filters").onclick = e => { const b = e.target.closest(".chip");
+  ).join("") +
+  (pillarFilter ? '<button class="chip pillar-chip" id="clearPillar" type="button">Pillar: '+
+    esc(pillarFilter)+' ✕</button>' : "") +
+  '<button class="csvbtn" id="actionsCsv" type="button">Download CSV</button>';
+  el("filters").onclick = e => {
+    const clear = e.target.closest("#clearPillar");
+    if (clear) { pillarFilter = null; render(); return; }
+    const b = e.target.closest(".chip");
     if (b) { filter = b.dataset.f; render(); } };
 
-  const shown = s.actions.filter(a => filter === "all" || a.sev === filter);
+  const shown = s.actions.filter(a =>
+    (filter === "all" || a.sev === filter) && (!pillarFilter || a.pillar === pillarFilter));
   el("actions").innerHTML = shown.length ? shown.map(a =>
     '<div class="act '+a.sev+'"><div class="top">' +
       '<span class="pill">'+esc(a.pillar)+'</span><strong>'+esc(a.title)+'</strong></div>' +
@@ -618,6 +717,11 @@ function render(){
       (a.url ? '<a class="do" target="_blank" rel="noopener" href="'+esc(a.url)+'">'+esc(a.label)+'</a>' : "") +
     '</div>').join("")
     : '<div class="empty">Nothing in this bucket. On a quiet day that is the correct answer, not a broken run.</div>';
+  const ac = el("actionsCsv");
+  if (ac) ac.onclick = () => downloadCsv(
+    (s.name || "site").replace(/\s+/g, "-") + "-actions.csv",
+    toCsv(shown, ["sev", "pillar", "title", "detail", "url"])
+  );
 
   const h = (D.history || []).filter(p => p.site === s.name);
   el("trend").innerHTML = h.length < 2
@@ -626,21 +730,88 @@ function render(){
     : chart(h);
 
   const sd = s.stats.striking || [];
-  const dr = s.stats.date_range;
-  el("striking").innerHTML = sd.length
-    ? '<table><tr><th class="n">Pos</th><th class="n">Impr</th><th class="n">Clicks</th>' +
-      '<th>Query</th><th>Page</th></tr>' + sd.slice(0,25).map(r =>
-      '<tr><td class="n">'+esc(r.position)+'</td><td class="n">'+esc(r.impressions)+'</td>' +
-      '<td class="n">'+esc(r.clicks)+'</td><td>'+esc(r.query)+'</td>' +
-      '<td>'+esc(r.page)+'</td></tr>').join("") + '</table>'
-    : '<div class="empty">No query is sitting in positions 8–20 yet' +
-      (dr ? ' (window '+esc(dr.start)+' → '+esc(dr.end)+')' : '') + '.</div>';
+  el("strikingTools").innerHTML = sd.length
+    ? '<input id="strikingSearch" type="search" placeholder="Filter by query or page…" value="'+
+      esc(strikingQuery)+'">' +
+      '<button class="csvbtn" id="strikingCsv" type="button">Download CSV</button>'
+    : "";
+  const si = el("strikingSearch");
+  if (si) si.oninput = e => { strikingQuery = e.target.value; strikingLimit = 25; renderStrikingTable(); };
+  const scsv = el("strikingCsv");
+  if (scsv) scsv.onclick = () => downloadCsv(
+    (s.name || "site").replace(/\s+/g, "-") + "-close-to-page-one.csv",
+    toCsv(strikingRows(), ["position", "impressions", "clicks", "query", "page"])
+  );
+  renderStrikingTable();
 
   el("foot").innerHTML =
     "Generated by the agents in <code>seo-agents/</code>. Read-only: nothing here " +
     "changes the site or submits anything to Google — every button opens the screen " +
     "where a human decides. Not measured: whether ChatGPT or Perplexity actually cite " +
     "the site; that needs paid API access, so no number is invented for it.";
+}
+
+/* Filtered + sorted rows for the current site, shared by the table render
+   and the CSV button so the two can never show different data. */
+function strikingRows(){
+  const s = D.sites[site];
+  const raw = s.stats.striking || [];
+  const q = strikingQuery.trim().toLowerCase();
+  const rows = q
+    ? raw.filter(r => (r.query||"").toLowerCase().includes(q) || (r.page||"").toLowerCase().includes(q))
+    : raw.slice();
+  const k = strikingSort.key, dir = strikingSort.dir === "asc" ? 1 : -1;
+  rows.sort((a,b) => {
+    const av = a[k], bv = b[k];
+    if (typeof av === "number" && typeof bv === "number") return (av - bv) * dir;
+    return String(av == null ? "" : av).localeCompare(String(bv == null ? "" : bv)) * dir;
+  });
+  return rows;
+}
+
+/* GSC-style clickable column headers (click sorts, click again reverses) and
+   a search box that filters query/page - only this table's HTML is touched
+   on every keystroke, never the toolbar, so the search input keeps focus. */
+function renderStrikingTable(){
+  const s = D.sites[site];
+  const raw = s.stats.striking || [];
+  const dr = s.stats.date_range;
+  if (!raw.length) {
+    el("striking").innerHTML = '<div class="empty">No query is sitting in positions 8–20 yet' +
+      (dr ? ' (window '+esc(dr.start)+' → '+esc(dr.end)+')' : '') + '.</div>';
+    return;
+  }
+  const rows = strikingRows();
+  if (!rows.length) {
+    el("striking").innerHTML = '<div class="empty">No row matches “'+esc(strikingQuery)+'”.</div>';
+    return;
+  }
+  const shown = rows.slice(0, strikingLimit);
+  const cols = [["position","Pos",true],["impressions","Impr",true],["clicks","Clicks",true],
+                ["query","Query",false],["page","Page",false]];
+  const thead = cols.map(([k,label,n]) => {
+    const active = strikingSort.key === k;
+    const arrow = active ? (strikingSort.dir === "asc" ? " ▲" : " ▼") : "";
+    return '<th class="sortable'+(n?" n":"")+'" data-k="'+k+'">'+esc(label)+arrow+'</th>';
+  }).join("");
+  const more = rows.length > shown.length
+    ? '<button class="loadmore" id="strikingMore" type="button">Load '+
+      Math.min(25, rows.length - shown.length)+' more (of '+rows.length+')</button>'
+    : "";
+  el("striking").innerHTML =
+    '<table><thead><tr>'+thead+'</tr></thead><tbody>' + shown.map(r =>
+      '<tr><td class="n">'+esc(r.position)+'</td><td class="n">'+esc(r.impressions)+'</td>' +
+      '<td class="n">'+esc(r.clicks)+'</td><td>'+esc(r.query)+'</td>' +
+      '<td>'+esc(r.page)+'</td></tr>').join("") + '</tbody></table>' + more;
+  el("striking").querySelector("thead").onclick = e => {
+    const th = e.target.closest("th.sortable"); if (!th) return;
+    const k = th.dataset.k;
+    if (strikingSort.key === k) strikingSort.dir = strikingSort.dir === "asc" ? "desc" : "asc";
+    else strikingSort = {key: k, dir: (k === "query" || k === "page") ? "asc" : "desc"};
+    renderStrikingTable();
+  };
+  const moreBtn = el("strikingMore");
+  if (moreBtn) moreBtn.onclick = () => { strikingLimit += 25; renderStrikingTable(); };
 }
 
 /* A plain inline SVG line chart. No library, no CDN - the page has to work
