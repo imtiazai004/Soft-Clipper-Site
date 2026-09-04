@@ -9,11 +9,17 @@ name: SEO agents
 
 on:
   schedule:
-    # 02:00 UTC daily = 07:00 Pakistan time, so the report is waiting in the
-    # morning. GitHub runs scheduled jobs on UTC and can delay them under
+    # 01:00 and 13:00 UTC = 06:00 and 18:00 Pakistan time, twice a day so the
+    # cold-start topic agent (Google Autocomplete + competitor sitemaps, both
+    # of which can shift within a day) gets two independent looks instead of
+    # one. The Search Console-backed agents (indexing, keyword gaps, GEO,
+    # AEO) will mostly repeat themselves on the second run of the day - GSC's
+    # own data has a ~3-day processing lag, so the 28-day query window is the
+    # same whether it's read at 06:00 or 18:00. That repetition is expected,
+    # not a bug. GitHub runs scheduled jobs on UTC and can delay them under
     # load; a few minutes' drift does not matter here.
-    - cron: "0 2 * * *"
-  # lets you run it by hand from the Actions tab without waiting for 02:00
+    - cron: "0 1,13 * * *"
+  # lets you run it by hand from the Actions tab without waiting for the next slot
   workflow_dispatch:
 
 # the job commits to a branch, so it needs write access to repo contents
