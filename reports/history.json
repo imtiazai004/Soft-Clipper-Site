@@ -768,5 +768,39 @@
     "topic_ideas": 15,
     "pages_citable": 18,
     "pages_checked_geo": 36
+  },
+  {
+    "date": "2026-09-05",
+    "site": "aisofttechsolution.com",
+    "query_rows": 7,
+    "striking_distance": 0,
+    "impressions": 0,
+    "clicks": 0,
+    "urls_checked": 7,
+    "never_crawled": 0,
+    "crawled_not_indexed": 3,
+    "blockers": 0,
+    "faqs_total": 45,
+    "faqs_ready": 45,
+    "topic_ideas": 0,
+    "pages_citable": 0,
+    "pages_checked_geo": 7
+  },
+  {
+    "date": "2026-09-05",
+    "site": "softclipper.pro",
+    "query_rows": 19,
+    "striking_distance": 2,
+    "impressions": 3,
+    "clicks": 0,
+    "urls_checked": 35,
+    "never_crawled": 2,
+    "crawled_not_indexed": 0,
+    "blockers": 0,
+    "faqs_total": 141,
+    "faqs_ready": 141,
+    "topic_ideas": 15,
+    "pages_citable": 17,
+    "pages_checked_geo": 35
   }
 ]

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-04",
-  "generated_at": "2026-09-04 18:44 UTC",
+  "generated": "2026-09-05",
+  "generated_at": "2026-09-05 08:00 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,31 +9,23 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-04",
-          "end": "2026-09-01"
+          "start": "2026-08-05",
+          "end": "2026-09-02"
         },
-        "total_query_page_rows": 21,
+        "total_query_page_rows": 19,
         "striking_distance": [
+          {
+            "query": "clipper soft",
+            "page": "https://softclipper.pro/",
+            "position": 15,
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0
+          },
           {
             "query": "softclipper",
             "page": "http://softclipper.pro/",
             "position": 10,
-            "clicks": 0,
-            "impressions": 1,
-            "ctr": 0
-          },
-          {
-            "query": "clipper soft",
-            "page": "https://softclipper.pro/",
-            "position": 12,
-            "clicks": 0,
-            "impressions": 1,
-            "ctr": 0
-          },
-          {
-            "query": "soft clipper",
-            "page": "http://softclipper.pro/",
-            "position": 19,
             "clicks": 0,
             "impressions": 1,
             "ctr": 0
@@ -60,7 +52,12 @@
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
-        "check_errors": []
+        "check_errors": [
+          {
+            "url": "https://softclipper.pro/compare/",
+            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
+          }
+        ]
       },
       "aeo": {
         "pages_checked": 23,
@@ -102,8 +99,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 36,
-          "citable": 18,
+          "pages_checked": 35,
+          "citable": 17,
           "skipped": 0,
           "needs_work": [],
           "opportunities": [
@@ -531,10 +528,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-04",
-          "end": "2026-09-01"
+          "start": "2026-08-05",
+          "end": "2026-09-02"
         },
-        "total_query_page_rows": 8,
+        "total_query_page_rows": 7,
         "striking_distance": [],
         "cannibalization": []
       },
