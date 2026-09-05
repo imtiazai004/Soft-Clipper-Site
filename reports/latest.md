@@ -31,17 +31,6 @@ _These need a "Request indexing" click in Search Console._
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 
-**Errors while checking: 1**
-
-- https://softclipper.pro/compare/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
-  "error": {
-    "code": 500,
-    "message": "Internal error encountered.",
-    "status": "INTERNAL"
-  }
-}
-
-
 ### Answer-engine readiness (FAQ snippets)
 
 141 of 141 published FAQ answers are snippet-ready across 23 pages checked.
@@ -58,7 +47,7 @@ _4 training crawler(s) blocked on purpose: Meta-ExternalAgent, Amazonbot, CCBot,
 Every link in it still resolves.
 
 
-**Citability:** 17 of 35 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 18 of 36 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 18 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 

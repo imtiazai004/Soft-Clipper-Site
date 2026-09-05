@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-05",
-  "generated_at": "2026-09-05 08:00 UTC",
+  "generated_at": "2026-09-05 17:52 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -52,12 +52,7 @@
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
-        "check_errors": [
-          {
-            "url": "https://softclipper.pro/compare/",
-            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
-          }
-        ]
+        "check_errors": []
       },
       "aeo": {
         "pages_checked": 23,
@@ -99,8 +94,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 35,
-          "citable": 17,
+          "pages_checked": 36,
+          "citable": 18,
           "skipped": 0,
           "needs_work": [],
           "opportunities": [
