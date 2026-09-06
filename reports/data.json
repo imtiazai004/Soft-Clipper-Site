@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-05",
-  "generated_at": "2026-09-05 17:52 UTC",
+  "generated": "2026-09-06",
+  "generated_at": "2026-09-06 08:17 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-05",
-          "end": "2026-09-02"
+          "start": "2026-08-06",
+          "end": "2026-09-03"
         },
-        "total_query_page_rows": 19,
+        "total_query_page_rows": 18,
         "striking_distance": [
           {
             "query": "clipper soft",
@@ -20,14 +20,6 @@
             "position": 15,
             "clicks": 0,
             "impressions": 2,
-            "ctr": 0
-          },
-          {
-            "query": "softclipper",
-            "page": "http://softclipper.pro/",
-            "position": 10,
-            "clicks": 0,
-            "impressions": 1,
             "ctr": 0
           }
         ],
@@ -44,11 +36,13 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 35,
+        "total_urls_checked": 37,
         "indexed": 34,
         "never_crawled": [
+          "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
-          "https://softclipper.pro/blog/how-to-add-captions-to-video/"
+          "https://softclipper.pro/blog/how-to-add-captions-to-video/",
+          "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/"
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
@@ -94,7 +88,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 36,
+          "pages_checked": 38,
           "citable": 18,
           "skipped": 0,
           "needs_work": [],
@@ -102,8 +96,10 @@
             "https://softclipper.pro/about/",
             "https://softclipper.pro/affiliates/",
             "https://softclipper.pro/blog/",
+            "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
             "https://softclipper.pro/blog/how-ai-video-clippers-work/",
             "https://softclipper.pro/blog/how-to-add-captions-to-video/",
+            "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
             "https://softclipper.pro/blog/turn-long-videos-into-shorts/",
             "https://softclipper.pro/blog/why-auto-reframing-looks-wrong/",
             "https://softclipper.pro/contact/",
@@ -187,15 +183,9 @@
               "ai video clipper s"
             ],
             "variants": [
-              "ai video clipper for tiktok",
               "how to make a shorts video",
-              "ai video clipper youtube",
               "ai viral video clipper",
-              "ai video clipper and editor",
               "ai video clipper generator",
-              "ai video clipper tiktok",
-              "ai youtube video clipper free",
-              "ai video clipper editor",
               "ai video clipper no watermark",
               "ai video clipper free",
               "ai video clipper online",
@@ -255,14 +245,9 @@
             ],
             "variants": [
               "ai video cutting software",
-              "ai video editor software",
-              "ai video editor software for pc",
               "ai video clip api",
               "free video repair software",
-              "ai video editor software free",
-              "best ai video editor software",
               "ai video clip cutter",
-              "best ai video editor software for pc",
               "ai video clip app"
             ]
           },
@@ -280,7 +265,6 @@
             "variants": [
               "ai video cutting editing",
               "ai video cutting tool",
-              "ai cutting video editor",
               "ai video cutting tool free",
               "ai video cutting planets",
               "ai video cutting elements",
@@ -293,37 +277,6 @@
               "best ai for video cutting",
               "ai video cutting app",
               "ai video of cutting planets"
-            ]
-          },
-          {
-            "phrase": "ai video cutter for tiktok",
-            "score": 20,
-            "autocomplete_hits": 2,
-            "best_position": 3,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper for",
-              "ai video clipper t"
-            ],
-            "variants": [
-              "ai video cutter youtube",
-              "ai video cutter and editor",
-              "ai video cutter for youtube",
-              "ai video cutter editor",
-              "ai youtube video cutter online",
-              "ai video highlight cutter",
-              "ai video cutter for reels",
-              "ai video cutter online",
-              "ai video cutter reddit",
-              "ai video cutter online free",
-              "best ai video cutter",
-              "ai video cutter app",
-              "ai video cutter free",
-              "ai video cutter local",
-              "video cutter ai github",
-              "best free ai video cutter",
-              "ai video cutter free online"
             ]
           },
           {
@@ -354,46 +307,8 @@
             ],
             "variants": [
               "ai video clipping tool",
-              "ai video editor free app",
+              "ai video cutter app",
               "ai video trimming app"
-            ]
-          },
-          {
-            "phrase": "auto resize video online",
-            "score": 18,
-            "autocomplete_hits": 1,
-            "best_position": 3,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "auto reframe video online"
-            ],
-            "variants": [
-              "auto crop video online",
-              "how to auto resize video in premiere pro",
-              "auto resize video",
-              "auto crop video"
-            ]
-          },
-          {
-            "phrase": "ai video editor/trimmer",
-            "score": 17,
-            "autocomplete_hits": 2,
-            "best_position": 3,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper vs",
-              "ai video clipper e"
-            ],
-            "variants": [
-              "ai video editor free",
-              "ai video editor free online",
-              "ai video editor free no sign up",
-              "ai video trimmer online free",
-              "ai video trimmer online",
-              "best ai video trimmer",
-              "ai video trimmer free"
             ]
           },
           {
@@ -429,32 +344,19 @@
             "variants": []
           },
           {
-            "phrase": "can i add text to video in youtube editor",
+            "phrase": "auto crop video online",
             "score": 16,
             "autocomplete_hits": 1,
             "best_position": 2,
             "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
-              "can i add captions to video"
+              "auto reframe video online"
             ],
             "variants": [
-              "can i add text to video on iphone",
-              "add text to video software",
-              "add text to video without watermark",
-              "can i add text to video in imovie",
-              "how do i add text to video on iphone",
-              "how do i add text to video in premiere pro",
-              "add subtitles to video editor",
-              "add text to video without watermark free",
-              "add text to video editor",
-              "how do i add text to video in davinci resolve",
-              "how do i add text to video on capcut",
-              "add text to video free software for pc",
-              "add text to video no sign up",
-              "add text to video online free no watermark",
-              "best app add text to video",
-              "how do i add text to video in imovie"
+              "auto crop video for tiktok",
+              "auto crop video",
+              "ai crop video online"
             ]
           },
           {
@@ -478,6 +380,44 @@
               "add subtitles to video for free without watermark",
               "add subtitles to video no sign up",
               "add subtitles to video online free without watermark"
+            ]
+          },
+          {
+            "phrase": "ai video highlight cutter",
+            "score": 15,
+            "autocomplete_hits": 2,
+            "best_position": 0,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper h"
+            ],
+            "variants": [
+              "ai video cutter for reels",
+              "ai video cutter online",
+              "ai video cutter reddit",
+              "ai video cutter online free",
+              "best ai video cutter",
+              "ai video cutter free",
+              "ai video cutter local",
+              "video cutter ai github",
+              "best free ai video cutter",
+              "ai video cutter free online"
+            ]
+          },
+          {
+            "phrase": "how to auto resize video in premiere pro",
+            "score": 15,
+            "autocomplete_hits": 2,
+            "best_position": 0,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "how to auto reframe video"
+            ],
+            "variants": [
+              "how to use auto reframe in premiere pro",
+              "ai video cutter premiere pro"
             ]
           },
           {
@@ -509,11 +449,27 @@
               "ai video clipper p"
             ],
             "variants": []
+          },
+          {
+            "phrase": "auto reframe video editor",
+            "score": 14,
+            "autocomplete_hits": 2,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "auto reframe video",
+              "auto reframe video software"
+            ],
+            "variants": [
+              "auto reframe video app",
+              "auto reframe video capcut"
+            ]
           }
         ],
-        "phrases_clustered_into": 38,
-        "clusters_not_shown": 23,
-        "already_covered": 135
+        "phrases_clustered_into": 34,
+        "clusters_not_shown": 19,
+        "already_covered": 177
       }
     },
     {
@@ -523,8 +479,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-05",
-          "end": "2026-09-02"
+          "start": "2026-08-06",
+          "end": "2026-09-03"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
