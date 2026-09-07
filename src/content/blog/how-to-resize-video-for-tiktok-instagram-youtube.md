@@ -5,7 +5,7 @@ published: 2026-09-05
 tags: ["guide", "short-form"]
 ---
 
-Before you resize anything, the first question is which shape you actually need — get that wrong and no amount of "auto resize" fixes it afterwards.
+<p class="answer">Before you resize anything, the first question is which shape you actually need — get that wrong and no amount of "auto resize" fixes it afterwards.</p>
 
 ## Which ratio goes where
 

@@ -5,7 +5,7 @@ published: 2026-07-20
 tags: ["guide", "short-form"]
 ---
 
-Most people approach this backwards. They open the two-hour recording, start scrubbing from the beginning, and give up around the twenty-minute mark. The recording is not the problem — the order of operations is.
+<p class="answer">Most people approach this backwards. They open the two-hour recording, start scrubbing from the beginning, and give up around the twenty-minute mark. The recording is not the problem — the order of operations is.</p>
 
 Here is the process that works, whether you do it by hand or with a tool.
 

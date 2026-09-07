@@ -5,7 +5,7 @@ published: 2026-09-04
 tags: ["guide", "captions"]
 ---
 
-Most of the advice on captioning a video skips the one decision that determines whether anyone reads them at all: burned-in, or uploaded as a separate file. Get this wrong and the rest of the styling doesn't matter.
+<p class="answer">Most of the advice on captioning a video skips the one decision that determines whether anyone reads them at all: burned-in, or uploaded as a separate file. Get this wrong and the rest of the styling doesn't matter.</p>
 
 ## Burned-in vs. uploaded: pick burned-in for short-form
 

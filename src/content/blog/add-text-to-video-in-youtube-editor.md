@@ -5,7 +5,7 @@ published: 2026-09-05
 tags: ["guide", "tools"]
 ---
 
-Short answer: YouTube Studio has a solid built-in tool for captions and subtitles — it is not a text-overlay editor, and the two get confused often enough to be worth separating.
+<p class="answer">Short answer: YouTube Studio has a solid built-in tool for captions and subtitles — it is not a text-overlay editor, and the two get confused often enough to be worth separating.</p>
 
 ## What it covers
 

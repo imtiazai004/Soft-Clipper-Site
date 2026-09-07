@@ -5,7 +5,7 @@ published: 2026-09-04
 tags: ["guide", "tools"]
 ---
 
-Search for "AI video clipper" and you get a wall of nearly identical landing pages: a gradient, a demo video, and the word "AI" repeated until it stops meaning anything. Underneath the marketing, every one of these tools does the same four jobs. Knowing what those jobs are is the fastest way to tell a good one from a bad one in the five minutes before you pay for it.
+<p class="answer">Search for "AI video clipper" and you get a wall of nearly identical landing pages: a gradient, a demo video, and the word "AI" repeated until it stops meaning anything. Underneath the marketing, every one of these tools does the same four jobs. Knowing what those jobs are is the fastest way to tell a good one from a bad one in the five minutes before you pay for it.</p>
 
 ## The four jobs, in order
 

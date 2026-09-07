@@ -5,7 +5,7 @@ published: 2026-07-24
 tags: ["guide", "reframing"]
 ---
 
-You run a clip through an automatic tool, and something about the result is off. The words are right, the timing is right, and yet it looks like nobody edited it. Almost always it is the framing, and almost always it is one of three specific failures.
+<p class="answer">You run a clip through an automatic tool, and something about the result is off. The words are right, the timing is right, and yet it looks like nobody edited it. Almost always it is the framing, and almost always it is one of three specific failures.</p>
 
 ## Failure 1: the centre crop
 
