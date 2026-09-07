@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-07",
-  "generated_at": "2026-09-07 08:48 UTC",
+  "generated_at": "2026-09-07 19:34 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -36,12 +36,13 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 37,
+        "total_urls_checked": 38,
         "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
+          "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/"
         ],
         "crawled_not_indexed": [],
@@ -88,8 +89,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 38,
-          "citable": 36,
+          "pages_checked": 39,
+          "citable": 37,
           "skipped": 0,
           "needs_work": [
             {
@@ -203,7 +204,6 @@
               "ai video clipper unlimited",
               "what is the best ai video clipper",
               "ai video clipper twitch",
-              "ai video auto clipper",
               "free ai video clipper reddit",
               "local ai video clipper",
               "video to ai video clipper",
@@ -336,22 +336,6 @@
             "variants": []
           },
           {
-            "phrase": "auto crop video online",
-            "score": 16,
-            "autocomplete_hits": 1,
-            "best_position": 2,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "auto reframe video online"
-            ],
-            "variants": [
-              "auto crop video for tiktok",
-              "auto crop video",
-              "ai crop video online"
-            ]
-          },
-          {
             "phrase": "add subtitles to video and translate",
             "score": 15,
             "autocomplete_hits": 1,
@@ -398,21 +382,6 @@
             ]
           },
           {
-            "phrase": "how to auto resize video in premiere pro",
-            "score": 15,
-            "autocomplete_hits": 2,
-            "best_position": 0,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "how to auto reframe video"
-            ],
-            "variants": [
-              "how to use auto reframe in premiere pro",
-              "ai video cutter premiere pro"
-            ]
-          },
-          {
             "phrase": "what apps add captions to videos",
             "score": 15,
             "autocomplete_hits": 1,
@@ -443,25 +412,48 @@
             "variants": []
           },
           {
-            "phrase": "auto reframe video editor",
+            "phrase": "free ai video clipper without watermark",
             "score": 14,
             "autocomplete_hits": 2,
             "best_position": 0,
             "competitors_covering": 0,
             "we_cover_it": false,
             "seen_from": [
-              "auto reframe video",
-              "auto reframe video software"
+              "ai video clipper without",
+              "ai video clipper w"
             ],
-            "variants": [
-              "auto reframe video app",
-              "auto reframe video capcut"
-            ]
+            "variants": []
+          },
+          {
+            "phrase": "ai video clipper & lora captioner",
+            "score": 13,
+            "autocomplete_hits": 2,
+            "best_position": 1,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper c",
+              "ai video clipper l"
+            ],
+            "variants": []
+          },
+          {
+            "phrase": "ai video clipper from youtube",
+            "score": 13,
+            "autocomplete_hits": 2,
+            "best_position": 4,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper for",
+              "ai video clipper f"
+            ],
+            "variants": []
           }
         ],
-        "phrases_clustered_into": 34,
-        "clusters_not_shown": 19,
-        "already_covered": 177
+        "phrases_clustered_into": 33,
+        "clusters_not_shown": 18,
+        "already_covered": 186
       }
     },
     {
