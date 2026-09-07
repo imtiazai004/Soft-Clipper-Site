@@ -135,7 +135,7 @@ const all = groups.flatMap((g) => g.items);
 <Page
 	title="Frequently asked questions"
 	description={`Answers about ${SITE.name}: pricing, licensing, system requirements, privacy, AI keys and what the app can and cannot do.`}
-	intro="Everything people ask before buying, answered plainly — including the parts where the answer is no."
+	intro={`Everything people ask before buying ${SITE.name}, answered plainly — pricing, licensing, system requirements, privacy and AI keys — including the parts where the honest answer is no, not a vague workaround.`}
 	eyebrow="FAQ"
 	crumbs={crumbs}
 	schema={[faqSchema(all), breadcrumbSchema(crumbs)]}
