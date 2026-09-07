@@ -52,7 +52,14 @@ const {
 			  on every line is a pattern.
 			*/}
 			<h1 class="gradient-text">{heading ?? title}</h1>
-			{intro && <p class="lead">{intro}</p>}
+			{/*
+			  "answer" alongside "lead" is not a style hook — it is what the GEO
+			  agent's citability check greps the built HTML for. Keep both classes:
+			  "lead" is the visual treatment, "answer" is what makes this the
+			  paragraph an assistant can lift and quote whole. Every `intro` prop
+			  needs to stay a self-contained 20-90 word answer for that to hold.
+			*/}
+			{intro && <p class="lead answer">{intro}</p>}
 		</div>
 	</section>
 
