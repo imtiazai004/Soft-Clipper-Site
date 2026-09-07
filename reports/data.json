@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-06",
-  "generated_at": "2026-09-06 17:56 UTC",
+  "generated": "2026-09-07",
+  "generated_at": "2026-09-07 08:48 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-06",
-          "end": "2026-09-03"
+          "start": "2026-08-07",
+          "end": "2026-09-04"
         },
-        "total_query_page_rows": 18,
+        "total_query_page_rows": 17,
         "striking_distance": [
           {
             "query": "clipper soft",
@@ -89,31 +89,23 @@
         },
         "citability": {
           "pages_checked": 38,
-          "citable": 18,
+          "citable": 36,
           "skipped": 0,
-          "needs_work": [],
-          "opportunities": [
-            "https://softclipper.pro/about/",
-            "https://softclipper.pro/affiliates/",
-            "https://softclipper.pro/blog/",
-            "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
-            "https://softclipper.pro/blog/how-ai-video-clippers-work/",
-            "https://softclipper.pro/blog/how-to-add-captions-to-video/",
-            "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
-            "https://softclipper.pro/blog/turn-long-videos-into-shorts/",
-            "https://softclipper.pro/blog/why-auto-reframing-looks-wrong/",
-            "https://softclipper.pro/contact/",
-            "https://softclipper.pro/faq/",
-            "https://softclipper.pro/features/",
-            "https://softclipper.pro/features/ai-moment-detection/",
-            "https://softclipper.pro/features/highlight-reel/",
-            "https://softclipper.pro/help/",
-            "https://softclipper.pro/help/install/",
-            "https://softclipper.pro/help/troubleshooting/",
-            "https://softclipper.pro/legal/privacy/",
-            "https://softclipper.pro/legal/terms/",
-            "https://softclipper.pro/use-cases/"
-          ]
+          "needs_work": [
+            {
+              "url": "https://softclipper.pro/help/",
+              "issues": [
+                "answer block very short (19 words)"
+              ]
+            },
+            {
+              "url": "https://softclipper.pro/legal/refund/",
+              "issues": [
+                "answer block very short (11 words)"
+              ]
+            }
+          ],
+          "opportunities": []
         }
       },
       "content": {
@@ -479,8 +471,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-06",
-          "end": "2026-09-03"
+          "start": "2026-08-07",
+          "end": "2026-09-04"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
@@ -515,19 +507,13 @@
       },
       "geo": {
         "blocked_crawlers": [],
-        "retrieval_not_named": [
-          "OAI-SearchBot",
-          "ChatGPT-User",
-          "Claude-SearchBot",
-          "Claude-User",
-          "Perplexity-User"
-        ],
+        "retrieval_not_named": [],
         "robots_error": null,
         "llms_txt": {
           "llms_url": "https://aisofttechsolution.com/llms.txt",
           "exists": true,
-          "bytes": 4906,
-          "has_facts_block": false,
+          "bytes": 6202,
+          "has_facts_block": true,
           "link_count": 0,
           "dead_links": []
         },
