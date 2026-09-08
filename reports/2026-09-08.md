@@ -20,9 +20,9 @@ _Window 2026-08-08 to 2026-09-05, 18 query/page rows in total._
 
 ### Indexing health
 
-39 URLs checked from the sitemap.
+40 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 5**
+**Never crawled by Google yet: 6**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -30,6 +30,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/how-to-add-captions-to-video/
 - https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/
 - https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/
+- https://softclipper.pro/blog/one-time-pro-license-explained_1/
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
@@ -50,7 +51,7 @@ _4 training crawler(s) blocked on purpose: Meta-ExternalAgent, Amazonbot, CCBot,
 Every link in it still resolves.
 
 
-**Citability:** 37 of 39 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 38 of 40 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
@@ -61,17 +62,11 @@ _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs 
 
 ### Content opportunities
 
-1 search(es) brought people here and found nothing that answers them:
-
-| Impressions | Best position | Query |
-|---:|---:|---|
-| 20 | 26.6 | one-time pro upgrade license |
-
-_These are evidence, not instructions. Drafting only runs when a human picks one, and a draft is never committed to the site automatically._
+Nothing yet. A topic only qualifies once a query has brought at least 10 impressions, still ranks outside the top 20, and no existing page covers it. On a site this new that threshold is simply not reached yet — which is the honest answer, not a broken agent. It will start producing as search history accumulates.
 
 ### Topic ideas (cold start)
 
-_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1121), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 186 of them we already cover; the rest cluster into 33 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 18 lowest-scoring are not listed._
+_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1122), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 186 of them we already cover; the rest cluster into 33 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 18 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -132,7 +127,7 @@ Every answer checked is in good shape.
 
 No retrieval crawler is blocked by robots.txt.
 
-`/llms.txt` present (6202 bytes, with a facts block, 0 links).
+`/llms.txt` present (6434 bytes, with a facts block, 1 links).
 Every link in it still resolves.
 
 

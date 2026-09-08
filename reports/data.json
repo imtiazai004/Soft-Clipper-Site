@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-08",
-  "generated_at": "2026-09-08 08:29 UTC",
+  "generated_at": "2026-09-08 19:11 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -44,14 +44,15 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 38,
+        "total_urls_checked": 39,
         "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
-          "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/"
+          "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
+          "https://softclipper.pro/blog/one-time-pro-license-explained_1/"
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
@@ -97,8 +98,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 39,
-          "citable": 37,
+          "pages_checked": 40,
+          "citable": 38,
           "skipped": 0,
           "needs_work": [
             {
@@ -120,17 +121,7 @@
       "content": {
         "min_impressions": 10,
         "min_position": 20,
-        "topics": [
-          {
-            "query": "one-time pro upgrade license",
-            "impressions": 20,
-            "clicks": 0,
-            "best_position": 26.6,
-            "currently_shown_pages": [
-              "https://softclipper.pro/compare/one-time-vs-subscription/"
-            ]
-          }
-        ]
+        "topics": []
       },
       "coldstart": {
         "seeds": [
@@ -144,7 +135,7 @@
         "requests_made": 150,
         "phrases_found": 356,
         "competitors_read": {
-          "https://www.opus.pro": 1121,
+          "https://www.opus.pro": 1122,
           "https://klap.app": 0,
           "https://vizard.ai": 291,
           "https://www.submagic.co": 878,
@@ -512,9 +503,9 @@
         "llms_txt": {
           "llms_url": "https://aisofttechsolution.com/llms.txt",
           "exists": true,
-          "bytes": 6202,
+          "bytes": 6434,
           "has_facts_block": true,
-          "link_count": 0,
+          "link_count": 1,
           "dead_links": []
         },
         "citability": {
