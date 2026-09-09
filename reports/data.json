@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-08",
-  "generated_at": "2026-09-08 19:11 UTC",
+  "generated": "2026-09-09",
+  "generated_at": "2026-09-09 08:32 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,19 +9,11 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-08",
-          "end": "2026-09-05"
+          "start": "2026-08-09",
+          "end": "2026-09-06"
         },
         "total_query_page_rows": 18,
         "striking_distance": [
-          {
-            "query": "soft clipper",
-            "page": "https://softclipper.pro/",
-            "position": 10.5,
-            "clicks": 0,
-            "impressions": 2,
-            "ctr": 0
-          },
           {
             "query": "clipper soft",
             "page": "https://softclipper.pro/",
@@ -462,8 +454,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-08",
-          "end": "2026-09-05"
+          "start": "2026-08-09",
+          "end": "2026-09-06"
         },
         "total_query_page_rows": 7,
         "striking_distance": [],
@@ -471,20 +463,12 @@
       },
       "indexing": {
         "total_urls_checked": 7,
-        "indexed": 4,
+        "indexed": 6,
         "never_crawled": [],
         "crawled_not_indexed": [
           {
             "url": "https://aisofttechsolution.com/profitscout",
             "reason": "Crawled - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog",
-            "reason": "Alternate page with proper canonical tag"
-          },
-          {
-            "url": "https://aisofttechsolution.com/terms",
-            "reason": "Alternate page with proper canonical tag"
           }
         ],
         "technical_blockers": [],
