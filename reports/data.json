@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-09",
-  "generated_at": "2026-09-09 08:32 UTC",
+  "generated_at": "2026-09-09 19:01 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -36,7 +36,7 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 39,
+        "total_urls_checked": 40,
         "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
@@ -44,6 +44,7 @@
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
+          "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
           "https://softclipper.pro/blog/one-time-pro-license-explained_1/"
         ],
         "crawled_not_indexed": [],
@@ -90,7 +91,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 40,
+          "pages_checked": 41,
           "citable": 38,
           "skipped": 0,
           "needs_work": [
@@ -107,7 +108,9 @@
               ]
             }
           ],
-          "opportunities": []
+          "opportunities": [
+            "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/"
+          ]
         }
       },
       "content": {
@@ -155,65 +158,18 @@
             ]
           },
           {
-            "phrase": "ai video clipper for shorts",
+            "phrase": "how to make a shorts video",
             "score": 22,
-            "autocomplete_hits": 4,
-            "best_position": 0,
-            "competitors_covering": 2,
+            "autocomplete_hits": 2,
+            "best_position": 1,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
-              "ai video clipper for",
-              "ai video clipper f",
-              "ai video clipper s"
+              "turn long videos into shorts i",
+              "turn long videos into shorts p"
             ],
             "variants": [
-              "how to make a shorts video",
-              "ai viral video clipper",
-              "ai video clipper generator",
-              "ai video clipper no watermark",
-              "ai video clipper free",
-              "ai video clipper online",
-              "media io ai video clipper",
-              "veed io ai video clipper",
-              "ai long video clipper",
-              "ai video clipper free online",
-              "free ai video clipper generator",
-              "ai video clipper capcut",
-              "ai video clipper github",
-              "best ai video clipper",
-              "best ai video clipper reddit",
-              "veed ai video clipper",
-              "ai video clipper free trial",
-              "ai video clipper online free",
-              "best ai video clipper free",
-              "free ai video clipper tool",
-              "ai video clipper",
-              "ai video clipper for free",
-              "ai video clipper free reddit",
-              "ai video clipper lora",
-              "ai video clipper reddit",
-              "ai video clipper unlimited",
-              "what is the best ai video clipper",
-              "ai video clipper twitch",
-              "free ai video clipper reddit",
-              "local ai video clipper",
-              "video to ai video clipper",
-              "vmaker ai video clipper",
-              "ai buat video clipper",
-              "ai yt video clipper",
-              "ai edit video clipper",
-              "crayo ai video clipper",
-              "ai pembuat video clipper",
-              "reelify ai video clipper",
-              "videotto ai video clipper",
-              "ai potong video clipper",
-              "completely free ai video clipper",
-              "restream ai video clipper",
-              "ai for video clipper",
-              "ai gaming video clipper",
-              "ai pemotong video clipper",
-              "capcut's free ai video clipper",
-              "reclip ai video clipper"
+              "how to make long video in shorts"
             ]
           },
           {
@@ -403,19 +359,6 @@
             "variants": []
           },
           {
-            "phrase": "free ai video clipper without watermark",
-            "score": 14,
-            "autocomplete_hits": 2,
-            "best_position": 0,
-            "competitors_covering": 0,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper without",
-              "ai video clipper w"
-            ],
-            "variants": []
-          },
-          {
             "phrase": "ai video clipper & lora captioner",
             "score": 13,
             "autocomplete_hits": 2,
@@ -440,11 +383,23 @@
               "ai video clipper f"
             ],
             "variants": []
+          },
+          {
+            "phrase": "auto crop video for tiktok",
+            "score": 12,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "auto reframe video for"
+            ],
+            "variants": []
           }
         ],
-        "phrases_clustered_into": 33,
-        "clusters_not_shown": 18,
-        "already_covered": 186
+        "phrases_clustered_into": 31,
+        "clusters_not_shown": 16,
+        "already_covered": 234
       }
     },
     {

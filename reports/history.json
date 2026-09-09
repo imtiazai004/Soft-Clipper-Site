@@ -929,14 +929,14 @@
     "striking_distance": 1,
     "impressions": 2,
     "clicks": 0,
-    "urls_checked": 39,
-    "never_crawled": 6,
+    "urls_checked": 40,
+    "never_crawled": 7,
     "crawled_not_indexed": 0,
     "blockers": 0,
     "faqs_total": 141,
     "faqs_ready": 141,
     "topic_ideas": 15,
     "pages_citable": 38,
-    "pages_checked_geo": 40
+    "pages_checked_geo": 41
   }
 ]

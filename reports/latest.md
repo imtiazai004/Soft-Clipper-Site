@@ -19,9 +19,9 @@ _Window 2026-08-09 to 2026-09-06, 18 query/page rows in total._
 
 ### Indexing health
 
-40 URLs checked from the sitemap.
+41 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 6**
+**Never crawled by Google yet: 7**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -29,6 +29,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/how-to-add-captions-to-video/
 - https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/
 - https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/
+- https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/one-time-pro-license-explained_1/
 
 **Technical blockers (noindex / robots.txt disallow): 0**
@@ -50,12 +51,16 @@ _4 training crawler(s) blocked on purpose: Meta-ExternalAgent, Amazonbot, CCBot,
 Every link in it still resolves.
 
 
-**Citability:** 38 of 40 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 38 of 41 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
+
+1 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+
+- https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
@@ -65,12 +70,12 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1122), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 186 of them we already cover; the rest cluster into 33 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 18 lowest-scoring are not listed._
+_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1122), klap.app (0), vizard.ai (291), www.submagic.co (878), 2short.ai (0). 234 of them we already cover; the rest cluster into 31 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 16 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
 | 34 | 11 | 1 | 1 | 2 | how to cut long video to short |
-| 22 | 4 | 0 | 2 | 47 | ai video clipper for shorts |
+| 22 | 2 | 1 | 3 | 1 | how to make a shorts video |
 | 21 | 2 | 0 | 3 | 5 | ai video clip software |
 | 21 | 2 | 2 | 3 | 14 | ai video cutting and editing |
 | 20 | 5 | 0 | 0 | 0 | how to turn long videos into viral shorts. the ultimate guide for 2024 |
@@ -81,9 +86,9 @@ _356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro 
 | 15 | 2 | 0 | 1 | 10 | ai video highlight cutter |
 | 15 | 1 | 0 | 1 | 4 | what apps add captions to videos |
 | 14 | 2 | 0 | 0 | 0 | ai video cutting planets in half |
-| 14 | 2 | 0 | 0 | 0 | free ai video clipper without watermark |
 | 13 | 2 | 1 | 0 | 0 | ai video clipper & lora captioner |
 | 13 | 2 | 4 | 1 | 0 | ai video clipper from youtube |
+| 12 | 1 | 0 | 0 | 0 | auto crop video for tiktok |
 
 _**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
 
