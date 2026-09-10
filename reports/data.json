@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-09",
-  "generated_at": "2026-09-09 19:01 UTC",
+  "generated": "2026-09-10",
+  "generated_at": "2026-09-10 08:34 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-09",
-          "end": "2026-09-06"
+          "start": "2026-08-10",
+          "end": "2026-09-07"
         },
-        "total_query_page_rows": 18,
+        "total_query_page_rows": 21,
         "striking_distance": [
           {
             "query": "clipper soft",
@@ -20,6 +20,14 @@
             "position": 15,
             "clicks": 0,
             "impressions": 2,
+            "ctr": 0
+          },
+          {
+            "query": "bno soft clipper",
+            "page": "https://softclipper.pro/",
+            "position": 8,
+            "clicks": 0,
+            "impressions": 1,
             "ctr": 0
           }
         ],
@@ -37,15 +45,14 @@
       },
       "indexing": {
         "total_urls_checked": 40,
-        "indexed": 34,
+        "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
-          "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
-          "https://softclipper.pro/blog/one-time-pro-license-explained_1/"
+          "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/"
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
@@ -409,10 +416,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-09",
-          "end": "2026-09-06"
+          "start": "2026-08-10",
+          "end": "2026-09-07"
         },
-        "total_query_page_rows": 7,
+        "total_query_page_rows": 6,
         "striking_distance": [],
         "cannibalization": []
       },
