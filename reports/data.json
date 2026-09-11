@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-10",
-  "generated_at": "2026-09-10 18:53 UTC",
+  "generated": "2026-09-11",
+  "generated_at": "2026-09-11 08:28 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,11 +9,19 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-10",
-          "end": "2026-09-07"
+          "start": "2026-08-11",
+          "end": "2026-09-08"
         },
-        "total_query_page_rows": 21,
+        "total_query_page_rows": 23,
         "striking_distance": [
+          {
+            "query": "what is a youtube clipper",
+            "page": "https://softclipper.pro/use-cases/youtubers/",
+            "position": 10,
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0
+          },
           {
             "query": "clipper soft",
             "page": "https://softclipper.pro/",
@@ -139,7 +147,7 @@
         "competitors_read": {
           "https://www.opus.pro": 1122,
           "https://klap.app": 0,
-          "https://vizard.ai": 291,
+          "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
         },
@@ -416,8 +424,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-10",
-          "end": "2026-09-07"
+          "start": "2026-08-11",
+          "end": "2026-09-08"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
