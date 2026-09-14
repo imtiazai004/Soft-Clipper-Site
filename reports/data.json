@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-14",
-  "generated_at": "2026-09-14 09:26 UTC",
+  "generated_at": "2026-09-14 20:06 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -52,7 +52,7 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 40,
+        "total_urls_checked": 41,
         "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
@@ -60,7 +60,8 @@
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
-          "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/"
+          "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
+          "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/"
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
@@ -106,7 +107,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 41,
+          "pages_checked": 42,
           "citable": 38,
           "skipped": 0,
           "needs_work": [
@@ -124,7 +125,8 @@
             }
           ],
           "opportunities": [
-            "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/"
+            "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
+            "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/"
           ]
         }
       },

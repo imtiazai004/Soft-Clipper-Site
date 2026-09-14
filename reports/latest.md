@@ -21,9 +21,9 @@ _Window 2026-08-14 to 2026-09-11, 25 query/page rows in total._
 
 ### Indexing health
 
-41 URLs checked from the sitemap.
+42 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 6**
+**Never crawled by Google yet: 7**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -32,6 +32,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/
 - https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
@@ -52,16 +53,17 @@ _4 training crawler(s) blocked on purpose: Meta-ExternalAgent, Amazonbot, CCBot,
 Every link in it still resolves.
 
 
-**Citability:** 38 of 41 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 38 of 42 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-1 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+2 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
