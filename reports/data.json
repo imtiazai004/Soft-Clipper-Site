@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-15",
-  "generated_at": "2026-09-15 19:26 UTC",
+  "generated": "2026-09-16",
+  "generated_at": "2026-09-16 09:01 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,11 +9,19 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-15",
-          "end": "2026-09-12"
+          "start": "2026-08-16",
+          "end": "2026-09-13"
         },
-        "total_query_page_rows": 25,
+        "total_query_page_rows": 24,
         "striking_distance": [
+          {
+            "query": "soft clipper",
+            "page": "https://softclipper.pro/",
+            "position": 19.5,
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0
+          },
           {
             "query": "what is a youtube clipper",
             "page": "https://softclipper.pro/use-cases/youtubers/",
@@ -74,28 +82,7 @@
         "problems": []
       },
       "geo": {
-        "blocked_crawlers": [
-          {
-            "agent": "Meta-ExternalAgent",
-            "purpose": "training",
-            "what": "Meta - training crawl"
-          },
-          {
-            "agent": "Amazonbot",
-            "purpose": "training",
-            "what": "Amazon - Alexa and Amazon AI"
-          },
-          {
-            "agent": "CCBot",
-            "purpose": "training",
-            "what": "Common Crawl - open dataset used by many models"
-          },
-          {
-            "agent": "Bytespider",
-            "purpose": "training",
-            "what": "ByteDance - training crawl"
-          }
-        ],
+        "blocked_crawlers": [],
         "retrieval_not_named": [],
         "robots_error": null,
         "llms_txt": {
@@ -145,7 +132,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 356,
+        "phrases_found": 355,
         "competitors_read": {
           "https://www.opus.pro": 1127,
           "https://klap.app": 0,
@@ -426,8 +413,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-15",
-          "end": "2026-09-12"
+          "start": "2026-08-16",
+          "end": "2026-09-13"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
