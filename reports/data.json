@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-16",
-  "generated_at": "2026-09-16 19:17 UTC",
+  "generated": "2026-09-17",
+  "generated_at": "2026-09-17 09:05 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-16",
-          "end": "2026-09-13"
+          "start": "2026-08-17",
+          "end": "2026-09-14"
         },
         "total_query_page_rows": 24,
         "striking_distance": [
@@ -73,21 +73,12 @@
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
-        "check_errors": [
-          {
-            "url": "https://softclipper.pro/features/",
-            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
-          },
-          {
-            "url": "https://softclipper.pro/features/highlight-reel/",
-            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
-          }
-        ]
+        "check_errors": []
       },
       "aeo": {
-        "pages_checked": 22,
-        "total_faqs": 138,
-        "snippet_ready": 138,
+        "pages_checked": 23,
+        "total_faqs": 141,
+        "snippet_ready": 141,
         "problems": []
       },
       "geo": {
@@ -103,8 +94,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 40,
-          "citable": 36,
+          "pages_checked": 42,
+          "citable": 38,
           "skipped": 0,
           "needs_work": [
             {
@@ -422,10 +413,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-16",
-          "end": "2026-09-13"
+          "start": "2026-08-17",
+          "end": "2026-09-14"
         },
-        "total_query_page_rows": 6,
+        "total_query_page_rows": 5,
         "striking_distance": [],
         "cannibalization": []
       },
