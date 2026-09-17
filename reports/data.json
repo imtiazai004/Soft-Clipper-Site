@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-17",
-  "generated_at": "2026-09-17 09:05 UTC",
+  "generated_at": "2026-09-17 19:33 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -60,7 +60,7 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 41,
+        "total_urls_checked": 42,
         "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
@@ -69,11 +69,21 @@
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
           "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
+          "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/"
         ],
         "crawled_not_indexed": [],
         "technical_blockers": [],
-        "check_errors": []
+        "check_errors": [
+          {
+            "url": "https://softclipper.pro/blog/why-auto-reframing-looks-wrong/",
+            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
+          },
+          {
+            "url": "https://softclipper.pro/compare/",
+            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
+          }
+        ]
       },
       "aeo": {
         "pages_checked": 23,
@@ -94,8 +104,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 42,
-          "citable": 38,
+          "pages_checked": 41,
+          "citable": 37,
           "skipped": 0,
           "needs_work": [
             {
@@ -157,8 +167,7 @@
               "turn long videos into shorts h"
             ],
             "variants": [
-              "how to convert long video to short video",
-              "how to convert long video into short video"
+              "how to convert long video to short video"
             ]
           },
           {
@@ -403,7 +412,7 @@
         ],
         "phrases_clustered_into": 31,
         "clusters_not_shown": 16,
-        "already_covered": 234
+        "already_covered": 235
       }
     },
     {

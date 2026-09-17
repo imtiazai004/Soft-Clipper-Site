@@ -22,9 +22,9 @@ _Window 2026-08-17 to 2026-09-14, 24 query/page rows in total._
 
 ### Indexing health
 
-42 URLs checked from the sitemap.
+43 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 7**
+**Never crawled by Google yet: 8**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -33,10 +33,23 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/
 - https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
+- https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
+
+**Errors while checking: 2**
+
+- https://softclipper.pro/blog/why-auto-reframing-looks-wrong/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
+  "error": {
+    "code": 500,
+    "message": "Internal error encountered.",
+    "status": "INTERNAL"
+  }
+}
+
+- https://softclipper.pro/compare/: HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)
 
 ### Answer-engine readiness (FAQ snippets)
 
@@ -52,7 +65,7 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 38 of 42 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 37 of 41 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
@@ -72,11 +85,11 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1127), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 234 of them we already cover; the rest cluster into 31 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 16 lowest-scoring are not listed._
+_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1127), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 235 of them we already cover; the rest cluster into 31 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 16 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
-| 34 | 11 | 1 | 1 | 2 | how to cut long video to short |
+| 34 | 11 | 1 | 1 | 1 | how to cut long video to short |
 | 22 | 2 | 1 | 3 | 1 | how to make a shorts video |
 | 21 | 2 | 0 | 3 | 5 | ai video clip software |
 | 21 | 2 | 2 | 3 | 14 | ai video cutting and editing |
