@@ -1210,5 +1210,39 @@
     "topic_ideas": 15,
     "pages_citable": 37,
     "pages_checked_geo": 41
+  },
+  {
+    "date": "2026-09-18",
+    "site": "aisofttechsolution.com",
+    "query_rows": 5,
+    "striking_distance": 0,
+    "impressions": 0,
+    "clicks": 0,
+    "urls_checked": 7,
+    "never_crawled": 0,
+    "crawled_not_indexed": 1,
+    "blockers": 0,
+    "faqs_total": 45,
+    "faqs_ready": 45,
+    "topic_ideas": 0,
+    "pages_citable": 0,
+    "pages_checked_geo": 7
+  },
+  {
+    "date": "2026-09-18",
+    "site": "softclipper.pro",
+    "query_rows": 25,
+    "striking_distance": 4,
+    "impressions": 8,
+    "clicks": 0,
+    "urls_checked": 44,
+    "never_crawled": 10,
+    "crawled_not_indexed": 0,
+    "blockers": 0,
+    "faqs_total": 141,
+    "faqs_ready": 141,
+    "topic_ideas": 15,
+    "pages_citable": 39,
+    "pages_checked_geo": 45
   }
 ]
