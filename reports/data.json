@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-18",
-  "generated_at": "2026-09-18 18:49 UTC",
+  "generated": "2026-09-19",
+  "generated_at": "2026-09-19 08:27 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,17 +9,17 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-18",
-          "end": "2026-09-15"
+          "start": "2026-08-19",
+          "end": "2026-09-16"
         },
-        "total_query_page_rows": 25,
+        "total_query_page_rows": 24,
         "striking_distance": [
           {
             "query": "soft clipper",
             "page": "https://softclipper.pro/",
-            "position": 19.5,
+            "position": 17.4,
             "clicks": 0,
-            "impressions": 4,
+            "impressions": 5,
             "ctr": 0
           },
           {
@@ -60,7 +60,7 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 44,
+        "total_urls_checked": 45,
         "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
@@ -68,6 +68,7 @@
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
+          "https://softclipper.pro/blog/ideal-clip-length-for-tiktok-reels-youtube-shorts_1/",
           "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
           "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
@@ -97,8 +98,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 45,
-          "citable": 39,
+          "pages_checked": 46,
+          "citable": 40,
           "skipped": 0,
           "needs_work": [
             {
@@ -137,7 +138,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 355,
+        "phrases_found": 356,
         "competitors_read": {
           "https://www.opus.pro": 1127,
           "https://klap.app": 0,
@@ -405,8 +406,8 @@
             "variants": []
           }
         ],
-        "phrases_clustered_into": 30,
-        "clusters_not_shown": 15,
+        "phrases_clustered_into": 31,
+        "clusters_not_shown": 16,
         "already_covered": 235
       }
     },
@@ -417,8 +418,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-18",
-          "end": "2026-09-15"
+          "start": "2026-08-19",
+          "end": "2026-09-16"
         },
         "total_query_page_rows": 5,
         "striking_distance": [],
