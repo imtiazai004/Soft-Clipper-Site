@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-19",
-  "generated_at": "2026-09-19 18:22 UTC",
+  "generated": "2026-09-20",
+  "generated_at": "2026-09-20 09:00 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-19",
-          "end": "2026-09-16"
+          "start": "2026-08-20",
+          "end": "2026-09-17"
         },
-        "total_query_page_rows": 24,
+        "total_query_page_rows": 23,
         "striking_distance": [
           {
             "query": "soft clipper",
@@ -418,10 +418,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-19",
-          "end": "2026-09-16"
+          "start": "2026-08-20",
+          "end": "2026-09-17"
         },
-        "total_query_page_rows": 5,
+        "total_query_page_rows": 4,
         "striking_distance": [],
         "cannibalization": []
       },
