@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-20",
-  "generated_at": "2026-09-20 18:28 UTC",
+  "generated": "2026-09-21",
+  "generated_at": "2026-09-21 09:29 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-20",
-          "end": "2026-09-17"
+          "start": "2026-08-21",
+          "end": "2026-09-18"
         },
-        "total_query_page_rows": 23,
+        "total_query_page_rows": 22,
         "striking_distance": [
           {
             "query": "soft clipper",
@@ -47,17 +47,7 @@
             "ctr": 0
           }
         ],
-        "cannibalization": [
-          {
-            "query": "softclip",
-            "pages": [
-              "https://softclipper.pro/",
-              "https://softclipper.pro/compare/opus-clip-alternative/",
-              "https://softclipper.pro/help/"
-            ],
-            "impressions": 6
-          }
-        ]
+        "cannibalization": []
       },
       "indexing": {
         "total_urls_checked": 45,
@@ -200,34 +190,6 @@
             ]
           },
           {
-            "phrase": "ai video cutting and editing",
-            "score": 21,
-            "autocomplete_hits": 2,
-            "best_position": 2,
-            "competitors_covering": 3,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper vs",
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video cutting editing",
-              "ai video cutting tool",
-              "ai video cutting tool free",
-              "ai video cutting planets",
-              "ai video cutting elements",
-              "best ai video cutting tool",
-              "ai video cake cutting",
-              "ai video cutting program",
-              "ai cutting video prompt",
-              "ai video cutting glass",
-              "ai video of cutting things",
-              "best ai for video cutting",
-              "ai video cutting app",
-              "ai video of cutting planets"
-            ]
-          },
-          {
             "phrase": "how to turn long videos into viral shorts. the ultimate guide for 2024",
             "score": 20,
             "autocomplete_hits": 5,
@@ -244,6 +206,32 @@
             "variants": []
           },
           {
+            "phrase": "ai video cutting and editing",
+            "score": 19,
+            "autocomplete_hits": 2,
+            "best_position": 2,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper vs"
+            ],
+            "variants": [
+              "ai video cutting editing",
+              "ai video cutting tool",
+              "ai video cutting tool free",
+              "ai video cutting planets",
+              "ai video cutting elements",
+              "best ai video cutting tool",
+              "ai video cake cutting",
+              "ai video cutting program",
+              "ai cutting video prompt",
+              "ai video cutting glass",
+              "ai video of cutting things",
+              "best ai for video cutting",
+              "ai video of cutting planets"
+            ]
+          },
+          {
             "phrase": "ai video clipping app",
             "score": 18,
             "autocomplete_hits": 1,
@@ -255,8 +243,7 @@
             ],
             "variants": [
               "ai video clipping tool",
-              "ai video cutter app",
-              "ai video trimming app"
+              "ai video cutter app"
             ]
           },
           {
@@ -355,19 +342,6 @@
             ]
           },
           {
-            "phrase": "ai video cutting planets in half",
-            "score": 14,
-            "autocomplete_hits": 2,
-            "best_position": 0,
-            "competitors_covering": 0,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper i",
-              "ai video clipper p"
-            ],
-            "variants": []
-          },
-          {
             "phrase": "ai video clipper & lora captioner",
             "score": 13,
             "autocomplete_hits": 2,
@@ -404,11 +378,23 @@
               "auto reframe video for"
             ],
             "variants": []
+          },
+          {
+            "phrase": "how to shorten video length",
+            "score": 12,
+            "autocomplete_hits": 1,
+            "best_position": 3,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "turn long videos into shorts r"
+            ],
+            "variants": []
           }
         ],
-        "phrases_clustered_into": 31,
-        "clusters_not_shown": 16,
-        "already_covered": 235
+        "phrases_clustered_into": 32,
+        "clusters_not_shown": 17,
+        "already_covered": 236
       }
     },
     {
@@ -418,8 +404,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-20",
-          "end": "2026-09-17"
+          "start": "2026-08-21",
+          "end": "2026-09-18"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
