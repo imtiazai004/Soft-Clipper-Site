@@ -75,25 +75,25 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_356 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1127), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 236 of them we already cover; the rest cluster into 32 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 17 lowest-scoring are not listed._
+_365 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1127), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 240 of them we already cover; the rest cluster into 33 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 18 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
 | 34 | 11 | 1 | 1 | 1 | how to cut long video to short |
 | 22 | 2 | 1 | 3 | 1 | how to make a shorts video |
 | 21 | 2 | 0 | 3 | 5 | ai video clip software |
+| 20 | 2 | 0 | 2 | 2 | ai video clipping app |
 | 20 | 5 | 0 | 0 | 0 | how to turn long videos into viral shorts. the ultimate guide for 2024 |
-| 19 | 2 | 2 | 3 | 13 | ai video cutting and editing |
-| 18 | 1 | 0 | 2 | 2 | ai video clipping app |
+| 19 | 2 | 2 | 3 | 14 | ai video cutting and editing |
 | 17 | 2 | 1 | 2 | 6 | convert long video into youtube shorts |
 | 16 | 2 | 4 | 2 | 0 | ai long form video clipper |
 | 15 | 1 | 0 | 1 | 10 | add subtitles to video and translate |
-| 15 | 2 | 0 | 1 | 10 | ai video highlight cutter |
-| 15 | 1 | 0 | 1 | 4 | what apps add captions to videos |
+| 15 | 1 | 0 | 1 | 5 | what apps add captions to videos |
+| 14 | 2 | 1 | 1 | 10 | ai video highlight cutter |
 | 13 | 2 | 1 | 0 | 0 | ai video clipper & lora captioner |
 | 13 | 2 | 4 | 1 | 0 | ai video clipper from youtube |
+| 12 | 1 | 0 | 0 | 0 | ai video clipper hugging face |
 | 12 | 1 | 0 | 0 | 0 | auto crop video for tiktok |
-| 12 | 1 | 3 | 1 | 0 | how to shorten video length |
 
 _**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
 

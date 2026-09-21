@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-21",
-  "generated_at": "2026-09-21 09:29 UTC",
+  "generated_at": "2026-09-21 20:17 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -128,7 +128,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 356,
+        "phrases_found": 365,
         "competitors_read": {
           "https://www.opus.pro": 1127,
           "https://klap.app": 0,
@@ -190,6 +190,22 @@
             ]
           },
           {
+            "phrase": "ai video clipping app",
+            "score": 20,
+            "autocomplete_hits": 2,
+            "best_position": 0,
+            "competitors_covering": 2,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper",
+              "ai video clipper a"
+            ],
+            "variants": [
+              "ai video clipping tool",
+              "ai video cutter app"
+            ]
+          },
+          {
             "phrase": "how to turn long videos into viral shorts. the ultimate guide for 2024",
             "score": 20,
             "autocomplete_hits": 5,
@@ -218,32 +234,18 @@
             "variants": [
               "ai video cutting editing",
               "ai video cutting tool",
+              "best ai video cutting tool",
+              "ai cutting video maker",
               "ai video cutting tool free",
               "ai video cutting planets",
               "ai video cutting elements",
-              "best ai video cutting tool",
               "ai video cake cutting",
               "ai video cutting program",
               "ai cutting video prompt",
-              "ai video cutting glass",
               "ai video of cutting things",
-              "best ai for video cutting",
+              "ai video cutting glass",
+              "best ai video cutting",
               "ai video of cutting planets"
-            ]
-          },
-          {
-            "phrase": "ai video clipping app",
-            "score": 18,
-            "autocomplete_hits": 1,
-            "best_position": 0,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video clipping tool",
-              "ai video cutter app"
             ]
           },
           {
@@ -302,10 +304,28 @@
             ]
           },
           {
-            "phrase": "ai video highlight cutter",
+            "phrase": "what apps add captions to videos",
             "score": 15,
-            "autocomplete_hits": 2,
+            "autocomplete_hits": 1,
             "best_position": 0,
+            "competitors_covering": 1,
+            "we_cover_it": false,
+            "seen_from": [
+              "what is add captions to video"
+            ],
+            "variants": [
+              "how to add captions to videos on iphone",
+              "what app can add captions to videos",
+              "how to add captions to videos on instagram",
+              "can capcut add captions to videos",
+              "how to add captions to videos in canvas studio"
+            ]
+          },
+          {
+            "phrase": "ai video highlight cutter",
+            "score": 14,
+            "autocomplete_hits": 2,
+            "best_position": 1,
             "competitors_covering": 1,
             "we_cover_it": false,
             "seen_from": [
@@ -317,28 +337,11 @@
               "ai video cutter reddit",
               "ai video cutter online free",
               "best ai video cutter",
+              "ai video cutter github",
               "ai video cutter free",
               "ai video cutter local",
-              "video cutter ai github",
               "best free ai video cutter",
               "ai video cutter free online"
-            ]
-          },
-          {
-            "phrase": "what apps add captions to videos",
-            "score": 15,
-            "autocomplete_hits": 1,
-            "best_position": 0,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "what is add captions to video"
-            ],
-            "variants": [
-              "how to add captions to videos on instagram",
-              "how to add captions to videos on iphone",
-              "how to add captions to videos on youtube",
-              "can capcut add captions to videos"
             ]
           },
           {
@@ -368,6 +371,18 @@
             "variants": []
           },
           {
+            "phrase": "ai video clipper hugging face",
+            "score": 12,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper h"
+            ],
+            "variants": []
+          },
+          {
             "phrase": "auto crop video for tiktok",
             "score": 12,
             "autocomplete_hits": 1,
@@ -378,23 +393,11 @@
               "auto reframe video for"
             ],
             "variants": []
-          },
-          {
-            "phrase": "how to shorten video length",
-            "score": 12,
-            "autocomplete_hits": 1,
-            "best_position": 3,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "turn long videos into shorts r"
-            ],
-            "variants": []
           }
         ],
-        "phrases_clustered_into": 32,
-        "clusters_not_shown": 17,
-        "already_covered": 236
+        "phrases_clustered_into": 33,
+        "clusters_not_shown": 18,
+        "already_covered": 240
       }
     },
     {
