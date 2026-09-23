@@ -19,9 +19,9 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-47 URLs checked from the sitemap.
+48 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 12**
+**Never crawled by Google yet: 13**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -32,6 +32,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/ideal-clip-length-for-tiktok-reels-youtube-shorts_1/
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
+- https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
@@ -54,17 +55,18 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 47 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 48 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-5 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+6 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
+- https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
