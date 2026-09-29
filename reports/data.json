@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-28",
-  "generated_at": "2026-09-28 21:34 UTC",
+  "generated": "2026-09-29",
+  "generated_at": "2026-09-29 10:19 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-28",
-          "end": "2026-09-25"
+          "start": "2026-08-29",
+          "end": "2026-09-26"
         },
         "total_query_page_rows": 17,
         "striking_distance": [
@@ -46,7 +46,7 @@
               "https://softclipper.pro/blog/one-time-pro-license-explained_1/",
               "https://softclipper.pro/compare/one-time-vs-subscription/"
             ],
-            "impressions": 10
+            "impressions": 9
           }
         ]
       },
@@ -414,8 +414,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-08-28",
-          "end": "2026-09-25"
+          "start": "2026-08-29",
+          "end": "2026-09-26"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
