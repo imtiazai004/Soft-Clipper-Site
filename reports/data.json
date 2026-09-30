@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-30",
-  "generated_at": "2026-09-30 10:10 UTC",
+  "generated_at": "2026-09-30 20:30 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -51,7 +51,7 @@
         ]
       },
       "indexing": {
-        "total_urls_checked": 48,
+        "total_urls_checked": 49,
         "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
@@ -62,6 +62,7 @@
           "https://softclipper.pro/blog/ideal-clip-length-for-tiktok-reels-youtube-shorts_1/",
           "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
           "https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/",
+          "https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
           "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
@@ -92,7 +93,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 49,
+          "pages_checked": 50,
           "citable": 40,
           "skipped": 0,
           "needs_work": [
@@ -112,6 +113,7 @@
           "opportunities": [
             "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
             "https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/",
+            "https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
@@ -135,7 +137,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 365,
+        "phrases_found": 367,
         "competitors_read": {
           "https://www.opus.pro": 1139,
           "https://klap.app": 0,
@@ -404,7 +406,7 @@
         ],
         "phrases_clustered_into": 32,
         "clusters_not_shown": 17,
-        "already_covered": 241
+        "already_covered": 242
       }
     },
     {

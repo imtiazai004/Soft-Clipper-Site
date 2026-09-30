@@ -20,9 +20,9 @@ _Window 2026-08-30 to 2026-09-27, 15 query/page rows in total._
 
 ### Indexing health
 
-49 URLs checked from the sitemap.
+50 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 14**
+**Never crawled by Google yet: 15**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -33,6 +33,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/ideal-clip-length-for-tiktok-reels-youtube-shorts_1/
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/
+- https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
@@ -57,17 +58,18 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-7 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+8 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/
+- https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
@@ -82,7 +84,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_365 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1139), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 241 of them we already cover; the rest cluster into 32 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 17 lowest-scoring are not listed._
+_367 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1139), klap.app (0), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 242 of them we already cover; the rest cluster into 32 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 17 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
