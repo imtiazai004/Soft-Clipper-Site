@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-01",
-  "generated_at": "2026-10-01 10:39 UTC",
+  "generated_at": "2026-10-01 20:45 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -140,7 +140,7 @@
         "phrases_found": 367,
         "competitors_read": {
           "https://www.opus.pro": 1139,
-          "https://klap.app": 0,
+          "https://klap.app": 290,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -149,10 +149,10 @@
         "gaps": [
           {
             "phrase": "how to cut long video to short",
-            "score": 30,
+            "score": 33,
             "autocomplete_hits": 9,
             "best_position": 1,
-            "competitors_covering": 1,
+            "competitors_covering": 2,
             "we_cover_it": false,
             "seen_from": [
               "best turn long videos into shorts",
@@ -167,10 +167,10 @@
           },
           {
             "phrase": "ai video cutting software",
-            "score": 23,
+            "score": 26,
             "autocomplete_hits": 2,
             "best_position": 0,
-            "competitors_covering": 3,
+            "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper software",
@@ -198,10 +198,10 @@
           },
           {
             "phrase": "how to make a shorts video",
-            "score": 22,
+            "score": 25,
             "autocomplete_hits": 2,
             "best_position": 1,
-            "competitors_covering": 3,
+            "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
               "turn long videos into shorts i",
@@ -213,10 +213,10 @@
           },
           {
             "phrase": "ai video clip api",
-            "score": 18,
+            "score": 21,
             "autocomplete_hits": 1,
             "best_position": 3,
-            "competitors_covering": 3,
+            "competitors_covering": 4,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper a"
@@ -228,10 +228,10 @@
           },
           {
             "phrase": "ai video clipping app",
-            "score": 18,
+            "score": 21,
             "autocomplete_hits": 1,
             "best_position": 0,
-            "competitors_covering": 2,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper a"
@@ -243,18 +243,18 @@
           },
           {
             "phrase": "convert long video into youtube shorts",
-            "score": 17,
+            "score": 20,
             "autocomplete_hits": 2,
             "best_position": 1,
-            "competitors_covering": 2,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
               "turn long videos into shorts y"
             ],
             "variants": [
-              "convert long video into viral shorts",
               "how to convert long video in shorts",
               "convert video into shorts size",
+              "convert long video into viral shorts",
               "convert video into shorts online free",
               "convert full video into shorts free",
               "turn video into youtube shorts format"
@@ -262,6 +262,60 @@
           },
           {
             "phrase": "ai long form video clipper",
+            "score": 19,
+            "autocomplete_hits": 2,
+            "best_position": 4,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper for",
+              "ai video clipper l"
+            ],
+            "variants": []
+          },
+          {
+            "phrase": "what apps add captions to videos",
+            "score": 18,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 2,
+            "we_cover_it": false,
+            "seen_from": [
+              "what is add captions to video"
+            ],
+            "variants": [
+              "how to add captions to videos on iphone",
+              "what app can add captions to videos",
+              "how to add captions to videos on instagram",
+              "how to add captions to videos on tiktok",
+              "can capcut add captions to videos"
+            ]
+          },
+          {
+            "phrase": "ai video highlight cutter",
+            "score": 17,
+            "autocomplete_hits": 2,
+            "best_position": 1,
+            "competitors_covering": 2,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper h"
+            ],
+            "variants": [
+              "ai video cutter for reels",
+              "ai video cutter online",
+              "ai video cutter reddit",
+              "ai video cutter online free",
+              "best ai video cutter",
+              "ai video cutter github",
+              "ai video cutter free",
+              "ai video cutter local",
+              "best free ai video cutter",
+              "ai video cutter free online"
+            ]
+          },
+          {
+            "phrase": "ai video clipper from youtube",
             "score": 16,
             "autocomplete_hits": 2,
             "best_position": 4,
@@ -269,7 +323,7 @@
             "we_cover_it": false,
             "seen_from": [
               "ai video clipper for",
-              "ai video clipper l"
+              "ai video clipper f"
             ],
             "variants": []
           },
@@ -297,47 +351,6 @@
             ]
           },
           {
-            "phrase": "what apps add captions to videos",
-            "score": 15,
-            "autocomplete_hits": 1,
-            "best_position": 0,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "what is add captions to video"
-            ],
-            "variants": [
-              "how to add captions to videos on iphone",
-              "what app can add captions to videos",
-              "how to add captions to videos on instagram",
-              "how to add captions to videos on tiktok",
-              "can capcut add captions to videos"
-            ]
-          },
-          {
-            "phrase": "ai video highlight cutter",
-            "score": 14,
-            "autocomplete_hits": 2,
-            "best_position": 1,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper h"
-            ],
-            "variants": [
-              "ai video cutter for reels",
-              "ai video cutter online",
-              "ai video cutter reddit",
-              "ai video cutter online free",
-              "best ai video cutter",
-              "ai video cutter github",
-              "ai video cutter free",
-              "ai video cutter local",
-              "best free ai video cutter",
-              "ai video cutter free online"
-            ]
-          },
-          {
             "phrase": "ai video clipper & lora captioner",
             "score": 13,
             "autocomplete_hits": 2,
@@ -351,15 +364,14 @@
             "variants": []
           },
           {
-            "phrase": "ai video clipper from youtube",
+            "phrase": "how to make a long video from short clips",
             "score": 13,
-            "autocomplete_hits": 2,
-            "best_position": 4,
-            "competitors_covering": 1,
+            "autocomplete_hits": 1,
+            "best_position": 8,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
-              "ai video clipper for",
-              "ai video clipper f"
+              "turn long videos into shorts h"
             ],
             "variants": []
           },
@@ -384,18 +396,6 @@
             "we_cover_it": false,
             "seen_from": [
               "auto reframe video for"
-            ],
-            "variants": []
-          },
-          {
-            "phrase": "how to shorten video length",
-            "score": 12,
-            "autocomplete_hits": 1,
-            "best_position": 3,
-            "competitors_covering": 1,
-            "we_cover_it": false,
-            "seen_from": [
-              "turn long videos into shorts r"
             ],
             "variants": []
           }
