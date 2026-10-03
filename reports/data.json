@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-02",
-  "generated_at": "2026-10-02 20:20 UTC",
+  "generated": "2026-10-03",
+  "generated_at": "2026-10-03 09:36 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-01",
-          "end": "2026-09-29"
+          "start": "2026-09-02",
+          "end": "2026-09-30"
         },
         "total_query_page_rows": 14,
         "striking_distance": [
@@ -137,7 +137,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 367,
+        "phrases_found": 368,
         "competitors_read": {
           "https://www.opus.pro": 1139,
           "https://klap.app": 290,
@@ -412,8 +412,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-01",
-          "end": "2026-09-29"
+          "start": "2026-09-02",
+          "end": "2026-09-30"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
