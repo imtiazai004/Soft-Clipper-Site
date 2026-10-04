@@ -41,6 +41,10 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
+**Crawled but not indexed: 1** (worth investigating)
+
+- https://softclipper.pro/blog/one-time-pro-license-explained_1/ — Crawled - currently not indexed
+
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 

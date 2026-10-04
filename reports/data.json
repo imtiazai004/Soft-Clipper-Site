@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-04",
-  "generated_at": "2026-10-04 10:23 UTC",
+  "generated_at": "2026-10-04 18:59 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -52,7 +52,7 @@
       },
       "indexing": {
         "total_urls_checked": 49,
-        "indexed": 35,
+        "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
@@ -70,7 +70,12 @@
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
         ],
-        "crawled_not_indexed": [],
+        "crawled_not_indexed": [
+          {
+            "url": "https://softclipper.pro/blog/one-time-pro-license-explained_1/",
+            "reason": "Crawled - currently not indexed"
+          }
+        ],
         "technical_blockers": [],
         "check_errors": []
       },

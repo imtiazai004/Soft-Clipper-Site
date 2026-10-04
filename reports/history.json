@@ -1781,7 +1781,7 @@
     "clicks": 0,
     "urls_checked": 49,
     "never_crawled": 15,
-    "crawled_not_indexed": 0,
+    "crawled_not_indexed": 1,
     "blockers": 0,
     "faqs_total": 141,
     "faqs_ready": 141,
