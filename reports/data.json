@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-04",
-  "generated_at": "2026-10-04 18:59 UTC",
+  "generated": "2026-10-05",
+  "generated_at": "2026-10-05 11:03 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-03",
-          "end": "2026-10-01"
+          "start": "2026-09-04",
+          "end": "2026-10-02"
         },
-        "total_query_page_rows": 14,
+        "total_query_page_rows": 15,
         "striking_distance": [
           {
             "query": "soft clipper",
@@ -289,9 +289,9 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on instagram",
               "how to add captions to videos on iphone",
               "what app can add captions to videos",
+              "how to add captions to videos on instagram",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -417,8 +417,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-03",
-          "end": "2026-10-01"
+          "start": "2026-09-04",
+          "end": "2026-10-02"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
