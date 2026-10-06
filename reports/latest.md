@@ -21,7 +21,7 @@ _Window 2026-09-05 to 2026-10-03, 15 query/page rows in total._
 
 50 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 14**
+**Never crawled by Google yet: 15**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -36,6 +36,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
@@ -45,17 +46,6 @@ _These need a "Request indexing" click in Search Console._
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
-
-**Errors while checking: 1**
-
-- https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
-  "error": {
-    "code": 500,
-    "message": "Internal error encountered.",
-    "status": "INTERNAL"
-  }
-}
-
 
 ### Answer-engine readiness (FAQ snippets)
 
@@ -71,20 +61,21 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-7 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+8 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/
 - https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 

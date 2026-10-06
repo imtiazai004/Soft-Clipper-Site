@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-06",
-  "generated_at": "2026-10-06 10:59 UTC",
+  "generated_at": "2026-10-06 20:45 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -44,7 +44,7 @@
       },
       "indexing": {
         "total_urls_checked": 49,
-        "indexed": 35,
+        "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
@@ -58,6 +58,7 @@
           "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
           "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
+          "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
         ],
@@ -68,12 +69,7 @@
           }
         ],
         "technical_blockers": [],
-        "check_errors": [
-          {
-            "url": "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
-            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
-          }
-        ]
+        "check_errors": []
       },
       "aeo": {
         "pages_checked": 23,
@@ -94,7 +90,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 49,
+          "pages_checked": 50,
           "citable": 40,
           "skipped": 0,
           "needs_work": [
@@ -117,6 +113,7 @@
             "https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
+            "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
           ]
@@ -284,9 +281,9 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on instagram",
               "how to add captions to videos on iphone",
               "what app can add captions to videos",
+              "how to add captions to videos on instagram",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
