@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-06",
-  "generated_at": "2026-10-06 20:45 UTC",
+  "generated": "2026-10-07",
+  "generated_at": "2026-10-07 10:46 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-05",
-          "end": "2026-10-03"
+          "start": "2026-09-06",
+          "end": "2026-10-04"
         },
         "total_query_page_rows": 15,
         "striking_distance": [
@@ -31,16 +31,7 @@
             "ctr": 0
           }
         ],
-        "cannibalization": [
-          {
-            "query": "one-time pro upgrade license",
-            "pages": [
-              "https://softclipper.pro/blog/one-time-pro-license-explained_1/",
-              "https://softclipper.pro/compare/one-time-vs-subscription/"
-            ],
-            "impressions": 6
-          }
-        ]
+        "cannibalization": []
       },
       "indexing": {
         "total_urls_checked": 49,
@@ -409,8 +400,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-05",
-          "end": "2026-10-03"
+          "start": "2026-09-06",
+          "end": "2026-10-04"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
