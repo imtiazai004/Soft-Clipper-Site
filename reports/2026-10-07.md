@@ -85,7 +85,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_368 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1139), klap.app (290), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_368 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (290), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
