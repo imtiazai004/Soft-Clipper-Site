@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-07",
-  "generated_at": "2026-10-07 21:00 UTC",
+  "generated": "2026-10-08",
+  "generated_at": "2026-10-08 11:07 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,11 +9,19 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-06",
-          "end": "2026-10-04"
+          "start": "2026-09-07",
+          "end": "2026-10-05"
         },
         "total_query_page_rows": 15,
         "striking_distance": [
+          {
+            "query": "soft clipper",
+            "page": "https://softclipper.pro/",
+            "position": 19,
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0
+          },
           {
             "query": "what is a youtube clipper",
             "page": "https://softclipper.pro/use-cases/youtubers/",
@@ -60,12 +68,17 @@
           }
         ],
         "technical_blockers": [],
-        "check_errors": []
+        "check_errors": [
+          {
+            "url": "https://softclipper.pro/help/troubleshooting/",
+            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
+          }
+        ]
       },
       "aeo": {
-        "pages_checked": 23,
-        "total_faqs": 141,
-        "snippet_ready": 141,
+        "pages_checked": 22,
+        "total_faqs": 133,
+        "snippet_ready": 133,
         "problems": []
       },
       "geo": {
@@ -81,8 +94,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 50,
-          "citable": 40,
+          "pages_checked": 49,
+          "citable": 39,
           "skipped": 0,
           "needs_work": [
             {
@@ -400,8 +413,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-06",
-          "end": "2026-10-04"
+          "start": "2026-09-07",
+          "end": "2026-10-05"
         },
         "total_query_page_rows": 4,
         "striking_distance": [],
