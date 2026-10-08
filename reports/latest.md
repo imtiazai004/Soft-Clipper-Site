@@ -46,20 +46,9 @@ _These need a "Request indexing" click in Search Console._
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 
-**Errors while checking: 1**
-
-- https://softclipper.pro/help/troubleshooting/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
-  "error": {
-    "code": 500,
-    "message": "Internal error encountered.",
-    "status": "INTERNAL"
-  }
-}
-
-
 ### Answer-engine readiness (FAQ snippets)
 
-133 of 133 published FAQ answers are snippet-ready across 22 pages checked.
+141 of 141 published FAQ answers are snippet-ready across 23 pages checked.
 
 Every answer checked is in good shape.
 
@@ -71,7 +60,7 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 39 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
@@ -97,18 +86,18 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_368 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (290), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_367 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (290), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
 | 33 | 9 | 1 | 2 | 1 | how to cut long video to short |
 | 26 | 2 | 0 | 4 | 17 | ai video cutting software |
 | 25 | 2 | 1 | 4 | 1 | how to make a shorts video |
-| 21 | 1 | 3 | 4 | 2 | ai video clip api |
-| 21 | 1 | 0 | 3 | 2 | ai video clipping app |
+| 21 | 1 | 0 | 3 | 3 | ai video clipping app |
+| 20 | 1 | 4 | 4 | 1 | ai video clip api |
 | 20 | 2 | 1 | 3 | 6 | convert long video into youtube shorts |
 | 19 | 2 | 4 | 3 | 0 | ai long form video clipper |
-| 18 | 1 | 0 | 2 | 5 | what apps add captions to videos |
+| 18 | 1 | 0 | 2 | 4 | what apps add captions to videos |
 | 17 | 2 | 1 | 2 | 10 | ai video highlight cutter |
 | 16 | 2 | 4 | 2 | 0 | ai video clipper from youtube |
 | 15 | 1 | 0 | 1 | 10 | add subtitles to video and translate |
