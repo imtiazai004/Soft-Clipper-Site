@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-08",
-  "generated_at": "2026-10-08 21:01 UTC",
+  "generated": "2026-10-09",
+  "generated_at": "2026-10-09 11:06 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-07",
-          "end": "2026-10-05"
+          "start": "2026-09-08",
+          "end": "2026-10-06"
         },
-        "total_query_page_rows": 15,
+        "total_query_page_rows": 12,
         "striking_distance": [
           {
             "query": "soft clipper",
@@ -28,14 +28,6 @@
             "position": 10,
             "clicks": 0,
             "impressions": 2,
-            "ctr": 0
-          },
-          {
-            "query": "bno soft clipper",
-            "page": "https://softclipper.pro/",
-            "position": 8,
-            "clicks": 0,
-            "impressions": 1,
             "ctr": 0
           }
         ],
@@ -280,8 +272,8 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on iphone",
               "how to add captions to videos on instagram",
+              "how to add captions to videos on iphone",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -407,10 +399,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-07",
-          "end": "2026-10-05"
+          "start": "2026-09-08",
+          "end": "2026-10-06"
         },
-        "total_query_page_rows": 4,
+        "total_query_page_rows": 6,
         "striking_distance": [],
         "cannibalization": []
       },
