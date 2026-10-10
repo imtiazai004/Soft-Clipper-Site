@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-09",
-  "generated_at": "2026-10-09 20:31 UTC",
+  "generated": "2026-10-10",
+  "generated_at": "2026-10-10 10:18 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-08",
-          "end": "2026-10-06"
+          "start": "2026-09-09",
+          "end": "2026-10-07"
         },
-        "total_query_page_rows": 12,
+        "total_query_page_rows": 10,
         "striking_distance": [
           {
             "query": "soft clipper",
@@ -20,14 +20,6 @@
             "position": 19,
             "clicks": 0,
             "impressions": 3,
-            "ctr": 0
-          },
-          {
-            "query": "what is a youtube clipper",
-            "page": "https://softclipper.pro/use-cases/youtubers/",
-            "position": 10,
-            "clicks": 0,
-            "impressions": 2,
             "ctr": 0
           }
         ],
@@ -399,8 +391,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-08",
-          "end": "2026-10-06"
+          "start": "2026-09-09",
+          "end": "2026-10-07"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
