@@ -1,10 +1,10 @@
-# SEO report — 2026-10-12
+# SEO report — 2026-10-13
 
 ## softclipper.pro
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-11 to 2026-10-09, 8 query/page rows in total._
+_Window 2026-09-12 to 2026-10-10, 8 query/page rows in total._
 
 | Position | Impressions | Clicks | Query | Page |
 |---:|---:|---:|---|---|
@@ -44,9 +44,20 @@ _These need a "Request indexing" click in Search Console._
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 
+**Errors while checking: 1**
+
+- https://softclipper.pro/use-cases/agencies/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
+  "error": {
+    "code": 500,
+    "message": "Internal error encountered.",
+    "status": "INTERNAL"
+  }
+}
+
+
 ### Answer-engine readiness (FAQ snippets)
 
-141 of 141 published FAQ answers are snippet-ready across 23 pages checked.
+138 of 138 published FAQ answers are snippet-ready across 22 pages checked.
 
 Every answer checked is in good shape.
 
@@ -58,7 +69,7 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 39 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
@@ -84,7 +95,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_367 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (290), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_367 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (294), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -110,7 +121,7 @@ _**Score is not search volume.** No free source publishes volume, and this proje
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-11 to 2026-10-09, 6 query/page rows in total._
+_Window 2026-09-12 to 2026-10-10, 6 query/page rows in total._
 
 Nothing in range this run.
 
