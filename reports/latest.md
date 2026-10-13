@@ -44,20 +44,9 @@ _These need a "Request indexing" click in Search Console._
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 
-**Errors while checking: 1**
-
-- https://softclipper.pro/use-cases/agencies/: POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {
-  "error": {
-    "code": 500,
-    "message": "Internal error encountered.",
-    "status": "INTERNAL"
-  }
-}
-
-
 ### Answer-engine readiness (FAQ snippets)
 
-138 of 138 published FAQ answers are snippet-ready across 22 pages checked.
+141 of 141 published FAQ answers are snippet-ready across 23 pages checked.
 
 Every answer checked is in good shape.
 
@@ -69,7 +58,7 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 39 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
