@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-13",
-  "generated_at": "2026-10-13 21:00 UTC",
+  "generated": "2026-10-14",
+  "generated_at": "2026-10-14 09:13 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-12",
-          "end": "2026-10-10"
+          "start": "2026-09-13",
+          "end": "2026-10-11"
         },
         "total_query_page_rows": 8,
         "striking_distance": [
@@ -117,10 +117,10 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 367,
+        "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 294,
+          "https://klap.app": 295,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -287,24 +287,11 @@
               "ai video cutter online free",
               "best ai video cutter",
               "ai video cutter github",
-              "ai video cutter free",
               "ai video cutter local",
+              "ai video cutter free",
               "best free ai video cutter",
               "ai video cutter free online"
             ]
-          },
-          {
-            "phrase": "ai video clipper from youtube",
-            "score": 16,
-            "autocomplete_hits": 2,
-            "best_position": 4,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper for",
-              "ai video clipper f"
-            ],
-            "variants": []
           },
           {
             "phrase": "add subtitles to video and translate",
@@ -328,6 +315,19 @@
               "add subtitles to video no sign up",
               "add subtitles to video online free without watermark"
             ]
+          },
+          {
+            "phrase": "ai video clipper from youtube",
+            "score": 15,
+            "autocomplete_hits": 2,
+            "best_position": 5,
+            "competitors_covering": 2,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper for",
+              "ai video clipper f"
+            ],
+            "variants": []
           },
           {
             "phrase": "ai video clipper & lora captioner",
@@ -391,8 +391,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-12",
-          "end": "2026-10-10"
+          "start": "2026-09-13",
+          "end": "2026-10-11"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
