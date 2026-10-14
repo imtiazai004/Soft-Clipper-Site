@@ -121,21 +121,41 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-7 URLs checked from the sitemap.
+25 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 0**
-_None - every sitemap URL is known to Google._
+**Never crawled by Google yet: 18**
+_These need a "Request indexing" click in Search Console._
 
-**Crawled but not indexed: 1** (worth investigating)
+- https://aisofttechsolution.com/demos
+- https://aisofttechsolution.com/blueprint-library
+- https://aisofttechsolution.com/compare/agency-vs-freelancer
+- https://aisofttechsolution.com/guides/tikfulfill-build-guide
+- https://aisofttechsolution.com/submit-testimonial
+- https://aisofttechsolution.com/blog/slow-proposals-lose-clients
+- https://aisofttechsolution.com/blog/clinic-patient-token-queues
+- https://aisofttechsolution.com/blog/cold-leads-buried-money
+- https://aisofttechsolution.com/blog/freelancer-invoice-chasing
+- https://aisofttechsolution.com/blog/unconfirmed-cod-orders
+- https://aisofttechsolution.com/blog/salon-empty-chair
+- https://aisofttechsolution.com/blog/wismo-most-expensive-sentence
+- https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business
+- https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty
+- https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering
+- https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook
+- https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM
+- https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6
+
+**Crawled but not indexed: 2** (worth investigating)
 
 - https://aisofttechsolution.com/profitscout — Crawled - currently not indexed
+- https://aisofttechsolution.com/terms — Crawled - currently not indexed
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
 
 ### Answer-engine readiness (FAQ snippets)
 
-45 of 45 published FAQ answers are snippet-ready across 5 pages checked.
+207 of 207 published FAQ answers are snippet-ready across 23 pages checked.
 
 Every answer checked is in good shape.
 
@@ -147,17 +167,26 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 0 of 7 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 0 of 25 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
-7 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+25 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://aisofttechsolution.com/
 - https://aisofttechsolution.com/profitscout
 - https://aisofttechsolution.com/soft-clipper
 - https://aisofttechsolution.com/blog
+- https://aisofttechsolution.com/demos
+- https://aisofttechsolution.com/blueprint-library
+- https://aisofttechsolution.com/compare/agency-vs-freelancer
+- https://aisofttechsolution.com/guides/tikfulfill-build-guide
+- https://aisofttechsolution.com/submit-testimonial
 - https://aisofttechsolution.com/profitscout-privacy
 - https://aisofttechsolution.com/privacy
 - https://aisofttechsolution.com/terms
+- https://aisofttechsolution.com/blog/slow-proposals-lose-clients
+- https://aisofttechsolution.com/blog/clinic-patient-token-queues
+- https://aisofttechsolution.com/blog/cold-leads-buried-money
+- ...and 10 more
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 

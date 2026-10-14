@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-14",
-  "generated_at": "2026-10-14 09:13 UTC",
+  "generated_at": "2026-10-14 19:58 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -399,12 +399,35 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 7,
-        "indexed": 6,
-        "never_crawled": [],
+        "total_urls_checked": 25,
+        "indexed": 5,
+        "never_crawled": [
+          "https://aisofttechsolution.com/demos",
+          "https://aisofttechsolution.com/blueprint-library",
+          "https://aisofttechsolution.com/compare/agency-vs-freelancer",
+          "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+          "https://aisofttechsolution.com/submit-testimonial",
+          "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
+          "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
+          "https://aisofttechsolution.com/blog/cold-leads-buried-money",
+          "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+          "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
+          "https://aisofttechsolution.com/blog/salon-empty-chair",
+          "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
+          "https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business",
+          "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty",
+          "https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering",
+          "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
+          "https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM",
+          "https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6"
+        ],
         "crawled_not_indexed": [
           {
             "url": "https://aisofttechsolution.com/profitscout",
+            "reason": "Crawled - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/terms",
             "reason": "Crawled - currently not indexed"
           }
         ],
@@ -412,9 +435,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 5,
-        "total_faqs": 45,
-        "snippet_ready": 45,
+        "pages_checked": 23,
+        "total_faqs": 207,
+        "snippet_ready": 207,
         "problems": []
       },
       "geo": {
@@ -430,7 +453,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 7,
+          "pages_checked": 25,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
@@ -439,9 +462,27 @@
             "https://aisofttechsolution.com/profitscout",
             "https://aisofttechsolution.com/soft-clipper",
             "https://aisofttechsolution.com/blog",
+            "https://aisofttechsolution.com/demos",
+            "https://aisofttechsolution.com/blueprint-library",
+            "https://aisofttechsolution.com/compare/agency-vs-freelancer",
+            "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+            "https://aisofttechsolution.com/submit-testimonial",
             "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
-            "https://aisofttechsolution.com/terms"
+            "https://aisofttechsolution.com/terms",
+            "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
+            "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
+            "https://aisofttechsolution.com/blog/cold-leads-buried-money",
+            "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+            "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
+            "https://aisofttechsolution.com/blog/salon-empty-chair",
+            "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
+            "https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business",
+            "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty",
+            "https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering",
+            "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
+            "https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM",
+            "https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6"
           ]
         }
       },
