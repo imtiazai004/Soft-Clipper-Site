@@ -129,6 +129,9 @@ const year = new Date().getFullYear();
 			<nav class="legal" aria-label="Legal">
 				{legal.map((l) => <a href={l.href}>{l.label}</a>)}
 			</nav>
+			<span class="credit">
+				Built by <a href="https://aisofttechsolution.com/">AI Soft Tech Solution</a>
+			</span>
 		</div>
 
 		<p class="disclaimer">
@@ -335,6 +338,20 @@ const year = new Date().getFullYear();
 		transition: color 0.15s ease;
 	}
 	.legal a:hover {
+		color: var(--text);
+	}
+
+	/* Builder credit — a backlink to the agency that built the product.
+	   Same muted treatment as the legal links, so it reads as small print. */
+	.credit {
+		color: var(--muted);
+	}
+	.credit a {
+		color: var(--muted);
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+	.credit a:hover {
 		color: var(--text);
 	}
 	/* Separators drawn rather than typed, so there is no stray dot after the
