@@ -2128,5 +2128,39 @@
     "topic_ideas": 15,
     "pages_citable": 40,
     "pages_checked_geo": 50
+  },
+  {
+    "date": "2026-10-15",
+    "site": "aisofttechsolution.com",
+    "query_rows": 6,
+    "striking_distance": 0,
+    "impressions": 0,
+    "clicks": 0,
+    "urls_checked": 25,
+    "never_crawled": 18,
+    "crawled_not_indexed": 2,
+    "blockers": 0,
+    "faqs_total": 207,
+    "faqs_ready": 207,
+    "topic_ideas": 0,
+    "pages_citable": 0,
+    "pages_checked_geo": 25
+  },
+  {
+    "date": "2026-10-15",
+    "site": "softclipper.pro",
+    "query_rows": 8,
+    "striking_distance": 0,
+    "impressions": 0,
+    "clicks": 0,
+    "urls_checked": 49,
+    "never_crawled": 15,
+    "crawled_not_indexed": 1,
+    "blockers": 0,
+    "faqs_total": 141,
+    "faqs_ready": 141,
+    "topic_ideas": 15,
+    "pages_citable": 40,
+    "pages_checked_geo": 50
   }
 ]
