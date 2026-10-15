@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-15",
-  "generated_at": "2026-10-15 08:49 UTC",
+  "generated_at": "2026-10-15 19:41 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -111,7 +111,7 @@
         "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 295,
+          "https://klap.app": 296,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -390,7 +390,7 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 25,
+        "total_urls_checked": 26,
         "indexed": 5,
         "never_crawled": [
           "https://aisofttechsolution.com/demos",
@@ -398,6 +398,7 @@
           "https://aisofttechsolution.com/compare/agency-vs-freelancer",
           "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
           "https://aisofttechsolution.com/submit-testimonial",
+          "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
           "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
           "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
           "https://aisofttechsolution.com/blog/cold-leads-buried-money",
@@ -426,9 +427,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 23,
-        "total_faqs": 207,
-        "snippet_ready": 207,
+        "pages_checked": 24,
+        "total_faqs": 216,
+        "snippet_ready": 216,
         "problems": []
       },
       "geo": {
@@ -444,7 +445,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 25,
+          "pages_checked": 26,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
@@ -461,6 +462,7 @@
             "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
             "https://aisofttechsolution.com/terms",
+            "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
             "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
             "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
             "https://aisofttechsolution.com/blog/cold-leads-buried-money",
