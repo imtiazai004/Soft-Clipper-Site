@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-16",
-  "generated_at": "2026-10-16 08:43 UTC",
+  "generated_at": "2026-10-16 19:16 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -18,7 +18,7 @@
       },
       "indexing": {
         "total_urls_checked": 49,
-        "indexed": 35,
+        "indexed": 34,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
@@ -33,6 +33,7 @@
           "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
           "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
+          "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
         ],
         "crawled_not_indexed": [
@@ -42,12 +43,7 @@
           }
         ],
         "technical_blockers": [],
-        "check_errors": [
-          {
-            "url": "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
-            "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-          }
-        ]
+        "check_errors": []
       },
       "aeo": {
         "pages_checked": 23,
@@ -68,7 +64,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 49,
+          "pages_checked": 50,
           "citable": 40,
           "skipped": 0,
           "needs_work": [
@@ -92,6 +88,7 @@
             "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
+            "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
           ]
         }
@@ -114,7 +111,7 @@
         "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 296,
+          "https://klap.app": 297,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -393,7 +390,7 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 26,
+        "total_urls_checked": 27,
         "indexed": 5,
         "never_crawled": [
           "https://aisofttechsolution.com/demos",
@@ -401,6 +398,7 @@
           "https://aisofttechsolution.com/compare/agency-vs-freelancer",
           "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
           "https://aisofttechsolution.com/submit-testimonial",
+          "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
           "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
           "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
           "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
@@ -430,9 +428,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 24,
-        "total_faqs": 216,
-        "snippet_ready": 216,
+        "pages_checked": 25,
+        "total_faqs": 225,
+        "snippet_ready": 225,
         "problems": []
       },
       "geo": {
@@ -448,7 +446,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 26,
+          "pages_checked": 27,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
@@ -465,6 +463,7 @@
             "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
             "https://aisofttechsolution.com/terms",
+            "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
             "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
             "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
             "https://aisofttechsolution.com/blog/clinic-patient-token-queues",

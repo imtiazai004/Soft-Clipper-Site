@@ -17,7 +17,7 @@ No queries are being split across more than one page.
 
 50 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 14**
+**Never crawled by Google yet: 15**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -33,6 +33,7 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
 **Crawled but not indexed: 1** (worth investigating)
@@ -41,10 +42,6 @@ _These need a "Request indexing" click in Search Console._
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
-
-**Errors while checking: 1**
-
-- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
 
 ### Answer-engine readiness (FAQ snippets)
 
@@ -60,14 +57,14 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-7 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+8 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/
@@ -75,6 +72,7 @@ Answer blocks worth reworking:
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
+- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
@@ -85,7 +83,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (296), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (297), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -122,9 +120,9 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-26 URLs checked from the sitemap.
+27 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 19**
+**Never crawled by Google yet: 20**
 _These need a "Request indexing" click in Search Console._
 
 - https://aisofttechsolution.com/demos
@@ -132,6 +130,7 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/compare/agency-vs-freelancer
 - https://aisofttechsolution.com/guides/tikfulfill-build-guide
 - https://aisofttechsolution.com/submit-testimonial
+- https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit
 - https://aisofttechsolution.com/blog/slow-proposals-lose-clients
 - https://aisofttechsolution.com/blog/clinic-patient-token-queues
@@ -157,7 +156,7 @@ _None._
 
 ### Answer-engine readiness (FAQ snippets)
 
-216 of 216 published FAQ answers are snippet-ready across 24 pages checked.
+225 of 225 published FAQ answers are snippet-ready across 25 pages checked.
 
 Every answer checked is in good shape.
 
@@ -169,9 +168,9 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 0 of 26 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 0 of 27 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
-26 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+27 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://aisofttechsolution.com/
 - https://aisofttechsolution.com/profitscout
@@ -185,10 +184,10 @@ Every link in it still resolves.
 - https://aisofttechsolution.com/profitscout-privacy
 - https://aisofttechsolution.com/privacy
 - https://aisofttechsolution.com/terms
+- https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit
 - https://aisofttechsolution.com/blog/slow-proposals-lose-clients
-- https://aisofttechsolution.com/blog/clinic-patient-token-queues
-- ...and 11 more
+- ...and 12 more
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
