@@ -1,10 +1,10 @@
-# SEO report — 2026-10-15
+# SEO report — 2026-10-16
 
 ## softclipper.pro
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-14 to 2026-10-12, 8 query/page rows in total._
+_Window 2026-09-15 to 2026-10-13, 8 query/page rows in total._
 
 Nothing in range this run.
 
@@ -17,7 +17,7 @@ No queries are being split across more than one page.
 
 50 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 15**
+**Never crawled by Google yet: 14**
 _These need a "Request indexing" click in Search Console._
 
 - https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/
@@ -33,7 +33,6 @@ _These need a "Request indexing" click in Search Console._
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
-- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
 **Crawled but not indexed: 1** (worth investigating)
@@ -42,6 +41,10 @@ _These need a "Request indexing" click in Search Console._
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
+
+**Errors while checking: 1**
+
+- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
 
 ### Answer-engine readiness (FAQ snippets)
 
@@ -57,14 +60,14 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 40 of 50 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 40 of 49 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
 Answer blocks worth reworking:
 
 - https://softclipper.pro/help/ — answer block very short (19 words)
 - https://softclipper.pro/legal/refund/ — answer block very short (11 words)
 
-8 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+7 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/
 - https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/
@@ -72,7 +75,6 @@ Answer blocks worth reworking:
 - https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/
 - https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/
-- https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/
 - https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
@@ -109,7 +111,7 @@ _**Score is not search volume.** No free source publishes volume, and this proje
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-14 to 2026-10-12, 6 query/page rows in total._
+_Window 2026-09-15 to 2026-10-13, 6 query/page rows in total._
 
 Nothing in range this run.
 

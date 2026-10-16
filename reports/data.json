@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-15",
-  "generated_at": "2026-10-15 19:41 UTC",
+  "generated": "2026-10-16",
+  "generated_at": "2026-10-16 08:43 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,8 +9,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-14",
-          "end": "2026-10-12"
+          "start": "2026-09-15",
+          "end": "2026-10-13"
         },
         "total_query_page_rows": 8,
         "striking_distance": [],
@@ -18,7 +18,7 @@
       },
       "indexing": {
         "total_urls_checked": 49,
-        "indexed": 34,
+        "indexed": 35,
         "never_crawled": [
           "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
@@ -33,7 +33,6 @@
           "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
           "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
-          "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
         ],
         "crawled_not_indexed": [
@@ -43,7 +42,12 @@
           }
         ],
         "technical_blockers": [],
-        "check_errors": []
+        "check_errors": [
+          {
+            "url": "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
+            "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+          }
+        ]
       },
       "aeo": {
         "pages_checked": 23,
@@ -64,7 +68,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 50,
+          "pages_checked": 49,
           "citable": 40,
           "skipped": 0,
           "needs_work": [
@@ -88,7 +92,6 @@
             "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
-            "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
           ]
         }
@@ -382,8 +385,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-14",
-          "end": "2026-10-12"
+          "start": "2026-09-15",
+          "end": "2026-10-13"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
