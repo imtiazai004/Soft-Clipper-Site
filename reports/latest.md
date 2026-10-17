@@ -1,13 +1,14 @@
-# SEO report — 2026-10-16
+# SEO report — 2026-10-17
 
 ## softclipper.pro
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-15 to 2026-10-13, 8 query/page rows in total._
+_Window 2026-09-16 to 2026-10-14, 7 query/page rows in total._
 
-Nothing in range this run.
-
+| Position | Impressions | Clicks | Query | Page |
+|---:|---:|---:|---|---|
+| 19.5 | 2 | 0 | one-time pro upgrade license | https://softclipper.pro/blog/one-time-pro-license-explained_1/ |
 
 ### Keyword cannibalisation
 
@@ -109,7 +110,7 @@ _**Score is not search volume.** No free source publishes volume, and this proje
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-15 to 2026-10-13, 6 query/page rows in total._
+_Window 2026-09-16 to 2026-10-14, 6 query/page rows in total._
 
 Nothing in range this run.
 
