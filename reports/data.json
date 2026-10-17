@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-17",
-  "generated_at": "2026-10-17 08:16 UTC",
+  "generated_at": "2026-10-17 18:10 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -120,7 +120,7 @@
         "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 297,
+          "https://klap.app": 298,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -264,8 +264,8 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on iphone",
               "how to add captions to videos on instagram",
+              "how to add captions to videos on iphone",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -399,7 +399,7 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 27,
+        "total_urls_checked": 28,
         "indexed": 5,
         "never_crawled": [
           "https://aisofttechsolution.com/demos",
@@ -407,6 +407,7 @@
           "https://aisofttechsolution.com/compare/agency-vs-freelancer",
           "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
           "https://aisofttechsolution.com/submit-testimonial",
+          "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
           "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
           "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
           "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
@@ -437,9 +438,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 25,
-        "total_faqs": 225,
-        "snippet_ready": 225,
+        "pages_checked": 26,
+        "total_faqs": 234,
+        "snippet_ready": 234,
         "problems": []
       },
       "geo": {
@@ -455,7 +456,7 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 27,
+          "pages_checked": 28,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
@@ -472,6 +473,7 @@
             "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
             "https://aisofttechsolution.com/terms",
+            "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
             "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
             "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
             "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",

@@ -84,7 +84,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (297), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (298), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -121,9 +121,9 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-27 URLs checked from the sitemap.
+28 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 20**
+**Never crawled by Google yet: 21**
 _These need a "Request indexing" click in Search Console._
 
 - https://aisofttechsolution.com/demos
@@ -131,6 +131,7 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/compare/agency-vs-freelancer
 - https://aisofttechsolution.com/guides/tikfulfill-build-guide
 - https://aisofttechsolution.com/submit-testimonial
+- https://aisofttechsolution.com/blog/expired-stock-customer-complaints
 - https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit
 - https://aisofttechsolution.com/blog/slow-proposals-lose-clients
@@ -157,7 +158,7 @@ _None._
 
 ### Answer-engine readiness (FAQ snippets)
 
-225 of 225 published FAQ answers are snippet-ready across 25 pages checked.
+234 of 234 published FAQ answers are snippet-ready across 26 pages checked.
 
 Every answer checked is in good shape.
 
@@ -169,9 +170,9 @@ No retrieval crawler is blocked by robots.txt.
 Every link in it still resolves.
 
 
-**Citability:** 0 of 27 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 0 of 28 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
-27 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+28 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://aisofttechsolution.com/
 - https://aisofttechsolution.com/profitscout
@@ -185,10 +186,10 @@ Every link in it still resolves.
 - https://aisofttechsolution.com/profitscout-privacy
 - https://aisofttechsolution.com/privacy
 - https://aisofttechsolution.com/terms
+- https://aisofttechsolution.com/blog/expired-stock-customer-complaints
 - https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit
-- https://aisofttechsolution.com/blog/slow-proposals-lose-clients
-- ...and 12 more
+- ...and 13 more
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
