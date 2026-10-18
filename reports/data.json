@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-17",
-  "generated_at": "2026-10-17 18:10 UTC",
+  "generated": "2026-10-18",
+  "generated_at": "2026-10-18 08:32 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,10 +9,10 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-16",
-          "end": "2026-10-14"
+          "start": "2026-09-17",
+          "end": "2026-10-15"
         },
-        "total_query_page_rows": 7,
+        "total_query_page_rows": 13,
         "striking_distance": [
           {
             "query": "one-time pro upgrade license",
@@ -20,6 +20,22 @@
             "position": 19.5,
             "clicks": 0,
             "impressions": 2,
+            "ctr": 0
+          },
+          {
+            "query": "soft cliper",
+            "page": "https://softclipper.pro/",
+            "position": 9,
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0
+          },
+          {
+            "query": "vtm",
+            "page": "https://softclipper.pro/",
+            "position": 9,
+            "clicks": 0,
+            "impressions": 1,
             "ctr": 0
           }
         ],
@@ -264,8 +280,8 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on instagram",
               "how to add captions to videos on iphone",
+              "how to add captions to videos on instagram",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -391,8 +407,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-16",
-          "end": "2026-10-14"
+          "start": "2026-09-17",
+          "end": "2026-10-15"
         },
         "total_query_page_rows": 6,
         "striking_distance": [],
