@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-18",
-  "generated_at": "2026-10-18 08:32 UTC",
+  "generated_at": "2026-10-18 18:29 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -136,7 +136,7 @@
         "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 298,
+          "https://klap.app": 299,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -280,8 +280,8 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on iphone",
               "how to add captions to videos on instagram",
+              "how to add captions to videos on iphone",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -415,13 +415,15 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 28,
+        "total_urls_checked": 30,
         "indexed": 5,
         "never_crawled": [
           "https://aisofttechsolution.com/demos",
           "https://aisofttechsolution.com/blueprint-library",
           "https://aisofttechsolution.com/compare/agency-vs-freelancer",
+          "https://aisofttechsolution.com/guides",
           "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+          "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
           "https://aisofttechsolution.com/submit-testimonial",
           "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
           "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
@@ -454,9 +456,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 26,
-        "total_faqs": 234,
-        "snippet_ready": 234,
+        "pages_checked": 28,
+        "total_faqs": 252,
+        "snippet_ready": 252,
         "problems": []
       },
       "geo": {
@@ -466,13 +468,13 @@
         "llms_txt": {
           "llms_url": "https://aisofttechsolution.com/llms.txt",
           "exists": true,
-          "bytes": 6434,
+          "bytes": 7096,
           "has_facts_block": true,
           "link_count": 1,
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 28,
+          "pages_checked": 30,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
@@ -484,7 +486,9 @@
             "https://aisofttechsolution.com/demos",
             "https://aisofttechsolution.com/blueprint-library",
             "https://aisofttechsolution.com/compare/agency-vs-freelancer",
+            "https://aisofttechsolution.com/guides",
             "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+            "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
             "https://aisofttechsolution.com/submit-testimonial",
             "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
