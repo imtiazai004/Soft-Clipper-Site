@@ -1,13 +1,14 @@
-# SEO report — 2026-10-18
+# SEO report — 2026-10-19
 
 ## softclipper.pro
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-17 to 2026-10-15, 13 query/page rows in total._
+_Window 2026-09-18 to 2026-10-16, 13 query/page rows in total._
 
 | Position | Impressions | Clicks | Query | Page |
 |---:|---:|---:|---|---|
+| 20 | 6 | 1 | soft clipper | https://softclipper.pro/ |
 | 19.5 | 2 | 0 | one-time pro upgrade license | https://softclipper.pro/blog/one-time-pro-license-explained_1/ |
 | 9 | 1 | 0 | soft cliper | https://softclipper.pro/ |
 | 9 | 1 | 0 | vtm | https://softclipper.pro/ |
@@ -86,7 +87,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (299), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 244 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (299), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 243 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -112,7 +113,7 @@ _**Score is not search volume.** No free source publishes volume, and this proje
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-17 to 2026-10-15, 6 query/page rows in total._
+_Window 2026-09-18 to 2026-10-16, 6 query/page rows in total._
 
 Nothing in range this run.
 
