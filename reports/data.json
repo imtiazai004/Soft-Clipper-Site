@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-19",
-  "generated_at": "2026-10-19 09:33 UTC",
+  "generated_at": "2026-10-19 21:00 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -144,7 +144,7 @@
         "phrases_found": 366,
         "competitors_read": {
           "https://www.opus.pro": 1143,
-          "https://klap.app": 299,
+          "https://klap.app": 300,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -288,8 +288,8 @@
               "what is add captions to video"
             ],
             "variants": [
-              "how to add captions to videos on instagram",
               "how to add captions to videos on iphone",
+              "how to add captions to videos on instagram",
               "how to add captions to videos on tiktok",
               "can capcut add captions to videos"
             ]
@@ -423,16 +423,43 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 30,
-        "indexed": 5,
+        "total_urls_checked": 57,
+        "indexed": 4,
         "never_crawled": [
+          "https://aisofttechsolution.com/work",
           "https://aisofttechsolution.com/demos",
+          "https://aisofttechsolution.com/guides",
+          "https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide",
+          "https://aisofttechsolution.com/guides/ai-agent-safety-audit",
+          "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
+          "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
           "https://aisofttechsolution.com/blueprint-library",
           "https://aisofttechsolution.com/compare/agency-vs-freelancer",
-          "https://aisofttechsolution.com/guides",
-          "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
-          "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
-          "https://aisofttechsolution.com/submit-testimonial",
+          "https://aisofttechsolution.com/demos/bizbot",
+          "https://aisofttechsolution.com/demos/foodbot",
+          "https://aisofttechsolution.com/demos/supportai",
+          "https://aisofttechsolution.com/demos/codconfirm",
+          "https://aisofttechsolution.com/demos/tikfulfill",
+          "https://aisofttechsolution.com/demos/shopconsole",
+          "https://aisofttechsolution.com/demos/khatabook",
+          "https://aisofttechsolution.com/demos/profitlens",
+          "https://aisofttechsolution.com/demos/expiryguard",
+          "https://aisofttechsolution.com/demos/salonbook",
+          "https://aisofttechsolution.com/demos/clinictoken",
+          "https://aisofttechsolution.com/demos/scriptrefill",
+          "https://aisofttechsolution.com/demos/feechaser",
+          "https://aisofttechsolution.com/demos/classflow",
+          "https://aisofttechsolution.com/demos/rentguard",
+          "https://aisofttechsolution.com/demos/viewbook",
+          "https://aisofttechsolution.com/demos/hallbook",
+          "https://aisofttechsolution.com/demos/leasemind",
+          "https://aisofttechsolution.com/demos/jobtrack",
+          "https://aisofttechsolution.com/demos/carcare",
+          "https://aisofttechsolution.com/demos/leadcrm",
+          "https://aisofttechsolution.com/demos/proposalgen",
+          "https://aisofttechsolution.com/demos/invoicechaser",
+          "https://aisofttechsolution.com/demos/hirepipe",
+          "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
           "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
           "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
           "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
@@ -447,8 +474,9 @@
           "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty",
           "https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering",
           "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
-          "https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM",
-          "https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6"
+          "https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips",
+          "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks",
+          "https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE"
         ],
         "crawled_not_indexed": [
           {
@@ -464,9 +492,9 @@
         "check_errors": []
       },
       "aeo": {
-        "pages_checked": 28,
-        "total_faqs": 252,
-        "snippet_ready": 252,
+        "pages_checked": 0,
+        "total_faqs": 0,
+        "snippet_ready": 0,
         "problems": []
       },
       "geo": {
@@ -476,31 +504,57 @@
         "llms_txt": {
           "llms_url": "https://aisofttechsolution.com/llms.txt",
           "exists": true,
-          "bytes": 7096,
+          "bytes": 24435,
           "has_facts_block": true,
           "link_count": 1,
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 30,
+          "pages_checked": 57,
           "citable": 0,
           "skipped": 0,
           "needs_work": [],
           "opportunities": [
             "https://aisofttechsolution.com/",
-            "https://aisofttechsolution.com/profitscout",
-            "https://aisofttechsolution.com/soft-clipper",
-            "https://aisofttechsolution.com/blog",
+            "https://aisofttechsolution.com/work",
             "https://aisofttechsolution.com/demos",
+            "https://aisofttechsolution.com/profitscout",
+            "https://aisofttechsolution.com/guides",
+            "https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide",
+            "https://aisofttechsolution.com/guides/ai-agent-safety-audit",
+            "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
+            "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+            "https://aisofttechsolution.com/blog",
             "https://aisofttechsolution.com/blueprint-library",
             "https://aisofttechsolution.com/compare/agency-vs-freelancer",
-            "https://aisofttechsolution.com/guides",
-            "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
-            "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
-            "https://aisofttechsolution.com/submit-testimonial",
-            "https://aisofttechsolution.com/profitscout-privacy",
             "https://aisofttechsolution.com/privacy",
             "https://aisofttechsolution.com/terms",
+            "https://aisofttechsolution.com/profitscout-privacy",
+            "https://aisofttechsolution.com/demos/bizbot",
+            "https://aisofttechsolution.com/demos/foodbot",
+            "https://aisofttechsolution.com/demos/supportai",
+            "https://aisofttechsolution.com/demos/codconfirm",
+            "https://aisofttechsolution.com/demos/tikfulfill",
+            "https://aisofttechsolution.com/demos/shopconsole",
+            "https://aisofttechsolution.com/demos/khatabook",
+            "https://aisofttechsolution.com/demos/profitlens",
+            "https://aisofttechsolution.com/demos/expiryguard",
+            "https://aisofttechsolution.com/demos/salonbook",
+            "https://aisofttechsolution.com/demos/clinictoken",
+            "https://aisofttechsolution.com/demos/scriptrefill",
+            "https://aisofttechsolution.com/demos/feechaser",
+            "https://aisofttechsolution.com/demos/classflow",
+            "https://aisofttechsolution.com/demos/rentguard",
+            "https://aisofttechsolution.com/demos/viewbook",
+            "https://aisofttechsolution.com/demos/hallbook",
+            "https://aisofttechsolution.com/demos/leasemind",
+            "https://aisofttechsolution.com/demos/jobtrack",
+            "https://aisofttechsolution.com/demos/carcare",
+            "https://aisofttechsolution.com/demos/leadcrm",
+            "https://aisofttechsolution.com/demos/proposalgen",
+            "https://aisofttechsolution.com/demos/invoicechaser",
+            "https://aisofttechsolution.com/demos/hirepipe",
+            "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
             "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
             "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
             "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
@@ -515,8 +569,9 @@
             "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty",
             "https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering",
             "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
-            "https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM",
-            "https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6"
+            "https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips",
+            "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks",
+            "https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE"
           ]
         }
       },

@@ -87,7 +87,7 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (299), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 243 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
+_366 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1143), klap.app (300), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 243 of them we already cover; the rest cluster into 30 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 15 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
@@ -124,18 +124,45 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-30 URLs checked from the sitemap.
+57 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 23**
+**Never crawled by Google yet: 51**
 _These need a "Request indexing" click in Search Console._
 
+- https://aisofttechsolution.com/work
 - https://aisofttechsolution.com/demos
+- https://aisofttechsolution.com/guides
+- https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide
+- https://aisofttechsolution.com/guides/ai-agent-safety-audit
+- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot
+- https://aisofttechsolution.com/guides/tikfulfill-build-guide
 - https://aisofttechsolution.com/blueprint-library
 - https://aisofttechsolution.com/compare/agency-vs-freelancer
-- https://aisofttechsolution.com/guides
-- https://aisofttechsolution.com/guides/tikfulfill-build-guide
-- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot
-- https://aisofttechsolution.com/submit-testimonial
+- https://aisofttechsolution.com/demos/bizbot
+- https://aisofttechsolution.com/demos/foodbot
+- https://aisofttechsolution.com/demos/supportai
+- https://aisofttechsolution.com/demos/codconfirm
+- https://aisofttechsolution.com/demos/tikfulfill
+- https://aisofttechsolution.com/demos/shopconsole
+- https://aisofttechsolution.com/demos/khatabook
+- https://aisofttechsolution.com/demos/profitlens
+- https://aisofttechsolution.com/demos/expiryguard
+- https://aisofttechsolution.com/demos/salonbook
+- https://aisofttechsolution.com/demos/clinictoken
+- https://aisofttechsolution.com/demos/scriptrefill
+- https://aisofttechsolution.com/demos/feechaser
+- https://aisofttechsolution.com/demos/classflow
+- https://aisofttechsolution.com/demos/rentguard
+- https://aisofttechsolution.com/demos/viewbook
+- https://aisofttechsolution.com/demos/hallbook
+- https://aisofttechsolution.com/demos/leasemind
+- https://aisofttechsolution.com/demos/jobtrack
+- https://aisofttechsolution.com/demos/carcare
+- https://aisofttechsolution.com/demos/leadcrm
+- https://aisofttechsolution.com/demos/proposalgen
+- https://aisofttechsolution.com/demos/invoicechaser
+- https://aisofttechsolution.com/demos/hirepipe
+- https://aisofttechsolution.com/blog/late-rent-reminders-property-managers
 - https://aisofttechsolution.com/blog/expired-stock-customer-complaints
 - https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit
@@ -150,8 +177,9 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty
 - https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering
 - https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook
-- https://aisofttechsolution.com/blog/Yu3Im5NkjbAI0Xap7HzM
-- https://aisofttechsolution.com/blog/FZHQiPwscEC1XaMrypn6
+- https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips
+- https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks
+- https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE
 
 **Crawled but not indexed: 2** (worth investigating)
 
@@ -163,7 +191,7 @@ _None._
 
 ### Answer-engine readiness (FAQ snippets)
 
-252 of 252 published FAQ answers are snippet-ready across 28 pages checked.
+0 of 0 published FAQ answers are snippet-ready across 0 pages checked.
 
 Every answer checked is in good shape.
 
@@ -171,30 +199,30 @@ Every answer checked is in good shape.
 
 No retrieval crawler is blocked by robots.txt.
 
-`/llms.txt` present (7096 bytes, with a facts block, 1 links).
+`/llms.txt` present (24435 bytes, with a facts block, 1 links).
 Every link in it still resolves.
 
 
-**Citability:** 0 of 30 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
+**Citability:** 0 of 57 pages open with a declared answer block an engine can lift (0 noindex pages skipped).
 
-30 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
+57 pages open with an intro rather than a declared answer. Not a fault — but the ones that answer a real question are worth giving an answer block:
 
 - https://aisofttechsolution.com/
-- https://aisofttechsolution.com/profitscout
-- https://aisofttechsolution.com/soft-clipper
-- https://aisofttechsolution.com/blog
+- https://aisofttechsolution.com/work
 - https://aisofttechsolution.com/demos
+- https://aisofttechsolution.com/profitscout
+- https://aisofttechsolution.com/guides
+- https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide
+- https://aisofttechsolution.com/guides/ai-agent-safety-audit
+- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot
+- https://aisofttechsolution.com/guides/tikfulfill-build-guide
+- https://aisofttechsolution.com/blog
 - https://aisofttechsolution.com/blueprint-library
 - https://aisofttechsolution.com/compare/agency-vs-freelancer
-- https://aisofttechsolution.com/guides
-- https://aisofttechsolution.com/guides/tikfulfill-build-guide
-- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot
-- https://aisofttechsolution.com/submit-testimonial
-- https://aisofttechsolution.com/profitscout-privacy
 - https://aisofttechsolution.com/privacy
 - https://aisofttechsolution.com/terms
-- https://aisofttechsolution.com/blog/expired-stock-customer-complaints
-- ...and 15 more
+- https://aisofttechsolution.com/profitscout-privacy
+- ...and 42 more
 
 _Not measured: whether ChatGPT or Perplexity actually cite the site. That needs paid API access to those engines, so no number is invented here._
 
