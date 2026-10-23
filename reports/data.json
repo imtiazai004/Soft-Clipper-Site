@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-23",
-  "generated_at": "2026-10-23 09:08 UTC",
+  "generated_at": "2026-10-23 19:51 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -144,7 +144,7 @@
         "phrases_found": 361,
         "competitors_read": {
           "https://www.opus.pro": 1144,
-          "https://klap.app": 304,
+          "https://klap.app": 305,
           "https://vizard.ai": 292,
           "https://www.submagic.co": 878,
           "https://2short.ai": 0
@@ -423,31 +423,24 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 67,
+        "total_urls_checked": 68,
         "indexed": 8,
         "never_crawled": [
           "https://aisofttechsolution.com/guides/agent-hardening-guide",
           "https://aisofttechsolution.com/guides/morning-briefing-agent",
           "https://aisofttechsolution.com/guides/sellerradar-part-1",
-          "https://aisofttechsolution.com/guides/client-website-prompt-pack",
-          "https://aisofttechsolution.com/demos/supportai",
-          "https://aisofttechsolution.com/demos/khatabook",
-          "https://aisofttechsolution.com/demos/profitlens",
+          "https://aisofttechsolution.com/demos/bizbot",
+          "https://aisofttechsolution.com/demos/shopconsole",
           "https://aisofttechsolution.com/demos/expiryguard",
-          "https://aisofttechsolution.com/demos/scriptrefill",
           "https://aisofttechsolution.com/demos/feechaser",
-          "https://aisofttechsolution.com/demos/hallbook",
+          "https://aisofttechsolution.com/demos/classflow",
+          "https://aisofttechsolution.com/demos/viewbook",
+          "https://aisofttechsolution.com/demos/carcare",
+          "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
           "https://aisofttechsolution.com/blog/gym-membership-churn-early-warning",
           "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
-          "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
-          "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
           "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
-          "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
-          "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
-          "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
-          "https://aisofttechsolution.com/blog/salon-empty-chair",
-          "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
-          "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty"
+          "https://aisofttechsolution.com/blog/salon-empty-chair"
         ],
         "crawled_not_indexed": [
           {
@@ -456,6 +449,10 @@
           },
           {
             "url": "https://aisofttechsolution.com/guides/claimback",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/guides/client-website-prompt-pack",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -487,11 +484,11 @@
             "reason": "Crawled - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/bizbot",
+            "url": "https://aisofttechsolution.com/demos/foodbot",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/foodbot",
+            "url": "https://aisofttechsolution.com/demos/supportai",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -503,7 +500,11 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/shopconsole",
+            "url": "https://aisofttechsolution.com/demos/khatabook",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/demos/profitlens",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -515,7 +516,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/classflow",
+            "url": "https://aisofttechsolution.com/demos/scriptrefill",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -523,7 +524,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/viewbook",
+            "url": "https://aisofttechsolution.com/demos/hallbook",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -532,10 +533,6 @@
           },
           {
             "url": "https://aisofttechsolution.com/demos/jobtrack",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/carcare",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -559,11 +556,23 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -575,7 +584,23 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -670,6 +695,7 @@
             "https://aisofttechsolution.com/demos/proposalgen",
             "https://aisofttechsolution.com/demos/invoicechaser",
             "https://aisofttechsolution.com/demos/hirepipe",
+            "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
             "https://aisofttechsolution.com/blog/gym-membership-churn-early-warning",
             "https://aisofttechsolution.com/blog/tiktok-shop-uk-dispatch-rules",
             "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
@@ -684,8 +710,7 @@
             "https://aisofttechsolution.com/blog/cold-leads-buried-money",
             "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
             "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
-            "https://aisofttechsolution.com/blog/salon-empty-chair",
-            "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence"
+            "https://aisofttechsolution.com/blog/salon-empty-chair"
           ]
         }
       },
