@@ -1,10 +1,10 @@
-# SEO report — 2026-10-27
+# SEO report — 2026-10-28
 
 ## softclipper.pro
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-26 to 2026-10-24, 15 query/page rows in total._
+_Window 2026-09-27 to 2026-10-25, 14 query/page rows in total._
 
 | Position | Impressions | Clicks | Query | Page |
 |---:|---:|---:|---|---|
@@ -88,25 +88,25 @@ Nothing yet. A topic only qualifies once a query has brought at least 10 impress
 
 ### Topic ideas (cold start)
 
-_361 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1147), klap.app (309), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 240 of them we already cover; the rest cluster into 29 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 14 lowest-scoring are not listed._
+_360 phrases from 150 autocomplete queries; competitor pages read: www.opus.pro (1147), klap.app (310), vizard.ai (292), www.submagic.co (878), 2short.ai (0). 243 of them we already cover; the rest cluster into 25 distinct topics (near-duplicate phrasings are folded into one row, because they are one post, not several); the 10 lowest-scoring are not listed._
 
 | Score | Suggested by | Best pos | Competitors | Variants | Topic |
 |---:|---:|---:|---:|---:|---|
-| 33 | 9 | 1 | 2 | 1 | how to cut long video to short |
-| 26 | 2 | 0 | 4 | 17 | ai video cutting software |
-| 25 | 2 | 1 | 4 | 1 | how to make a shorts video |
+| 29 | 7 | 1 | 2 | 1 | how to cut long video to short |
+| 26 | 2 | 0 | 4 | 18 | ai video cutting software |
+| 23 | 1 | 1 | 4 | 1 | how to make a shorts video |
 | 21 | 1 | 0 | 3 | 3 | ai video clipping app |
 | 20 | 1 | 4 | 4 | 1 | ai video clip api |
 | 20 | 2 | 1 | 3 | 6 | convert long video into youtube shorts |
 | 19 | 2 | 4 | 3 | 0 | ai long form video clipper |
+| 18 | 2 | 0 | 2 | 10 | ai video highlight cutter |
 | 18 | 1 | 0 | 2 | 4 | what apps add captions to videos |
-| 17 | 2 | 1 | 2 | 10 | ai video highlight cutter |
 | 15 | 1 | 0 | 1 | 10 | add subtitles to video and translate |
 | 15 | 2 | 5 | 2 | 0 | ai video clipper from youtube |
-| 13 | 2 | 1 | 0 | 0 | ai video clipper & lora captioner |
+| 14 | 2 | 0 | 0 | 0 | ai video clipper & lora captioner |
 | 13 | 1 | 8 | 3 | 0 | how to make a long video from short clips |
-| 12 | 1 | 0 | 0 | 0 | ai video clipper hugging face |
 | 12 | 1 | 0 | 0 | 0 | auto crop video for tiktok |
+| 11 | 2 | 3 | 0 | 2 | ai video trimmer online free |
 
 _**Score is not search volume.** No free source publishes volume, and this project has no paid keyword API, so nothing is invented. The score is: how many different prefixes Google completed into this phrase (×2), how high it ranked in those suggestions, and how many competitors have committed a page to it (×3). Treat it as evidence worth a human's judgement, not as a forecast._
 
@@ -114,7 +114,7 @@ _**Score is not search volume.** No free source publishes volume, and this proje
 
 ### Striking-distance keywords (positions 8-20)
 
-_Window 2026-09-26 to 2026-10-24, 4 query/page rows in total._
+_Window 2026-09-27 to 2026-10-25, 3 query/page rows in total._
 
 Nothing in range this run.
 
@@ -127,7 +127,7 @@ No queries are being split across more than one page.
 
 75 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 22**
+**Never crawled by Google yet: 24**
 _These need a "Request indexing" click in Search Console._
 
 - https://aisofttechsolution.com/demos/family-dental
@@ -135,11 +135,15 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/guides/fee-stack-calculator
 - https://aisofttechsolution.com/guides/agent-hardening-guide
 - https://aisofttechsolution.com/guides/morning-briefing-agent
-- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot
-- https://aisofttechsolution.com/guides/tikfulfill-build-guide
-- https://aisofttechsolution.com/demos/foodbot
+- https://aisofttechsolution.com/guides/sellerradar-part-1
+- https://aisofttechsolution.com/guides/client-website-prompt-pack
+- https://aisofttechsolution.com/demos/tikfulfill
+- https://aisofttechsolution.com/demos/expiryguard
 - https://aisofttechsolution.com/demos/scriptrefill
+- https://aisofttechsolution.com/demos/classflow
 - https://aisofttechsolution.com/demos/leadcrm
+- https://aisofttechsolution.com/demos/proposalgen
+- https://aisofttechsolution.com/demos/hirepipe
 - https://aisofttechsolution.com/blog/auto-workshop-service-reminders
 - https://aisofttechsolution.com/blog/candidate-ghosting-recruiters
 - https://aisofttechsolution.com/blog/pharmacy-refill-reminders
@@ -147,59 +151,55 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos
 - https://aisofttechsolution.com/blog/gym-membership-churn-early-warning
 - https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan
-- https://aisofttechsolution.com/blog/late-rent-reminders-property-managers
-- https://aisofttechsolution.com/blog/wismo-most-expensive-sentence
-- https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty
-- https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering
-- https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE
+- https://aisofttechsolution.com/blog/expired-stock-customer-complaints
+- https://aisofttechsolution.com/blog/freelancer-invoice-chasing
+- https://aisofttechsolution.com/blog/salon-empty-chair
 
-**Crawled but not indexed: 45** (worth investigating)
+**Crawled but not indexed: 43** (worth investigating)
 
 - https://aisofttechsolution.com/profitscout — Crawled - currently not indexed
 - https://aisofttechsolution.com/guides/claimback — Discovered - currently not indexed
-- https://aisofttechsolution.com/guides/sellerradar-part-1 — Discovered - currently not indexed
-- https://aisofttechsolution.com/guides/client-website-prompt-pack — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/ai-agent-safety-audit — Discovered - currently not indexed
+- https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot — Discovered - currently not indexed
+- https://aisofttechsolution.com/guides/tikfulfill-build-guide — Discovered - currently not indexed
 - https://aisofttechsolution.com/blueprint-library — Discovered - currently not indexed
 - https://aisofttechsolution.com/compare/agency-vs-freelancer — Discovered - currently not indexed
 - https://aisofttechsolution.com/terms — Crawled - currently not indexed
 - https://aisofttechsolution.com/demos/bizbot — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/foodbot — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/supportai — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/codconfirm — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/tikfulfill — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/shopconsole — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/khatabook — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/profitlens — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/expiryguard — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/salonbook — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/clinictoken — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/feechaser — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/classflow — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/rentguard — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/viewbook — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/hallbook — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/leasemind — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/jobtrack — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/carcare — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/proposalgen — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/invoicechaser — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/hirepipe — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/school-fee-defaulters-reminders — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/real-estate-viewing-no-shows — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/expired-stock-customer-complaints — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/late-rent-reminders-property-managers — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/slow-proposals-lose-clients — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/clinic-patient-token-queues — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/cold-leads-buried-money — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/freelancer-invoice-chasing — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/unconfirmed-cod-orders — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/salon-empty-chair — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/wismo-most-expensive-sentence — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks — Discovered - currently not indexed
+- https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE — Discovered - currently not indexed
 
 **Technical blockers (noindex / robots.txt disallow): 0**
 _None._
