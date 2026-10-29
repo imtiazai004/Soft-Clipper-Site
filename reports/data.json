@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-28",
-  "generated_at": "2026-10-28 20:55 UTC",
+  "generated": "2026-10-29",
+  "generated_at": "2026-10-29 10:46 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,18 +9,18 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-27",
-          "end": "2026-10-25"
+          "start": "2026-09-28",
+          "end": "2026-10-26"
         },
         "total_query_page_rows": 14,
         "striking_distance": [
           {
             "query": "soft clipper",
             "page": "https://softclipper.pro/",
-            "position": 10.6,
+            "position": 10.5,
             "clicks": 1,
-            "impressions": 16,
-            "ctr": 6.25
+            "impressions": 18,
+            "ctr": 5.56
           },
           {
             "query": "soft cliper",
@@ -157,9 +157,9 @@
         "phrases_found": 360,
         "competitors_read": {
           "https://www.opus.pro": 1151,
-          "https://klap.app": 310,
+          "https://klap.app": 311,
           "https://vizard.ai": 292,
-          "https://www.submagic.co": 878,
+          "https://www.submagic.co": 418,
           "https://2short.ai": 0
         },
         "errors": [],
@@ -245,20 +245,6 @@
             ]
           },
           {
-            "phrase": "ai video clip api",
-            "score": 20,
-            "autocomplete_hits": 1,
-            "best_position": 4,
-            "competitors_covering": 4,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper a"
-            ],
-            "variants": [
-              "ai video clip cutter"
-            ]
-          },
-          {
             "phrase": "convert long video into youtube shorts",
             "score": 20,
             "autocomplete_hits": 2,
@@ -301,6 +287,7 @@
               "ai video clipper h"
             ],
             "variants": [
+              "ai video clip cutter",
               "ai video cutter for reels",
               "ai video cutter online",
               "ai video cutter reddit",
@@ -331,27 +318,16 @@
             ]
           },
           {
-            "phrase": "add subtitles to video and translate",
-            "score": 15,
+            "phrase": "ai video clip api",
+            "score": 17,
             "autocomplete_hits": 1,
-            "best_position": 0,
-            "competitors_covering": 1,
+            "best_position": 4,
+            "competitors_covering": 3,
             "we_cover_it": false,
             "seen_from": [
-              "add captions to video vs"
+              "ai video clipper a"
             ],
-            "variants": [
-              "add subtitles to video and translate free",
-              "add subtitles to video software",
-              "add subtitles to video without watermark",
-              "add subtitles to video software free",
-              "add subtitles to video without watermark free",
-              "add subtitles to video without watermark online free",
-              "add subtitles to video for free without watermark",
-              "add subtitles to video online free without watermark",
-              "add subtitles to video no sign up",
-              "add subtitles to video online free no sign up"
-            ]
+            "variants": []
           },
           {
             "phrase": "ai video clipper from youtube",
@@ -390,6 +366,29 @@
               "turn long videos into shorts h"
             ],
             "variants": []
+          },
+          {
+            "phrase": "add subtitles to video and translate",
+            "score": 12,
+            "autocomplete_hits": 1,
+            "best_position": 0,
+            "competitors_covering": 0,
+            "we_cover_it": false,
+            "seen_from": [
+              "add captions to video vs"
+            ],
+            "variants": [
+              "add subtitles to video and translate free",
+              "add subtitles to video software",
+              "add subtitles to video without watermark",
+              "add subtitles to video software free",
+              "add subtitles to video without watermark free",
+              "add subtitles to video without watermark online free",
+              "add subtitles to video for free without watermark",
+              "add subtitles to video online free without watermark",
+              "add subtitles to video no sign up",
+              "add subtitles to video online free no sign up"
+            ]
           },
           {
             "phrase": "auto crop video for tiktok",
@@ -432,31 +431,28 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-09-27",
-          "end": "2026-10-25"
+          "start": "2026-09-28",
+          "end": "2026-10-26"
         },
         "total_query_page_rows": 3,
         "striking_distance": [],
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 76,
+        "total_urls_checked": 78,
         "indexed": 8,
         "never_crawled": [
           "https://aisofttechsolution.com/demos/family-dental",
           "https://aisofttechsolution.com/demos/sinma-3d",
+          "https://aisofttechsolution.com/guides/account-health",
+          "https://aisofttechsolution.com/guides/competitor-price-watch",
           "https://aisofttechsolution.com/guides/fee-stack-calculator",
           "https://aisofttechsolution.com/guides/agent-hardening-guide",
           "https://aisofttechsolution.com/guides/morning-briefing-agent",
-          "https://aisofttechsolution.com/compare/agency-vs-freelancer",
           "https://aisofttechsolution.com/demos/bizbot",
-          "https://aisofttechsolution.com/demos/supportai",
-          "https://aisofttechsolution.com/demos/salonbook",
+          "https://aisofttechsolution.com/demos/clinictoken",
           "https://aisofttechsolution.com/demos/scriptrefill",
           "https://aisofttechsolution.com/demos/viewbook",
-          "https://aisofttechsolution.com/demos/leasemind",
-          "https://aisofttechsolution.com/demos/proposalgen",
-          "https://aisofttechsolution.com/demos/hirepipe",
           "https://aisofttechsolution.com/blog/coworking-space-booking-chaos",
           "https://aisofttechsolution.com/blog/auto-workshop-service-reminders",
           "https://aisofttechsolution.com/blog/candidate-ghosting-recruiters",
@@ -465,9 +461,12 @@
           "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
           "https://aisofttechsolution.com/blog/gym-membership-churn-early-warning",
           "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
-          "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
           "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
-          "https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE"
+          "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
+          "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
+          "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+          "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
+          "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks"
         ],
         "crawled_not_indexed": [
           {
@@ -507,11 +506,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/compare/agency-vs-freelancer",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/terms",
             "reason": "Crawled - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/demos/foodbot",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/demos/supportai",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -539,7 +546,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/clinictoken",
+            "url": "https://aisofttechsolution.com/demos/salonbook",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -559,6 +566,10 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/leasemind",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/jobtrack",
             "reason": "Discovered - currently not indexed"
           },
@@ -571,11 +582,23 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/proposalgen",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/invoicechaser",
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/hirepipe",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/school-fee-defaulters-reminders",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -587,27 +610,11 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
             "reason": "Discovered - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/blog/cold-leads-buried-money",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -639,7 +646,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks",
+            "url": "https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE",
             "reason": "Discovered - currently not indexed"
           }
         ],
@@ -659,7 +666,7 @@
         "llms_txt": {
           "llms_url": "https://aisofttechsolution.com/llms.txt",
           "exists": true,
-          "bytes": 26504,
+          "bytes": 26937,
           "has_facts_block": true,
           "link_count": 1,
           "dead_links": []
@@ -677,6 +684,8 @@
             "https://aisofttechsolution.com/demos/sinma-3d",
             "https://aisofttechsolution.com/profitscout",
             "https://aisofttechsolution.com/guides",
+            "https://aisofttechsolution.com/guides/account-health",
+            "https://aisofttechsolution.com/guides/competitor-price-watch",
             "https://aisofttechsolution.com/guides/fee-stack-calculator",
             "https://aisofttechsolution.com/guides/agent-hardening-guide",
             "https://aisofttechsolution.com/guides/morning-briefing-agent",
@@ -727,9 +736,7 @@
             "https://aisofttechsolution.com/blog/tiktok-shop-uk-dispatch-rules",
             "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
             "https://aisofttechsolution.com/blog/school-fee-defaulters-reminders",
-            "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
-            "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
-            "https://aisofttechsolution.com/blog/expired-stock-customer-complaints"
+            "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows"
           ]
         }
       },
