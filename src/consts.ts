@@ -41,7 +41,7 @@ export const SITE = {
 	 */
 	companyNumber: "15025294",
 	companyRegisteredIn: "England and Wales",
-	companyAddress: ["4 Blenheim Court", "Peppercorn Close", "Peterborough", "PE1 2DU"],
+	companyAddress: ["#243 4 Blenheim Court", "Peppercorn Close", "Peterborough", "PE1 2DU"],
 	/** One line, for prose and for the footer. */
 	get companyAddressLine() {
 		return this.companyAddress.join(", ");
