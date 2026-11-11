@@ -1,0 +1,71 @@
+---
+import Page from "../layouts/Page.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema } from "../lib/schema";
+
+const crumbs = [
+	{ label: "Home", href: "/" },
+	{ label: "Company", href: "/company/" },
+];
+
+// Registered details verified against the official Companies House record
+// (company no. 15025294) on 11 November 2026. The name, number, place of
+// registration and registered office below are read from src/consts.ts, so
+// this page and the footer can never disagree about them.
+const INCORPORATED = "24 July 2023";
+const SIC = "47910 — Retail sale via mail order houses or via Internet";
+const COMPANIES_HOUSE_URL =
+	"https://find-and-update.company-information.service.gov.uk/company/15025294";
+---
+
+<Page
+	title="Company details"
+	heading={SITE.company}
+	description={`${SITE.company} (company no. ${SITE.companyNumber}) is the company behind ${SITE.name}: registered in ${SITE.companyRegisteredIn}, registered office ${SITE.companyAddressLine}.`}
+	intro={`${SITE.name} is published by ${SITE.company}, a private limited company registered in ${SITE.companyRegisteredIn}. This page lists the company's registered details.`}
+	eyebrow="Company"
+	crumbs={crumbs}
+	schema={[breadcrumbSchema(crumbs)]}
+	cta={false}
+	narrow
+>
+	<section class="pt-0">
+		<div class="wrap wrap-narrow prose">
+			<h2>Registered details</h2>
+			<ul>
+				<li><strong>Legal name:</strong> {SITE.company}</li>
+				<li><strong>Company number:</strong> {SITE.companyNumber}</li>
+				<li><strong>Registered in:</strong> {SITE.companyRegisteredIn}</li>
+				<li><strong>Registered office:</strong> {SITE.companyAddressLine}, {SITE.companyCountry}</li>
+				<li><strong>Incorporated:</strong> {INCORPORATED}</li>
+				<li><strong>Business:</strong> {SIC}</li>
+			</ul>
+
+			<h2>What the company does</h2>
+			<p>
+				{SITE.company} publishes {SITE.name}, a desktop app that turns long videos
+				into ready-to-post vertical clips for TikTok, Reels and Shorts. The app is
+				sold as a one-time purchase from this website.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
+				Phone / WhatsApp: <a href={SITE.waLink}>{SITE.phone}</a>
+			</p>
+
+			<h2>Verify us</h2>
+			<p>
+				These details are a matter of public record. You can check them on the
+				official register:
+				<a href={COMPANIES_HOUSE_URL}>ATLANTIC LTD STORE LIMITED on Companies House</a>.
+			</p>
+		</div>
+	</section>
+</Page>
+
+<style>
+	.pt-0 {
+		padding-top: 8px;
+	}
+</style>
