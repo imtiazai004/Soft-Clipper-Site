@@ -135,6 +135,31 @@ const COMPANIES_HOUSE_URL =
 		</div>
 	</section>
 
+	<!-- Who runs the company. Added on the owner's own word (12 Nov 2026):
+	     Imtiaz Ahmad is the owner and director. His photo and direct email
+	     are shown here; the general support email stays info@softclipper.pro. -->
+	<section>
+		<div class="wrap">
+			<div class="card owner">
+				<img class="owner-photo" src="/imtiaz-ahmad.jpg" alt="Imtiaz Ahmad, owner and director of Atlantic Ltd Store Limited" width="640" height="640" loading="lazy" />
+				<div>
+					<h2 class="flat-heading">Who runs the company</h2>
+					<p class="owner-name">Imtiaz Ahmad</p>
+					<p class="owner-role">Owner &amp; Director, {SITE.company}</p>
+					<p>
+						Imtiaz is the owner and director of {SITE.company}, and the developer
+						behind {SITE.name}. He builds the product and answers support himself —
+						by email or on WhatsApp, a person replies, not a ticket queue.
+					</p>
+					<p>
+						Direct email: <a href="mailto:imtiazahmad@softclipper.pro">imtiazahmad@softclipper.pro</a><br />
+						Phone / WhatsApp: <a href={SITE.waLink}>{SITE.phone}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Registered details, presented as a record — plus the two ways to
 	     check them. Every Payoneer verification fact is on this row. -->
 	<section>
@@ -272,5 +297,29 @@ const COMPANIES_HOUSE_URL =
 	}
 	.verify .btn {
 		margin-top: 14px;
+	}
+	.owner {
+		display: grid;
+		grid-template-columns: 260px 1fr;
+		gap: 32px;
+		align-items: center;
+	}
+	@media (max-width: 700px) {
+		.owner {
+			grid-template-columns: 1fr;
+		}
+	}
+	.owner-photo {
+		border-radius: var(--radius);
+	}
+	.owner-name {
+		font-size: 1.4rem;
+		font-weight: 800;
+		color: var(--text);
+		margin-top: 8px;
+	}
+	.owner-role {
+		color: var(--dim);
+		font-weight: 600;
 	}
 </style>
