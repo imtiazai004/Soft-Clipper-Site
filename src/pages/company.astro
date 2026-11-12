@@ -1,6 +1,6 @@
 ---
 import Page from "../layouts/Page.astro";
-import { SITE } from "../consts";
+import { SITE, PRICE, PRODUCT } from "../consts";
 import { breadcrumbSchema } from "../lib/schema";
 
 const crumbs = [
@@ -19,53 +19,258 @@ const COMPANIES_HOUSE_URL =
 ---
 
 <Page
-	title="Company details"
+	title="Company"
 	heading={SITE.company}
-	description={`${SITE.company} (company no. ${SITE.companyNumber}) is the company behind ${SITE.name}: registered in ${SITE.companyRegisteredIn}, registered office ${SITE.companyAddressLine}.`}
-	intro={`${SITE.name} is published by ${SITE.company}, a private limited company registered in ${SITE.companyRegisteredIn}. This page lists the company's registered details.`}
+	description={`${SITE.company} (company no. ${SITE.companyNumber}) is the UK company behind ${SITE.name}. Registered in ${SITE.companyRegisteredIn}, registered office ${SITE.companyAddressLine}.`}
+	intro={`${SITE.company} is a UK software company. It publishes ${SITE.name}, a Windows and Mac desktop app that turns long videos into ready-to-post vertical clips for TikTok, Reels and Shorts — sold as a one-time purchase of ${PRICE.display}, with no subscription.`}
 	eyebrow="Company"
 	crumbs={crumbs}
 	schema={[breadcrumbSchema(crumbs)]}
-	cta={false}
-	narrow
 >
-	<section class="pt-0">
-		<div class="wrap wrap-narrow prose">
-			<h2>Registered details</h2>
-			<ul>
-				<li><strong>Legal name:</strong> {SITE.company}</li>
-				<li><strong>Company number:</strong> {SITE.companyNumber}</li>
-				<li><strong>Registered in:</strong> {SITE.companyRegisteredIn}</li>
-				<li><strong>Registered office:</strong> {SITE.companyAddressLine}, {SITE.companyCountry}</li>
-				<li><strong>Incorporated:</strong> {INCORPORATED}</li>
-				<li><strong>Business:</strong> {SIC}</li>
-			</ul>
+	<!-- At a glance: the facts a buyer or a verifier looks for first. -->
+	<section class="strip">
+		<div class="wrap">
+			<div class="grid grid-4">
+				<div class="card fact">
+					<span class="fact-label">Incorporated</span>
+					<span class="fact-value">{INCORPORATED}</span>
+				</div>
+				<div class="card fact">
+					<span class="fact-label">Registered in</span>
+					<span class="fact-value">{SITE.companyRegisteredIn}</span>
+				</div>
+				<div class="card fact">
+					<span class="fact-label">Company number</span>
+					<span class="fact-value mono">{SITE.companyNumber}</span>
+				</div>
+				<div class="card fact">
+					<span class="fact-label">Flagship product</span>
+					<span class="fact-value">{SITE.name} · {PRICE.display} once</span>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<h2>What the company does</h2>
-			<p>
-				{SITE.company} publishes {SITE.name}, a desktop app that turns long videos
-				into ready-to-post vertical clips for TikTok, Reels and Shorts. The app is
-				sold as a one-time purchase from this website.
-			</p>
+	<!-- What the company actually makes, shown rather than listed. -->
+	<section>
+		<div class="wrap">
+			<div class="split">
+				<div>
+					<div class="section-head">
+						<h2>What we build</h2>
+						<p>
+							{SITE.name} started as a tool for one person with a backlog of long
+							recordings and no time to cut them. It got sold because everyone who
+							saw it asked for a copy.
+						</p>
+						<p>
+							Today it is a {PRODUCT.desktopAppNoun} that finds the best moments in
+							a long video and cuts them into ready-to-post vertical clips, with AI
+							captions and automatic 9:16 reframing. One long video becomes a week
+							of clips in minutes.
+						</p>
+						<p>
+							It runs on {PRODUCT.platforms}, and it is sold as a one-time purchase
+							from this website — {PRICE.display}, no subscription, no per-minute
+							metering.
+						</p>
+					</div>
+					<div class="btn-row">
+						<a class="btn btn-primary" href="/pricing/">See pricing — {PRICE.display} once</a>
+						<a class="btn btn-ghost" href="/features/">How it works</a>
+					</div>
+				</div>
+				<figure class="stage shot-pair">
+					<div class="shot">
+						<img src="/shots/wide.jpg" alt="A long interview recording, the kind of video Soft Clipper starts from" width="1280" height="720" loading="lazy" />
+						<figcaption>The long video</figcaption>
+					</div>
+					<div class="shot-arrow" aria-hidden="true">→</div>
+					<div class="shot shot-tall">
+						<img src="/shots/vertical.jpg" alt="The same moment reframed by Soft Clipper as a vertical clip" width="720" height="1280" loading="lazy" />
+						<figcaption>The vertical clip</figcaption>
+					</div>
+				</figure>
+			</div>
+		</div>
+	</section>
 
-			<h2>Contact</h2>
-			<p>
-				Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
-				Phone / WhatsApp: <a href={SITE.waLink}>{SITE.phone}</a>
-			</p>
+	<!-- How the company works: the three decisions from the About page,
+	     restated here because they are what a buyer is really checking. -->
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<h2>How we work</h2>
+				<p>Three decisions shape everything we sell, and all three cost us money on paper.</p>
+			</div>
+			<div class="grid grid-3">
+				<div class="card">
+					<div class="ico" aria-hidden="true">▣</div>
+					<h3>It runs on your computer</h3>
+					<p>
+						Uploading a two-hour recording to a server and waiting is slower than
+						encoding it locally — and it means someone else holds your footage.
+						Local processing removes the reason to meter you by the minute.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico" aria-hidden="true">◐</div>
+					<h3>You pay once</h3>
+					<p>
+						Recurring revenue is better for us and worse for you on a tool you might
+						use twice a month. {PRICE.display} once, and the app keeps working
+						whether or not we ever hear from you again.
+					</p>
+				</div>
+				<div class="card">
+					<div class="ico" aria-hidden="true">✉</div>
+					<h3>A person answers</h3>
+					<p>
+						Support goes to a person, not a ticket queue — by email at
+						<a href={`mailto:${SITE.email}`}>{SITE.email}</a> or on WhatsApp at
+						<a href={SITE.waLink}>{SITE.phone}</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<h2>Verify us</h2>
-			<p>
-				These details are a matter of public record. You can check them on the
-				official register:
-				<a href={COMPANIES_HOUSE_URL}>ATLANTIC LTD STORE LIMITED on Companies House</a>.
-			</p>
+	<!-- Registered details, presented as a record — plus the two ways to
+	     check them. Every Payoneer verification fact is on this row. -->
+	<section>
+		<div class="wrap">
+			<div class="grid grid-2">
+				<div class="card details">
+					<h2 class="flat-heading">Registered details</h2>
+					<dl>
+						<div>
+							<dt>Legal name</dt>
+							<dd>{SITE.company}</dd>
+						</div>
+						<div>
+							<dt>Company number</dt>
+							<dd class="mono">{SITE.companyNumber}</dd>
+						</div>
+						<div>
+							<dt>Registered in</dt>
+							<dd>{SITE.companyRegisteredIn}</dd>
+						</div>
+						<div>
+							<dt>Registered office</dt>
+							<dd>{SITE.companyAddressLine}, {SITE.companyCountry}</dd>
+						</div>
+						<div>
+							<dt>Incorporated</dt>
+							<dd>{INCORPORATED}</dd>
+						</div>
+						<div>
+							<dt>Business</dt>
+							<dd>{SIC}</dd>
+						</div>
+					</dl>
+				</div>
+				<div class="stack">
+					<div class="card verify">
+						<h3>Verify us</h3>
+						<p>
+							These details are a matter of public record. You can check them on
+							the official UK register.
+						</p>
+						<a class="btn btn-ghost" href={COMPANIES_HOUSE_URL} target="_blank" rel="noopener">
+							Check us on Companies House
+						</a>
+					</div>
+					<div class="card">
+						<h3>Contact the company</h3>
+						<p>
+							Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
+							Phone / WhatsApp: <a href={SITE.waLink}>{SITE.phone}</a>
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </Page>
 
 <style>
-	.pt-0 {
-		padding-top: 8px;
+	.strip {
+		padding-block: 12px 0;
+	}
+	.fact {
+		display: grid;
+		gap: 4px;
+	}
+	.fact-label {
+		font-size: 0.78rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--dim);
+		font-weight: 700;
+	}
+	.fact-value {
+		font-weight: 700;
+		font-size: 1.02rem;
+	}
+	.split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+	}
+	@media (max-width: 860px) {
+		.split {
+			grid-template-columns: 1fr;
+		}
+	}
+	.shot-pair {
+		padding: 20px;
+		display: grid;
+		grid-template-columns: 1.6fr auto 1fr;
+		gap: 14px;
+		align-items: center;
+	}
+	.shot img {
+		border-radius: 10px;
+	}
+	.shot figcaption {
+		margin-top: 10px;
+		text-align: center;
+		font-size: 0.85rem;
+		color: var(--stage-muted);
+	}
+	.shot-arrow {
+		font-size: 1.5rem;
+		color: var(--cyan-bright);
+		font-weight: 800;
+	}
+	.details dl {
+		display: grid;
+		gap: 0;
+		margin-top: 16px;
+	}
+	.details dl > div {
+		display: grid;
+		grid-template-columns: 170px 1fr;
+		gap: 16px;
+		padding-block: 12px;
+		border-top: 1px solid var(--border);
+	}
+	.details dl > div:first-child {
+		border-top: none;
+		padding-top: 0;
+	}
+	.details dt {
+		font-size: 0.85rem;
+		color: var(--dim);
+		font-weight: 600;
+	}
+	.details dd {
+		margin: 0;
+		color: var(--text);
+		font-weight: 600;
+	}
+	.verify .btn {
+		margin-top: 14px;
 	}
 </style>
