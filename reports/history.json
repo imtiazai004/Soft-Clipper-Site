@@ -3326,9 +3326,9 @@
     "striking_distance": 0,
     "impressions": 0,
     "clicks": 0,
-    "urls_checked": 112,
-    "never_crawled": 29,
-    "crawled_not_indexed": 75,
+    "urls_checked": 113,
+    "never_crawled": 8,
+    "crawled_not_indexed": 87,
     "blockers": 0,
     "faqs_total": 0,
     "faqs_ready": 0,
@@ -3344,13 +3344,13 @@
     "impressions": 2,
     "clicks": 0,
     "urls_checked": 50,
-    "never_crawled": 15,
+    "never_crawled": 14,
     "crawled_not_indexed": 1,
     "blockers": 0,
-    "faqs_total": 141,
-    "faqs_ready": 141,
+    "faqs_total": 131,
+    "faqs_ready": 131,
     "topic_ideas": 15,
-    "pages_citable": 41,
-    "pages_checked_geo": 51
+    "pages_citable": 36,
+    "pages_checked_geo": 46
   }
 ]
