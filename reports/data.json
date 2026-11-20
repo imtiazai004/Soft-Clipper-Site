@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-20",
-  "generated_at": "2026-11-20 12:48 UTC",
+  "generated_at": "2026-11-20 22:45 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -35,18 +35,20 @@
       },
       "indexing": {
         "total_urls_checked": 50,
-        "indexed": 38,
+        "indexed": 36,
         "never_crawled": [
-          "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
           "https://softclipper.pro/blog/how-ai-video-clippers-work/",
           "https://softclipper.pro/blog/how-to-add-captions-to-video/",
           "https://softclipper.pro/blog/how-to-auto-reframe-a-video-in-premiere-pro/",
           "https://softclipper.pro/blog/how-to-resize-video-for-tiktok-instagram-youtube/",
           "https://softclipper.pro/blog/ideal-clip-length-for-tiktok-reels-youtube-shorts_1/",
           "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
+          "https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/",
           "https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
           "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
+          "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
+          "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
           "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
         ],
@@ -59,31 +61,15 @@
         "technical_blockers": [],
         "check_errors": [
           {
-            "url": "https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://softclipper.pro/blog/turn-a-podcast-into-short-video-clips/",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://softclipper.pro/compare/klap-alternative/",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://softclipper.pro/legal/terms/",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
+            "url": "https://softclipper.pro/blog/add-text-to-video-in-youtube-editor/",
+            "error": "POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect -> 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
           }
         ]
       },
       "aeo": {
-        "pages_checked": 22,
-        "total_faqs": 137,
-        "snippet_ready": 137,
+        "pages_checked": 23,
+        "total_faqs": 141,
+        "snippet_ready": 141,
         "problems": []
       },
       "geo": {
@@ -120,8 +106,8 @@
           "dead_links": []
         },
         "citability": {
-          "pages_checked": 46,
-          "citable": 38,
+          "pages_checked": 50,
+          "citable": 40,
           "skipped": 0,
           "needs_work": [
             {
@@ -139,9 +125,11 @@
           ],
           "opportunities": [
             "https://softclipper.pro/blog/is-there-a-free-ai-video-clipper-with-no-watermark/",
+            "https://softclipper.pro/blog/soft-clipper-audio-processing-what-it-is-and-how-to-use-it/",
             "https://softclipper.pro/blog/soft-clipping-how-smooth-limiting-prevents-harsh-distortion/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-how-it-works-when-to-use-it-and-best-practices-for-transp/",
             "https://softclipper.pro/blog/soft-clipping-in-audio-production-how-it-works-and-why-producers-use-it/",
+            "https://softclipper.pro/blog/what-is-a-soft-clipper-a-practical-guide-to-gentle-peak-control/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-shapes-sound-in-production-and-synthesis/",
             "https://softclipper.pro/blog/what-is-a-soft-clipper-how-it-works-in-audio-production-and-mastering/"
           ]
@@ -162,7 +150,7 @@
           "highlight reel from long video"
         ],
         "requests_made": 150,
-        "phrases_found": 357,
+        "phrases_found": 360,
         "competitors_read": {
           "https://www.opus.pro": 1233,
           "https://klap.app": 98,
@@ -174,8 +162,8 @@
         "gaps": [
           {
             "phrase": "how to cut long video to short",
-            "score": 27,
-            "autocomplete_hits": 6,
+            "score": 29,
+            "autocomplete_hits": 7,
             "best_position": 1,
             "competitors_covering": 2,
             "we_cover_it": false,
@@ -183,12 +171,11 @@
               "best turn long videos into shorts",
               "turn long videos into shorts b",
               "turn long videos into shorts c",
-              "turn long videos into shorts o",
-              "turn long videos into shorts s"
+              "turn long videos into shorts h",
+              "turn long videos into shorts o"
             ],
             "variants": [
-              "how to convert long video to short video",
-              "how to convert long video into short video"
+              "how to convert long video to short video"
             ]
           },
           {
@@ -204,12 +191,18 @@
             ],
             "variants": [
               "ai video clip software",
+              "ai video editor software",
               "ai video cutting and editing",
+              "ai video editor software for pc",
               "ai video cutting editing",
               "free video repair software",
+              "ai video editor software free",
               "free video restoration software",
+              "ai cutting video editor",
+              "best ai video editor software",
               "ai video cutting tool",
               "best ai video cutting tool",
+              "best ai video editor software for pc",
               "ai video cutting tool free",
               "ai video cutting elements",
               "ai video cutting planets",
@@ -224,6 +217,52 @@
             ]
           },
           {
+            "phrase": "how to make a shorts video",
+            "score": 23,
+            "autocomplete_hits": 1,
+            "best_position": 1,
+            "competitors_covering": 4,
+            "we_cover_it": false,
+            "seen_from": [
+              "turn long videos into shorts i"
+            ],
+            "variants": [
+              "how to make long video in shorts"
+            ]
+          },
+          {
+            "phrase": "ai video cutter and editor",
+            "score": 22,
+            "autocomplete_hits": 2,
+            "best_position": 1,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "ai video clipper vs",
+              "ai video clipper a"
+            ],
+            "variants": [
+              "ai video cutter editor",
+              "ai video clip cutter",
+              "ai video cutter for reels",
+              "ai video editor free",
+              "ai video editor/trimmer",
+              "ai video editor free online",
+              "ai video highlight cutter",
+              "ai video cutter tool",
+              "ai video editor free no sign up",
+              "ai video cutter online",
+              "ai video cutter reddit",
+              "ai video silence cutter",
+              "best ai video cutter",
+              "ai video cutter github",
+              "ai video cutter free",
+              "best free ai video cutter",
+              "ai video cutter app",
+              "ai video cutter free online"
+            ]
+          },
+          {
             "phrase": "ai video clipping app",
             "score": 21,
             "autocomplete_hits": 1,
@@ -235,8 +274,7 @@
             ],
             "variants": [
               "ai video clipping tool",
-              "ai video clip app",
-              "ai video cutter app"
+              "ai video clip app"
             ]
           },
           {
@@ -251,6 +289,33 @@
               "ai video clipper l"
             ],
             "variants": []
+          },
+          {
+            "phrase": "can i add text to video in youtube editor",
+            "score": 19,
+            "autocomplete_hits": 1,
+            "best_position": 2,
+            "competitors_covering": 3,
+            "we_cover_it": false,
+            "seen_from": [
+              "can i add captions to video"
+            ],
+            "variants": [
+              "can i add text to video on iphone",
+              "add text to video software",
+              "add text to video without watermark",
+              "can i add text to video in imovie",
+              "how do i add text to video on iphone",
+              "add text to video without watermark free",
+              "how do i add text to video in davinci resolve",
+              "add text to video editor",
+              "how do i add text to video on capcut",
+              "add text to video editor free",
+              "add text to video online free no watermark",
+              "best app add text to video",
+              "how do i add text to video in imovie",
+              "add subtitles to video editor"
+            ]
           },
           {
             "phrase": "what apps add captions to videos",
@@ -279,9 +344,7 @@
             "seen_from": [
               "ai video clipper a"
             ],
-            "variants": [
-              "ai video clip cutter"
-            ]
+            "variants": []
           },
           {
             "phrase": "convert long video into youtube shorts",
@@ -300,30 +363,6 @@
               "convert video into shorts size",
               "convert full video into shorts free",
               "turn video into youtube shorts format"
-            ]
-          },
-          {
-            "phrase": "ai video cutter for reels",
-            "score": 16,
-            "autocomplete_hits": 2,
-            "best_position": 4,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "ai video clipper for",
-              "ai video clipper r"
-            ],
-            "variants": [
-              "ai video highlight cutter",
-              "ai video cutter tool",
-              "ai video cutter online",
-              "ai video cutter reddit",
-              "ai video silence cutter",
-              "best ai video cutter",
-              "ai video cutter github",
-              "ai video cutter free",
-              "best free ai video cutter",
-              "ai video cutter free online"
             ]
           },
           {
@@ -387,18 +426,6 @@
             "variants": []
           },
           {
-            "phrase": "how to make long video in shorts",
-            "score": 12,
-            "autocomplete_hits": 1,
-            "best_position": 6,
-            "competitors_covering": 2,
-            "we_cover_it": false,
-            "seen_from": [
-              "how to turn long videos into shorts"
-            ],
-            "variants": []
-          },
-          {
             "phrase": "ai video trimmer online free",
             "score": 11,
             "autocomplete_hits": 2,
@@ -412,23 +439,11 @@
             "variants": [
               "ai video trimmer online"
             ]
-          },
-          {
-            "phrase": "what is add closed caption to your video",
-            "score": 11,
-            "autocomplete_hits": 1,
-            "best_position": 1,
-            "competitors_covering": 0,
-            "we_cover_it": false,
-            "seen_from": [
-              "what is add captions to video"
-            ],
-            "variants": []
           }
         ],
-        "phrases_clustered_into": 26,
-        "clusters_not_shown": 11,
-        "already_covered": 241
+        "phrases_clustered_into": 27,
+        "clusters_not_shown": 12,
+        "already_covered": 217
       }
     },
     {
@@ -446,43 +461,28 @@
         "cannibalization": []
       },
       "indexing": {
-        "total_urls_checked": 114,
-        "indexed": 11,
+        "total_urls_checked": 115,
+        "indexed": 7,
         "never_crawled": [
-          "https://aisofttechsolution.com/source",
+          "https://aisofttechsolution.com/demos/family-dental",
+          "https://aisofttechsolution.com/guides/amazon-return-rule",
+          "https://aisofttechsolution.com/guides/ecommerce-ai-tools",
           "https://aisofttechsolution.com/guides/account-health",
-          "https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks",
-          "https://aisofttechsolution.com/guides/competitor-price-watch",
-          "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
-          "https://aisofttechsolution.com/demos/bizbot",
-          "https://aisofttechsolution.com/demos/codconfirm",
-          "https://aisofttechsolution.com/demos/expiryguard",
-          "https://aisofttechsolution.com/demos/hallbook",
+          "https://aisofttechsolution.com/guides/sellerradar-part-1",
+          "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+          "https://aisofttechsolution.com/demos/khatabook",
           "https://aisofttechsolution.com/demos/proposalgen",
-          "https://aisofttechsolution.com/demos/invoicechaser",
-          "https://aisofttechsolution.com/demos/voicefront",
+          "https://aisofttechsolution.com/demos/flowdesk",
           "https://aisofttechsolution.com/demos/adpilot",
           "https://aisofttechsolution.com/demos/sourcepilot",
+          "https://aisofttechsolution.com/blog/ai-sourcing-agent-finds-your-supplier-accio",
           "https://aisofttechsolution.com/blog/ai-agents-run-your-ads-inmobi-accelerate",
-          "https://aisofttechsolution.com/blog/ai-agent-money-moves-need-your-approval",
-          "https://aisofttechsolution.com/blog/ai-voice-receptionist-missed-calls",
-          "https://aisofttechsolution.com/blog/coworking-space-booking-chaos",
-          "https://aisofttechsolution.com/blog/auto-workshop-service-reminders",
-          "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
-          "https://aisofttechsolution.com/blog/gym-membership-churn-early-warning",
-          "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
-          "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
-          "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
-          "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
-          "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
-          "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
-          "https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips"
+          "https://aisofttechsolution.com/blog/your-customers-ai-can-now-pay-you",
+          "https://aisofttechsolution.com/blog/personal-ai-agent-runs-your-business",
+          "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+          "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks"
         ],
         "crawled_not_indexed": [
-          {
-            "url": "https://aisofttechsolution.com/demos/family-dental",
-            "reason": "Discovered - currently not indexed"
-          },
           {
             "url": "https://aisofttechsolution.com/demos/family-dental-classic",
             "reason": "Discovered - currently not indexed"
@@ -496,7 +496,15 @@
             "reason": "Crawled - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/guides/amazon-return-rule",
+            "url": "https://aisofttechsolution.com/source",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/guides/competitor-price-watch",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -516,10 +524,6 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/guides/sellerradar-part-1",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/guides/client-website-prompt-pack",
             "reason": "Discovered - currently not indexed"
           },
@@ -532,7 +536,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+            "url": "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -552,6 +556,10 @@
             "reason": "Crawled - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/bizbot",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/foodbot",
             "reason": "Discovered - currently not indexed"
           },
@@ -560,15 +568,23 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/codconfirm",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/tikfulfill",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/khatabook",
+            "url": "https://aisofttechsolution.com/demos/shopconsole",
             "reason": "Discovered - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/demos/profitlens",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/demos/expiryguard",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -600,6 +616,10 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/hallbook",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/leasemind",
             "reason": "Discovered - currently not indexed"
           },
@@ -616,6 +636,10 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/invoicechaser",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/hirepipe",
             "reason": "Discovered - currently not indexed"
           },
@@ -625,6 +649,10 @@
           },
           {
             "url": "https://aisofttechsolution.com/demos/shopagent",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/demos/voicefront",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -644,10 +672,6 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/flowdesk",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/demos/winback",
             "reason": "Discovered - currently not indexed"
           },
@@ -664,11 +688,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/demos/aftercall",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/demos/agentcheckout",
             "reason": "Discovered - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/blog/voice-agent-after-call-work",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/ai-agent-money-moves-need-your-approval",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -704,11 +736,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/ai-voice-receptionist-missed-calls",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/ai-agents-buy-from-your-store",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/blog/personal-ai-agent-runs-your-business",
+            "url": "https://aisofttechsolution.com/blog/coworking-space-booking-chaos",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/auto-workshop-service-reminders",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -724,11 +764,31 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/gym-membership-churn-early-warning",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/school-fee-defaulters-reminders",
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/real-estate-viewing-no-shows",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/late-rent-reminders-property-managers",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/expired-stock-customer-complaints",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -740,11 +800,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/clinic-patient-token-queues",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/cold-leads-buried-money",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+            "url": "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -772,7 +840,7 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks",
+            "url": "https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -781,24 +849,7 @@
           }
         ],
         "technical_blockers": [],
-        "check_errors": [
-          {
-            "url": "https://aisofttechsolution.com/guides/ecommerce-ai-tools",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/shopconsole",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/aftercall",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/your-customers-ai-can-now-pay-you",
-            "error": "HTTPSConnectionPool(host='searchconsole.googleapis.com', port=443): Read timed out. (read timeout=60)"
-          }
-        ]
+        "check_errors": []
       },
       "aeo": {
         "pages_checked": 0,
@@ -834,6 +885,7 @@
             "https://aisofttechsolution.com/guides",
             "https://aisofttechsolution.com/source",
             "https://aisofttechsolution.com/guides/amazon-return-rule",
+            "https://aisofttechsolution.com/guides/ecommerce-ai-tools",
             "https://aisofttechsolution.com/guides/account-health",
             "https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks",
             "https://aisofttechsolution.com/guides/competitor-price-watch",
@@ -858,6 +910,7 @@
             "https://aisofttechsolution.com/demos/supportai",
             "https://aisofttechsolution.com/demos/codconfirm",
             "https://aisofttechsolution.com/demos/tikfulfill",
+            "https://aisofttechsolution.com/demos/shopconsole",
             "https://aisofttechsolution.com/demos/khatabook",
             "https://aisofttechsolution.com/demos/profitlens",
             "https://aisofttechsolution.com/demos/expiryguard",
@@ -881,9 +934,7 @@
             "https://aisofttechsolution.com/demos/voicefront",
             "https://aisofttechsolution.com/demos/profilebot",
             "https://aisofttechsolution.com/demos/dotdesk",
-            "https://aisofttechsolution.com/demos/shopshield",
-            "https://aisofttechsolution.com/demos/memocare",
-            "https://aisofttechsolution.com/demos/flowdesk"
+            "https://aisofttechsolution.com/demos/shopshield"
           ]
         }
       },
