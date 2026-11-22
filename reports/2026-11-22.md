@@ -124,51 +124,42 @@ No queries are being split across more than one page.
 
 ### Indexing health
 
-116 URLs checked from the sitemap.
+117 URLs checked from the sitemap.
 
-**Never crawled by Google yet: 32**
+**Never crawled by Google yet: 20**
 _These need a "Request indexing" click in Search Console._
 
-- https://aisofttechsolution.com/demos/family-dental-classic
-- https://aisofttechsolution.com/guides/amazon-return-rule
-- https://aisofttechsolution.com/guides/ecommerce-ai-tools
-- https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks
-- https://aisofttechsolution.com/compare/agency-vs-freelancer
-- https://aisofttechsolution.com/demos/bizbot
-- https://aisofttechsolution.com/demos/shopconsole
-- https://aisofttechsolution.com/demos/profitlens
-- https://aisofttechsolution.com/demos/feechaser
-- https://aisofttechsolution.com/demos/rentguard
-- https://aisofttechsolution.com/demos/jobtrack
-- https://aisofttechsolution.com/demos/carcare
+- https://aisofttechsolution.com/source
+- https://aisofttechsolution.com/demos/codconfirm
+- https://aisofttechsolution.com/demos/hallbook
+- https://aisofttechsolution.com/demos/leasemind
 - https://aisofttechsolution.com/demos/clawdesk
-- https://aisofttechsolution.com/demos/winback
-- https://aisofttechsolution.com/demos/reviewdesk
 - https://aisofttechsolution.com/demos/adpilot
 - https://aisofttechsolution.com/demos/sourcepilot
 - https://aisofttechsolution.com/demos/textpilot
+- https://aisofttechsolution.com/blog/ai-agents-live-in-text-messages
 - https://aisofttechsolution.com/blog/ai-sourcing-agent-finds-your-supplier-accio
 - https://aisofttechsolution.com/blog/ai-agents-run-your-ads-inmobi-accelerate
-- https://aisofttechsolution.com/blog/n8n-workflows-save-43-hours
-- https://aisofttechsolution.com/blog/ai-agents-hacked-100-websites
 - https://aisofttechsolution.com/blog/always-on-ai-agent-overnight-tasks
-- https://aisofttechsolution.com/blog/candidate-ghosting-recruiters
+- https://aisofttechsolution.com/blog/ai-agents-buy-from-your-store
+- https://aisofttechsolution.com/blog/wedding-hall-double-booking
+- https://aisofttechsolution.com/blog/gym-membership-churn-early-warning
 - https://aisofttechsolution.com/blog/expired-stock-customer-complaints
-- https://aisofttechsolution.com/blog/slow-proposals-lose-clients
 - https://aisofttechsolution.com/blog/cold-leads-buried-money
-- https://aisofttechsolution.com/blog/unconfirmed-cod-orders
-- https://aisofttechsolution.com/blog/salon-empty-chair
 - https://aisofttechsolution.com/blog/wismo-most-expensive-sentence
-- https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering
+- https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business
 - https://aisofttechsolution.com/blueprint-library/5mgTx5LwZ1L36rhLy8NE
 
-**Crawled but not indexed: 77** (worth investigating)
+**Crawled but not indexed: 90** (worth investigating)
 
 - https://aisofttechsolution.com/demos/family-dental — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/family-dental-classic — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/sinma-3d — Discovered - currently not indexed
 - https://aisofttechsolution.com/profitscout — Crawled - currently not indexed
-- https://aisofttechsolution.com/source — Discovered - currently not indexed
+- https://aisofttechsolution.com/guides/amazon-return-rule — Discovered - currently not indexed
+- https://aisofttechsolution.com/guides/ecommerce-ai-tools — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/account-health — Discovered - currently not indexed
+- https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/competitor-price-watch — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/fee-stack-calculator — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/agent-hardening-guide — Discovered - currently not indexed
@@ -181,21 +172,26 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot — Discovered - currently not indexed
 - https://aisofttechsolution.com/guides/tikfulfill-build-guide — Discovered - currently not indexed
 - https://aisofttechsolution.com/blueprint-library — Discovered - currently not indexed
+- https://aisofttechsolution.com/compare/agency-vs-freelancer — Discovered - currently not indexed
 - https://aisofttechsolution.com/terms — Crawled - currently not indexed
 - https://aisofttechsolution.com/profitscout-privacy — Crawled - currently not indexed
+- https://aisofttechsolution.com/demos/bizbot — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/foodbot — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/supportai — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/codconfirm — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/tikfulfill — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/shopconsole — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/khatabook — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/profitlens — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/expiryguard — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/salonbook — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/clinictoken — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/scriptrefill — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/feechaser — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/classflow — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/rentguard — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/viewbook — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/hallbook — Discovered - currently not indexed
-- https://aisofttechsolution.com/demos/leasemind — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/jobtrack — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/carcare — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/leadcrm — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/proposalgen — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/invoicechaser — Discovered - currently not indexed
@@ -207,6 +203,8 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/demos/shopshield — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/memocare — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/flowdesk — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/winback — Discovered - currently not indexed
+- https://aisofttechsolution.com/demos/reviewdesk — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/showonce — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/approvaldesk — Discovered - currently not indexed
 - https://aisofttechsolution.com/demos/aftercall — Discovered - currently not indexed
@@ -217,27 +215,30 @@ _These need a "Request indexing" click in Search Console._
 - https://aisofttechsolution.com/blog/show-once-automation-repetitive-tasks — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/ai-agent-answers-your-google-reviews — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/ai-agent-reactivates-dormant-customers — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/n8n-workflows-save-43-hours — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/ai-chatbot-remembers-your-customers — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/ai-agents-hacked-100-websites — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/google-profile-answers-customers-for-you — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/ai-voice-receptionist-missed-calls — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/ai-agents-buy-from-your-store — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/personal-ai-agent-runs-your-business — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/coworking-space-booking-chaos — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/auto-workshop-service-reminders — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/candidate-ghosting-recruiters — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/pharmacy-refill-reminders — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/wedding-hall-double-booking — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/gym-membership-churn-early-warning — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/confirm-cod-orders-whatsapp-pakistan — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/school-fee-defaulters-reminders — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/real-estate-viewing-no-shows — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/late-rent-reminders-property-managers — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/shopkeeper-real-profit — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/slow-proposals-lose-clients — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/clinic-patient-token-queues — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/freelancer-invoice-chasing — Discovered - currently not indexed
-- https://aisofttechsolution.com/blog/ai-assistant-whatsapp-website-any-business — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/unconfirmed-cod-orders — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/salon-empty-chair — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/tiktok-shop-dispatch-penalty — Discovered - currently not indexed
+- https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips — Discovered - currently not indexed
 - https://aisofttechsolution.com/blog/blogai-automation-ecommerce-repetitive-tasks — Discovered - currently not indexed
