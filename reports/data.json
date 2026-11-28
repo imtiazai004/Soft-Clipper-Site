@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-27",
-  "generated_at": "2026-11-28 00:08 UTC",
+  "generated": "2026-11-28",
+  "generated_at": "2026-11-28 12:52 UTC",
   "sites": [
     {
       "name": "softclipper.pro",
@@ -9,15 +9,23 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-10-27",
-          "end": "2026-11-24"
+          "start": "2026-10-28",
+          "end": "2026-11-25"
         },
-        "total_query_page_rows": 24,
+        "total_query_page_rows": 25,
         "striking_distance": [
           {
             "query": "cliper soft",
             "page": "https://softclipper.pro/",
             "position": 8,
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0
+          },
+          {
+            "query": "soft capper",
+            "page": "https://softclipper.pro/use-cases/podcasters/",
+            "position": 9,
             "clicks": 0,
             "impressions": 1,
             "ctr": 0
@@ -36,7 +44,16 @@
               "https://softclipper.pro/pricing/",
               "https://softclipper.pro/use-cases/"
             ],
-            "impressions": 153
+            "impressions": 154
+          },
+          {
+            "query": "soft capper",
+            "pages": [
+              "https://softclipper.pro/",
+              "https://softclipper.pro/download/",
+              "https://softclipper.pro/use-cases/podcasters/"
+            ],
+            "impressions": 10
           }
         ]
       },
@@ -426,8 +443,8 @@
       "failed_agents": [],
       "keywords": {
         "date_range": {
-          "start": "2026-10-27",
-          "end": "2026-11-24"
+          "start": "2026-10-28",
+          "end": "2026-11-25"
         },
         "total_query_page_rows": 2,
         "striking_distance": [],
@@ -437,14 +454,27 @@
         "total_urls_checked": 121,
         "indexed": 7,
         "never_crawled": [
-          "https://aisofttechsolution.com/guides/amazon-return-rule",
-          "https://aisofttechsolution.com/guides/account-health",
+          "https://aisofttechsolution.com/source",
+          "https://aisofttechsolution.com/guides/ecommerce-ai-tools",
+          "https://aisofttechsolution.com/guides/competitor-price-watch",
           "https://aisofttechsolution.com/guides/fee-stack-calculator",
+          "https://aisofttechsolution.com/guides/sellerradar-part-1",
+          "https://aisofttechsolution.com/guides/client-website-prompt-pack",
+          "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
+          "https://aisofttechsolution.com/demos/bizbot",
+          "https://aisofttechsolution.com/demos/foodbot",
+          "https://aisofttechsolution.com/demos/codconfirm",
           "https://aisofttechsolution.com/demos/scriptrefill",
+          "https://aisofttechsolution.com/demos/feechaser",
+          "https://aisofttechsolution.com/demos/classflow",
+          "https://aisofttechsolution.com/demos/jobtrack",
           "https://aisofttechsolution.com/demos/carcare",
-          "https://aisofttechsolution.com/demos/proposalgen",
-          "https://aisofttechsolution.com/demos/invoicechaser",
-          "https://aisofttechsolution.com/demos/agentcheckout",
+          "https://aisofttechsolution.com/demos/voicefront",
+          "https://aisofttechsolution.com/demos/profilebot",
+          "https://aisofttechsolution.com/demos/shopshield",
+          "https://aisofttechsolution.com/demos/memocare",
+          "https://aisofttechsolution.com/demos/winback",
+          "https://aisofttechsolution.com/demos/aftercall",
           "https://aisofttechsolution.com/demos/adpilot",
           "https://aisofttechsolution.com/demos/sourcepilot",
           "https://aisofttechsolution.com/demos/textpilot",
@@ -455,16 +485,9 @@
           "https://aisofttechsolution.com/blog/ai-agents-live-in-text-messages",
           "https://aisofttechsolution.com/blog/ai-sourcing-agent-finds-your-supplier-accio",
           "https://aisofttechsolution.com/blog/ai-agents-run-your-ads-inmobi-accelerate",
-          "https://aisofttechsolution.com/blog/your-customers-ai-can-now-pay-you",
-          "https://aisofttechsolution.com/blog/ai-agent-money-moves-need-your-approval",
-          "https://aisofttechsolution.com/blog/ai-agent-answers-your-google-reviews",
-          "https://aisofttechsolution.com/blog/ai-agent-reactivates-dormant-customers",
-          "https://aisofttechsolution.com/blog/ai-agents-hacked-100-websites",
-          "https://aisofttechsolution.com/blog/auto-workshop-service-reminders",
-          "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
+          "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
           "https://aisofttechsolution.com/blog/slow-proposals-lose-clients",
-          "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
-          "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
+          "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
           "https://aisofttechsolution.com/blog/how-to-turn-long-videos-into-viral-tiktok-clips"
         ],
         "crawled_not_indexed": [
@@ -485,19 +508,15 @@
             "reason": "Crawled - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/source",
+            "url": "https://aisofttechsolution.com/guides/amazon-return-rule",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/guides/ecommerce-ai-tools",
+            "url": "https://aisofttechsolution.com/guides/account-health",
             "reason": "Discovered - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/guides/show-once-automation-repetitive-tasks",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/guides/competitor-price-watch",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -513,14 +532,6 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/guides/sellerradar-part-1",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/guides/client-website-prompt-pack",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/guides/tiktok-shop-outreach-seller-guide",
             "reason": "Discovered - currently not indexed"
           },
@@ -530,10 +541,6 @@
           },
           {
             "url": "https://aisofttechsolution.com/guides/build-your-own-ai-seller-copilot",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/guides/tikfulfill-build-guide",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -553,19 +560,7 @@
             "reason": "Crawled - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/bizbot",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/foodbot",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/demos/supportai",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/codconfirm",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -597,14 +592,6 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/feechaser",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/classflow",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/demos/rentguard",
             "reason": "Discovered - currently not indexed"
           },
@@ -621,11 +608,15 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/jobtrack",
+            "url": "https://aisofttechsolution.com/demos/leadcrm",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/leadcrm",
+            "url": "https://aisofttechsolution.com/demos/proposalgen",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/demos/invoicechaser",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -641,31 +632,11 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/voicefront",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/profilebot",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/demos/dotdesk",
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/shopshield",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/memocare",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
             "url": "https://aisofttechsolution.com/demos/flowdesk",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/demos/winback",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -681,7 +652,11 @@
             "reason": "Discovered - currently not indexed"
           },
           {
-            "url": "https://aisofttechsolution.com/demos/aftercall",
+            "url": "https://aisofttechsolution.com/demos/agentcheckout",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/your-customers-ai-can-now-pay-you",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -689,7 +664,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/ai-agent-money-moves-need-your-approval",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/show-once-automation-repetitive-tasks",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/ai-agent-answers-your-google-reviews",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/ai-agent-reactivates-dormant-customers",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -698,6 +685,10 @@
           },
           {
             "url": "https://aisofttechsolution.com/blog/ai-chatbot-remembers-your-customers",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/ai-agents-hacked-100-websites",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -725,6 +716,10 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/auto-workshop-service-reminders",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/candidate-ghosting-recruiters",
             "reason": "Discovered - currently not indexed"
           },
@@ -734,10 +729,6 @@
           },
           {
             "url": "https://aisofttechsolution.com/blog/wedding-hall-double-booking",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/home-service-job-scheduling-chaos",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -765,6 +756,10 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/multiple-tiktok-shops-one-dashboard",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/shopkeeper-real-profit",
             "reason": "Discovered - currently not indexed"
           },
@@ -777,11 +772,19 @@
             "reason": "Discovered - currently not indexed"
           },
           {
+            "url": "https://aisofttechsolution.com/blog/freelancer-invoice-chasing",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
             "url": "https://aisofttechsolution.com/blog/unconfirmed-cod-orders",
             "reason": "Discovered - currently not indexed"
           },
           {
             "url": "https://aisofttechsolution.com/blog/salon-empty-chair",
+            "reason": "Discovered - currently not indexed"
+          },
+          {
+            "url": "https://aisofttechsolution.com/blog/wismo-most-expensive-sentence",
             "reason": "Discovered - currently not indexed"
           },
           {
@@ -794,10 +797,6 @@
           },
           {
             "url": "https://aisofttechsolution.com/blog/whatsapp-ai-restaurant-ordering",
-            "reason": "Discovered - currently not indexed"
-          },
-          {
-            "url": "https://aisofttechsolution.com/blog/digital-khata-udhaar-notebook",
             "reason": "Discovered - currently not indexed"
           },
           {
